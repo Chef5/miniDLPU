@@ -1,0 +1,68 @@
+{
+	"description": "项目配置文件",
+	"packOptions": {
+		"ignore": []
+	},
+	"setting": {
+		"urlCheck": true,
+		"es6": true,
+		"postcss": true,
+		"minified": true,
+		"newFeature": true
+	},
+	"compileType": "miniprogram",
+	"libVersion": "2.2.5",
+	"appid": "wx6f91a4ad4ed705ce",
+	"projectname": "%E5%B7%A5%E5%A4%A7%E6%95%99%E5%8A%A1%E5%A4%84",
+	"debugOptions": {
+		"hidedInDevtools": []
+	},
+	"isGameTourist": false,
+	"condition": {
+		"search": {
+			"current": -1,
+			"list": []
+		},
+		"conversation": {
+			"current": -1,
+			"list": []
+		},
+		"plugin": {
+			"current": -1,
+			"list": []
+		},
+		"game": {
+			"currentL": -1,
+			"list": []
+		},
+		"miniprogram": {
+			"current": 3,
+			"list": [
+				{
+					"id": -1,
+					"name": "setting",
+					"pathName": "pages/setting/setting",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "userinfo",
+					"pathName": "pages/setting-detail/set-userinfo",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "成绩",
+					"pathName": "pages/cj/cj",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "菜单",
+					"pathName": "pages/more/more",
+					"query": ""
+				}
+			]
+		}
+	}
+}

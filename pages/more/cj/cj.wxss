@@ -1,0 +1,21 @@
+/* pages/cj/cj.wxss */
+.page{
+  background-color: #efeff4;
+}
+.cj-top{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  margin-left: 6px;
+  margin-right: 6px;
+  font-size: 0.9rem;
+  height: 90rpx;
+}
+.cj-xq{
+  flex: 5;
+  line-height: 90rpx;
+}
+.cj-disc{
+  flex: 5;
+  line-height: 90rpx;
+}

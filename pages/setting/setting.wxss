@@ -1,0 +1,24 @@
+/* pages/setting/setting.wxss */
+.page__hd{
+  text-align: center;
+}
+.logo-dis{
+  margin-top: 50rpx;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  font-size: 28rpx;
+}
+.logo-dis image{
+  width:150rpx;
+  height:150rpx;
+  border-radius: 50%;
+}
+.set-items{
+  margin-top: 50rpx;
+}
+.showmsg{
+  margin-top: 100rpx;
+  text-align: center;
+  font-size: 28rpx;
+}

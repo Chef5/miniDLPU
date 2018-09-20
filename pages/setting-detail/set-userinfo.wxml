@@ -1,0 +1,32 @@
+<!--pages/setting-userinfo/set-userinfo.wxml-->
+<!--pages/setting/setting.wxml-->
+<view class="page">
+  <view class='page__hd'>
+
+  </view>
+  <view class='page__bd'>
+    <form bindsubmit='saveUserinfo'>
+      <view class="weui-cells weui-cells_after-title">
+        <view class="weui-cell weui-cell_input">
+          <view class="weui-cell__hd">
+              <view class="weui-label">学号</view>
+          </view>
+          <view class="weui-cell__bd">
+              <input class="weui-input" name='userid' maxlength='10' placeholder="在此输入学号" value='{{userid}}'/>
+          </view>
+        </view>
+        <view class="weui-cell weui-cell_input">
+          <view class="weui-cell__hd">
+              <view class="weui-label">密码</view>
+          </view>
+          <view class="weui-cell__bd">
+              <input class="weui-input" type='password' maxlength='25' name='userpwd' placeholder="教务处密码" value='{{userpwd}}'/>
+          </view>
+        </view>
+      </view>
+      <button form-type='submit' type='primary'>确认</button>
+    </form>
+    <view style='font-size:28rpx'>当前密码提示：{{hidpwd}}</view>
+  </view>
+</view>
+

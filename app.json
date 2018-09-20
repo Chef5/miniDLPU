@@ -1,0 +1,37 @@
+{
+  "pages": [
+    "pages/kcb/kcb",
+    "pages/more/more",
+    "pages/more/cj/cj",
+    "pages/setting/setting",
+    "pages/setting-detail/set-userinfo",
+    "pages/setting-detail/set-server",
+    "pages/setting-detail/set-know",
+    "pages/setting-detail/set-feed",
+    "pages/more/cj/cjdetail"
+  ],
+  "window": {
+    "backgroundTextStyle": "dark",
+    "navigationBarBackgroundColor": "#00b26a",
+    "navigationBarTitleText": "工大教务处",
+    "navigationBarTextStyle": "white"
+  },
+  "tabBar": {
+    "list": [
+      {
+        "pagePath": "pages/kcb/kcb",
+        "iconPath": "image/kcb.png",
+        "selectedIconPath": "image/selkcb.png",
+        "text": "课程表",
+        "selectedColor": "#67b7a7"
+      },
+      {
+        "pagePath": "pages/setting/setting",
+        "iconPath": "image/set.png",
+        "selectedIconPath": "image/selset.png",
+        "text": "设置",
+        "selectedColor": "#67b7a7"
+      }
+    ]
+  }
+}

@@ -1,0 +1,100 @@
+<!--index.wxml-->
+<view class="page">
+  <view class='page__hd'>
+    <view class='kcb-top'>
+       <view class='kcb-xq'>
+          <picker value="{{0}}" range="{{arrayxq}}">
+            <view>学期：{{arrayxq[0]}}</view>
+          </picker>
+        </view>
+        <view class='kcb-zc'>
+          <picker bindchange="zcChange" value="{{indexzc}}" range="{{arrayzc}}">
+            <view style='margin-left:5px;'>第 {{arrayzc[indexzc]}} 周</view>
+          </picker>
+        </view>
+        <view class='kcb-tq'>
+          <image src='{{tqimgurl}}' style="width:40rpx;height:40rpx;"></image>
+          <view>{{tqtemp}}℃</view>
+        </view>
+    </view>
+  </view>
+
+  <view class='page__bd'>
+    <view class='kcb-body'>
+      <view class='kcb-body-head'>
+        <view class='kcb-body-fill'></view>
+        <view class='kcb-body-head-header'>
+          <block wx:for="{{arrayth}}" wx:for-index="idxth" wx:for-item="thitem" wx:key="week">
+          <view class='table-th'>
+            <view class='table-th-z'>{{thitem.week}}</view>
+            <view class='table-th-t'>{{thitem.date}}</view>
+          </view>
+          </block>
+        </view>
+        <view class='kcb-body-fill'></view>
+      </view>
+      <view class='kcb-body-table'>
+        <view class='kcb-body-fill'>1\n2\n3\n4\n5\n6\n7\n8\n9\n10</view>
+        <view class='kcb-body-table-box'>
+          <view class='table-tr'>
+            <block wx:for="{{arraykcb1}}" wx:for-index="idxkcb1" wx:for-item="kcb1item" wx:key="kcb1item.index">
+              <view class='table-td' style="background-color:{{kcb1item.color}}; " bindtap='showdetail' data-name='{{kcb1item.name}}' data-room='{{kcb1item.room}}' data-leader='{{kcb1item.leader}}' data-time1='08:00~08:45' data-time2='08:55~09:40'>
+                <text>{{kcb1item.name}}\n{{kcb1item.room}}</text>
+              </view>
+            </block>
+          </view>
+          <view class='table-tr'>
+            <block wx:for="{{arraykcb2}}" wx:for-index="idxkcb2" wx:for-item="kcb2item" wx:key="kcb2item.index">
+                <view class='table-td' style="background-color:{{kcb2item.color}}; " bindtap='showdetail' data-name='{{kcb2item.name}}' data-room='{{kcb2item.room}}' data-leader='{{kcb2item.leader}}' data-time1='10:05~10:50' data-time2='11:00~11:45'>
+                  <text>{{kcb2item.name}}\n{{kcb2item.room}}</text>
+                </view>
+            </block>
+          </view>
+          <view class='table-tr'>
+            <block wx:for="{{arraykcb3}}" wx:for-index="idxkcb3" wx:for-item="kcb3item" wx:key="kcb3item.index">
+                <view class='table-td' style="background-color:{{kcb3item.color}}; " bindtap='showdetail' data-name='{{kcb3item.name}}' data-room='{{kcb3item.room}}' data-leader='{{kcb3item.leader}}' data-time1='13:20~14:05' data-time2='14:10~14:55'>
+                  <text>{{kcb3item.name}}\n{{kcb3item.room}}</text>
+                </view>
+            </block>
+          </view>
+          <view class='table-tr'>
+            <block wx:for="{{arraykcb4}}" wx:for-index="idxkcb4" wx:for-item="kcb4item" wx:key="kcb4item.index">
+                <view class='table-td' style="background-color:{{kcb4item.color}}; " bindtap='showdetail' data-name='{{kcb4item.name}}' data-room='{{kcb4item.room}}' data-leader='{{kcb4item.leader}}' data-time1='15:15~16:00' data-time2='16:05~16:50'>
+                  <text>{{kcb4item.name}}\n{{kcb4item.room}}</text>
+                </view>
+            </block>
+          </view>
+          <view class='table-tr'>
+            <block wx:for="{{arraykcb5}}" wx:for-index="idxkcb5" wx:for-item="kcb5item" wx:key="kcb5item.index">
+                <view class='table-td' style="background-color:{{kcb5item.color}}; " bindtap='showdetail' data-name='{{kcb5item.name}}' data-room='{{kcb5item.room}}' data-leader='{{kcb5item.leader}}' data-time1='18:00~18:45' data-time2='18:55~19:40'>
+                  <text>{{kcb5item.name}}\n{{kcb5item.room}}</text>
+                </view>
+            </block>
+          </view>
+        </view>
+        <view class='kcb-body-fill'></view>
+      </view>
+    </view>
+    <!-- <block>
+      <view class='kcb-detail'>
+        <view>课程名称：{{name}}</view>
+        <view>上课老师：{{leader}}</view>
+        <view>上课地点：{{room}}</view>
+        <view>上课时间：{{time}}</view>
+      </view>
+    </block> -->
+    <modal hidden="{{hiddenmodalput}}" title="课程详细" confirm-text="确定" bindconfirm="confirm" no-cancel='true'>
+        <view>课程名称：{{name}}</view>
+        <view>上课老师：{{leader}}</view>
+        <view>上课地点：{{room}}</view>
+        <view style='display:flex;flex-direction:row'>
+          <view>上课时间：</view>
+          <view style='display:flex;flex-direction:column'>
+            <view>{{time1}}</view>
+            <view>{{time2}}</view>
+          </view>
+        </view>
+    </modal>
+
+  </view>
+</view>

@@ -1,0 +1,27 @@
+<!--pages/cj/cj.wxml-->
+<view class="page">
+  <view class='page__hd'>
+    <view class='cj-top'>
+       <view class='cj-xq'>
+        <picker value="{{0}}" range="{{arrayxq}}">
+          <view>学期：{{arrayxq[0]}}</view>
+        </picker>
+      </view>
+      <view class='cj-disc'>
+        <text>←可以选择学期</text>
+      </view>
+    </view>
+  </view>
+  <view class='page__bd'>
+    <view class="weui-cells weui-cells_after-title">
+      <navigator url="./cjdetail" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+          <view class="weui-cell__bd">高等数学2</view>
+          <view class="weui-cell__ft weui-cell__ft_in-access">100</view>
+      </navigator>
+      <navigator url="./cjdetail" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+          <view class="weui-cell__bd">大学英语1</view>
+          <view class="weui-cell__ft weui-cell__ft_in-access">90</view>
+      </navigator>
+    </view>
+  </view>
+</view>
