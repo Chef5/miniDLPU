@@ -11,7 +11,7 @@
 		"newFeature": true
 	},
 	"compileType": "miniprogram",
-	"libVersion": "2.2.5",
+	"libVersion": "2.3.0",
 	"appid": "wx6f91a4ad4ed705ce",
 	"projectname": "%E5%B7%A5%E5%A4%A7%E6%95%99%E5%8A%A1%E5%A4%84",
 	"debugOptions": {
@@ -36,7 +36,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 3,
+			"current": 6,
 			"list": [
 				{
 					"id": -1,
@@ -51,9 +51,9 @@
 					"query": ""
 				},
 				{
-					"id": -1,
+					"id": 2,
 					"name": "成绩",
-					"pathName": "pages/cj/cj",
+					"pathName": "pages/more/cj/cj",
 					"query": ""
 				},
 				{
@@ -61,6 +61,23 @@
 					"name": "菜单",
 					"pathName": "pages/more/more",
 					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "校历",
+					"pathName": "pages/more/xiaoli/xiaoli",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "服务器设置",
+					"pathName": "pages/setting-detail/set-server",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "webtest",
+					"pathName": "pages/newweb/test/test"
 				}
 			]
 		}

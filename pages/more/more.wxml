@@ -1,24 +1,42 @@
 <!--pages/more/more.wxml-->
-<!--pages/setting/setting.wxml-->
 <view class="page">
   <view class='page__hd'>
-      <image></image>
+      <view>
+        <swiper indicator-dots="ture" autoplay="true" interval="5000" duration="1000">
+          <block wx:for="{{swiimgs}}" wx:for-item="swiitem" wx:key="swiitem">
+            <swiper-item>
+              <image src="{{swiitem}}" class="pic" />
+            </swiper-item>
+          </block>
+        </swiper>
+      </view>
   </view>
   <view class='page__bd'>
       <view class='menu-body'>
+        <view class='menu-title'>
+          <view class='menu-title-txt'>工大教务处-综合信息</view>
+          <view class='solid-line'></view>
+        </view>
           <view class='menu-items'>
-            <view class='menu-item'>
-              <view class='menu-items-img'><image src='../../image/serch.png'></image></view>
-              <view class='menu-items-txt'><text>成绩查询</text></view>
+            <view class='menu-item-box'>
+              <navigator url="./cj/cj" class='nav-item' hover-class="none">
+                <view class='menu-item-content'>
+                    <view class='menu-items-img'><image src='../../image/serch.png'></image></view>
+                    <view class='menu-items-txt'><text>成绩查询</text></view>
+                </view>
+              </navigator>
             </view>
-
-            <view class='menu-item'>
-              <view class='menu-items-img'><image src='../../image/serch.png'></image></view>
-              <view class='menu-items-txt'><text>成绩查询</text></view>
+            <view class='menu-item-box'>
+              <navigator url="./xiaoli/xiaoli" class='nav-item' hover-class="none" >
+                <view class='menu-item-content'>
+                    <view class='menu-items-img'><image src='../../image/date.png'></image></view>
+                    <view class='menu-items-txt'><text>校 历</text></view>
+                </view>
+              </navigator>
             </view>
-            <view class='menu-item'>
-              <view class='menu-items-img'><image src='../../image/serch.png'></image></view>
-              <view class='menu-items-txt'><text>成绩查询</text></view>
+            <view class='menu-item-box'>
+            </view>
+            <view class='menu-item-box'>
             </view>
           </view>
       </view>

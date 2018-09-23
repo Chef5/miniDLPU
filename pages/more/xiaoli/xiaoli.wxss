@@ -1,0 +1,47 @@
+/* pages/more/xiaoli/xiaoli.wxss */
+.page{
+  background-color: #efeff4;
+  height: 100%;
+}
+.page__hd{
+  width: 100%;
+}
+.xiaoli-body{
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  align-items: center;
+}
+.xiaoli-title{
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+.xiaoli-title-txt{
+  margin-bottom: 10rpx;
+  margin-top: 20rpx;
+  text-align: center;
+  font-size: 35rpx;
+  color: rgb(17, 5, 190);
+}
+.xiaoli-item{
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  align-items: center;
+}
+.xiaoli-item-title{
+  margin-bottom: 10rpx;
+  text-align: center;
+  font-size: 32rpx;
+  color: rgb(17, 5, 190);
+}
+.xiaoli-item-desc{
+  text-indent: 2em;
+  font-size: 25rpx;
+  color: grey;
+}
+.xiaoli-item-img image{
+  width: 650rpx;
+  height: 1100rpx;
+}

@@ -1,6 +1,11 @@
 /**app.wxss**/
 @import 'weui.wxss';
+
 .container {
   display: flex;
   flex-direction: column;
 } 
+.solid-line{
+  width:100%;border-top:1rpx solid grey;
+}
+

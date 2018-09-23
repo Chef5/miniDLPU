@@ -3,8 +3,8 @@
   <view class='page__hd'>
     <view class='kcb-top'>
        <view class='kcb-xq'>
-          <picker value="{{0}}" range="{{arrayxq}}">
-            <view>学期：{{arrayxq[0]}}</view>
+          <picker value="{{indexxq}}" range="{{arrayxq}}">
+            <view>学期：{{arrayxq[indexxq]}}</view>
           </picker>
         </view>
         <view class='kcb-zc'>
@@ -13,7 +13,10 @@
           </picker>
         </view>
         <view class='kcb-tq'>
-          <image src='{{tqimgurl}}' style="width:40rpx;height:40rpx;"></image>
+          <view class='kcb-tq-img-view'>
+            <view wx:if='{{isshowimg1}}'><image src='../../image/weather/{{tqimgurl1}}.png' style="width:40rpx;height:40rpx;"></image></view>
+            <view wx:if='{{isshowimg2}}'><image src='../../image/weather/{{tqimgurl2}}.png' style="width:40rpx;height:40rpx;"></image></view>
+          </view>
           <view>{{tqtemp}}℃</view>
         </view>
     </view>

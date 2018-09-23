@@ -24,7 +24,7 @@
           </view>
         </view>
       </view>
-      <button form-type='submit' type='primary'>确认</button>
+      <button form-type='submit' type='primary' class='comfirm-submit'>确认</button>
     </form>
     <view style='font-size:28rpx'>当前密码提示：{{hidpwd}}</view>
   </view>

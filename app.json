@@ -8,7 +8,7 @@
     "pages/setting-detail/set-server",
     "pages/setting-detail/set-know",
     "pages/setting-detail/set-feed",
-    "pages/more/cj/cjdetail"
+    "pages/more/xiaoli/xiaoli"
   ],
   "window": {
     "backgroundTextStyle": "dark",
@@ -17,20 +17,26 @@
     "navigationBarTextStyle": "white"
   },
   "tabBar": {
+    "color": "#000000",
+    "selectedColor": "#67b7a7",
     "list": [
       {
         "pagePath": "pages/kcb/kcb",
         "iconPath": "image/kcb.png",
         "selectedIconPath": "image/selkcb.png",
-        "text": "课程表",
-        "selectedColor": "#67b7a7"
+        "text": "课程表"
+      },
+      {
+        "pagePath": "pages/more/more",
+        "iconPath": "image/menu.png",
+        "selectedIconPath": "image/selmenu.png",
+        "text": "综合信息"
       },
       {
         "pagePath": "pages/setting/setting",
         "iconPath": "image/set.png",
         "selectedIconPath": "image/selset.png",
-        "text": "设置",
-        "selectedColor": "#67b7a7"
+        "text": "设置"
       }
     ]
   }

@@ -14,8 +14,11 @@
 .cj-xq{
   flex: 5;
   line-height: 90rpx;
+  color: gray;
 }
 .cj-disc{
   flex: 5;
   line-height: 90rpx;
+  font-size: 26rpx;
+  color: gray;
 }

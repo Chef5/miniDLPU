@@ -3,25 +3,40 @@
   <view class='page__hd'>
     <view class='cj-top'>
        <view class='cj-xq'>
-        <picker value="{{0}}" range="{{arrayxq}}">
-          <view>学期：{{arrayxq[0]}}</view>
+        <picker value="{{cjnowxq}}" range="{{arrayxq}}" bindchange="bindPickerChange" >
+          <view>学期：{{arrayxq[cjnowxq]}}</view>
         </picker>
       </view>
       <view class='cj-disc'>
-        <text>←可以选择学期</text>
+        <text>←可以查看其他学期</text>
       </view>
     </view>
   </view>
   <view class='page__bd'>
     <view class="weui-cells weui-cells_after-title">
-      <navigator url="./cjdetail" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
-          <view class="weui-cell__bd">高等数学2</view>
-          <view class="weui-cell__ft weui-cell__ft_in-access">100</view>
-      </navigator>
-      <navigator url="./cjdetail" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
-          <view class="weui-cell__bd">大学英语1</view>
-          <view class="weui-cell__ft weui-cell__ft_in-access">90</view>
-      </navigator>
+      <block wx:for="{{arraycj}}" wx:for-index="cjindex" wx:for-item="cjitem" wx:key="cjitem.cjindex">
+        <view class="weui-cell" bindtap='showdetail' data-name='{{cjitem.name}}' data-grade='{{cjitem.grade}}' data-pscjb='{{cjitem.pscjb}}' data-pscj='{{cjitem.pscj}}' data-qmcjb='{{cjitem.qmcjb}}' data-qmcj='{{cjitem.qmcj}}' data-credit='{{cjitem.credit}}' data-point='{{cjitem.point}}' data-hour='{{cjitem.hour}}' data-method='{{cjitem.method}}' data-kcsx='{{cjitem.kcsx}}' data-kcxz='{{cjitem.kcxz}}'>
+          <view class="weui-cell__bd">{{cjitem.name}}</view>
+          <view class="weui-cell__ft weui-cell__ft_in-access">{{cjitem.grade}}</view>
+        </view>
+      </block>
     </view>
+  
   </view>
+  <modal hidden="{{hiddenmodalput}}" title="成绩明细" confirm-text="确定" bindconfirm="confirm" no-cancel='true'>
+        <view>课程名称：{{name}}</view>
+        <view>总成绩：{{grade}}</view>
+        <view>平时成绩({{pscjb}})：{{pscj}}</view>
+        <view style='margin-bottom:10rpx;'>平时成绩({{qmcjb}})：{{qmcj}}</view>
+        <view style='width:100%;border-top:2rpx dashed gray;'></view>
+        <view style='display:flex;flex-direction:row;margin-top:10rpx;'>
+          <view style='display:flex;flex:1;'>学分：{{credit}}</view>
+          <view style='display:flex;flex:1;'>绩点：{{point}}</view>
+          <view style='display:flex;flex:1;'></view>
+        </view>
+        <view>学时：{{hour}}</view>
+        <view>考核方式：{{method}}</view>
+        <view>课程属性：{{kcsx}}</view>
+        <view>课程性质：{{kcxz}}</view>
+    </modal>
 </view>

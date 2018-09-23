@@ -7,10 +7,14 @@ Page({
     userid:"",
     userpwd:"",
     server:'210.30.62.37',
+    indexxq: 0,
     arrayxq: ['2018-2019-1'],
     indexzc: 0,
     arrayzc: [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18],
-    tqimgurl:"",
+    isshowimg1: false,
+    isshowimg2: false,
+    tqimgurl1: "",
+    tqimgurl2: "",
     tqtemp: "--~--", 
     hiddenmodalput: true,
     name:"",
@@ -82,16 +86,29 @@ Page({
     });
     //获取天气
     wx.request({
-      url: 'https://test.1zdz.cn/api/getweather.php',
+      url: 'https://test.1zdz.cn/api/weathertest.php',
       success: function(res) {
-        var tqimgurl = res.data.imgurl;
+        console.log(res);
+        var tqimgurl1 = res.data.imgurl1;
+        var tqimgurl2 = res.data.imgurl2;
         var templow = res.data.templow;
         var temphigh = res.data.temphigh;
         var tqtemp = templow + "~" + temphigh;
-        that.setData({
-          tqimgurl:tqimgurl,
-          tqtemp:tqtemp
-        });
+        if (tqimgurl2 == null) {
+          that.setData({
+            isshowimg1:true,
+            tqimgurl1: tqimgurl1,
+            tqtemp: tqtemp
+          });
+        }else{
+          that.setData({
+            isshowimg1: true,
+            isshowimg2: true,
+            tqimgurl1: tqimgurl1,
+            tqimgurl2: tqimgurl2,
+            tqtemp: tqtemp
+          });
+        }
       },
       fail: function(res) {},
       complete: function(res) {},
@@ -100,6 +117,7 @@ Page({
     wx.request({
       url: 'https://test.1zdz.cn/kcb/getdate.php',
       success: function (dat) {
+        console.log(dat);
         itemFirstDay = dat.data.itemStart;
         //当前学期设置
         that.setData({
@@ -115,11 +133,36 @@ Page({
           indexzc: nowzc-1,
         });
         //计算当前选择周1至周5日期
-        that.caculateDate(itemFirstDay);
+        that.caculateDate();
       },
       fail: function (res) {
         
       },
+    });
+    wx.getStorage({
+      key: 'server', success: function (res) {
+        var server = that.data.server;
+        if (res.data == null) {
+          server = "210.30.62.37";
+          wx.setStorage({
+            key: 'server',
+            data: "210.30.62.37",
+          });
+        } else {
+          server = res.data;
+        }
+        that.setData({ server: server });
+      },
+      fail: function () {
+        var server = that.data.server;
+        server = "210.30.62.37";
+        wx.setStorage({
+          key: 'server',
+          data: "210.30.62.37",
+        });
+        that.setData({ server: server });
+        return;
+      }
     });
   },
   onReady:function(){
@@ -132,11 +175,11 @@ Page({
     // 显示顶部刷新图标
     wx.showNavigationBarLoading();
     //计算当前选择周1至周5日期
-    that.caculateDate(itemFirstDay);
+    that.caculateDate();
     that.reFreshKCB();
   },
   //计算日期
-  caculateDate: function (itemFirstDay) {
+  caculateDate: function () {
     var that = this;
     //计算当前选择周1至周5日期
     var selzc = that.data.arrayzc[that.data.indexzc];
@@ -181,7 +224,7 @@ Page({
       },
     });
     //计算当前选择周1至周5日期
-    that.caculateDate(itemFirstDay);
+    that.caculateDate();
     var Id = that.data.userid;
     var Pwd = that.data.userpwd;
     if (Id == '' && Pwd == '') {
@@ -219,9 +262,10 @@ Page({
       },
       header: { "Content-Type": "application/x-www-form-urlencoded" },
       success: function (res) {
+        console.log(res);
         if (res.data.state == "error") {
           wx.showModal({
-            content: '课程表数据加载失败了，多刷新两次试试！',
+            content: '学号或者密码错误，登陆教务处失败！或更换教务处服务器试试。',
             showCancel: false,
             success: function (res) {
               if (res.confirm) {
@@ -273,16 +317,25 @@ Page({
             if (hang == 2) { that.setData({ arraykcb3: changeKCB, }); };
             if (hang == 3) { that.setData({ arraykcb4: changeKCB, }); };
             if (hang == 4) { that.setData({ arraykcb5: changeKCB, }); };
-
           }
           //
         }
       },
       fail: function (res) {
         console.log("获取课程表失败！");
-        wx.showToast({
-          title: '获取失败！',
-          duration: 1000
+        wx.showModal({
+          title: '课程表获取失败了！',
+          content: '请检查：当前学号('+Id+')'+'、服务器('+Server+')，可先检查学号或者密码是否有误，然后再试着切换服务器试试。',
+          confirmText: "立即前往",
+          success: function (res) {
+            if (res.confirm) {
+              wx.reLaunch({
+                url: '../kcb/kcb',
+              })
+            } else {
+              console.log('用户想了想')
+            }
+          }
         });
         //停止刷新
         wx.stopPullDownRefresh();
@@ -352,9 +405,21 @@ Page({
       time2: gtime2,
     })
   },
+  //是否隐藏课程详细
   confirm: function () {
     this.setData({
       hiddenmodalput: true
     })
+  },
+
+  /**
+   * 用户点击右上角分享
+   */
+  onShareAppMessage: function () {
+    return {
+      title: '工大教务处-课程表',
+      desc: '可查详细的课程表、详细成绩，更多查询功能欢迎体验！',
+      path: '/page/kcb/kcb'
+    };
   }
 })

@@ -1,4 +1,4 @@
-// pages/cj/cjdetail.js
+// pages/more/xiaoli/xiaoli.js
 Page({
 
   /**
