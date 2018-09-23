@@ -27,7 +27,7 @@
         <view>课程名称：{{name}}</view>
         <view>总成绩：{{grade}}</view>
         <view>平时成绩({{pscjb}})：{{pscj}}</view>
-        <view style='margin-bottom:10rpx;'>平时成绩({{qmcjb}})：{{qmcj}}</view>
+        <view style='margin-bottom:10rpx;'>期末成绩({{qmcjb}})：{{qmcj}}</view>
         <view style='width:100%;border-top:2rpx dashed gray;'></view>
         <view style='display:flex;flex-direction:row;margin-top:10rpx;'>
           <view style='display:flex;flex:1;'>学分：{{credit}}</view>

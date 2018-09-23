@@ -86,7 +86,7 @@ Page({
     });
     //获取天气
     wx.request({
-      url: 'https://test.1zdz.cn/api/weathertest.php',
+      url: 'https://test.1zdz.cn/api/getweather.php',
       success: function(res) {
         console.log(res);
         var tqimgurl1 = res.data.imgurl1;
