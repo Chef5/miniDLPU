@@ -40,5 +40,8 @@
             </view>
           </view>
       </view>
+      <view class='share-box'>
+        <view>您的分享就是对作者最大的支持！</view>
+      </view>
   </view>
 </view>

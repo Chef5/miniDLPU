@@ -75,3 +75,9 @@ nav
   font-size: 24rpx;
   color: #515151;
 }
+.share-box{
+  margin-top: 520rpx;
+  font-size: 28rpx;
+  color: gray;
+  text-align: center;
+}

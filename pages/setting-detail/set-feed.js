@@ -7,7 +7,21 @@ Page({
   data: {
 
   },
-
+  setwx: function () {
+    wx.setClipboardData({
+      data: 'Kmitle',
+      success: function (res) {
+        wx.getClipboardData({
+          success: function (res) {
+            wx.showToast({
+              title: '复制成功！',
+              duration: 1000
+            });
+          }
+        })
+      }
+    })
+  },
   /**
    * 生命周期函数--监听页面加载
    */

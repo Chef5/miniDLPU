@@ -134,7 +134,7 @@ Page({
     return {
       title: '工大教务处-成绩查询',
       desc: '可查详细的课程表、详细成绩，更多查询功能欢迎体验！',
-      path: '/page/cj/cj'
+      path: '/pages/more/cj/cj'
     };
   },
   bindPickerChange: function (e) {

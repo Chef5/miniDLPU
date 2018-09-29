@@ -20,10 +20,10 @@
               <view class="weui-cell__bd">使用须知</view>
               <view class="weui-cell__ft weui-cell__ft_in-access"></view>
       </navigator> -->
-      <!-- <navigator url="../setting-detail/set-feed" class="weui-cell weui-cell_access" >
+      <navigator url="../setting-detail/set-feed" class="weui-cell weui-cell_access" >
               <view class="weui-cell__bd">意见反馈</view>
               <view class="weui-cell__ft weui-cell__ft_in-access"></view>
-      </navigator> -->
+      </navigator>
     </view>
     <view class='showmsg' bindtap='setwx'>
       <text>更多功能会陆续移植...\n</text>

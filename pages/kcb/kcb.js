@@ -419,7 +419,7 @@ Page({
     return {
       title: '工大教务处-课程表',
       desc: '可查详细的课程表、详细成绩，更多查询功能欢迎体验！',
-      path: '/page/kcb/kcb'
+      path: '/pages/kcb/kcb'
     };
   }
 })
