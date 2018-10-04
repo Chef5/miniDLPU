@@ -35,6 +35,10 @@
               </navigator>
             </view>
             <view class='menu-item-box'>
+              <view class='menu-item-content menu-item-share' bindtap='share2getmoney'>
+                  <view class='menu-items-img'><image src='../../image/luckmoney.png'></image></view>
+                  <view class='menu-items-txt'><text>分享有礼</text></view>
+              </view>
             </view>
             <view class='menu-item-box'>
             </view>
@@ -44,4 +48,7 @@
         <view>您的分享就是对作者最大的支持！</view>
       </view>
   </view>
+  <modal hidden="{{hiddenmodalput}}" title="分享赚红包" confirm-text="知道啦" bindconfirm="shareconfirm" no-cancel='true'>
+      <view>推荐工大教务处小程序到群聊后即可以领取支付宝红包，最高可领888元，每日都有。(点击右上角更多按钮参与分享活动)</view>
+  </modal>
 </view>

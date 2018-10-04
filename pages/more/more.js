@@ -9,9 +9,34 @@ Page({
       '../../image/swi/swi01.jpg',
       '../../image/swi/swi02.jpg',
       '../../image/swi/swi03.jpg',
-    ]
+    ],
+    hiddenmodalput:true,
   },
-
+  share2getmoney:function(){
+    var that = this;
+    that.setData({
+      hiddenmodalput: false,
+    })
+    // wx.showModal({
+    //   title: '分享可以赚红包啦',
+    //   content: '推荐工大教务处小程序到群聊后即可以领取支付宝红包，最高可领888元，每日都有。',
+    //   confirmText: "现在分享",
+    //   cancelText: "稍后再说",
+    //   success: function (res) {
+    //     console.log(res);
+    //     if (res.confirm) {
+    //       console.log('用户点击主操作');
+    //       that.onShareAppMessage();
+    //     } else {
+    //       console.log('用户点击辅助操作')
+    //     }
+    //   }
+    // });
+  },
+  shareconfirm: function () {
+    this.setData({
+      hiddenmodalput: true
+    })},
   /**
    * 生命周期函数--监听页面加载
    */
@@ -65,6 +90,44 @@ Page({
    * 用户点击右上角分享
    */
   onShareAppMessage: function () {
-
+    var that = this;
+　　var shareObj = {
+    　title: "工大教务处-查课表、查成绩、查考试...",    
+      imgUrl: '/image/share.jpg',     
+      path: '/pages/kcb/kcb',        
+      desc: '可查详细的课程表、详细成绩，更多查询功能欢迎体验！',    
+      success: function (res) {
+        if (res.errMsg == 'shareAppMessage:ok') {
+          
+        }
+      },
+      fail: function () {
+        if (res.errMsg == 'shareAppMessage:fail cancel') {} 
+        else if (res.errMsg == 'shareAppMessage:fail') {}
+      },
+      complete: function(){
+        wx.setClipboardData({
+          data: '一到过节就想送红包，想要就复制这段文案打开支付宝领吧！ySxtL138Pt',
+          success: function (res) {
+            wx.showModal({
+              title: '提示',
+              content: '推荐成功，您已获得红包，马上打开支付宝（最新版）即可领取红包！',
+              confirmText: "知道啦",
+              showCancel: false,
+              success: function (res) {
+                console.log(res);
+                if (res.confirm) {
+                  console.log('用户点击主操作');
+                } else {
+                  console.log('用户点击辅助操作')
+                }
+              }
+            });
+          }
+        })
+      }
+　　};
+　　// 返回shareObj
+　　return shareObj;
   }
 })

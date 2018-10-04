@@ -24,19 +24,19 @@
   
   </view>
   <modal hidden="{{hiddenmodalput}}" title="成绩明细" confirm-text="确定" bindconfirm="confirm" no-cancel='true'>
-        <view>课程名称：{{name}}</view>
-        <view>总成绩：{{grade}}</view>
-        <view>平时成绩({{pscjb}})：{{pscj}}</view>
-        <view style='margin-bottom:10rpx;'>期末成绩({{qmcjb}})：{{qmcj}}</view>
-        <view style='width:100%;border-top:2rpx dashed gray;'></view>
-        <view style='display:flex;flex-direction:row;margin-top:10rpx;'>
-          <view style='display:flex;flex:1;'>学分：{{credit}}</view>
-          <view style='display:flex;flex:1;'>绩点：{{point}}</view>
-          <view style='display:flex;flex:1;'></view>
-        </view>
-        <view>学时：{{hour}}</view>
-        <view>考核方式：{{method}}</view>
-        <view>课程属性：{{kcsx}}</view>
-        <view>课程性质：{{kcxz}}</view>
-    </modal>
+      <view>课程名称：{{name}}</view>
+      <view>总成绩：{{grade}}</view>
+      <view>平时成绩({{pscjb}})：{{pscj}}</view>
+      <view style='margin-bottom:10rpx;'>期末成绩({{qmcjb}})：{{qmcj}}</view>
+      <view style='width:100%;border-top:2rpx dashed gray;'></view>
+      <view style='display:flex;flex-direction:row;margin-top:10rpx;'>
+        <view style='display:flex;flex:1;'>学分：{{credit}}</view>
+        <view style='display:flex;flex:1;'>绩点：{{point}}</view>
+        <view style='display:flex;flex:1;'></view>
+      </view>
+      <view>学时：{{hour}}</view>
+      <view>考核方式：{{method}}</view>
+      <view>课程属性：{{kcsx}}</view>
+      <view>课程性质：{{kcxz}}</view>
+  </modal>
 </view>

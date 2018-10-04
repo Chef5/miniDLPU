@@ -416,10 +416,43 @@ Page({
    * 用户点击右上角分享
    */
   onShareAppMessage: function () {
-    return {
-      title: '工大教务处-课程表',
+    var that = this;
+　　var shareObj = {
+      title: "工大教务处-课程表",
+      path: '/pages/kcb/kcb',
       desc: '可查详细的课程表、详细成绩，更多查询功能欢迎体验！',
-      path: '/pages/kcb/kcb'
-    };
+      success: function (res) {
+        if (res.errMsg == 'shareAppMessage:ok') {
+
+        }
+      },
+      fail: function () {
+        if (res.errMsg == 'shareAppMessage:fail cancel') { }
+        else if (res.errMsg == 'shareAppMessage:fail') { }
+      },
+      complete: function () {
+        wx.setClipboardData({
+          data: '一到过节就想送红包，想要就复制这段文案打开支付宝领吧！ySxtL138Pt',
+          success: function (res) {
+            wx.showModal({
+              title: '提示',
+              content: '推荐成功，您已获得红包，马上打开支付宝（最新版）即可领取红包！',
+              confirmText: "知道啦",
+              showCancel: false,
+              success: function (res) {
+                console.log(res);
+                if (res.confirm) {
+                  console.log('用户点击主操作');
+                } else {
+                  console.log('用户点击辅助操作')
+                }
+              }
+            });
+          }
+        })
+      }
+  　};
+  　　// 返回shareObj
+  　return shareObj;
   }
 })
