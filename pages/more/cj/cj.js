@@ -214,6 +214,7 @@ Page({
       return;
     }
     var items = that.data.arrayxq[that.data.cjnowxq];
+    Pwd = encodeURIComponent(Pwd); //转义，防止有特殊字符如：&
     console.log("item:" + items);
     wx.request({
       url: 'https://test.1zdz.cn/api/cj.php',

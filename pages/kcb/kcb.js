@@ -226,7 +226,8 @@ Page({
     //计算当前选择周1至周5日期
     that.caculateDate();
     var Id = that.data.userid;
-    var Pwd = that.data.userpwd;
+    var Pwd = encodeURIComponent(that.data.userpwd); //转义，防止有特殊字符如：&
+    console.log('pwd:'+Pwd);
     if (Id == '' && Pwd == '') {
       wx.showModal({
         content: '本地不存在教务处账号和密码，请点击:“设置”>“教务处信息更改”',
@@ -385,16 +386,6 @@ Page({
     var gleader = e.currentTarget.dataset.leader;
     var gtime1 = e.currentTarget.dataset.time1;
     var gtime2 = e.currentTarget.dataset.time2;
-    // var showstr = leader+'\r\n'+time;
-    // wx.showModal({
-    //   title:'课程详细：',
-    //   content: showstr,
-    //   showCancel: false,
-    //   success: function (res) {
-    //     if (res.confirm) {
-    //     }
-    //   }
-    // });
     if (gname == "" || groom == "" || gleader == "" || gtime1 == "" || gtime2 == "")noshow = true;
     that.setData({
       hiddenmodalput: noshow,
