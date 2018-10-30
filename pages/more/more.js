@@ -5,14 +5,14 @@ Page({
    * 页面的初始数据
    */
   data: {
-    swiimgs:[
+    swiimgs: [
       '../../image/swi/swi01.jpg',
       '../../image/swi/swi02.jpg',
       '../../image/swi/swi03.jpg',
     ],
-    hiddenmodalput:true,
+    hiddenmodalput: true,
   },
-  share2getmoney:function(){
+  share2getmoney: function () {
     var that = this;
     that.setData({
       hiddenmodalput: false,
@@ -36,7 +36,8 @@ Page({
   shareconfirm: function () {
     this.setData({
       hiddenmodalput: true
-    })},
+    })
+  },
   /**
    * 生命周期函数--监听页面加载
    */
@@ -91,21 +92,21 @@ Page({
    */
   onShareAppMessage: function () {
     var that = this;
-　　var shareObj = {
-    　title: "工大教务处-查课表、查成绩、查考试...",    
-      imgUrl: '/image/share.jpg',     
-      path: '/pages/kcb/kcb',        
-      desc: '可查详细的课程表、详细成绩，更多查询功能欢迎体验！',    
+    　　var shareObj = {
+      title: "工大教务处-查课表、查成绩、查考试...",
+      imgUrl: '/image/share.jpg',
+      path: '/pages/kcb/kcb',
+      desc: '可查详细的课程表、详细成绩，更多查询功能欢迎体验！',
       success: function (res) {
         if (res.errMsg == 'shareAppMessage:ok') {
-          
+
         }
       },
       fail: function () {
-        if (res.errMsg == 'shareAppMessage:fail cancel') {} 
-        else if (res.errMsg == 'shareAppMessage:fail') {}
+        if (res.errMsg == 'shareAppMessage:fail cancel') { }
+        else if (res.errMsg == 'shareAppMessage:fail') { }
       },
-      complete: function(){
+      complete: function () {
         wx.setClipboardData({
           data: '一到过节就想送红包，想要就复制这段文案打开支付宝领吧！ySxtL138Pt',
           success: function (res) {
@@ -126,8 +127,8 @@ Page({
           }
         })
       }
-　　};
-　　// 返回shareObj
-　　return shareObj;
+    　　};
+    　　// 返回shareObj
+    　　return shareObj;
   }
 })

@@ -1,3 +1,4 @@
 {
-  "navigationBarTitleText": "工大教务处-综合信息"
+  "navigationBarTitleText": "工大教务处-综合信息",
+  "enablePullDownRefresh": true
 }

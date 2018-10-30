@@ -1,3 +1,2 @@
 <!--pages/setting-detail/set-feed.wxml-->
-<text>还在移植中...</text>
 <view style='text-align:center;' bindtap='setwx'>微信(点击复制)：Kmitle</view>

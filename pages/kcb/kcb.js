@@ -110,7 +110,9 @@ Page({
           });
         }
       },
-      fail: function(res) {},
+      fail: function(res) {
+        that.setData({ tqtemp: 'π_π'});
+      },
       complete: function(res) {},
     });
     //获取开学和放假日期，计算当前周
@@ -414,7 +416,7 @@ Page({
       desc: '可查详细的课程表、详细成绩，更多查询功能欢迎体验！',
       success: function (res) {
         if (res.errMsg == 'shareAppMessage:ok') {
-
+          //可以在这里写
         }
       },
       fail: function () {

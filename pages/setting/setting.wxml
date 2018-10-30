@@ -26,9 +26,9 @@
       </navigator>
     </view>
     <view class='showmsg' bindtap='setwx'>
-      <text>更多功能会陆续移植...\n</text>
+      <!-- <text>更多功能会陆续移植...\n</text>
       <text>抢先体验\n</text>
-      <text>请下载安卓客户端:\nhttp://dl.1zdz.cn</text>
+      <text>请下载安卓客户端:\nhttp://dl.1zdz.cn</text> -->
     </view>
   </view>
   <official-account></official-account>

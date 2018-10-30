@@ -7,7 +7,7 @@ Page({
   data: {
 
   },
-  setwx:function(){
+  setwx: function () {
     wx.setClipboardData({
       data: 'http://dl.1zdz.cn',
       success: function (res) {
