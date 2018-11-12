@@ -2,6 +2,7 @@
 //获取应用实例
 const app = getApp();
 var itemFirstDay;
+//var NOWzc=0;
 Page({ 
   data: {
     userid:"",
@@ -156,6 +157,8 @@ Page({
         });
         //计算当前选择周1至周5日期
         that.caculateDate();
+        //fix first time not current week BUG
+        //NOWzc = nowzc - 1;
       },
       fail: function (res) {
         
@@ -189,7 +192,14 @@ Page({
   },
   onReady:function(){
     var that = this;
-    that.reFreshKCB();
+    //fix first time not current week BUG: delay 0.4s for data update
+    setTimeout(function () {
+      console.log("延迟调用============");
+      var weeks = that.data.arrayzc[that.data.indexzc];
+      console.log("onReady weeks:" + weeks);
+      that.reFreshKCB();
+    }, 400)
+    
   },
   // 下拉刷新
   onPullDownRefresh: function () {
@@ -282,6 +292,8 @@ Page({
     }
     var items = that.data.arrayxq[0];
     var weeks = that.data.arrayzc[that.data.indexzc];
+    console.log("this time test:");
+    console.log("item:"+items+"weeks"+weeks);
     wx.request({
       url: 'https://test.1zdz.cn/api/kcb.php',
       method: 'POST',
