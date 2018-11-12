@@ -24,11 +24,17 @@
               <view class="weui-cell__bd">意见反馈</view>
               <view class="weui-cell__ft weui-cell__ft_in-access"></view>
       </navigator>
+      <navigator url="../setting-detail/set-ad" class="weui-cell weui-cell_access" >
+              <view class="weui-cell__bd">广告</view>
+              <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+      </navigator>
     </view>
-    <view class='showmsg' bindtap='setwx'>
-      <!-- <text>更多功能会陆续移植...\n</text>
-      <text>抢先体验\n</text>
-      <text>请下载安卓客户端:\nhttp://dl.1zdz.cn</text> -->
+    <view class='showmsg'>
+      <!-- <text class='jinji'>紧急通知！！请互相转告！！\n</text> -->
+      <text>在不常用页面引入了广告\n</text>
+      <text>广告收入用于续费服务器\n</text>
+      <text>安卓客户端无任何广告\n</text>
+      <text>感谢理解，欢迎赞助\n</text>
     </view>
   </view>
   <official-account></official-account>

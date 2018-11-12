@@ -8,7 +8,8 @@
     "pages/setting-detail/set-server",
     "pages/setting-detail/set-know",
     "pages/setting-detail/set-feed",
-    "pages/more/xiaoli/xiaoli"
+    "pages/more/xiaoli/xiaoli",
+    "pages/setting-detail/set-ad"
   ],
   "window": {
     "backgroundTextStyle": "dark",

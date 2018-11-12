@@ -17,6 +17,7 @@ Page({
     tqimgurl2: "",
     tqtemp: "--~--", 
     hiddenmodalput: true,
+    maskFlag: true,
     name:"",
     leader:"",
     room:"",
@@ -27,7 +28,10 @@ Page({
       { week: "周二", date: ""}, 
       { week: "周三", date: ""},
       { week: "周四", date: ""}, 
-      { week: "周五", date: ""}],
+      { week: "周五", date: "" }],
+    arrayth2: [
+      { week: "周六", date: "" },
+      { week: "周日", date: "" }],
     arraykcb1 : [
       { name: "", room: "", leader: "", time: "", color: "" },
       { name: "", room: "", leader: "", time: "", color: "" },
@@ -63,7 +67,23 @@ Page({
       { name: "", room: "", leader: "", time: "", color: "" },
       { name: "", room: "", leader: "", time: "", color: "" },
     ],
-
+    //设置周末课程表
+    weekindex:0,
+    arrayWeekIndex: [0,2,4,6,8],
+    arraykcbweek: [
+      { name: "1111", room: "111", leader: "111", time: "", color: "" },
+    ],
+    
+  },
+  showWeekday: function () {
+    this.setData({
+      maskFlag: false,
+    })
+  },
+  hideWeekday: function () {
+    this.setData({
+      maskFlag: true,
+    })
   },
   zcChange: function (e) {
     var that = this;
@@ -193,14 +213,24 @@ Page({
     var firstDayTime = new Date(YearY + "/" + MonthM + "/" + DayD + " 00:00:00");  //IOS系统的坑，用‘-’会加载不出来，只能用‘/’
     var firstDayTime = firstDayTime.valueOf();
     var addtoarrayth = that.data.arrayth;
-    for (var i = 0; i < 5; i++) {
+    var addtoarrayth2 = that.data.arrayth2;
+    var ii=0;
+    console.log(addtoarrayth2);
+    for (var i = 0; i < 7; i++) {
       var nextDate = new Date(firstDayTime + (everyMonday + i) * 24 * 60 * 60 * 1000); //后一天
       var nextMonth = nextDate.getMonth() + 1 < 10 ? '0' + (nextDate.getMonth() + 1) : nextDate.getMonth() + 1;
       var nextDay = nextDate.getDate() < 10 ? '0' + nextDate.getDate() : nextDate.getDate();
-      addtoarrayth[i].date = nextMonth + "." + nextDay;
+      if(i<5){
+        addtoarrayth[i].date = nextMonth + "." + nextDay;
+      }
+      else{
+        addtoarrayth2[ii].date = nextMonth + "." + nextDay;
+        ii++;
+      }
     }
     that.setData({
       arrayth: addtoarrayth,
+      arrayth2: addtoarrayth2,
     });
   },
   //课程表刷新
@@ -288,11 +318,11 @@ Page({
           //对同一科目进行标号
           var index = 1;
           for (var hang = 0; hang < 6; hang++) {
-            for (var i = 0; i < 5; i++) {
+            for (var i = 0; i < 7; i++) {
               if (res.data[hang][i].name != "" && res.data[hang][i].index == "") {
                 var tmp_name = res.data[hang][i].name;
                 for (var h = hang; h < 6; h++) {//向下搜寻相同课程，名称
-                  for (var j = 0; j < 5; j++) {
+                  for (var j = 0; j < 7; j++) {
                     if (res.data[h][j].name == tmp_name && res.data[h][j].index == "") {
                       res.data[h][j].index = index;//标号
                     }
@@ -302,17 +332,30 @@ Page({
               }
             }
           }
+          console.log("添加的颜色：");
+          console.log(res.data);
+          var changeWeekKCB = that.data.arraykcbweek;//设置周末数据
+          var ii = 0;
           for (var hang = 0; hang < 5; hang++) {
             if (hang == 0) var changeKCB = that.data.arraykcb1;
             if (hang == 1) var changeKCB = that.data.arraykcb2;
             if (hang == 2) var changeKCB = that.data.arraykcb3;
             if (hang == 3) var changeKCB = that.data.arraykcb4;
             if (hang == 4) var changeKCB = that.data.arraykcb5;
+            //读取周一到周五数据
             for (var i = 0; i < 5; i++) {
               changeKCB[i].name = that.isOver15(res.data[hang][i].name);
               changeKCB[i].room = res.data[hang][i].room;
               changeKCB[i].leader = res.data[hang][i].leader;
               changeKCB[i].color = tdcolors[res.data[hang][i].index - 1];
+            } 
+            //单独读取每一行周末数据
+            for (var i = 5; i < 7; i++, ii++) {
+              changeWeekKCB[ii] = new Object;
+              changeWeekKCB[ii].name = that.isOver15(res.data[hang][i].name);
+              changeWeekKCB[ii].room = res.data[hang][i].room;
+              changeWeekKCB[ii].leader = res.data[hang][i].leader;
+              changeWeekKCB[ii].color = tdcolors[res.data[hang][i].index - 1];
             }
             //console.log(changeKCB);
             if (hang == 0) { that.setData({ arraykcb1: changeKCB, }); };
@@ -321,7 +364,9 @@ Page({
             if (hang == 3) { that.setData({ arraykcb4: changeKCB, }); };
             if (hang == 4) { that.setData({ arraykcb5: changeKCB, }); };
           }
-          //
+          that.setData({ arraykcbweek: changeWeekKCB, });//设置周末数据
+          console.log("周末的：");
+          console.log(changeWeekKCB);
         }
       },
       fail: function (res) {

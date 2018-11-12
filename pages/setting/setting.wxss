@@ -20,5 +20,10 @@
 .showmsg{
   margin-top: 100rpx;
   text-align: center;
-  font-size: 28rpx;
+  font-size: 24rpx;
+  color: gainsboro;
+}
+.jinji{
+  color: red;
+  font-size: 40rpx;
 }

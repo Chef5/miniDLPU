@@ -25,8 +25,8 @@
   <view class='page__bd'>
     <view class='kcb-body'>
       <view class='kcb-body-head'>
-        <view class='kcb-body-fill'></view>
-        <view class='kcb-body-head-header'>
+        <view class='kcb-body-fill' bindtap='hideWeekday'></view>
+        <view class='kcb-body-head-header' bindtap='hideWeekday'>
           <block wx:for="{{arrayth}}" wx:for-index="idxth" wx:for-item="thitem" wx:key="week">
           <view class='table-th'>
             <view class='table-th-z'>{{thitem.week}}</view>
@@ -34,11 +34,11 @@
           </view>
           </block>
         </view>
-        <view class='kcb-body-fill'></view>
+        <view class='mask-fill' bindtap='showWeekday'><image class='th-right' src='../../image/right2.png'></image></view>
       </view>
       <view class='kcb-body-table'>
-        <view class='kcb-body-fill'>1\n2\n3\n4\n5\n6\n7\n8\n9\n10</view>
-        <view class='kcb-body-table-box'>
+        <view class='kcb-body-fill' bindtap='hideWeekday'>1\n2\n3\n4\n5\n6\n7\n8\n9\n10</view>
+        <view class='kcb-body-table-box' bindtap='hideWeekday'>
           <view class='table-tr'>
             <block wx:for="{{arraykcb1}}" wx:for-index="idxkcb1" wx:for-item="kcb1item" wx:key="kcb1item.index">
               <view class='table-td' style="background-color:{{kcb1item.color}}; " bindtap='showdetail' data-name='{{kcb1item.name}}' data-room='{{kcb1item.room}}' data-leader='{{kcb1item.leader}}' data-time1='08:00~08:45' data-time2='08:55~09:40'>
@@ -75,7 +75,7 @@
             </block>
           </view>
         </view>
-        <view class='kcb-body-fill'></view>
+        <view class='kcb-body-fill' bindtap='showWeekday'></view>
       </view>
     </view>
     <!-- <block>
@@ -98,6 +98,37 @@
           </view>
         </view>
     </modal>
+    <view class='mask' hidden='{{maskFlag}}'>
+    
+      <view class='kcb-body-head'>
+        <view class='kcb-body-head-header'>
+          <block wx:for="{{arrayth2}}" wx:for-index="idxth" wx:for-item="thitem2" wx:key="week">
+          <view class='table-th'>
+            <view class='table-th-z'>{{thitem2.week}}</view>
+            <view class='table-th-t'>{{thitem2.date}}</view>
+          </view>
+          </block>
+          <view class='mask-fill' bindtap='hideWeekday'><image class='th-left' src='../../image/left.png'></image></view>
+        </view>
+      </view>
 
+      <view class='kcb-body-table'>
+        <view class='kcb-body-table-box'>
+          <block wx:for="{{arrayWeekIndex}}" wx:for-index="weekindex" wx:for-item="weekindex" wx:key="weekindex.index">
+          <view class='table-tr'>
+            <view class='table-td' style="background-color:{{arraykcbweek[weekindex].color}}; " bindtap='showdetail' data-name='{{arraykcbweek[weekindex].name}}' data-room='{{arraykcbweek[weekindex].room}}' data-leader='{{arraykcbweek[weekindex].leader}}' data-time1='请参考周一至周五' data-time2='^_^'>
+              <text>{{arraykcbweek[weekindex].name}}\n{{arraykcbweek[weekindex].room}}</text>
+            </view>
+            <view class='table-td' style="background-color:{{arraykcbweek[weekindex+1].color}}; " bindtap='showdetail' data-name='{{arraykcbweek[weekindex+1].name}}' data-room='{{arraykcbweek[weekindex+1].room}}' data-leader='{{arraykcbweek[weekindex+1].leader}}' data-time1='请参考周一至周五' data-time2='^_^'>
+              <text>{{arraykcbweek[weekindex+1].name}}\n{{arraykcbweek[weekindex+1].room}}</text>
+            </view>
+          </view>
+          </block>
+        </view>
+        <view class='kcb-body-fill' bindtap='hideWeekday'></view>
+      </view>
+      
+    </view>
   </view>
 </view>
+
