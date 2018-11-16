@@ -192,13 +192,13 @@ Page({
   },
   onReady:function(){
     var that = this;
-    //fix first time not current week BUG: delay 0.4s for data update
+    //fix first time not current week BUG: delay 1s for data update
     setTimeout(function () {
       console.log("延迟调用============");
       var weeks = that.data.arrayzc[that.data.indexzc];
       console.log("onReady weeks:" + weeks);
       that.reFreshKCB();
-    }, 400)
+    }, 1000)
     
   },
   // 下拉刷新

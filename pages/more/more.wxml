@@ -34,11 +34,13 @@
                 </view>
               </navigator>
             </view>
-            <view class='menu-item-box'>
+            <!-- <view class='menu-item-box'>
               <view class='menu-item-content menu-item-share' bindtap='share2getmoney'>
                   <view class='menu-items-img'><image src='../../image/luckmoney.png'></image></view>
                   <view class='menu-items-txt'><text>分享有礼</text></view>
               </view>
+            </view> -->
+            <view class='menu-item-box'>
             </view>
             <view class='menu-item-box'>
             </view>

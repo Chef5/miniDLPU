@@ -107,28 +107,10 @@ Page({
         else if (res.errMsg == 'shareAppMessage:fail') { }
       },
       complete: function () {
-        wx.setClipboardData({
-          data: '一到过节就想送红包，想要就复制这段文案打开支付宝领吧！ySxtL138Pt',
-          success: function (res) {
-            wx.showModal({
-              title: '提示',
-              content: '推荐成功，您已获得红包，马上打开支付宝（最新版）即可领取红包！',
-              confirmText: "知道啦",
-              showCancel: false,
-              success: function (res) {
-                console.log(res);
-                if (res.confirm) {
-                  console.log('用户点击主操作');
-                } else {
-                  console.log('用户点击辅助操作')
-                }
-              }
-            });
-          }
-        })
+        
       }
-    　　};
-    　　// 返回shareObj
-    　　return shareObj;
+  　　};
+  　　// 返回shareObj
+  　　return shareObj;
   }
 })
