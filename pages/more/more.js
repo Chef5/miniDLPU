@@ -6,9 +6,9 @@ Page({
    */
   data: {
     swiimgs: [
-      '../../image/swi/swi01.jpg',
+      // '../../image/swi/swi01.jpg',
       '../../image/swi/swi02.jpg',
-      '../../image/swi/swi03.jpg',
+      // '../../image/swi/swi03.jpg',
     ],
     hiddenmodalput: true,
   },

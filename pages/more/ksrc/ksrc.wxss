@@ -1,0 +1,25 @@
+/* pages/more/ksrc/ksrc.wxss */
+.page{
+  background-color: #efeff4;
+}
+.ks-top{
+  display: flex;
+  flex-direction: column;
+  margin-left: 6px;
+  margin-right: 6px;
+  font-size: 32rpx;
+  height: 90rpx;
+  line-height: 90rpx;
+  color: darkgray;
+  align-items: center;
+}
+.ks-top view{
+  display: flex;
+  flex: 1;
+}
+.ks-top text{
+  color: darkorange;
+  font-size: 40rpx;
+  margin-left: 7rpx;
+  margin-right: 7rpx;
+}

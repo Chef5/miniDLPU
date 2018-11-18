@@ -27,6 +27,14 @@
               </navigator>
             </view>
             <view class='menu-item-box'>
+              <navigator url="./ksrc/ksrc" class='nav-item' hover-class="none" >
+                <view class='menu-item-content'>
+                    <view class='menu-items-img'><image src='../../image/ksrc.png'></image></view>
+                    <view class='menu-items-txt'><text>考试日程</text></view>
+                </view>
+              </navigator>
+            </view>
+            <view class='menu-item-box'>
               <navigator url="./xiaoli/xiaoli" class='nav-item' hover-class="none" >
                 <view class='menu-item-content'>
                     <view class='menu-items-img'><image src='../../image/date.png'></image></view>
@@ -41,8 +49,12 @@
               </view>
             </view> -->
             <view class='menu-item-box'>
-            </view>
-            <view class='menu-item-box'>
+              <navigator url="./edu/edu" class='nav-item' hover-class="none" >
+                <view class='menu-item-content'>
+                    <view class='menu-items-img'><image src='../../image/edu.png'></image></view>
+                    <view class='menu-items-txt'><text>培养方案</text></view>
+                </view>
+              </navigator>
             </view>
           </view>
       </view>

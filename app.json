@@ -9,7 +9,9 @@
     "pages/setting-detail/set-know",
     "pages/setting-detail/set-feed",
     "pages/more/xiaoli/xiaoli",
-    "pages/setting-detail/set-ad"
+    "pages/setting-detail/set-ad",
+    "pages/more/edu/edu",
+    "pages/more/ksrc/ksrc"
   ],
   "window": {
     "backgroundTextStyle": "dark",
