@@ -272,8 +272,9 @@ Page({
     console.log('pwd:'+Pwd);
     if (Id == '' && Pwd == '') {
       wx.showModal({
-        content: '本地不存在教务处账号和密码，请点击:“设置”>“教务处信息更改”',
-        showCancel: false,
+        content: '缓存里没有你的学号和密码，请点击:“设置”>“学号和密码”',
+        showCancel: true, 
+        confirmText: "立即前往",
         success: function (res) {
           if (res.confirm) {
             console.log('用户点击确定');
@@ -281,6 +282,9 @@ Page({
             wx.stopPullDownRefresh();
             // 隐藏顶部刷新图标
             wx.hideNavigationBarLoading();
+            wx.navigateTo({
+              url: '../setting-detail/set-userinfo',
+            })
           }
         }
       });
@@ -311,11 +315,14 @@ Page({
         if (res.data.state == "error") {
           wx.showModal({
             content: '学号或者密码错误，登陆教务处失败！或更换教务处服务器试试。',
-            showCancel: false,
+            showCancel: true,
+            confirmText: "查看学号和密码",
             success: function (res) {
               if (res.confirm) {
                 console.log('用户点击确定');
-                return;
+                wx.navigateTo({
+                  url: '../setting-detail/set-userinfo',
+                })
               }
             }
           });
@@ -386,11 +393,11 @@ Page({
         wx.showModal({
           title: '课程表获取失败了！',
           content: '请检查：当前学号('+Id+')'+'、服务器('+Server+')，可先检查学号或者密码是否有误，然后再试着切换服务器试试。',
-          confirmText: "立即前往",
+          confirmText: "切换服务器",
           success: function (res) {
             if (res.confirm) {
-              wx.reLaunch({
-                url: '../kcb/kcb',
+              wx.navigateTo({
+                url: '../setting-detail/set-server',
               })
             } else {
               console.log('用户想了想')
@@ -482,11 +489,11 @@ Page({
       },
       complete: function () {
         wx.setClipboardData({
-          data: '一到过节就想送红包，想要就复制这段文案打开支付宝领吧！ySxtL138Pt',
+          data: '小伙伴们，快来试手气赢 Apple 美国总部免费游！poRhYz38ct 你去美国我来买单！#吱口令#长按复制此消息，打开支付宝就能领取！',
           success: function (res) {
             wx.showModal({
               title: '提示',
-              content: '推荐成功，您已获得红包，马上打开支付宝（最新版）即可领取红包！',
+              content: '推荐成功，恭喜获得App store 5元红包，马上打开支付宝即可领取！更有机会赢得Apple美国总部免费游。',
               confirmText: "知道啦",
               showCancel: false,
               success: function (res) {
