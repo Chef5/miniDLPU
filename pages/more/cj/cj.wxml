@@ -15,7 +15,7 @@
   <view class='page__bd'>
     <view class="weui-cells weui-cells_after-title">
       <block wx:for="{{arraycj}}" wx:for-index="cjindex" wx:for-item="cjitem" wx:key="cjitem.cjindex">
-        <view class="weui-cell" bindtap='showdetail' data-name='{{cjitem.name}}' data-grade='{{cjitem.grade}}' data-pscjb='{{cjitem.pscjb}}' data-pscj='{{cjitem.pscj}}' data-qmcjb='{{cjitem.qmcjb}}' data-qmcj='{{cjitem.qmcj}}' data-credit='{{cjitem.credit}}' data-point='{{cjitem.point}}' data-hour='{{cjitem.hour}}' data-method='{{cjitem.method}}' data-kcsx='{{cjitem.kcsx}}' data-kcxz='{{cjitem.kcxz}}'>
+        <view class="weui-cell" bindtap='showdetail' data-name='{{cjitem.name}}' data-grade='{{cjitem.grade}}' data-pscjb='{{cjitem.pscjb}}' data-pscj='{{cjitem.pscj}}' data-qzcjb='{{cjitem.qzcjb}}' data-qzcj='{{cjitem.qzcj}}' data-qmcjb='{{cjitem.qmcjb}}' data-qmcj='{{cjitem.qmcj}}' data-credit='{{cjitem.credit}}' data-point='{{cjitem.point}}' data-hour='{{cjitem.hour}}' data-method='{{cjitem.method}}' data-kcsx='{{cjitem.kcsx}}' data-kcxz='{{cjitem.kcxz}}'>
           <view class="weui-cell__bd">{{cjitem.name}}</view>
           <view class="weui-cell__ft weui-cell__ft_in-access">{{cjitem.grade}}</view>
         </view>
@@ -26,9 +26,9 @@
   <modal hidden="{{hiddenmodalput}}" title="成绩明细" confirm-text="确定" bindconfirm="confirm" no-cancel='true'>
       <view>课程名称：{{name}}</view>
       <view>总成绩：{{grade}}</view>
-      <view>平时成绩({{pscjb}})：{{pscj}}</view>
-      <!-- <view wx:if={{}}>期中成绩({{qzcjb}})：{{qzcj}}</view> -->
-      <view style='margin-bottom:10rpx;'>期末成绩({{qmcjb}})：{{qmcj}}</view>
+      <view wx:if="{{pscjb!=''}}">平时成绩({{pscjb}})：{{pscj}}</view>
+      <view wx:if="{{qzcjb!='0%'&&qzcjb!=''}}">期中成绩({{qzcjb}})：{{qzcj}}</view>
+      <view wx:if="{{pscjb!=''}}" style='margin-bottom:10rpx;'>期末成绩({{qmcjb}})：{{qmcj}}</view>
       <view style='width:100%;border-top:2rpx dashed gray;'></view>
       <view style='display:flex;flex-direction:row;margin-top:10rpx;'>
         <view style='display:flex;flex:1;'>学分：{{credit}}</view>

@@ -5,9 +5,6 @@ Page({
    * 页面的初始数据
    */
   data: {
-    userid: "",
-    userpwd: "",
-    server: '210.30.62.37',
     cjnowxq:5,
     arrayxq: [
       '2015-2016-1', 
@@ -22,7 +19,9 @@ Page({
     name:"",
     grade:"",
     pscjb:"",
-    pscj:"",
+    pscj: "",
+    qzcjb: "",
+    qzcj: "",
     qmcjb:"",
     qmcj:"",
     credit: "",
@@ -32,7 +31,7 @@ Page({
     kcsx: "",
     kcxz: "",
     arraycj: [
-      { name: "", grade: "", pscjb: "", pscj: "", qmcjb: "", qmcj: "", credit: "", point: "", hour: "", method: "", kcsx: "", kcxz: "" },
+      { name: "", grade: "", pscjb: "", pscj: "", qzcjb: "", qzcj: "", qmcjb: "", qmcj: "", credit: "", point: "", hour: "", method: "", kcsx: "", kcxz: "" },
     ],
   },
 
@@ -41,47 +40,6 @@ Page({
    */
   onLoad: function (options) {
     var that = this;
-    var Id = that.data.userid;
-    var Pwd = that.data.userpwd;
-    //刷新本地账号
-    wx.getStorage({
-      key: 'userid', success: function (res) {
-        Id = res.data;
-        that.setData({ userid: Id });
-      },
-    });
-    wx.getStorage({
-      key: 'userpwd', success: function (res) {
-        Pwd = res.data;
-        that.setData({ userpwd: Pwd });
-      },
-    });
-    //刷新服务器
-    wx.getStorage({
-      key: 'server', success: function (res) {
-        var server = that.data.server;
-        if (res.data == null) {
-          server = "210.30.62.37";
-          wx.setStorage({
-            key: 'server',
-            data: "210.30.62.37",
-          });
-        } else {
-          server = res.data;
-        }
-        that.setData({ server: server });
-      },
-      fail: function () {
-        var server = that.data.server;
-        server = "210.30.62.37";
-        wx.setStorage({
-          key: 'server',
-          data: "210.30.62.37",
-        });
-        that.setData({ server: server });
-        return;
-      }
-    });
     that.refreshCJ();
   },
 
@@ -155,37 +113,19 @@ Page({
       icon: 'loading',
       duration: 4500
     });
-    var Id = that.data.userid;
-    var Pwd = that.data.userpwd;
-    //刷新本地账号
-    wx.getStorage({
-      key: 'userid', success: function (res) {
-        Id = res.data;
-        that.setData({ userid: Id });
-        wx.getStorage({
-          key: 'userpwd', success: function (res) {
-            Pwd = res.data;
-            that.setData({ userpwd: Pwd });
-            wx.getStorage({
-              key: 'server', success: function (res) {
-                var Server = that.data.server;
-                if (res.data == null) {
-                  Server = "210.30.62.37";
-                  wx.setStorage({
-                    key: 'server',
-                    data: "210.30.62.37",
-                  });
-                } else {
-                  Server = res.data;
-                }
-                that.setData({ server: Server });
-                that.requestCJ(Id,Pwd,Server);
-              }
-            });
-          },
-        });
-      },
-    });
+    //获取本地账号
+    var Id = wx.getStorageSync('userid');
+    var Pwd = wx.getStorageSync('userpwd'); 
+    var Server = wx.getStorageSync('server');
+    that.setData({ userid: Id, userpwd: Pwd});
+    if (Server == null) {
+      Server = "210.30.62.37";
+      wx.setStorage({
+        key: 'server',
+        data: "210.30.62.37",
+      });
+    }
+    that.requestCJ(Id, Pwd, Server);
     //停止刷新
     wx.stopPullDownRefresh();
     // 隐藏顶部刷新图标
@@ -247,6 +187,8 @@ Page({
             changeCJ[i].grade = res.data[i].grade;
             changeCJ[i].pscjb = res.data[i].detail.pscjb;
             changeCJ[i].pscj = res.data[i].detail.pscj;
+            changeCJ[i].qzcjb = res.data[i].detail.qzcjb;
+            changeCJ[i].qzcj = res.data[i].detail.qzcj;
             changeCJ[i].qmcjb = res.data[i].detail.qmcjb;
             changeCJ[i].qmcj = res.data[i].detail.qmcj;
             changeCJ[i].credit = res.data[i].detail.credit;
@@ -303,6 +245,8 @@ Page({
     var ggrade = e.currentTarget.dataset.grade;
     var gpscjb = e.currentTarget.dataset.pscjb;
     var gpscj = e.currentTarget.dataset.pscj;
+    var gqzcjb = e.currentTarget.dataset.qzcjb;
+    var gqzcj = e.currentTarget.dataset.qzcj;
     var gqmcjb = e.currentTarget.dataset.qmcjb;
     var gqmcj = e.currentTarget.dataset.qmcj;
     var gcredit = e.currentTarget.dataset.credit;
@@ -318,6 +262,8 @@ Page({
       grade: ggrade,
       pscjb: gpscjb,
       pscj: gpscj,
+      qzcjb: gqzcjb,
+      qzcj: gqzcj,
       qmcjb: gqmcjb,
       qmcj: gqmcj,
       credit: gcredit,
