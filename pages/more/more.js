@@ -17,21 +17,6 @@ Page({
     that.setData({
       hiddenmodalput: false,
     })
-    // wx.showModal({
-    //   title: '分享可以赚红包啦',
-    //   content: '推荐工大教务处小程序到群聊后即可以领取支付宝红包，最高可领888元，每日都有。',
-    //   confirmText: "现在分享",
-    //   cancelText: "稍后再说",
-    //   success: function (res) {
-    //     console.log(res);
-    //     if (res.confirm) {
-    //       console.log('用户点击主操作');
-    //       that.onShareAppMessage();
-    //     } else {
-    //       console.log('用户点击辅助操作')
-    //     }
-    //   }
-    // });
   },
   shareconfirm: function () {
     this.setData({
@@ -92,7 +77,7 @@ Page({
    */
   onShareAppMessage: function () {
     var that = this;
-    　　var shareObj = {
+    　var shareObj = {
       title: "工大教务处-查课表、查成绩、查考试...",
       imgUrl: '/image/share.jpg',
       path: '/pages/kcb/kcb',
@@ -107,7 +92,25 @@ Page({
         else if (res.errMsg == 'shareAppMessage:fail') { }
       },
       complete: function () {
-        
+        wx.setClipboardData({
+          data: '小伙伴们，快来试手气赢 Apple 美国总部免费游！poRhYz38ct 你去美国我来买单！#吱口令#长按复制此消息，打开支付宝就能领取！',
+          success: function (res) {
+            wx.showModal({
+              title: '提示',
+              content: '推荐成功，恭喜获得App store 5元红包，马上打开支付宝即可领取！',
+              confirmText: "知道啦",
+              showCancel: false,
+              success: function (res) {
+                console.log(res);
+                if (res.confirm) {
+                  console.log('用户点击主操作');
+                } else {
+                  console.log('用户点击辅助操作')
+                }
+              }
+            });
+          }
+        })
       }
   　　};
   　　// 返回shareObj

@@ -134,8 +134,9 @@ Page({
     var that = this;
     if (Id == '' && Pwd == '') {
       wx.showModal({
-        content: '本地不存在教务处账号和密码，请点击:“设置”>“教务处信息更改”',
-        showCancel: false,
+        content: '缓存里没有你的学号和密码，请点击:“设置”>“学号和密码”',
+        showCancel: true,
+        confirmText: "立即前往",
         success: function (res) {
           if (res.confirm) {
             console.log('用户点击确定');
@@ -143,6 +144,9 @@ Page({
             wx.stopPullDownRefresh();
             // 隐藏顶部刷新图标
             wx.hideNavigationBarLoading();
+            wx.navigateTo({
+              url: '../../setting-detail/set-userinfo',
+            })
           }
         }
       });
@@ -165,16 +169,19 @@ Page({
       },
       header: { "Content-Type": "application/x-www-form-urlencoded" },
       success: function (res) {
-        console.log(res.data);
+        console.log(res);
         var changeCJ = [];
         if(res.data.state=="error"){
           wx.showModal({
             content: '学号或者密码错误，登陆教务处失败！或更换教务处服务器试试。',
-            showCancel: false,
+            showCancel: true,
+            confirmText: "查看学号和密码",
             success: function (res) {
               if (res.confirm) {
                 console.log('用户点击确定');
-                return;
+                wx.navigateTo({
+                  url: '../../setting-detail/set-userinfo',
+                })
               }
             }
           });

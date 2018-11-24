@@ -1,1 +1,81 @@
 /* pages/more/edu/edu.wxss */
+.page{
+  background-color: #f3f3fa;
+}
+.edu-top{
+  display: flex;
+  flex-direction: column;
+  margin-left: 6px;
+  margin-right: 6px;
+  font-size: 32rpx;
+  height: 90rpx;
+  line-height: 90rpx;
+  color: rgb(51, 46, 46);
+  align-items: center;
+}
+.edu-top view{
+  display: flex;
+  flex: 1;
+}
+.edu-top text{
+  color: darkorange;
+  font-size: 40rpx;
+  margin-left: 7rpx;
+  margin-right: 7rpx;
+}
+
+.body-con{
+  margin: 15rpx;
+  /* border: 1px darkgray solid; */
+  display: flex;
+  flex-direction: column;
+  font-size: 28rpx;
+  color: rgb(85, 81, 81);
+}
+.body-con-item{
+  display: flex;
+  flex-direction: row;
+  border-top: 1px darkgray solid;
+}
+.body-con-item-xq{
+  display: flex;
+  flex: 1;
+  writing-mode: vertical-lr;
+  text-align: center;
+  padding-left: 30rpx;
+  padding-top: 30rpx;
+  border-right: 1px darkgray solid;
+}
+.body-con-item-course{
+  display: flex;
+  flex: 9;
+  flex-direction: column;
+  /* border: 1px goldenrod solid; */
+}
+
+.tips{
+  text-align: center;
+  color: lightcoral;
+  font-size: 25rpx;
+  border-top: 1px darkgray solid;
+}
+
+.modal-hang{
+  display: flex;
+  flex-direction: row;
+  margin-top: 10rpx;
+}
+.modal-hang-left{
+  display: flex;
+  flex: 1;
+  /* border-bottom: 1px darkgray solid; */
+  /* 右对齐，不知道为什么text-align:right不行 */
+  justify-content:flex-end;
+}
+.modal-hang-right{
+  display: flex;
+  flex: 1;
+  /* border-bottom: 1px darkgray solid; */
+  padding-left: 5rpx;
+  justify-content:flex-start;
+}

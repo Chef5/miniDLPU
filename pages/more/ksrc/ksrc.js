@@ -110,8 +110,9 @@ Page({
     var that = this;
     if (Id == '' && Pwd == '') {
       wx.showModal({
-        content: '本地不存在教务处账号和密码，请点击:“设置”>“教务处信息更改”',
-        showCancel: false,
+        content: '缓存里没有你的学号和密码，请点击:“设置”>“学号和密码”',
+        showCancel: true,
+        confirmText: "立即前往",
         success: function (res) {
           if (res.confirm) {
             console.log('用户点击确定');
@@ -119,6 +120,9 @@ Page({
             wx.stopPullDownRefresh();
             // 隐藏顶部刷新图标
             wx.hideNavigationBarLoading();
+            wx.navigateTo({
+              url: '../../setting-detail/set-userinfo',
+            })
           }
         }
       });
@@ -139,21 +143,23 @@ Page({
       header: { "Content-Type": "application/x-www-form-urlencoded" },
       success: function (res) {
         console.log(res);
-        var change = [];
-        for (var i = 0; i < res.data.data.length; i++) {
-          change[i] = new Object();
-          change[i].name = that.isOver16(res.data.data[i].name);
-          change[i].room = res.data.data[i].room;
-          change[i].cc = res.data.data[i].cc;
-          change[i].time = res.data.data[i].time;
-          change[i].ident = res.data.data[i].ident;
-          change[i].id = res.data.data[i].id;
-        }
-        console.log(change);
-        that.setData({ 
-          array: change,
-          num: res.data.data.length,
+        if (res.data.data!=null){
+          var change = [];
+          for (var i = 0; i < res.data.data.length; i++) {
+            change[i] = new Object();
+            change[i].name = that.isOver16(res.data.data[i].name);
+            change[i].room = res.data.data[i].room;
+            change[i].cc = res.data.data[i].cc;
+            change[i].time = res.data.data[i].time;
+            change[i].ident = res.data.data[i].ident;
+            change[i].id = res.data.data[i].id;
+          }
+          console.log(change);
+          that.setData({
+            array: change,
+            num: res.data.data.length,
           });
+        }
       },
       fail: function (res) {
         console.log("获取成绩失败！");

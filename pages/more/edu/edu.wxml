@@ -1,10 +1,37 @@
 <!--pages/more/edu/edu.wxml-->
-<!--pages/cj/cj.wxml-->
 <view class="page">
   <view class='page__hd'>
-    功能预告，嘻嘻。目前已经有数据啦，作者陷入该页面怎么排版的问题中了...
+    <view class='edu-top'>
+      <view>你大学四年所有可能的课程</view>
+    </view>
   </view>
   <view class='page__bd'>
-    
+    <view class='body-con'>
+
+      <block wx:for="{{array}}" wx:for-index="index" wx:for-item="item" wx:key="item.index">
+      <view class='body-con-item'>
+        <view class='body-con-item-xq'>第{{index+1}}学期</view>
+        <view class='body-con-item-course'>
+          <block wx:for="{{array[index]}}" wx:for-index="index2" wx:for-item="item2" wx:key="item2.index">
+            <view class="weui-cell" bindtap='showdetail' data-id='{{item2.id}}' data-name='{{item2.name}}' data-method='{{item2.method}}' data-item='{{item2.item}}' data-hour='{{item2.hour}}' data-ehour='{{item2.ehour}}' data-credit='{{item2.credit}}' data-org='{{item2.org}}'>
+              <view class="weui-cell__bd">{{item2.name}}</view>
+              <view class="weui-cell__ft">{{item2.credit}}' /{{item2.method}}</view>
+            </view>
+          </block>
+        </view>
+      </view>
+      </block>
+    <view class='tips'>提示: 点击可以查看详细哦^-^.</view>
+    </view>
+  
   </view>
+  <modal hidden="{{hiddenmodalput}}" title="{{name}}" confirm-text="确定" bindconfirm="confirm" no-cancel='true'>
+      <view class='modal-hang'><view class='modal-hang-left'>课程编码：</view><view class='modal-hang-right'>{{id}}</view></view>
+      <view class='modal-hang'><view class='modal-hang-left'>开设学期：</view><view class='modal-hang-right'>{{item}}</view></view>
+      <view class='modal-hang'><view class='modal-hang-left'>学分：</view><view class='modal-hang-right'>{{credit}}</view></view>
+      <view class='modal-hang'><view class='modal-hang-left'>总学时：</view><view class='modal-hang-right'>{{hour}}</view></view>
+      <view class='modal-hang'><view class='modal-hang-left'>周参考学时：</view><view class='modal-hang-right'>{{ehour}}</view></view>
+      <view class='modal-hang'><view class='modal-hang-left'>考核方式：</view><view class='modal-hang-right'>{{method}}</view></view>
+      <view class='modal-hang'><view class='modal-hang-left'>开课单位：</view><view class='modal-hang-right'>{{org}}</view></view>
+  </modal>
 </view>

@@ -36,7 +36,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 8,
+			"current": 9,
 			"list": [
 				{
 					"id": -1,
@@ -57,8 +57,8 @@
 					"query": ""
 				},
 				{
-					"id": -1,
-					"name": "菜单",
+					"id": 3,
+					"name": "综合信息",
 					"pathName": "pages/more/more",
 					"query": ""
 				},
@@ -89,7 +89,14 @@
 				{
 					"id": -1,
 					"name": "反馈",
-					"pathName": "pages/setting-detail/set-feed"
+					"pathName": "pages/setting-detail/set-feed",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "培养方案",
+					"pathName": "pages/more/edu/edu",
+					"query": ""
 				}
 			]
 		}

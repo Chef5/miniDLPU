@@ -62,6 +62,9 @@ page{
   background-color: rgba(255, 140, 80, 0.8);
   border: 1px solid white;
 }
+.waiting{
+  background-color: rgba(141, 140, 139, 0.8);
+}
 .menu-items-img{
   margin-top: 22rpx;
 }
