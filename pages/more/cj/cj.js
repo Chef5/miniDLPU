@@ -30,9 +30,7 @@ Page({
     method: "",
     kcsx: "",
     kcxz: "",
-    arraycj: [
-      { name: "", grade: "", pscjb: "", pscj: "", qzcjb: "", qzcj: "", qmcjb: "", qmcj: "", credit: "", point: "", hour: "", method: "", kcsx: "", kcxz: "" },
-    ],
+    arraycj: [],//{ name: "", grade: "", pscjb: "", pscj: "", qzcjb: "", qzcj: "", qmcjb: "", qmcj: "", credit: "", point: "", hour: "", method: "", kcsx: "", kcxz: ""}
   },
 
   /**

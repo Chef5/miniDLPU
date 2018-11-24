@@ -1,3 +1,48 @@
 <!--pages/setting-detail/set-feed.wxml-->
-<view style='text-align:center;' bindtap='setwx'>微信(点击复制)：Kmitle</view>
+<view class="page">
+  <view class='page__hd'>
+  </view>
+  <view class='page__bd'>
+    <view class='feed-box'>
+      <view class='feed-box-head'>
+        <view class='feed-box-head-con' bindtap='setemail'>
+          <view class='feed-box-head-con-logo'><image src='../../image/logo-1.png'></image></view>
+          <view class='feed-box-head-con-text'>
+            <text class='feet-box-head-con-text-author'>作者：Patrick Jun</text>
+            <text class='feet-box-head-con-text-email'>邮箱：PatrickJun@xy.dlpu.edu.cn</text>
+          </view>
+        </view>
+      </view>
+      <view class='feed-box-body'>
+        <view class='feed-box-body-text'>
+          <text>小程序前端界面美化、后端数据抓取现在均由我一人维护，可能某些地方存在没有被发现的问题，希望大家积极反馈和谅解。另外还有什么功能改进、功能需求均可以悄悄告诉我哦，我是很欢迎大家加我反馈的，也很感谢大家使用本程序和帮助我完善程序！最后，您的分享和看点广告就是对我最大的支持呀！</text>
+        </view>
+        <view class='feed-box-body-con'>
+          <view class='feed-box-body-con-item' bindtap='setwx'>
+            <view class='con-item-logo'><image src='../../image/wxlogo.png'></image></view>
+            <view class='con-item-text'>
+              <text class='con-item-text-title'>微信</text>
+              <text class='con-item-text-detail'>Kmitle</text>
+            </view>
+          </view>
+          <view class='feed-box-body-con-item' bindtap='setqq'>
+            <view class='con-item-logo'><image src='../../image/qqlogo.png'></image></view>
+            <view class='con-item-text'>
+              <text class='con-item-text-title'>QQ</text>
+              <text class='con-item-text-detail'>583195863</text>
+            </view>
+          </view>
+          <view class='feed-box-body-con-item' bindtap='setgz'>
+            <view class='con-item-logo'><image src='../../image/gzlogo.png'></image></view>
+            <view class='con-item-text'>
+              <text class='con-item-text-title'>公众号</text>
+              <text class='con-item-text-detail'>工大夜跑团</text>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+    <view class='tips'>提示：可以点击复制哦^-^.</view>
+  </view>
+</view>
 

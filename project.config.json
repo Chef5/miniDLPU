@@ -36,7 +36,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 7,
+			"current": 8,
 			"list": [
 				{
 					"id": -1,
@@ -83,7 +83,13 @@
 				{
 					"id": -1,
 					"name": "考试日程",
-					"pathName": "pages/more/ksrc/ksrc"
+					"pathName": "pages/more/ksrc/ksrc",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "反馈",
+					"pathName": "pages/setting-detail/set-feed"
 				}
 			]
 		}
