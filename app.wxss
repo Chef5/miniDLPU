@@ -8,4 +8,9 @@
 .solid-line{
   width:100%;border-top:1rpx solid grey;
 }
+.solid-line-88{
+  width:88%;border-top:5rpx solid lightgrey;
+  /* padding: none; */
+  margin-top: -10rpx;
+}
 

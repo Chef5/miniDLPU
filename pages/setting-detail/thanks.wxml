@@ -1,0 +1,39 @@
+<!--pages/setting-detail/thanks.wxml-->
+<view class="page">
+  <view class='page__hd'>
+    <view class='head-box'>
+      <text>特别感谢</text>
+      <image src='../../image/miniheart.png'></image>
+    </view>
+  </view>
+  <view class='page__bd'>
+    <view class='body-box'>
+      <view class='body-box-head'>
+        <view>2018.8.18  “mini教务处”安卓APP发布</view>
+        <view style="margin-top: 0rpx;">2018.9.16  “工大教务处”小程序发布</view>
+        <view>程序从最开始简陋页面，只能简单查询课程表到现在页面逐渐美化，功能逐渐完善，少不了大家对我的支持和督促，感谢每一位同学！
+        程序最开始发布时，收到了很多反馈的BUG，如部分用户无法查询成绩、课表串课等，非常感谢每一位向我反馈问题的同学！</view>
+        <view>最后还需要特别感谢默默帮助我的小伙伴们！</view>
+      </view>
+      <view class='displayheart'><image src='../../image/liteheart.png'></image></view>
+      <view class='body-box-con'>
+        <view class='tr'>
+          <view class='th th1'>名单</view>
+          <view class='th th2'>大事件</view>
+        </view>
+        <view class='tr'>
+          <view class='td td1'>网络16 何玉梅</view>
+          <view class='td td2'>LOGO设计</view>
+        </view>
+        <view class='tr'>
+          <view class='td td1'>计算机16 邓雪梅</view>
+          <view class='td td2'>课表色彩设计</view>
+        </view>
+        <view class='tr'>
+          <view class='td td1'>视传18 秦浩轩</view>
+          <view class='td td2'>小程序综合信息页面布局，以及整体色彩设计</view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

@@ -1,0 +1,88 @@
+/* pages/setting-detail/thanks.wxss */
+page{
+  background-color: #efeff4;
+}
+.head-box{
+  height: 300rpx;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  background-color: #707070;
+}
+.head-box image{
+  width: 78rpx;
+  height: 71rpx;
+}
+.head-box text{
+  display: inline-block;
+  text-align: center;
+  color: whitesmoke;
+  font-size: 80rpx;
+  text-transform: uppercase;
+  text-decoration: none;
+  text-shadow:  1rpx 1rpx #61b4de, 2rpx 2rpx #61b4de, 3rpx 3rpx #61b4de;
+}
+
+.body-box-head{
+  margin: 15rpx;
+  border: 5rpx solid lightgray;
+  padding: 10rpx;
+  color: rgb(58, 57, 57);
+}
+.body-box-head view{
+  font-size: 32rpx;
+  text-indent: 2em;
+  line-height: 40rpx;
+  margin-top: 15rpx;
+}
+.body-box-con{
+  margin: 15rpx;
+  border: 5rpx solid lightgray;
+  padding: 10rpx;
+  display: flex;
+  flex-direction: column;
+}
+.tr{
+  display: flex;
+  flex-direction: row;
+  height: 80rpx;
+}
+.th1,.td1{
+  flex: 1;
+  border-bottom: 1rpx solid lightgray;
+}
+.th2,.td2{
+  flex: 2;
+  border-bottom: 1rpx solid lightgray;
+}
+.th,.td{
+  display: flex;
+  flex-direction: column;
+  font-size: 30rpx;
+  line-height: 40rpx;
+  align-content: center;
+  justify-content: center;
+}
+.th{
+  font-weight: bold;
+  text-align: center;
+  align-items: center;
+  content: counter;
+}
+.td{
+  padding-left: 10rpx;
+}
+
+.displayheart{
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+.displayheart image{
+  width: 102rpx;
+  height: 95rpx;
+}

@@ -5,7 +5,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    cjnowxq:5,
+    cjnowxq:6,
     arrayxq: [
       '2015-2016-1', 
       '2015-2016-2', 
@@ -205,6 +205,12 @@ Page({
           }
         }
         //console.log(changeCJ);
+        if (changeCJ.length == 0){
+          wx.showToast({
+            title: '暂无本学期成绩',
+            duration: 2000
+          })
+        }
         that.setData({ arraycj: changeCJ, });
       },
       fail: function (res) {

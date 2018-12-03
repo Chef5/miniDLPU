@@ -3,6 +3,9 @@ page{
   width: 100%;
   height: 100%;
 }
+swiper{
+  height: 460rpx;
+}
 .page{
   background-color: #efeff4;
   height: 100%;
@@ -18,8 +21,9 @@ page{
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin-top: 50rpx;
 }
-.menu-title{
+/* .menu-title{
   display: flex;
   flex-direction: column;
   width: 100%;
@@ -31,7 +35,7 @@ page{
   text-align: center;
   font-size: 32rpx;
   color: #515151;
-}
+} */
 .menu-items{
   display: flex;
   flex-direction: row;
@@ -44,33 +48,45 @@ page{
   flex-direction: column;
   align-items: center;
   padding: 10rpx;
-  height: 120rpx;
+  height: 180rpx;
 }
 .nav-item{
   display: flex;
+  flex-direction: column;
   width: 100%;
-  height: 150rpx;
+  height: 172rpx;
 }
 .menu-item-content{
   display: flex;
   flex-direction: column;
   align-items: center;
-  border-radius: 20rpx;
+  /* border-radius: 20rpx; */
   width: 90%;
   margin-left: 2%;
   height: 100%;
-  background-color: rgba(255, 140, 80, 0.8);
-  border: 1px solid white;
+  background-color: #1298CF;
+  /* border: 1px solid white; */
+  border-radius: 50%;
+}
+.menu-items-txt{
+  text-align: center;
+  margin-left: -10rpx;
+}
+.menu-items-txt text{
+  line-height: 50rpx;
 }
 .waiting{
   background-color: rgba(141, 140, 139, 0.8);
 }
 .menu-items-img{
-  margin-top: 22rpx;
+  /* margin-top: 22rpx; */
+  margin-top: 28rpx;
 }
 .menu-items-img image{
-  width: 45rpx;
-  height: 45rpx;
+  /* width: 45rpx;
+  height: 45rpx; */
+  width: 70rpx;
+  height: 70rpx;
 }
 .menu-items-txt{
   margin-top: -5rpx;
@@ -83,7 +99,9 @@ page{
   margin-top: -5rpx;
 }
 .share-box{
-  margin-top: 520rpx;
+  position: absolute;
+  bottom: 10rpx;
+  width: 100%;
   font-size: 28rpx;
   color: gray;
   text-align: center;

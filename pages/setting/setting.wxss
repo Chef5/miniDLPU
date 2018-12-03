@@ -18,7 +18,9 @@
   margin-top: 50rpx;
 }
 .showmsg{
-  margin-top: 100rpx;
+  position: absolute;
+  bottom: 10rpx;
+  width: 100%;
   text-align: center;
   font-size: 24rpx;
   color: gainsboro;

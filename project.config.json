@@ -76,12 +76,6 @@
 				},
 				{
 					"id": -1,
-					"name": "webtest",
-					"pathName": "pages/newweb/test/test",
-					"query": ""
-				},
-				{
-					"id": -1,
 					"name": "考试日程",
 					"pathName": "pages/more/ksrc/ksrc",
 					"query": ""
@@ -96,6 +90,12 @@
 					"id": -1,
 					"name": "培养方案",
 					"pathName": "pages/more/edu/edu",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "致谢名单",
+					"pathName": "pages/setting-detail/thanks",
 					"query": ""
 				}
 			]

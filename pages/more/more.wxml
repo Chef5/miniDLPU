@@ -13,59 +13,63 @@
   </view>
   <view class='page__bd'>
       <view class='menu-body'>
-        <view class='menu-title'>
+        <!-- <view class='menu-title'>
           <view class='menu-title-txt'>工大教务处-综合信息</view>
           <view class='solid-line'></view>
-        </view>
+        </view> -->
           <view class='menu-items'>
             <view class='menu-item-box'>
               <navigator url="./cj/cj" class='nav-item' hover-class="none">
                 <view class='menu-item-content'>
                     <view class='menu-items-img'><image src='../../image/serch.png'></image></view>
-                    <view class='menu-items-txt'><text>成绩查询</text></view>
                 </view>
+                <view class='menu-items-txt'><text>成绩查询</text></view>
               </navigator>
             </view>
             <view class='menu-item-box'>
               <navigator url="./ksrc/ksrc" class='nav-item' hover-class="none" >
                 <view class='menu-item-content'>
-                    <view class='menu-items-img'><image src='../../image/ksrc.png'></image></view>
-                    <view class='menu-items-txt'><text>考试日程</text></view>
+                    <view class='menu-items-img'><image src='../../image/ksrc2.png'></image></view>
                 </view>
+                <view class='menu-items-txt'><text>考试日程</text></view>
               </navigator>
             </view>
             <view class='menu-item-box'>
               <navigator url="./xiaoli/xiaoli" class='nav-item' hover-class="none" >
                 <view class='menu-item-content'>
                     <view class='menu-items-img'><image src='../../image/date.png'></image></view>
-                    <view class='menu-items-txt'><text>校 历</text></view>
                 </view>
+                <view class='menu-items-txt'><text>校 历</text></view>
               </navigator>
             </view>
             <view class='menu-item-box'>
               <navigator url="./edu/edu" class='nav-item' hover-class="none" >
                 <view class='menu-item-content'>
                     <view class='menu-items-img'><image src='../../image/edu.png'></image></view>
-                    <view class='menu-items-txt'><text>培养方案</text></view>
                 </view>
+                <view class='menu-items-txt'><text>培养方案</text></view>
               </navigator>
             </view>
           </view>
 
+          <view class='solid-line-88'></view>
+
           <view class='menu-items'>
-            <view class='menu-item-box'>
+            <!-- <view class='menu-item-box'>
               <view class='menu-item-content menu-item-share' bindtap='share2getmoney'>
                   <view class='menu-items-img'><image src='../../image/luckmoney.png'></image></view>
                   <view class='menu-items-txt'><text>分享有礼</text></view>
               </view>
-            </view>
+            </view> -->
             <view class='menu-item-box'>
               <navigator url="" class='nav-item' hover-class="none" >
-                <view class='menu-item-content waiting'>
+                <view class='menu-item-content waiting' bindtap='showWaitingTips'>
                     <view class='menu-items-img'><image src='../../image/room1.png'></image></view>
-                    <view class='menu-items-txt'><text>空教室</text></view>
                 </view>
+                <view class='menu-items-txt'><text>空教室</text></view>
               </navigator>
+            </view>
+            <view class='menu-item-box'>
             </view>
             <view class='menu-item-box'>
             </view>
@@ -77,7 +81,7 @@
         <view>您的分享就是对作者最大的支持！</view>
       </view>
   </view>
-  <modal hidden="{{hiddenmodalput}}" title="分享获红包" confirm-text="知道啦" bindconfirm="shareconfirm" no-cancel='true'>
+  <!-- <modal hidden="{{hiddenmodalput}}" title="分享获红包" confirm-text="知道啦" bindconfirm="shareconfirm" no-cancel='true'>
       <view>分享即可获得App store 5元红包(点击右上角更多按钮参与分享活动)</view>
-  </modal>
+  </modal> -->
 </view>

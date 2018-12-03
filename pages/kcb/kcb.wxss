@@ -177,7 +177,8 @@
   top:90rpx;
   right: 0rpx;
   opacity:1;
-  border-left: 2rpx dashed yellow;
+  border-left: 2rpx dashed #1298CF;
+  border-bottom: 2rpx dashed #1298CF;
 }
 .mask-fill{
   width: 20rpx;
