@@ -1,3 +1,4 @@
 {
-  "navigationBarTitleText": "工大教务处-考试日程"
+  "navigationBarTitleText": "工大教务处-考试日程",
+  "enablePullDownRefresh": true
 }

@@ -1,5 +1,4 @@
 // pages/more/ksrc/ksrc.js
-// pages/cj/cj.js
 Page({
 
   /**
@@ -64,7 +63,14 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
-
+    var that = this;
+    // 显示顶部刷新图标
+    wx.showNavigationBarLoading();
+    that.setData({
+      num: 0,
+      array: []
+    });
+    that.refreshKSRC();
   },
 
   /**
@@ -84,7 +90,7 @@ Page({
       path: '/pages/more/ksrc/ksrc'
     };
   },
-  //成绩刷新
+  //考试日程刷新
   refreshKSRC: function () {
     var that = this;
     // 显示顶部刷新图标
@@ -105,7 +111,7 @@ Page({
     // 隐藏顶部刷新图标
     wx.hideNavigationBarLoading();
   },
-  //成绩请求单独作为一个方法
+  //考试日程请求单独作为一个方法
   requestKSRC: function (Id, Pwd, Server) {
     var that = this;
     if (Id == '' && Pwd == '') {
@@ -162,7 +168,7 @@ Page({
         }
       },
       fail: function (res) {
-        console.log("获取成绩失败！");
+        console.log("获取失败！");
         wx.showToast({
           title: '获取失败！',
           duration: 1000
