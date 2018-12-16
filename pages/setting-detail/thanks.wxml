@@ -9,11 +9,11 @@
   <view class='page__bd'>
     <view class='body-box'>
       <view class='body-box-head'>
-        <view>2018.8.18  “mini教务处”安卓APP发布</view>
-        <view style="margin-top: 0rpx;">2018.9.16  “工大教务处”小程序发布</view>
-        <view>程序从最开始简陋页面，只能简单查询课程表到现在页面逐渐美化，功能逐渐完善，少不了大家对我的支持和督促，感谢每一位同学！
-        程序最开始发布时，收到了很多反馈的BUG，如部分用户无法查询成绩、课表串课等，非常感谢每一位向我反馈问题的同学！</view>
-        <view>最后还需要特别感谢默默帮助我的小伙伴们！</view>
+        <view>2018.08.18  “mini教务处”安卓APP发布</view>
+        <view style="margin-top: 0rpx;">2018.09.16  “工大教务处”小程序发布</view>
+        <view style="margin-top: 0rpx;"><text decode="{{true}}" space="{{true}}">2018.12.06&emsp;荣获移动互联省级二等奖</text></view>
+        <view>程序从最开始简陋页面，只能简单查询课程表到现在BUG逐渐修复，页面逐渐美化，功能逐渐完善，少不了大家对我的支持和督促，感谢每一位同学！</view>
+        <view>最后还需要特别感谢以下帮助我的小伙伴们！</view>
       </view>
       <view class='displayheart'><image src='../../image/liteheart.png'></image></view>
       <view class='body-box-con'>
@@ -34,6 +34,7 @@
           <view class='td td2'>小程序综合信息页面布局，以及整体色彩设计</view>
         </view>
       </view>
+      <view class='download' bindtap='seturl'>安卓下载：http://download.1zdz.cn</view>
     </view>
   </view>
 </view>

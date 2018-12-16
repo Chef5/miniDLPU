@@ -22,6 +22,21 @@ Page({
       }
     })
   },
+  seturl: function () {
+    wx.setClipboardData({
+      data: 'http://download.1zdz.cn',
+      success: function (res) {
+        wx.getClipboardData({
+          success: function (res) {
+            wx.showToast({
+              title: '网址复制成功！',
+              duration: 1000
+            });
+          }
+        })
+      }
+    })
+  },
   /**
    * 生命周期函数--监听页面加载
    */

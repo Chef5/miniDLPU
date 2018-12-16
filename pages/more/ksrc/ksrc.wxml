@@ -10,7 +10,7 @@
       <view wx:if="{{num!=0}}">
         <block wx:for="{{array}}" wx:for-index="index" wx:for-item="item" wx:key="item.index">
           <view class="weui-cell" bindtap='showdetail' data-name='{{item.name}}'  data-cc='{{item.cc}}'  data-id='{{item.id}}'  data-ident='{{item.ident}}'  data-time='{{item.time}}'  data-room='{{item.room}}' >
-            <view class="weui-cell__bd">{{item.name}}（{{item.cc}}）</view>
+            <view class="weui-cell__bd">{{item.name}}</view>
             <view class="weui-cell__ft weui-cell__ft_in-access">{{item.room}}</view>
           </view>
         </block>

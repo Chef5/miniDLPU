@@ -86,3 +86,11 @@ page{
   width: 102rpx;
   height: 95rpx;
 }
+
+.download{
+  font-size: 32rpx;
+  text-indent: 2em;
+  line-height: 50rpx;
+  margin-top: 15rpx;
+  margin-bottom: 15rpx;
+}

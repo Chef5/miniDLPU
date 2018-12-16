@@ -92,7 +92,7 @@ Page({
     wx.showToast({
       title: '数据加载中',
       icon: 'loading',
-      duration: 1000
+      duration: 1500
     });
     //刷新本地账号
     var Id = wx.getStorageSync("userid");
@@ -104,7 +104,7 @@ Page({
     // 隐藏顶部刷新图标
     wx.hideNavigationBarLoading();
   },
-  //成绩请求单独作为一个方法
+  //培养方案请求单独作为一个方法
   requestEDU: function (Id, Pwd, Server) {
     var that = this;
     if (Id == '' && Pwd == '') {
