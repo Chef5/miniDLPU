@@ -73,7 +73,13 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
-
+    var that = this;
+    // 显示顶部刷新图标
+    wx.showNavigationBarLoading();
+    that.setData({
+      arraycj:[]
+    });
+    that.refreshCJ();
   },
 
   /**
@@ -107,9 +113,9 @@ Page({
     wx.showNavigationBarLoading();
     //显示等待提示
     wx.showToast({
-      title: '数据加载中',
+      title: '成绩加载中',
       icon: 'loading',
-      duration: 4500
+      duration: 4000
     });
     //获取本地账号
     var Id = wx.getStorageSync('userid');
