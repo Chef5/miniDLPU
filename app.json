@@ -12,7 +12,8 @@
     "pages/setting-detail/set-ad",
     "pages/more/edu/edu",
     "pages/more/ksrc/ksrc",
-    "pages/setting-detail/thanks"
+    "pages/setting-detail/thanks",
+    "pages/more/room/room"
   ],
   "window": {
     "backgroundTextStyle": "dark",

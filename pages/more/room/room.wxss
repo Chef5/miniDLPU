@@ -1,0 +1,111 @@
+/* pages/more/room/room.wxss */
+.hd-con{
+  display: flex;
+  flex-direction: column;
+  margin: 10rpx;
+}
+.hd-con-head{
+  display: flex;
+  flex-direction: column;
+}
+.hd-con-head-title{
+  display: flex;
+  height: 200rpx;
+  align-content: center;
+  align-items: center;
+  background-color: rgb(73, 82, 92);
+}
+.hd-con-head-title text{
+  width: 100%;
+  font-size: 48rpx;
+  color: white;
+  text-align: center;
+}
+
+.hd-con-do{
+  display: flex;
+  flex-direction: column;
+}
+.hd-con-do-select{
+  display: flex;
+  flex-direction: row;
+}
+.hd-con-do-option{
+  margin-top: 10rpx;
+  height: 100rpx;
+}
+
+.bd-show{
+  display: flex;
+  flex-direction: column;
+  margin: 20rpx;
+}
+.bd-show-sum{
+  display: flex;
+  font-size: 28rpx;
+  /* border-bottom: 2px double orange; */
+}
+.bd-show-sum text{
+  width: 62rpx;
+  text-align: center;
+  margin-top: -4rpx;
+  font-size: 32rpx;
+  color: lightcoral;
+}
+.bd-show-room{
+  display: flex;
+  flex-direction: column;
+}
+.bd-show-room-con{
+  padding: 2rpx;
+  margin-bottom: 10rpx;
+}
+
+.hd-con-showtips{font-size: 25rpx;color: grey;}
+
+.line{border: 1rpx solid grey;}
+.weui-btn{
+  width: 200rpx;
+  font-size: 32rpx;
+  color: white;
+  background-color: #1298CF;
+}
+.picker-con{
+  border: 1px solid black;
+  border-radius: 15rpx;
+  direction: flex;
+  flex:1;
+  height: 60rpx;
+  margin: 10rpx;
+  font-size: 36rpx;
+  text-align: center;
+  color: #666666;
+}
+.room{
+  /* border: 1px dashed white; */
+  background-color: rgb(42, 169, 219);
+  border-radius: 30rpx;
+  margin-left: 5rpx;
+  margin-right: 3rpx;
+  margin-top: 10rpx;
+  padding-left: 10rpx;
+  padding-right: 10rpx;
+  float: left;
+  text-align: center;
+  font-size: 32rpx;
+  color: white;
+}
+
+
+
+.modal-hang{
+  width: 100%;
+  margin-top: 10rpx;
+  text-align: center
+}
+.red{
+  color: red;
+}
+.green{
+  color:green;
+}

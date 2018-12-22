@@ -36,7 +36,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 9,
+			"current": 10,
 			"list": [
 				{
 					"id": -1,
@@ -97,6 +97,11 @@
 					"name": "致谢名单",
 					"pathName": "pages/setting-detail/thanks",
 					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "空教室",
+					"pathName": "pages/more/room/room"
 				}
 			]
 		}

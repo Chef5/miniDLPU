@@ -1,0 +1,65 @@
+<!--pages/more/room/room.wxml-->
+<view class="page">
+  <view class='page__hd'>
+    <view class='hd-con'>
+
+      <view class='hd-con-head'>
+        <view class='hd-con-head-title'>
+          <text>工大教务处-空教室查询</text>
+        </view>
+      </view>
+
+      <view class='hd-con-do'>
+        <view class='hd-con-do-select'>
+          <view class='picker-con'>
+            <picker value="{{index_h}}" range="{{house}}" bindchange="houseChange" >
+              {{house[index_h]}}
+            </picker>
+          </view>
+          <view class='picker-con'>
+            <picker value="{{index_z}}" range="{{zc}}" bindchange="zcChange" >
+              第{{zc[index_z]}}周
+            </picker>
+          </view>
+          <view class='picker-con'>
+            <picker value="{{index_w}}" range="{{week}}" range-key="show" bindchange="weekChange" >
+              周{{week[index_w].show}}
+            </picker>
+          </view>
+          <view class='picker-con'>
+            <picker value="{{index_t}}" range="{{time}}" range-key="show" bindchange="timeChange" >
+              第{{time[index_t].show}}节
+            </picker>
+          </view>
+        </view>
+        <view class='hd-con-do-option'>
+          <view><button class='weui-btn weui-btn_mini weui-btn_primary' bindtap='serchRoom'>开始查询</button></view>
+        </view>
+      </view>
+      
+      <view class='hd-con-showtips'>节假日无数据；查询数据为定期更新，若数据不准，请联系我更新。</view>
+    </view>
+  </view>
+  <view class='page__bd'>
+    
+    <view class='line'></view>
+
+    <view class='bd-show' wx:if='{{show_res}}'>
+      <view class='bd-show-sum'>查询结果：共查到<text>{{res_num}}</text>间空教室</view>
+      <view class='bd-show-room'>
+        <view class='bd-show-room-con'>
+          <block wx:for="{{rooms}}" wx:for-item="roomid" wx:key='roomid'>
+            <view class='room' data-roomid='{{roomid}}' bindtap='showDetail'>{{roomid}}</view>
+          </block>
+        </view>
+      </view>
+    </view>
+  </view>
+  <modal hidden="{{hidmodal}}" title="当日 {{detail_room}} 详细" confirm-text="确定" bindconfirm="confirm" no-cancel='true'>
+      <view class='modal-hang' style='margin-top:30rpx;'>一、二节：<text class='{{detail_12c}}'>{{detail_12}}课</text></view>
+      <view class='modal-hang'>三、四节：<text class='{{detail_34c}}'>{{detail_34}}课</text></view>
+      <view class='modal-hang'>五、六节：<text class='{{detail_56c}}'>{{detail_56}}课</text></view>
+      <view class='modal-hang'>七、八节：<text class='{{detail_78c}}'>{{detail_78}}课</text></view>
+      <view class='modal-hang'>九、十节：<text class='{{detail_910c}}'>{{detail_910}}课</text></view>
+  </modal>
+</view>

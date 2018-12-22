@@ -159,6 +159,11 @@ Page({
         that.caculateDate();
         //fix first time not current week BUG
         //NOWzc = nowzc - 1;
+        //给其他页面共享当前周次
+        wx.setStorage({
+          key: 'nowzc',
+          data: nowzc,
+        })
       },
       fail: function (res) {
         
