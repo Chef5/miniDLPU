@@ -49,11 +49,14 @@ Page({
     var that = this;
     var nowzc = wx.getStorageSync('nowzc');
     var nowtime = new Date();  //当前时间
-    var day = nowtime.getFullYear() + "年" + (parseInt(nowtime.getMonth())+1) + "月" + nowtime.getDate() + "日";
+    //var day = nowtime.getFullYear() + "年" + (parseInt(nowtime.getMonth())+1) + "月" + nowtime.getDate() + "日";
+    var week = nowtime.getDay();
+    //---修复Bug：周日是0，所以不能直接减一 
+    if (week==0)week=6;
+    else week = week-1;
     this.setData({
       index_z: nowzc-1,
-      index_w: nowtime.getDay()-1,
-      nowtime: day,
+      index_w: week,
       show_res: false
     });
   },
