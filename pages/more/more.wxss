@@ -106,3 +106,10 @@ swiper{
   color: gray;
   text-align: center;
 }
+
+.container {position:absolute;height: 60rpx;display:block;justify-content: space-between;box-sizing: border-box;z-index: 99;opacity: 0.7;}
+.scrolltxt{padding:0 20rpx;background:#f7bcbc;}
+.marquee_box {position:relative;color:#333;height:60rpx;display:block;overflow:hidden;} 
+.marquee_text {white-space: nowrap;position:absolute;top:0;font-size:14px;height:60rpx;line-height:60rpx;}
+.marquee-x{position:relative;color:#333;height:60rpx;display:block;
+background-color: green;}

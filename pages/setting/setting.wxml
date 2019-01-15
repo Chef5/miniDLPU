@@ -29,7 +29,7 @@
               <view class="weui-cell__ft weui-cell__ft_in-access"></view>
       </navigator>
       <navigator url="../setting-detail/set-ad" class="weui-cell weui-cell_access" >
-              <view class="weui-cell__bd">点点广告</view>
+              <view class="weui-cell__bd">广告</view>
               <view class="weui-cell__ft weui-cell__ft_in-access"></view>
       </navigator>
     </view>

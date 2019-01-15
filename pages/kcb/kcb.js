@@ -9,7 +9,7 @@ Page({
     userpwd:"",
     server:'210.30.62.37',
     indexxq: 0,
-    arrayxq: ['2018-2019-1'],
+    arrayxq: ['2018-2019-2'],
     indexzc: 0,
     arrayzc: [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18],
     isshowimg1: false,
@@ -147,7 +147,7 @@ Page({
           arrayxq: [dat.data.nowItem],
         });
         //当前周次设置
-        var nowtime = new Date();  //当前时间
+        var nowtime = new Date("2019/03/04 09:00:00");  //当前时间
         var nowtimestamp = Date.parse(nowtime);  //当前时间的时间戳（毫秒）最后三位000
         var day = ((nowtimestamp / 1000 - dat.data.itemStart) / 86400); //与开学时间的时间差（天）
         var nowzc = Math.ceil(day / 7); //向上取整

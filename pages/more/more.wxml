@@ -1,6 +1,16 @@
 <!--pages/more/more.wxml-->
 <view class="page">
   <view class='page__hd'>
+    <scroll-view class="container" wx:if="{{shownews}}" bindtap='closeNews'>
+      <view class="scrolltxt">
+        <view class="marquee_box">
+          <view class="marquee_text" style="transform: translateX(-{{marqueeDistance}}px)">
+            <text style="margin-right:{{marquee_margin}}px;">    </text>    
+            <text>{{text}}</text>   
+          </view>
+        </view>
+      </view>
+    </scroll-view>
       <view>
         <swiper indicator-dots="ture" autoplay="true" interval="5000" duration="1000">
           <block wx:for="{{swiimgs}}" wx:for-item="swiitem" wx:key="swiitem">
