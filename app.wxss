@@ -1,5 +1,6 @@
 /**app.wxss**/
 @import 'weui.wxss';
+@import "colorui.wxss";
 
 .container {
   display: flex;
@@ -12,5 +13,8 @@
   width:88%;border-top:5rpx solid lightgrey;
   /* padding: none; */
   margin-top: -10rpx;
+}
+.full-some{
+  height: 200rpx;
 }
 
