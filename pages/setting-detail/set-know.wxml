@@ -1,2 +1,84 @@
 <!--pages/setting-detail/set-know.wxml-->
-<text>还在移植中...</text>
+<view class="page">
+  <view class='page__hd'>
+    <view class='hd-con'>
+      <view class='hd-con-head'>
+        <view class='hd-con-head-title'>
+          <text>工大教务处-常见问题</text>
+        </view>
+      </view>
+      <view class='hd-con-showtips'>看一看，也许只是一个很小的问题呢。</view>
+    </view>
+  </view>
+
+  <view class='page__bd'>
+    
+    <view class='line'></view>
+    
+    <view class="caption-wrap">
+        <i-collapse name="{{name}}" accordion>
+            <i-collapse-item title="为什么我查看不了课程表、成绩？" name="q1">
+                <view slot="content">
+                    <view>1、首先检查手机网络是否畅通；再确认你在“设置->学号和密码”里保存了个人信息；</view>
+                    <view>2、检查学号或密码是否输入错误，可手机浏览器打开 http://210.30.62.37:8080/jsxsd 尝试登陆；</view>
+                    <view>3、进入“设置->服务器切换”，换一个教务处服务器试试；</view>
+                    <view>4、查看“综合信息”页的通知，了解小程序是否出现故障；</view>
+                    <view>5、观察课程表页面的天气是否正常显示，若无通知说明请告知开发者；</view>
+                </view>
+            </i-collapse-item>
+            <i-collapse-item title="考试日程里为什么还显示已完成的考试课程？" name="q2">
+                <view slot="content">
+                   <view>考试日程的数据是和教务处网站显示的是一致的，至于为什么已考试的课还会显示，我想应该是教务处的老师打盹去了吧；</view>
+                </view>
+            </i-collapse-item>
+            <i-collapse-item title="这个小程序是属于学校教务处吗？" name="q4">
+                <view slot="content">
+                   <view>不是的。这个小程序是由本校信院网络专业一个学长因个人方便开发的，不属于校任何部门。小程序和校教务处的关系就如抢票软件和12306的关系一样；</view>
+                </view>
+            </i-collapse-item>
+            <i-collapse-item title="通知消息误点关闭了，没来得及看怎么办？" name="q5">
+                <view slot="content">
+                   <view>通知消息误点关闭了，还想看看具体通知可点此处恢复滚动显示，也可以点此在本段文字下方直接显示；</view>
+                </view>
+            </i-collapse-item>
+            <i-collapse-item title="空教室查出来的结果不准" name="q6">
+                <view slot="content">
+                   <view>1、周末和节假日的空教室数据没有，但一般无特殊安排（社会考试等），全部教室均无安排；</view>
+                   <view>2、也许部分课程有调动，教务处的数据没有更新；</view>
+                </view>
+            </i-collapse-item>
+            <i-collapse-item title="怎么查看周末的课程安排？" name="q7">
+                <view slot="content">
+                   <view>点击课程表右侧空白或下方按钮，即可在右侧弹出周末课程安排。点击周末课表外其他区域可收回；</view>
+                </view>
+            </i-collapse-item>
+            <i-collapse-item title="为什么我每次打开小程序显示的课表都是第一周的呢？" name="q8">
+                <view slot="content">
+                   <view>由于网络延迟或手机机型原因，造成自动计算的当前周次数据没有更新成功，再次下刷新就好了；</view>
+                </view>
+            </i-collapse-item>
+            <i-collapse-item title="可不可以添加一个xxx的功能？" name="q9">
+                <view slot="content">
+                   <view>如果大家有什么功能建议，可以在意见反馈添加一下学长说一哈，只要学长技术过关，一般能满足大家的；</view>
+                </view>
+            </i-collapse-item>
+            <i-collapse-item title="为什么有广告呢？" name="q10">
+                <view slot="content">
+                   <view>因为小程序运行需要开销呀，如租用的阿里云服务器、域名、SSL安全证书等，每年都需要一大大大大笔钱钱，所以接入了微信提供的广告。有足够的曝光量和点击率，收益还是很可观的；</view>
+                </view>
+            </i-collapse-item>
+            <!-- <i-collapse-item title="我可以在这个小程序里打广告吗" name="q11">
+                <view slot="content">
+                   <view>可以的，可以在综合信息页面上半部分图片轮播宣传，点击图片可进入详细宣传页面；</view>
+                   <view>>收费：公益项目、活动免费帮宣传；其他的需要联系开发者协商；</view>
+                   <view>>原则：只接受综合信息页图片宣传，不接受虚假、营销、反动非法宣传；</view>
+                </view>
+            </i-collapse-item> -->
+        </i-collapse>
+    </view>
+
+
+  </view>
+</view>
+<view class='full-some'></view>
+<ad unit-id="adunit-fe7cd674a38b35ae"></ad>

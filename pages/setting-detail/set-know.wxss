@@ -1,1 +1,26 @@
 /* pages/setting-detail/set-know.wxss */
+.hd-con{
+  display: flex;
+  flex-direction: column;
+  margin: 10rpx;
+}
+.hd-con-head{
+  display: flex;
+  flex-direction: column;
+}
+.hd-con-head-title{
+  display: flex;
+  height: 200rpx;
+  align-content: center;
+  align-items: center;
+  background-color: rgb(73, 82, 92);
+}
+.hd-con-head-title text{
+  width: 100%;
+  font-size: 48rpx;
+  color: white;
+  text-align: center;
+}
+.hd-con-showtips{font-size: 25rpx;color: grey;width: 100%;text-align: center;}
+
+.line{border-top: 1px solid grey;}
