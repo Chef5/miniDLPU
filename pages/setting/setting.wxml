@@ -16,10 +16,10 @@
               <view class="weui-cell__bd">服务器切换</view>
               <view class="weui-cell__ft weui-cell__ft_in-access"></view>
       </navigator>
-      <!-- <navigator url="../setting-detail/set-know" class="weui-cell weui-cell_access" >
-              <view class="weui-cell__bd">使用须知</view>
+      <navigator url="../setting-detail/set-know" class="weui-cell weui-cell_access" >
+              <view class="weui-cell__bd">常见问题</view>
               <view class="weui-cell__ft weui-cell__ft_in-access"></view>
-      </navigator> -->
+      </navigator>
       <navigator url="../setting-detail/set-feed" class="weui-cell weui-cell_access" >
               <view class="weui-cell__bd">意见反馈</view>
               <view class="weui-cell__ft weui-cell__ft_in-access"></view>
@@ -35,12 +35,12 @@
     </view>
     <view class='showmsg'>
       <!-- <text class='jinji'>紧急通知！！请互相转告！！\n</text> -->
-      <text>在不常用页面引入了点点广告\n</text>
+      <text>在不常用页面引入了广告\n</text>
       <text>广告收入用于续费服务器\n</text>
       <text>安卓客户端无任何广告\n</text>
       <text>感谢理解，欢迎赞助\n</text>
       <text bindtap='seturl'>http://download.1zdz.cn\n</text>
     </view>
   </view>
-  <official-account></official-account>
+  <!-- <official-account></official-account> -->
 </view>
