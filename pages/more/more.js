@@ -69,7 +69,9 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-
+    // wx.createSelectorQuery().select('.notice-bar').boundingClientRect((rect) => {
+    //     console.log(rect);
+    //   }).exec();
   },
 
   /**
@@ -125,12 +127,12 @@ Page({
     wx.request({
       url: 'https://test.1zdz.cn/api/getnews.php',
       success: function (res) {
-        console.log(res);
+        //console.log(res);
         var newsindex = wx.getStorageSync("newsindex");
         if (newsindex != undefined && newsindex != "" && newsindex != null){
           if(newsindex < res.data.index){
             that.setData({
-              text: ">>>通知："+res.data.news+" ---点击关闭",
+              text: res.data.news,
               getindex: res.data.index,
               shownews: true
             });
@@ -156,10 +158,10 @@ Page({
     });
   },
   //用户点击关闭通知
-  closeNews: function(){
-    var that = this;
-    var getindex = that.data.getindex;
-    wx.setStorageSync("newsindex", getindex);
-    that.getnews();
-  }
+  // closeNews: function(){
+  //   var that = this;
+  //   var getindex = that.data.getindex;
+  //   wx.setStorageSync("newsindex", getindex);
+  //   that.getnews();
+  // }
 })

@@ -169,6 +169,7 @@
   line-height: 30rpx;
 } */
 .mask{
+  transition: all 300ms linear;
   width:304rpx;
   /* height:620rpx; */
   position:absolute;
@@ -193,3 +194,12 @@
   width: 10rpx;
   height: 40rpx;
 }
+
+.popup__content {
+    display: flex;
+    width: 100%;
+    height: 200rpx;
+    line-height: 200rpx;
+    text-align: center;
+    background: #FFFFFF;
+  }

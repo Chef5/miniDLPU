@@ -1,4 +1,6 @@
 // pages/cj/cj.js
+//获取应用实例
+const app = getApp();
 Page({
 
   /**
@@ -163,13 +165,14 @@ Page({
     }
     var items = that.data.arrayxq[that.data.cjnowxq];
     Pwd = encodeURIComponent(Pwd); //转义，防止有特殊字符如：&
+    var WannaKey = app.encryptUserKey(Id, Pwd);
     console.log("item:" + items);
+    console.log("Server:" + Server);
     wx.request({
       url: 'https://test.1zdz.cn/api/cj.php',
       method: 'POST',
       data: {
-        id: Id,
-        pwd: Pwd,
+        XiangGanMa: WannaKey,
         item: items,
         server: Server
       },

@@ -72,19 +72,9 @@ Page({
     weekindex:0,
     arrayWeekIndex: [0,2,4,6,8],
     arraykcbweek: [
-      { name: "1111", room: "111", leader: "111", time: "", color: "" },
+      { name: "", room: "", leader: "", time: "", color: "" },
     ],
     
-  },
-  showWeekday: function () {
-    this.setData({
-      maskFlag: false,
-    })
-  },
-  hideWeekday: function () {
-    this.setData({
-      maskFlag: true,
-    })
   },
   zcChange: function (e) {
     var that = this;
@@ -299,17 +289,17 @@ Page({
     if (Id == null) {
       return;
     }
+    var WannaKey = app.encryptUserKey(Id,Pwd);
     var items = that.data.arrayxq[0];
     var weeks = that.data.arrayzc[that.data.indexzc];
-    console.log("this time test:");
+    console.log("WabbaKey:"+ WannaKey);
     console.log("item:"+items+"weeks"+weeks);
     wx.request({
       url: 'https://test.1zdz.cn/api/kcb.php',
+      //url: 'http://leave.test/getkcb',
       method: 'POST',
       data: {
-        //XiangGanMa: WannaKey,
-        id: Id,
-        pwd: Pwd,
+        XiangGanMa: WannaKey,
         item: items,
         week: weeks,
         server: Server
@@ -321,7 +311,7 @@ Page({
           wx.showModal({
             content: '学号或者密码错误，登陆教务处失败！或更换教务处服务器试试。',
             showCancel: true,
-            confirmText: "查看学号和密码",
+            confirmText: "前往修改",
             success: function (res) {
               if (res.confirm) {
                 console.log('用户点击确定');
@@ -516,5 +506,25 @@ Page({
   　};
   　　// 返回shareObj
   　return shareObj;
+  },
+  //colorUI
+  showModal(e) {
+    this.setData({
+      modalName: e.currentTarget.dataset.target
+    })
+  },
+  hideModal(e) {
+    this.setData({
+      modalName: null
+    })
+  },
+  //minUI
+  showPopup() {
+    let popupComponent = this.selectComponent('.J_Popup');
+    popupComponent && popupComponent.show();
+  },
+  hidePopup() {
+    let popupComponent = this.selectComponent('.J_Popup');
+    popupComponent && popupComponent.hide();
   }
 })

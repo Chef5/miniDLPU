@@ -1,7 +1,10 @@
 <!--pages/more/more.wxml-->
 <view class="page">
   <view class='page__hd'>
-    <scroll-view class="container" wx:if="{{shownews}}" bindtap='closeNews'>
+    <i-notice-bar wx:if="{{shownews}}" icon="systemprompt" loop closable speed='700' class='notice-bar' getindex='{{getindex}}'>
+      {{text}}
+    </i-notice-bar>
+    <!-- <scroll-view class="container" wx:if="{{shownews}}" bindtap='closeNews'>
       <view class="scrolltxt">
         <view class="marquee_box">
           <view class="marquee_text" style="transform: translateX(-{{marqueeDistance}}px)">
@@ -10,7 +13,7 @@
           </view>
         </view>
       </view>
-    </scroll-view>
+    </scroll-view> -->
       <view>
         <swiper indicator-dots="ture" autoplay="true" interval="5000" duration="1000">
           <block wx:for="{{swiimgs}}" wx:for-item="swiitem" wx:key="swiitem">

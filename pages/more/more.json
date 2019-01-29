@@ -2,5 +2,8 @@
   "navigationBarTitleText": "工大教务处-综合信息",
   "enablePullDownRefresh": false,
   "backgroundColor": "#f6f6f6",
-  "navigationBarBackgroundColor": "#1298CF"
+  "navigationBarBackgroundColor": "#1298CF",
+  "usingComponents": {
+    "i-notice-bar": "../../dist/notice-bar/index"
+  }
 }

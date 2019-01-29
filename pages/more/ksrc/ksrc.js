@@ -1,4 +1,6 @@
 // pages/more/ksrc/ksrc.js
+//获取应用实例
+const app = getApp();
 Page({
 
   /**
@@ -138,12 +140,12 @@ Page({
       return;
     }
     Pwd = encodeURIComponent(Pwd); //转义，防止有特殊字符如：&
+    var WannaKey = app.encryptUserKey(Id, Pwd);
     wx.request({
       url: 'https://test.1zdz.cn/api/ksrc.php',
       method: 'POST',
       data: {
-        id: Id,
-        pwd: Pwd,
+        XiangGanMa: WannaKey,
         server: Server
       },
       header: { "Content-Type": "application/x-www-form-urlencoded" },
