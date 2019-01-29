@@ -25,3 +25,5 @@
       <view>时间：{{time}}</view>
   </modal>
 </view>
+<view class='full-some'></view>
+<ad unit-id="adunit-fe7cd674a38b35ae"></ad>

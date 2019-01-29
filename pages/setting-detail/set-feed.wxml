@@ -15,7 +15,7 @@
       </view>
       <view class='feed-box-body'>
         <view class='feed-box-body-text'>
-          <text>小程序前端界面美化、后端数据抓取现在均由我一人维护，可能某些地方存在没有被发现的问题，希望大家积极反馈和谅解。另外还有什么功能改进、功能需求均可以悄悄告诉我哦，我是很欢迎大家加我反馈的，也很感谢大家使用本程序和帮助我完善程序！最后，您的分享和看点广告就是对我最大的支持呀！</text>
+          <text>小程序前端界面美化、后端数据抓取现在均由我一人维护，可能某些地方存在没有被发现的问题，希望大家积极反馈和谅解。另外还有什么功能改进、功能需求均可以悄悄告诉我哦，我是很欢迎大家加我反馈的，也很感谢大家使用本程序和帮助我完善程序！</text>
         </view>
         <view class='feed-box-body-con'>
           <view class='feed-box-body-con-item' bindtap='setwx'>
@@ -44,5 +44,7 @@
     </view>
     <view class='tips'>提示：可以点击复制哦^-^.</view>
   </view>
+  <view class='full-some'></view>
+<ad unit-id="adunit-fe7cd674a38b35ae"></ad>
 </view>
 

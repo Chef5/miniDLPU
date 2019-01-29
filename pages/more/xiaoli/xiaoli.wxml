@@ -8,15 +8,16 @@
   </view>
   <view class='page__bd'>
     <view class='xiaoli-body'>
-      <view class='xiaoli-item'>
+      <!-- <view class='xiaoli-item'>
         <view class='xiaoli-item-title'>第一学期（本学期）</view>
         <view class='xiaoli-item-desc'>注：其中橙色字、浅蓝色背景的日期为节假日或周末！</view>
         <view class='xiaoli-item-img'>
           <image src='../../../image/xiaoli/2018-2019-1.png'></image>
         </view>
-      </view>
+      </view> -->
       <view class='xiaoli-item'>
-        <view class='xiaoli-item-title'>第二学期（下学期）</view>
+        <view class='xiaoli-item-title'>第二学期（本学期）</view>
+        <view class='xiaoli-item-desc'>注：其中橙色字、浅蓝色背景的日期为节假日或周末！</view>
         <view class='xiaoli-item-img'>
           <image src='../../../image/xiaoli/2018-2019-2.png'></image>
         </view>
@@ -25,3 +26,5 @@
   </view>
   <official-account></official-account>
 </view>
+<view class='full-some'></view>
+<ad unit-id="adunit-fe7cd674a38b35ae"></ad>

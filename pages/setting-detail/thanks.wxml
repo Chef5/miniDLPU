@@ -37,4 +37,6 @@
       <view class='download' bindtap='seturl'>安卓下载：http://download.1zdz.cn</view>
     </view>
   </view>
+  <view class='full-some'></view>
+<ad unit-id="adunit-fe7cd674a38b35ae"></ad>
 </view>

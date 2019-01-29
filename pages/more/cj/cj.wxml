@@ -40,4 +40,11 @@
       <view>课程属性：{{kcsx}}</view>
       <view>课程性质：{{kcxz}}</view>
   </modal>
+        <!-- <wux-accordion-group>
+            <wux-accordion title="科目1" content="内容"></wux-accordion>
+            <wux-accordion title="科目2" content="内容"></wux-accordion>
+            <wux-accordion title="科目3" content="内容"></wux-accordion>
+        </wux-accordion-group> -->
 </view>
+<view class='full-some'></view>
+<ad unit-id="adunit-fe7cd674a38b35ae"></ad>

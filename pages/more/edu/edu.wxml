@@ -35,3 +35,5 @@
       <view class='modal-hang'><view class='modal-hang-left'>开课单位：</view><view class='modal-hang-right'>{{org}}</view></view>
   </modal>
 </view>
+<view class='full-some'></view>
+  <ad unit-id="adunit-fe7cd674a38b35ae"></ad>
