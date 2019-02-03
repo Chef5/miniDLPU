@@ -78,7 +78,9 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    
+    var that = this;
+    console.log(wx.getStorageSync('newsindex'));
+    that.getnews();//当重新回到此页面时，再次请求
   },
   /**
    * 用户点击右上角分享
@@ -136,13 +138,13 @@ Page({
               getindex: res.data.index,
               shownews: true
             });
-            var length = that.data.text.length * that.data.size;//文字长度
-            var windowWidth = wx.getSystemInfoSync().windowWidth;// 屏幕宽度
-            that.setData({
-              length: length,
-              windowWidth: windowWidth
-            });
-            that.scrolltxt();// 第一个字消失后立即从右边出现
+            // var length = that.data.text.length * that.data.size;//文字长度
+            // var windowWidth = wx.getSystemInfoSync().windowWidth;// 屏幕宽度
+            // that.setData({
+            //   length: length,
+            //   windowWidth: windowWidth
+            // });
+            //that.scrolltxt();// 第一个字消失后立即从右边出现
 
           }else{
             that.setData({

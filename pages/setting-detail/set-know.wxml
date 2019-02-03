@@ -19,11 +19,11 @@
         <i-collapse name="{{name}}" accordion>
             <i-collapse-item title="为什么我查看不了课程表、成绩？" name="q1">
                 <view slot="content">
-                    <view>1、首先检查手机网络是否畅通；再确认你在“设置->学号和密码”里保存了个人信息；</view>
-                    <view>2、检查学号或密码是否输入错误，可手机浏览器打开 http://210.30.62.37:8080/jsxsd 尝试登陆；</view>
-                    <view>3、进入“设置->服务器切换”，换一个教务处服务器试试；</view>
+                    <view>1、首先检查手机网络是否畅通；再确认你在“<text class='blue' bindtap='toUserinfo'>设置->学号和密码</text>”里保存了个人信息；</view>
+                    <view>2、检查学号或密码是否输入错误，可手机浏览器打开<text class='blue' bindtap='copyUrl'>http://210.30.62.37:8080/jsxsd</text>尝试登陆；</view>
+                    <view>3、进入“<text class='blue' bindtap='toServer'>设置->服务器切换</text>”，换一个教务处服务器试试；</view>
                     <view>4、查看“综合信息”页的通知，了解小程序是否出现故障；</view>
-                    <view>5、观察课程表页面的天气是否正常显示，若无通知说明请告知开发者；</view>
+                    <view>5、观察课程表页面的天气是否正常显示，若无通知说明请<text class='blue' bindtap='toFeed'>告知开发者</text>；</view>
                 </view>
             </i-collapse-item>
             <i-collapse-item title="考试日程里为什么还显示已完成的考试课程？" name="q2">
@@ -38,7 +38,8 @@
             </i-collapse-item>
             <i-collapse-item title="通知消息误点关闭了，没来得及看怎么办？" name="q5">
                 <view slot="content">
-                   <view>通知消息误点关闭了，还想看看具体通知可点此处恢复滚动显示，也可以点此在本段文字下方直接显示；</view>
+                   <view>通知消息误点关闭了，还想看看具体通知可<text class='blue' bindtap='reShowNews'>点此恢复</text>滚动显示，也可以<text class='blue' bindtap='showNewsBox'>点此</text>在本段文字下方直接显示最近通知；</view>
+                   <view class='newsbox' wx:if='{{newsbox}}'>{{newsbox}}</view>
                 </view>
             </i-collapse-item>
             <i-collapse-item title="空教室查出来的结果不准" name="q6">
@@ -59,12 +60,12 @@
             </i-collapse-item>
             <i-collapse-item title="可不可以添加一个xxx的功能？" name="q9">
                 <view slot="content">
-                   <view>如果大家有什么功能建议，可以在意见反馈添加一下学长说一哈，只要学长技术过关，一般能满足大家的；</view>
+                   <view>如果大家有什么功能建议，可以在<text class='blue' bindtap='toFeed'>意见反馈</text>添加一下学长说一哈，只要学长技术过关，一般能满足大家的；</view>
                 </view>
             </i-collapse-item>
             <i-collapse-item title="为什么有广告呢？" name="q10">
                 <view slot="content">
-                   <view>因为小程序运行需要开销呀，如租用的阿里云服务器、域名、SSL安全证书等，每年都需要一大大大大笔钱钱，所以接入了微信提供的广告。有足够的曝光量和点击率，收益还是很可观的；</view>
+                   <view>因为小程序运行需要开销呀，如租用的阿里云服务器、域名、SSL安全证书等，每年都需要一大大大大笔钱钱，所以接入了微信提供的<text class='blue' bindtap='toAd'>广告</text>。有足够的曝光量和点击率，收益还是很可观的；</view>
                 </view>
             </i-collapse-item>
             <!-- <i-collapse-item title="我可以在这个小程序里打广告吗" name="q11">

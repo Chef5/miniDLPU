@@ -24,3 +24,5 @@
 .hd-con-showtips{font-size: 25rpx;color: grey;width: 100%;text-align: center;}
 
 .line{border-top: 1px solid grey;}
+.blue{color: blue;}
+.newsbox{border: 1px solid grey;color: grey;font-size: 25rpx}

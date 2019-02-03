@@ -7,60 +7,65 @@ Page({
   data: {
 
   },
+  //生命周期函数--监听页面加载
+  onLoad: function (options) {},
+  //生命周期函数--监听页面初次渲染完成
+  onReady: function () {},
+  //用户点击右上角分享
+  onShareAppMessage: function () {},
 
-  /**
-   * 生命周期函数--监听页面加载
-   */
-  onLoad: function (options) {
-
+  //跳转到userinfo
+  toUserinfo: function(){
+    wx.navigateTo({
+      url: './set-userinfo',
+    })
   },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-
+  //跳转到server
+  toServer: function () {
+    wx.navigateTo({
+      url: './set-server',
+    })
   },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-
+  //跳转到feed
+  toFeed: function () {
+    wx.navigateTo({
+      url: './set-feed',
+    })
   },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
+  //跳转到ad
+  toAd: function () {
+    wx.navigateTo({
+      url: './set-ad',
+    })
   },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
+  //复制教务处登录Url
+  copyUrl: function(){
+    wx.setClipboardData({
+      data: 'http://210.30.62.37:8080/jsxsd',
+      success: function (res) {
+        wx.showToast({
+          title: '复制成功！',
+          duration: 1000
+        });
+      }
+    })
   },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
+  //恢复通知显示
+  reShowNews: function(){
+    wx.setStorageSync("newsindex", '0');
+    wx.showToast({
+      title: '恢复成功！',
+      duration: 1000
+    });
   },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
+  //下方显示通知
+  showNewsBox: function(){
+    var that = this;
+    wx.request({
+      url: 'https://test.1zdz.cn/api/getnews.php',
+      success: function (res) {
+        that.setData({ newsbox: res.data.news});
+      }
+    })
   }
 })

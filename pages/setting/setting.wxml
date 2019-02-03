@@ -35,10 +35,6 @@
     </view>
     <view class='showmsg'>
       <!-- <text class='jinji'>紧急通知！！请互相转告！！\n</text> -->
-      <text>在不常用页面引入了广告\n</text>
-      <text>广告收入用于续费服务器\n</text>
-      <text>安卓客户端无任何广告\n</text>
-      <text>感谢理解，欢迎赞助\n</text>
       <text bindtap='seturl'>http://download.1zdz.cn\n</text>
     </view>
   </view>
