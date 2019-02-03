@@ -16,7 +16,7 @@ Page({
     isshowimg2: false,
     tqimgurl1: "",
     tqimgurl2: "",
-    tqtemp: "--~--", 
+    tqtemp: "π_π", 
     hiddenmodalput: true,
     maskFlag: true,
     name:"",
@@ -74,6 +74,11 @@ Page({
     arraykcbweek: [
       { name: "", room: "", leader: "", time: "", color: "" },
     ],
+    //设置弹窗天气
+    m_today_disc: 'loading',
+    m_today_temp: 'π_π',
+    m_nextday_disc: 'loading',
+    m_nextday_temp: 'π_π',
     
   },
   zcChange: function (e) {
@@ -102,9 +107,10 @@ Page({
         console.log(res);
         var tqimgurl1 = res.data.imgurl1;
         var tqimgurl2 = res.data.imgurl2;
-        var templow = res.data.templow;
-        var temphigh = res.data.temphigh;
-        var tqtemp = templow + "~" + temphigh;
+        var tqimgurl21 = res.data.imgurl21;
+        var tqimgurl22 = res.data.imgurl22;
+        var tqtemp = res.data.templow + "~" + res.data.temphigh;
+        var tqtemp2 = res.data.templow2 + "~" + res.data.temphigh2;
         if (tqimgurl2 == null) {
           that.setData({
             isshowimg1:true,
@@ -120,6 +126,21 @@ Page({
             tqtemp: tqtemp
           });
         }
+        //设置弹窗天气
+        var today = new Date();
+        var nextday = new Date(today.getTime() + 1000*60*60*24);
+        that.setData({
+          m_today: (today.getMonth() + 1) + '月' + today.getDate() + '日',
+          m_nextday: (nextday.getMonth() + 1) + '月' + nextday.getDate() + '日',
+          m_today_disc: res.data.disc,
+          m_today_temp: tqtemp,
+          m_nextday_disc: res.data.disc2,
+          m_nextday_temp: tqtemp2,
+          m_today_img1: res.data.imgurl1,
+          m_today_img2: res.data.imgurl2,
+          m_nextday_img1: res.data.imgurl21,
+          m_nextday_img2: res.data.imgurl22
+        })
       },
       fail: function(res) {
         that.setData({ tqtemp: 'π_π'});

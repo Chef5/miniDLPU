@@ -103,7 +103,7 @@
  <button bindtap="showModal" data-target="DrawerModalR">周末课程表</button>
 
   <view class="cu-modal drawer-modal justify-end {{modalName=='DrawerModalR'?'show':''}}" bindtap='hideModal'>
-    <view class="cu-dialog basis-lg" catchtap style='border:1px green solid;'>
+    <view class="cu-dialog basis-lg" catchtap>
       
       <view class='kcb-body-head' style='margin-left:20rpx;'>
           <view class='kcb-body-head-header'>
@@ -140,8 +140,36 @@
 </view>
   <wxc-popup class="J_Popup" animation-mode="top" align="top">
     <view class="popup__content">
-      <view class='m-tq-item'>
-        
+      <view class='m-tq-top'>
+        <view>城市：大连</view>
+      </view>
+      <view class='m-tq-con'>
+        <view class='m-tq-con-item'>
+          <view class='m-tq-con-item-day'>今天：{{m_today}}</view>
+          <view class='m-tq-con-item-main'>
+            <view class='m-tq-con-item-main-img'>
+                <view wx:if='{{m_today_img1}}'><image src='../../image/weather/{{m_today_img1}}.png'></image></view>
+                <view wx:if='{{m_today_img2}}'><image src='../../image/weather/{{m_today_img2}}.png'></image></view>
+            </view>
+            <view class='m-tq-con-item-main-text'>
+              <view class='m-tq-con-item-main-text-disc'>{{m_today_disc}}</view>
+              <view class='m-tq-con-item-main-text-temp'>{{m_today_temp}}℃</view>
+            </view>
+          </view>
+        </view>
+        <view class='m-tq-con-item'>
+          <view class='m-tq-con-item-day'>明天：{{m_nextday}}</view>
+          <view class='m-tq-con-item-main'>
+            <view class='m-tq-con-item-main-img'>
+                <view wx:if='{{m_nextday_img1}}'><image src='../../image/weather/{{m_nextday_img1}}.png'></image></view>
+                <view wx:if='{{m_nextday_img2}}'><image src='../../image/weather/{{m_nextday_img2}}.png'></image></view>
+            </view>
+            <view class='m-tq-con-item-main-text'>
+              <view class='m-tq-con-item-main-text-disc'>{{m_nextday_disc}}</view>
+              <view class='m-tq-con-item-main-text-temp'>{{m_nextday_temp}}℃</view>
+            </view>
+          </view>
+        </view>
       </view>
     </view>
   </wxc-popup>
