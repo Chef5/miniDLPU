@@ -45,7 +45,7 @@
     <view class='line'></view>
 
     <view class='bd-show' wx:if='{{show_res}}'>
-      <view class='bd-show-sum'>查询结果：共查到<text>{{res_num}}</text>间空教室</view>
+      <view class='bd-show-sum'>查询结果：共查到<text>{{res_num}}</text>间空教室<view class='grey'>----点击教室查全天</view></view>
       <view class='bd-show-room'>
         <view class='bd-show-room-con'>
           <block wx:for="{{rooms}}" wx:for-item="roomid" wx:key='roomid'>
