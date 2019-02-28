@@ -32,13 +32,13 @@
               <text class='con-item-text-detail'>583195863</text>
             </view>
           </view>
-          <view class='feed-box-body-con-item' bindtap='setgz'>
+          <!-- <view class='feed-box-body-con-item' bindtap='setgz'>
             <view class='con-item-logo'><image src='../../image/gzlogo.png'></image></view>
             <view class='con-item-text'>
               <text class='con-item-text-title'>公众号</text>
               <text class='con-item-text-detail'>工大夜跑团</text>
             </view>
-          </view>
+          </view> -->
         </view>
       </view>
     </view>
