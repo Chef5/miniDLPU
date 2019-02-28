@@ -45,7 +45,7 @@ Page({
     // })
     wx.showModal({
       title: '提示',
-      content: '空教室查询即将推出，敬请期待！',
+      content: '四六级查询即将推出，敬请期待！',
       showCancel: false,
       confirmColor: '#1298CF',
       success(res) {
@@ -53,6 +53,30 @@ Page({
           
         } else if (res.cancel) {
           
+        }
+      }
+    })
+  },
+  //显示更多提示
+  showMoreTips: function () {
+    var that = this;
+    // that.setData({
+    //   hiddentips: false,
+    // })
+    wx.showModal({
+      title: '真幸运',
+      content: '恭喜你获得一次向开发者提需求的机会，下一个新功能，你来提！',
+      showCancel: true,
+      confirmColor: '#1298CF',
+      confirmText: '我有想法',
+      cancelText: '放弃机会',
+      success(res) {
+        if (res.confirm) {
+          wx.navigateTo({
+            url: '../setting-detail/set-feed',
+          })
+        } else if (res.cancel) {
+
         }
       }
     })
