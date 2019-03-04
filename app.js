@@ -31,6 +31,19 @@ App({
         }
       }
     })
+
+    //强制更新
+    const updateManager = wx.getUpdateManager();
+    updateManager.onCheckForUpdate(function (res) {
+      // 请求完新版本信息的回调
+      console.log(res.hasUpdate)
+    })
+    updateManager.onUpdateReady(function () {
+      updateManager.applyUpdate();
+    })
+    updateManager.onUpdateFailed(function () {
+      // 新版本下载失败
+    })
   },
   globalData: {
     userInfo: null
