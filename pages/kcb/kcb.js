@@ -158,7 +158,8 @@ Page({
           arrayxq: [dat.data.nowItem],
         });
         //当前周次设置
-        var nowtime = new Date("2019/03/04 09:00:00");  //当前时间
+        if (dat.data.specialDay == null) var nowtime = new Date();  //当前时间 用于平时
+        else var nowtime = new Date(dat.data.specialDay);   //假期时，设置默认周次
         var nowtimestamp = Date.parse(nowtime);  //当前时间的时间戳（毫秒）最后三位000
         var day = ((nowtimestamp / 1000 - dat.data.itemStart) / 86400); //与开学时间的时间差（天）
         var nowzc = Math.ceil(day / 7); //向上取整
