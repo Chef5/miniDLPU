@@ -59,6 +59,14 @@ Page({
       index_w: week,
       show_res: false
     });
+    //console.log(options);
+    //二维码 识别设置
+    var scene = decodeURIComponent(options.scene);
+    if(scene != 'undefined'){
+      that.setData({
+        index_h: scene
+      });
+    }
   },
 
   /**
