@@ -94,6 +94,30 @@ Page({
   },
   onLoad: function () {
     var that = this;
+    var isshownotice99 = wx.getStorageSync('isshownotice99');
+    if(isshownotice99 != 1){
+      wx.showModal({
+        content: '课程表数据方案更新完成，强烈建议立即前往“学号和密码”更换模式M1：[课程表抓取]',
+        showCancel: true,
+        confirmText: "知道了",
+        cancelText: "下次通知",
+        success: function (res) {
+          if (res.confirm) {
+            console.log('用户点击确定');
+            wx.setStorageSync('isshownotice99', 1);
+            //停止刷新
+            wx.stopPullDownRefresh();
+            // 隐藏顶部刷新图标
+            wx.hideNavigationBarLoading();
+            wx.navigateTo({
+              url: '../setting-detail/set-userinfo',
+            })
+          }
+        }
+      });
+      wx.setStorageSync('isshownotice99', 0);
+    }
+
     wx.getStorage({key: 'userid',success: function(res) {
         that.setData({userid: res.data});},
     });
@@ -265,12 +289,6 @@ Page({
     var that = this;
     // 显示顶部刷新图标
     wx.showNavigationBarLoading();
-    //显示等待提示
-    wx.showToast({
-      title: '数据加载中',
-      icon: 'loading',
-      duration: 1200
-    });
     //刷新本地账号
     wx.getStorage({
       key: 'userid', success: function (res) {
@@ -311,11 +329,34 @@ Page({
     if (Id == null) {
       return;
     }
-    var WannaKey = app.encryptUserKey(Id,Pwd);
+    //模式判断
+    var kcbaction = wx.getStorageSync('kcbaction');
+    var action = '';
+    if(kcbaction == 'static'){
+      action = kcbaction;
+      //显示等待提示
+      wx.showToast({
+        title: 'M1:玩命加载中...',
+        icon: 'loading',
+        duration: 1200
+      });
+    } else {
+      action = 'dym';
+      //显示等待提示
+      wx.showToast({
+        title: 'M2:玩命加载中',
+        icon: 'loading',
+        duration: 1200
+      });
+    }
+    console.log('action：'+action);
+
+    //开始请求
+    var WannaKey = app.encryptUserKey(Id, Pwd);
     var items = that.data.arrayxq[0];
     var weeks = that.data.arrayzc[that.data.indexzc];
-    console.log("WabbaKey:"+ WannaKey);
-    console.log("item:"+items+"weeks"+weeks);
+    console.log("WabbaKey:" + WannaKey);
+    console.log("item:" + items + "weeks" + weeks);
     wx.request({
       url: 'https://test.1zdz.cn/api/kcb.php',
       //url: 'http://leave.test/getkcb',
@@ -324,7 +365,8 @@ Page({
         XiangGanMa: WannaKey,
         item: items,
         week: weeks,
-        server: Server
+        server: Server,
+        action: action
       },
       header: { "Content-Type": "application/x-www-form-urlencoded" },
       success: function (res) {
@@ -384,9 +426,9 @@ Page({
               changeKCB[i].room = res.data[hang][i].room;
               changeKCB[i].leader = res.data[hang][i].leader;
               changeKCB[i].color = tdcolors[res.data[hang][i].index - 1];
-            } 
+            }
             //单独读取每一行周末数据
-            for (var i = 5; i < 7; i++, ii++) {
+            for (var i = 5; i < 7; i++ , ii++) {
               changeWeekKCB[ii] = new Object;
               changeWeekKCB[ii].name = that.isOver15(res.data[hang][i].name);
               changeWeekKCB[ii].room = res.data[hang][i].room;
@@ -409,7 +451,7 @@ Page({
         console.log("获取课程表失败！");
         wx.showModal({
           title: '课程表获取失败了！',
-          content: '请检查：当前学号('+Id+')'+'、服务器('+Server+')，可先检查学号或者密码是否有误，然后再试着切换服务器试试。',
+          content: '请检查：当前学号(' + Id + ')' + '、服务器(' + Server + ')，可先检查学号或者密码是否有误，然后再试着切换服务器试试。',
           confirmText: "切换服务器",
           success: function (res) {
             if (res.confirm) {
@@ -433,6 +475,7 @@ Page({
         wx.hideNavigationBarLoading();
       }
     });
+    
 
     //停止刷新
     wx.stopPullDownRefresh();

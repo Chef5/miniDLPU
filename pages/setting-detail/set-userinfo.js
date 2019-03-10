@@ -8,37 +8,103 @@ Page({
     userid:'',
     userpwd:'',
     hidpwd:'',
+    updatetime: '0000-00-00 00:00:00',
   },
-  saveUserinfo:function(e){
+  getuserid: function(e){
+    var userid = e.detail.value;
+    this.setData({
+      userid: userid
+    })
+  }, 
+  getuserpwd: function (e) {
+    var userpwd = e.detail.value;
+    this.setData({
+      userpwd: userpwd
+    })
+  },
+  //模式1 课程表数据抓取
+  storeKcb: function(){
     var that = this;
-    if (e.detail.value.userid != '') {
-      wx.setStorage({
-        key: 'userid',
-        data: e.detail.value.userid,
-      });
-      wx.setStorage({
-        key: 'userpwd',
-        data: e.detail.value.userpwd,
-      });
-      var hidpwd = that.hiddesome(e.detail.value.userpwd);
-      that.setData({ hidpwd: hidpwd, });
-      console.log('userid:' + e.detail.value.userid);
-      console.log('userpwd:' + e.detail.value.userpwd);
+    var userid = that.data.userid;
+    var userpwd = that.data.userpwd;
+    //console.log(userid+userpwd);
+    if(userid.length != 10){
+      wx.showModal({
+        title: '学号错误',
+        showCancel: false,
+        content: '学号位数不对！当前位数：'+userid.length,
+      })
     }else{
-      wx.setStorage({
-        key: 'userid',
-        data: '',
+      wx.showToast({
+        title: '玩命抓取中...',
+        icon: 'loading',
+        duration: 15000
       });
-      wx.setStorage({
-        key: 'userpwd',
-        data: '',
+      that.saveUserinfo(that.data.userid, that.data.userpwd);
+      wx.request({
+        url: 'https://test.1zdz.cn/api/storekcb.php',
+        method: 'POST',
+        data: {
+          userid: userid,
+          userpwd: userpwd,
+        },
+        header: { "Content-Type": "application/x-www-form-urlencoded" },
+        success: function (res) {
+          console.log(res);
+          if(res.data.code==100){
+            wx.setStorageSync('kcbaction', 'static');
+            wx.showToast({
+              title: '抓取完成',
+              icon: 'success',
+              duration: 2000,
+              complete: function(){
+                wx.showModal({
+                  title: '抓取完成',
+                  content: '课程表数据获取完成，现在可以返回课程表页面下拉刷新课表了。',
+                  confirmText: "立即前往",
+                  cancelText: "留下",
+                  success: function (res) {
+                    if (res.confirm) {
+                      wx.reLaunch({
+                        url: '../kcb/kcb',
+                      })
+                    } else {
+                      console.log('用户想了想')
+                    }
+                  }
+                });
+              }
+            });
+            that.setData({updatetime:res.data.time});
+            wx.setStorageSync('updatetime', res.data.time);
+          }else{
+            wx.setStorageSync('kcbaction', 'dym');
+            wx.showModal({
+              title: '抓取出错',
+              showCancel: false,
+              content: '学号或者密码出错，请检查！',
+            })
+          }
+        },
+        fail: function (res) {
+          wx.setStorageSync('kcbaction', 'dym');
+          wx.showModal({
+            title: 'Error',
+            showCancel: false,
+            content: '网络错误',
+          })
+        },
+        complete: function (res) {
+          
+        }
       });
-      that.setData({ hidpwd: "无", });
     }
-    // wx.showToast({
-    //   title: '保存成功！',
-    //   duration: 1000
-    // });
+  },
+  //模式2 仅储存
+  juststore: function(){
+    var that = this;
+    that.saveUserinfo(that.data.userid, that.data.userpwd);
+    wx.setStorageSync('kcbaction', 'dym');
     wx.showModal({
       title: '保存成功！',
       content: '学号和密码已保存至微信缓存，现在可以返回课程表页面下拉刷新课表了。',
@@ -54,6 +120,39 @@ Page({
         }
       }
     });
+  },
+
+  saveUserinfo:function(userid,userpwd){
+    var that = this;
+    if (userid != '') {
+      wx.setStorage({
+        key: 'userid',
+        data: userid,
+      });
+      wx.setStorage({
+        key: 'userpwd',
+        data: userpwd,
+      });
+      var hidpwd = that.hiddesome(userpwd);
+      that.setData({ hidpwd: hidpwd, });
+      console.log('userid:' + userid);
+      console.log('userpwd:' + userpwd);
+    }else{
+      wx.setStorage({
+        key: 'userid',
+        data: '',
+      });
+      wx.setStorage({
+        key: 'userpwd',
+        data: '',
+      });
+      that.setData({ hidpwd: "无", });
+    }
+    // wx.showToast({
+    //   title: '保存成功！',
+    //   duration: 1000
+    // });
+    
   },
   /**
    * 生命周期函数--监听页面加载
@@ -74,6 +173,10 @@ Page({
           that.setData({ hidpwd: '无', });
         }
     });
+    var uptime = wx.getStorageSync('updatetime');
+    if(uptime!=''&&uptime!=undefined&&uptime!=null)that.setData({ updatetime: uptime});
+    else that.setData({ updatetime: '暂无' });
+    
   },
   //判断课程字数是否超出小方块
   hiddesome: function (str) {

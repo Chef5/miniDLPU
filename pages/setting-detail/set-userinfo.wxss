@@ -1,5 +1,27 @@
 /* pages/setting-userinfo/set-userinfo.wxss */
-.comfirm-submit{
+.page{
+  padding: 5rpx;
+}
+.btn-content{
+  text-align: center;
+}
+.btn-left{
+  margin-right: 20rpx;
+}
+.btn-right{
+  margin-left: 20rpx;
+}
+.mini-btn label{
+  font-size: 34rpx;
+}
+.show-stro{
+  padding: 10rpx;
+  margin-left: 10rpx;
+  margin-right: 10rpx;
   margin-top: 10rpx;
-  width: 80%;
+  /* border: 1px gray double; */
+}
+.show-stro label{
+  font-size: 34rpx;
+  color: #f72323;
 }
