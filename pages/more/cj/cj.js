@@ -7,7 +7,8 @@ Page({
    * 页面的初始数据
    */
   data: {
-    cjnowxq:6,
+    cjnowxq:7,
+    Avgcredit: '--',
     arrayxq: [
       '2015-2016-1', 
       '2015-2016-2', 
@@ -180,6 +181,7 @@ Page({
       success: function (res) {
         console.log(res);
         var changeCJ = [];
+        var creNum = '';
         if(res.data.state=="error"){
           wx.showModal({
             content: '学号或者密码错误，登陆教务处失败！或更换教务处服务器试试。',
@@ -218,9 +220,12 @@ Page({
           wx.showToast({
             title: '暂无本学期成绩',
             duration: 2000
-          })
+          });
+          creNum = '-';
+        }else{
+          creNum = res.data[0].creNum;
         }
-        that.setData({ arraycj: changeCJ, });
+        that.setData({ arraycj: changeCJ, Avgcredit: creNum});
       },
       fail: function (res) {
         console.log("获取成绩失败！");

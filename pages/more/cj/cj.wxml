@@ -8,7 +8,8 @@
         </picker>
       </view>
       <view class='cj-disc'>
-        <text>←可以查看其他学期</text>
+        <text>平均学分绩点：</text>
+        <text class='credit'>{{Avgcredit}}</text>
       </view>
     </view>
   </view>
