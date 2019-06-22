@@ -38,15 +38,9 @@
 .kcb-body{
   width: 100%;
 }
-.kcb-body-head{
-  display: flex;
-  flex-direction: row;
-  height: 70rpx;
-  background-color:#ACACB4;
-  color: white;
-}
 .kcb-body-fill{
   width: 20rpx;
+  padding-top: 70rpx;
   /* background-color:white; */
   background-color: #efeff4;
   font-size: 18rpx;
@@ -56,12 +50,15 @@
   /* border: 1px solid royalblue; */
 }
 .kcb-body-head-header{
-  width: 100%;
+  width: 994rpx;
+  height: 70rpx;
+  color: white;
   display: flex;
   flex-direction: row;
+  background-color:#ACACB4;
 }
 .table-th{
-  flex: 1;
+  width: 142rpx;
   display: flex;
   flex-direction: column;
   text-align: center;
@@ -83,19 +80,19 @@
   margin-top: 8rpx;
 }
 .kcb-body-table-box{
-  width: 100%;
+  width: 994rpx;
   display: flex;
   flex-direction: column;
 }
 .table-tr{
-  flex: 1;
+  width: 994rpx;
   display: flex;
   flex-direction: row;
   height: 220rpx;
   color: white;
 }
 .table-td{
-  flex: 1;
+  width: 142rpx;
   /* width: 132rpx; */
   padding-top: 8rpx;
   padding-left: 5rpx;
@@ -247,3 +244,27 @@
 .m-tq-con-item-main-text-disc .m-tq-con-item-main-text-temp{
   flex: 1;
 }
+
+/* 修改课程-----------开始 */
+.cell-hang{
+  display:flex;
+  flex-direction:row;
+  height: 75rpx;
+}
+.cell-hang input{
+  border: 1px solid gainsboro;
+}
+.cell-hang view{
+  display: flex;
+}
+.cell-label{
+  flex: 2;
+}
+.cell-picker{
+  flex: 5;
+}
+.comfirm-submit{
+  margin-top: 50rpx;
+  width: 50%;
+}
+/* 修改课程-----------结束 */

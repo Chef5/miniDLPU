@@ -29,51 +29,10 @@ Page({
       { week: "周二", date: ""}, 
       { week: "周三", date: ""},
       { week: "周四", date: ""}, 
-      { week: "周五", date: "" }],
-    arrayth2: [
+      { week: "周五", date: "" },
       { week: "周六", date: "" },
       { week: "周日", date: "" }],
-    arraykcb1 : [
-      { name: "", room: "", leader: "", time: "", color: "" },
-      { name: "", room: "", leader: "", time: "", color: "" },
-      { name: "", room: "", leader: "", time: "", color: "" },
-      { name: "", room: "", leader: "", time: "", color: "" },
-      { name: "", room: "", leader: "", time: "", color: "" },
-    ],
-    arraykcb2: [
-      { name: "", room: "", leader: "", time: "", color: "" },
-      { name: "", room: "", leader: "", time: "", color: "" },
-      { name: "", room: "", leader: "", time: "", color: "" },
-      { name: "", room: "", leader: "", time: "", color: "" },
-      { name: "", room: "", leader: "", time: "", color: "" },
-    ],
-    arraykcb3: [
-      { name: "", room: "", leader: "", time: "", color: "" },
-      { name: "", room: "", leader: "", time: "", color: "" },
-      { name: "", room: "", leader: "", time: "", color: "" },
-      { name: "", room: "", leader: "", time: "", color: "" },
-      { name: "", room: "", leader: "", time: "", color: "" },
-    ],
-    arraykcb4: [
-      { name: "", room: "", leader: "", time: "", color: "" },
-      { name: "", room: "", leader: "", time: "", color: "" },
-      { name: "", room: "", leader: "", time: "", color: "" },
-      { name: "", room: "", leader: "", time: "", color: "" },
-      { name: "", room: "", leader: "", time: "", color: "" },
-    ],
-    arraykcb5: [
-      { name: "", room: "", leader: "", time: "", color: "" },
-      { name: "", room: "", leader: "", time: "", color: "" },
-      { name: "", room: "", leader: "", time: "", color: "" },
-      { name: "", room: "", leader: "", time: "", color: "" },
-      { name: "", room: "", leader: "", time: "", color: "" },
-    ],
-    //设置周末课程表
-    weekindex:0,
-    arrayWeekIndex: [0,2,4,6,8],
-    arraykcbweek: [
-      { name: "", room: "", leader: "", time: "", color: "" },
-    ],
+    arraykcb: [],
     //设置弹窗天气
     m_today_disc: 'loading',
     m_today_temp: 'π_π',
@@ -264,24 +223,14 @@ Page({
     var firstDayTime = new Date(YearY + "/" + MonthM + "/" + DayD + " 00:00:00");  //IOS系统的坑，用‘-’会加载不出来，只能用‘/’
     var firstDayTime = firstDayTime.valueOf();
     var addtoarrayth = that.data.arrayth;
-    var addtoarrayth2 = that.data.arrayth2;
-    var ii=0;
-    console.log(addtoarrayth2);
     for (var i = 0; i < 7; i++) {
       var nextDate = new Date(firstDayTime + (everyMonday + i) * 24 * 60 * 60 * 1000); //后一天
       var nextMonth = nextDate.getMonth() + 1 < 10 ? '0' + (nextDate.getMonth() + 1) : nextDate.getMonth() + 1;
       var nextDay = nextDate.getDate() < 10 ? '0' + nextDate.getDate() : nextDate.getDate();
-      if(i<5){
-        addtoarrayth[i].date = nextMonth + "." + nextDay;
-      }
-      else{
-        addtoarrayth2[ii].date = nextMonth + "." + nextDay;
-        ii++;
-      }
+      addtoarrayth[i].date = nextMonth + "." + nextDay;
     }
     that.setData({
       arrayth: addtoarrayth,
-      arrayth2: addtoarrayth2,
     });
   },
   //课程表刷新
@@ -410,41 +359,27 @@ Page({
               }
             }
           }
-          console.log("添加的颜色：");
+          // { name: "", room: "", leader: "", time: "", color: "" }
+          // console.log("添加的颜色：");
           console.log(res.data);
-          var changeWeekKCB = that.data.arraykcbweek;//设置周末数据
-          var ii = 0;
+          var ontime = ["08:00~08:45", "08:55~09:40", "10:05~10:50", "11:00~11:45", "13:20~14:05", "14:10~14:55", "15:15~16:00", "16:05~16:50", "18:00~18:45","18:55~19:40"];
+          var changeKCB = new Array();
           for (var hang = 0; hang < 5; hang++) {
-            if (hang == 0) var changeKCB = that.data.arraykcb1;
-            if (hang == 1) var changeKCB = that.data.arraykcb2;
-            if (hang == 2) var changeKCB = that.data.arraykcb3;
-            if (hang == 3) var changeKCB = that.data.arraykcb4;
-            if (hang == 4) var changeKCB = that.data.arraykcb5;
-            //读取周一到周五数据
-            for (var i = 0; i < 5; i++) {
-              changeKCB[i].name = that.isOver15(res.data[hang][i].name);
-              changeKCB[i].room = res.data[hang][i].room;
-              changeKCB[i].leader = res.data[hang][i].leader;
-              changeKCB[i].color = tdcolors[res.data[hang][i].index - 1];
-            }
-            //单独读取每一行周末数据
-            for (var i = 5; i < 7; i++ , ii++) {
-              changeWeekKCB[ii] = new Object;
-              changeWeekKCB[ii].name = that.isOver15(res.data[hang][i].name);
-              changeWeekKCB[ii].room = res.data[hang][i].room;
-              changeWeekKCB[ii].leader = res.data[hang][i].leader;
-              changeWeekKCB[ii].color = tdcolors[res.data[hang][i].index - 1];
+            changeKCB[hang] = new Array();
+            var time1 = ontime[hang*2];
+            var time2 = ontime[hang*2+1];
+            for (var i = 0; i < 7; i++) {
+              changeKCB[hang][i] = new Object();
+              changeKCB[hang][i].name = that.isOver15(res.data[hang][i].name);
+              changeKCB[hang][i].room = res.data[hang][i].room;
+              changeKCB[hang][i].leader = res.data[hang][i].leader;
+              changeKCB[hang][i].color = tdcolors[res.data[hang][i].index - 1];
+              changeKCB[hang][i].time1 = time1;
+              changeKCB[hang][i].time2 = time2;
             }
             //console.log(changeKCB);
-            if (hang == 0) { that.setData({ arraykcb1: changeKCB, }); };
-            if (hang == 1) { that.setData({ arraykcb2: changeKCB, }); };
-            if (hang == 2) { that.setData({ arraykcb3: changeKCB, }); };
-            if (hang == 3) { that.setData({ arraykcb4: changeKCB, }); };
-            if (hang == 4) { that.setData({ arraykcb5: changeKCB, }); };
+            that.setData({ arraykcb: changeKCB, });
           }
-          that.setData({ arraykcbweek: changeWeekKCB, });//设置周末数据
-          console.log("周末的：");
-          console.log(changeWeekKCB);
         }
       },
       fail: function (res) {

@@ -24,58 +24,34 @@
 
   <view class='page__bd'>
     <view class='kcb-body'>
-      <view class='kcb-body-head'>
-        <view class='kcb-body-fill'></view>
-        <view class='kcb-body-head-header'>
-          <block wx:for="{{arrayth}}" wx:for-index="idxth" wx:for-item="thitem" wx:key="week">
-          <view class='table-th'>
-            <view class='table-th-z'>{{thitem.week}}</view>
-            <view class='table-th-t'>{{thitem.date}}</view>
-          </view>
-          </block>
-        </view>
-        <view class='mask-fill' bindtap="showModal" data-target="DrawerModalR"><image class='th-right' src='../../image/right2.png'></image></view>
-      </view>
+
       <view class='kcb-body-table'>
         <view class='kcb-body-fill'>1\n2\n3\n4\n5\n6\n7\n8\n9\n10</view>
         <view class='kcb-body-table-box'>
-          <view class='table-tr'>
-            <block wx:for="{{arraykcb1}}" wx:for-index="idxkcb1" wx:for-item="kcb1item" wx:key="kcb1item.index">
-              <view class='table-td' style="background-color:{{kcb1item.color}}; " bindtap='showdetail' data-name='{{kcb1item.name}}' data-room='{{kcb1item.room}}' data-leader='{{kcb1item.leader}}' data-time1='08:00~08:45' data-time2='08:55~09:40'>
-                <text>{{kcb1item.name}}\n{{kcb1item.room}}</text>
-              </view>
-            </block>
-          </view>
-          <view class='table-tr'>
-            <block wx:for="{{arraykcb2}}" wx:for-index="idxkcb2" wx:for-item="kcb2item" wx:key="kcb2item.index">
-                <view class='table-td' style="background-color:{{kcb2item.color}}; " bindtap='showdetail' data-name='{{kcb2item.name}}' data-room='{{kcb2item.room}}' data-leader='{{kcb2item.leader}}' data-time1='10:05~10:50' data-time2='11:00~11:45'>
-                  <text>{{kcb2item.name}}\n{{kcb2item.room}}</text>
+          <scroll-view scroll-x="true" style="width: 710rpx;" >
+
+            <view class='kcb-body-head-header'>
+                <view class='table-th' wx:for="{{arrayth}}" wx:for-index="idxth" wx:for-item="thitem" wx:key="week">
+                  <view class='table-th-z'>{{thitem.week}}</view>
+                  <view class='table-th-t'>{{thitem.date}}</view>
                 </view>
-            </block>
-          </view>
-          <view class='table-tr'>
-            <block wx:for="{{arraykcb3}}" wx:for-index="idxkcb3" wx:for-item="kcb3item" wx:key="kcb3item.index">
-                <view class='table-td' style="background-color:{{kcb3item.color}}; " bindtap='showdetail' data-name='{{kcb3item.name}}' data-room='{{kcb3item.room}}' data-leader='{{kcb3item.leader}}' data-time1='13:20~14:05' data-time2='14:10~14:55'>
-                  <text>{{kcb3item.name}}\n{{kcb3item.room}}</text>
+            </view>
+            <view class='table-tr' wx:for="{{arraykcb}}" wx:for-index="trindex" wx:for-item="tritem" wx:key="{{trindex}}">
+                <view class='table-td'
+                      wx:for="{{tritem}}" wx:for-index="nowindex" wx:for-item="nowitem" wx:key="{{nowindex}}"
+                      style="background-color:{{nowitem.color}}; " 
+                      bindtap='showdetail' 
+                      data-name='{{nowitem.name}}' 
+                      data-room='{{nowitem.room}}' 
+                      data-leader='{{nowitem.leader}}' 
+                      data-time1='{{nowitem.time1}}' 
+                      data-time2='{{nowitem.time2}}' >
+                  <text>{{nowitem.name}}\n{{nowitem.room}}</text>
                 </view>
-            </block>
-          </view>
-          <view class='table-tr'>
-            <block wx:for="{{arraykcb4}}" wx:for-index="idxkcb4" wx:for-item="kcb4item" wx:key="kcb4item.index">
-                <view class='table-td' style="background-color:{{kcb4item.color}}; " bindtap='showdetail' data-name='{{kcb4item.name}}' data-room='{{kcb4item.room}}' data-leader='{{kcb4item.leader}}' data-time1='15:15~16:00' data-time2='16:05~16:50'>
-                  <text>{{kcb4item.name}}\n{{kcb4item.room}}</text>
-                </view>
-            </block>
-          </view>
-          <view class='table-tr'>
-            <block wx:for="{{arraykcb5}}" wx:for-index="idxkcb5" wx:for-item="kcb5item" wx:key="kcb5item.index">
-                <view class='table-td' style="background-color:{{kcb5item.color}}; " bindtap='showdetail' data-name='{{kcb5item.name}}' data-room='{{kcb5item.room}}' data-leader='{{kcb5item.leader}}' data-time1='18:00~18:45' data-time2='18:55~19:40'>
-                  <text>{{kcb5item.name}}\n{{kcb5item.room}}</text>
-                </view>
-            </block>
-          </view>
+            </view>
+
+          </scroll-view>
         </view>
-        <view class='kcb-body-fill' bindtap="showModal" data-target="DrawerModalR"></view>
       </view>
     </view>
     <!-- <block>
@@ -88,8 +64,8 @@
     </block> -->
     <modal hidden="{{hiddenmodalput}}" title="课程详细" confirm-text="确定" bindconfirm="confirm" no-cancel='true'>
         <view>课程名称：{{name}}</view>
-        <view>上课老师：{{leader}}</view>
-        <view>上课地点：{{room}}</view>
+        <view>任课教师：{{leader}}</view>
+        <view>课程地点：{{room}}</view>
         <view style='display:flex;flex-direction:row'>
           <view>上课时间：</view>
           <view style='display:flex;flex-direction:column'>
@@ -99,42 +75,14 @@
         </view>
     </modal>
 
-
- <button bindtap="showModal" data-target="DrawerModalR">周末课程表</button>
-
-  <view class="cu-modal drawer-modal justify-end {{modalName=='DrawerModalR'?'show':''}}" bindtap='hideModal'>
-    <view class="cu-dialog basis-lg" catchtap>
-      
-      <view class='kcb-body-head' style='margin-left:20rpx;'>
-          <view class='kcb-body-head-header'>
-            <block wx:for="{{arrayth2}}" wx:for-index="idxth" wx:for-item="thitem2" wx:key="week">
-            <view class='table-th'>
-              <view class='table-th-z'>{{thitem2.week}}</view>
-              <view class='table-th-t'>{{thitem2.date}}</view>
-            </view>
-            </block>
-          </view>
-        </view>
-
-        <view class='kcb-body-table'>
-          <view class='kcb-body-fill' bindtap='hideWeekday'>1\n2\n3\n4\n5\n6\n7\n8\n9\n10</view>
-          <view class='kcb-body-table-box'>
-            <block wx:for="{{arrayWeekIndex}}" wx:for-index="week-index" wx:for-item="weekindex" wx:key="weekindex.index">
-            <view class='table-tr'>
-              <view class='table-td' style="background-color:{{arraykcbweek[weekindex].color}}; " bindtap='showdetail' data-name='{{arraykcbweek[weekindex].name}}' data-room='{{arraykcbweek[weekindex].room}}' data-leader='{{arraykcbweek[weekindex].leader}}' data-time1='请参考周一至周五' data-time2='^_^'>
-                <text>{{arraykcbweek[weekindex].name}}\n{{arraykcbweek[weekindex].room}}</text>
-              </view>
-              <view class='table-td' style="background-color:{{arraykcbweek[weekindex+1].color}}; " bindtap='showdetail' data-name='{{arraykcbweek[weekindex+1].name}}' data-room='{{arraykcbweek[weekindex+1].room}}' data-leader='{{arraykcbweek[weekindex+1].leader}}' data-time1='请参考周一至周五' data-time2='^_^'>
-                <text>{{arraykcbweek[weekindex+1].name}}\n{{arraykcbweek[weekindex+1].room}}</text>
-              </view>
-            </view>
-            </block>
-          </view>
-        </view>
-
-    </view>
-  </view>
-
+    <!-- <modal hidden="{{showeditkcb}}" title="修改课程" confirm-text="完成" bindconfirm="confirm" no-cancel='true'>
+      <form bindsubmit="addconfirm" >
+        <view class='cell-hang'><view class='cell-label'>课程名称：</view><view class='cell-picker'><input name='name' maxlength='15' placeholder='不超过15个字'></input></view></view>
+        <view class='cell-hang'><view class='cell-label'>任课教师：</view><view class='cell-picker'><input name='phone' maxlength='5' placeholder='不超过5个字'></input></view></view>
+        <view class='cell-hang'><view class='cell-label'>课程地点：</view><view class='cell-picker'><input name='detail' maxlength='5' placeholder='不超过10个字'></input></view></view>
+        <button form-type='submit' type='primary' class='comfirm-submit'>确认修改</button>
+      </form>
+    </modal> -->
 
   </view>
 </view>
