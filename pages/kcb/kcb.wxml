@@ -41,6 +41,10 @@
                       wx:for="{{tritem}}" wx:for-index="nowindex" wx:for-item="nowitem" wx:key="{{nowindex}}"
                       style="background-color:{{nowitem.color}}; " 
                       bindtap='showdetail' 
+                      bindlongpress='showAddOrEditKCB' 
+                      data-hang='{{trindex}}' 
+                      data-week='{{nowindex}}'
+                      data-kid='{{nowitem.kid}}' 
                       data-name='{{nowitem.name}}' 
                       data-room='{{nowitem.room}}' 
                       data-leader='{{nowitem.leader}}' 
@@ -54,14 +58,8 @@
         </view>
       </view>
     </view>
-    <!-- <block>
-      <view class='kcb-detail'>
-        <view>课程名称：{{name}}</view>
-        <view>上课老师：{{leader}}</view>
-        <view>上课地点：{{room}}</view>
-        <view>上课时间：{{time}}</view>
-      </view>
-    </block> -->
+
+
     <modal hidden="{{hiddenmodalput}}" title="课程详细" confirm-text="确定" bindconfirm="confirm" no-cancel='true'>
         <view>课程名称：{{name}}</view>
         <view>任课教师：{{leader}}</view>
@@ -74,15 +72,103 @@
           </view>
         </view>
     </modal>
-
-    <!-- <modal hidden="{{showeditkcb}}" title="修改课程" confirm-text="完成" bindconfirm="confirm" no-cancel='true'>
+    <modal hidden="{{hiddenaddkcb}}" title="添加课程" confirm-text="关闭" bindconfirm="confirm" no-cancel='true'>
       <form bindsubmit="addconfirm" >
-        <view class='cell-hang'><view class='cell-label'>课程名称：</view><view class='cell-picker'><input name='name' maxlength='15' placeholder='不超过15个字'></input></view></view>
-        <view class='cell-hang'><view class='cell-label'>任课教师：</view><view class='cell-picker'><input name='phone' maxlength='5' placeholder='不超过5个字'></input></view></view>
-        <view class='cell-hang'><view class='cell-label'>课程地点：</view><view class='cell-picker'><input name='detail' maxlength='5' placeholder='不超过10个字'></input></view></view>
-        <button form-type='submit' type='primary' class='comfirm-submit'>确认修改</button>
+        <view class='cell-hang'>
+          <view class='cell-label'>课程名称：</view>
+          <view class='cell-picker'>
+            <input name='name' maxlength='15' placeholder='不超过15个字'></input>
+          </view>
+        </view>
+        <view class='cell-hang'>
+          <view class='cell-label'>课程地点：</view>
+          <view class='cell-picker'>
+            <input name='room' maxlength='8' placeholder='不超过8个字'></input>
+          </view>
+        </view>
+        <view class='cell-hang'>
+          <view class='cell-label'>任课教师：</view>
+          <view class='cell-picker'>
+            <input name='teacher' maxlength='12' placeholder='不超过12个字'></input>
+          </view>
+        </view>
+        
+        <view class='cell-hang'>
+          <view class='cell-label'>周次安排：</view>
+          <view class='cell-picker'>
+            第
+            <picker bindchange="zcAddChange1" value="{{indexzcAdd1}}" range="{{arrayzc}}">
+              <view style='margin-left:5px;margin-right:5px;'>{{arrayzc[indexzcAdd1]}} </view>
+            </picker>
+            周 ~ 第
+            <picker bindchange="zcAddChange2" value="{{indexzcAdd2}}" range="{{arrayzc}}">
+              <view style='margin-left:5px;margin-right:5px;'>{{arrayzc[indexzcAdd2]}} </view>
+            </picker>
+            周   {{arrayth[indexweekAdd].week}}
+          </view>
+        </view>
+        <view class='cell-hang'>
+          <view class='cell-label'>节次安排：</view>
+          <view class='cell-picker'>
+            第
+            <picker bindchange="jcAddChange1" value="{{indexjcAdd1}}" range="{{arrayjc}}">
+              <view style='margin-left:5px;margin-right:5px;'> {{arrayjc[indexjcAdd1]}} </view>
+            </picker>
+            节 ~ 第
+            <picker bindchange="jcAddChange2" value="{{indexjcAdd2}}" range="{{arrayjc}}">
+              <view style='margin-left:5px;margin-right:5px;'>{{arrayjc[indexjcAdd2]}} </view>
+            </picker>
+            节
+          </view>
+        </view>
+
+        <view class='cell-hang'>
+          <view class='cell-label'>冲突说明：</view>
+          <view class='cell-picker cell-exp'>
+            当添加的课程和已有课程冲突时，保留已有课程。需要变动已有课程，请在已有课程上长按进行修改。
+          </view>
+        </view>
+        <button form-type='submit' type='primary' class='comfirm-submit' style='background-color:#1298CF;'>确认添加</button>
       </form>
-    </modal> -->
+    </modal>
+
+
+    <modal hidden="{{hiddeneditkcb}}" title="修改课程" confirm-text="关闭" bindconfirm="confirm" no-cancel='true'>
+      <form bindsubmit="editconfirm" >
+        <input hidden='true' name="kid" value='{{editkcbkid}}'></input>
+        <view class='cell-hang'>
+          <view class='cell-label'>课程名称：</view>
+          <view class='cell-picker'>
+            <input name='name' maxlength='15' placeholder='不超过15个字' value='{{editkcbname}}'></input>
+          </view>
+        </view>
+        <view class='cell-hang'>
+          <view class='cell-label'>课程地点：</view>
+          <view class='cell-picker'>
+            <input name='room' maxlength='8' placeholder='不超过8个字' value='{{editkcbroom}}'></input>
+          </view>
+        </view>
+        <view class='cell-hang'>
+          <view class='cell-label'>任课教师：</view>
+          <view class='cell-picker'>
+            <input name='teacher' maxlength='12' placeholder='不超过12个字' value='{{editkcbleader}}'></input>
+          </view>
+        </view>
+        
+        <view class='cell-hang'>
+          <view class='cell-label'>如何重置：</view>
+          <view class='cell-picker cell-exp'>
+            自定义课表功能对实时课表时无效，重置课程表数据，请在“设置->学号和密码”中点更新课表按钮。重置后所有已添加和修改的数据会清除。
+          </view>
+        </view>
+        <view style='display: flex;flex-direction:row;'>
+          <button type='primary' class='comfirm-submit' style='background-color:darkorange;' bindtap='delconfirm'>删除此节</button>
+          <button form-type='submit' type='primary' class='comfirm-submit' style='background-color:#1298CF;'>保存修改</button>
+        </view>
+      </form>
+    </modal>
+
+
 
   </view>
 </view>

@@ -244,8 +244,7 @@
 .m-tq-con-item-main-text-disc .m-tq-con-item-main-text-temp{
   flex: 1;
 }
-
-/* 修改课程-----------开始 */
+/* 添加课程-----------开始 */
 .cell-hang{
   display:flex;
   flex-direction:row;
@@ -263,8 +262,23 @@
 .cell-picker{
   flex: 5;
 }
-.comfirm-submit{
-  margin-top: 50rpx;
-  width: 50%;
+.cell-picker picker view{
+  color: #1298CF;
 }
+.comfirm-submit{
+  margin-top: 100rpx;
+  width: 40%;
+}
+.cell-exp{
+  font-size: 24rpx;
+}
+.wx-modal-button{
+    color:79rpx !important;
+    background: #1298CF !important;
+}
+/* 添加课程-----------结束 */
+
+
+/* 修改课程-----------开始 */
+
 /* 修改课程-----------结束 */

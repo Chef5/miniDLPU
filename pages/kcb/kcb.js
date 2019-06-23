@@ -10,20 +10,34 @@ Page({
     server:'210.30.62.37',
     indexxq: 0,
     arrayxq: ['2018-2019-2'],
-    indexzc: 0,
-    arrayzc: [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18],
+
+    indexzc: 0, 
+    indexzcAdd1: 0,
+    indexzcAdd2: 1,
+    arrayzc: [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20],
+    indexjcAdd1: 0,
+    indexjcAdd2: 2,
+    arrayjc: ["1,2","3,4","5,6","7,8","9,10"],
+    indexweekAdd: 0,
+
     isshowimg1: false,
     isshowimg2: false,
     tqimgurl1: "",
     tqimgurl2: "",
     tqtemp: "π_π", 
-    hiddenmodalput: true,
+    hiddenmodalput: true, //课程详细
+    hiddenaddkcb:true, //添加课程
+    hiddeneditkcb:true, //编辑课程
     maskFlag: true,
     name:"",
     leader:"",
     room:"",
     time1: "",
-    time2: "",
+    time2: "", 
+    editkcbkid: "",
+    editkcbname: "",
+    editkcbroom: "",
+    editkcbleader: "",
     arrayth: [
       { week: "周一", date: ""}, 
       { week: "周二", date: ""}, 
@@ -47,35 +61,64 @@ Page({
     });
     that.reFreshKCB();
   },
+  zcAddChange1: function (e) {
+    this.setData({ 
+      indexzcAdd1: e.detail.value,
+      indexzcAdd2: e.detail.value
+    });
+  },
+  zcAddChange2: function (e) {
+    var that = this;
+    if (e.detail.value >= that.data.indexzcAdd1){ //第二列必须大于等于第一列
+      that.setData({
+        indexzcAdd2: e.detail.value,
+      });
+    }
+  },
+  jcAddChange1: function (e) {
+    this.setData({
+      indexjcAdd1: e.detail.value,
+      indexjcAdd2: e.detail.value
+    });
+  },
+  jcAddChange2: function (e) {
+    var that = this;
+    if (e.detail.value >= that.data.indexjcAdd1) { //第二列必须大于等于第一列
+      that.setData({
+        indexjcAdd2: e.detail.value,
+      });
+    }
+  },
+
 
   //事件处理函数
   bindViewTap: function() {
   },
   onLoad: function () {
     var that = this;
-    var isshownotice99 = wx.getStorageSync('isshownotice99');
-    if(isshownotice99 != 1){
-      wx.showModal({
-        content: '课程表数据方案更新完成，强烈建议立即前往“学号和密码”更换模式M1：[课程表抓取]',
-        showCancel: true,
-        confirmText: "知道了",
-        cancelText: "下次通知",
-        success: function (res) {
-          if (res.confirm) {
-            console.log('用户点击确定');
-            wx.setStorageSync('isshownotice99', 1);
-            //停止刷新
-            wx.stopPullDownRefresh();
-            // 隐藏顶部刷新图标
-            wx.hideNavigationBarLoading();
-            wx.navigateTo({
-              url: '../setting-detail/set-userinfo',
-            })
-          }
-        }
-      });
-      wx.setStorageSync('isshownotice99', 0);
-    }
+    // var isshownotice99 = wx.getStorageSync('isshownotice99');
+    // if(isshownotice99 != 1){
+    //   wx.showModal({
+    //     content: '课程表数据方案更新完成，强烈建议立即前往“学号和密码”更换模式M1：[课程表抓取]',
+    //     showCancel: true,
+    //     confirmText: "知道了",
+    //     cancelText: "下次通知",
+    //     success: function (res) {
+    //       if (res.confirm) {
+    //         console.log('用户点击确定');
+    //         wx.setStorageSync('isshownotice99', 1);
+    //         //停止刷新
+    //         wx.stopPullDownRefresh();
+    //         // 隐藏顶部刷新图标
+    //         wx.hideNavigationBarLoading();
+    //         wx.navigateTo({
+    //           url: '../setting-detail/set-userinfo',
+    //         })
+    //       }
+    //     }
+    //   });
+    //   wx.setStorageSync('isshownotice99', 0);
+    // }
 
     wx.getStorage({key: 'userid',success: function(res) {
         that.setData({userid: res.data});},
@@ -340,7 +383,9 @@ Page({
             'rgba(72,61,139,0.6)', 'rgba(100,149,237,0.8)', 'rgba(0,139,139,0.6)',
             'rgba(216,191,216,0.9)', 'rgba(106,96,205,0.5)', 'rgba(240,128,128,0.6)',
             'rgba(210,180,140,0.7)', 'rgba(144,238,144,0.9)', 'rgba(255,165,0,0.4)',
-            'rgba(0,206,209,0.5)'
+            'rgba(0,206,209,0.5)', 
+            'rgb(204,154,168)', 'rgb(231,202,202)', 'rgb(126,171,117)','rgb(127,156,172)',
+            'rgb(0,107,86)', 'rgb(125,147,186)', 'rgb(64,75,115)'
           ];
           //对同一科目进行标号
           var index = 1;
@@ -360,7 +405,7 @@ Page({
             }
           }
           // { name: "", room: "", leader: "", time: "", color: "" }
-          // console.log("添加的颜色：");
+          console.log("添加的颜色：");
           console.log(res.data);
           var ontime = ["08:00~08:45", "08:55~09:40", "10:05~10:50", "11:00~11:45", "13:20~14:05", "14:10~14:55", "15:15~16:00", "16:05~16:50", "18:00~18:45","18:55~19:40"];
           var changeKCB = new Array();
@@ -370,10 +415,11 @@ Page({
             var time2 = ontime[hang*2+1];
             for (var i = 0; i < 7; i++) {
               changeKCB[hang][i] = new Object();
+              changeKCB[hang][i].kid = res.data[hang][i].kid;
               changeKCB[hang][i].name = that.isOver15(res.data[hang][i].name);
               changeKCB[hang][i].room = res.data[hang][i].room;
               changeKCB[hang][i].leader = res.data[hang][i].leader;
-              changeKCB[hang][i].color = tdcolors[res.data[hang][i].index - 1];
+              changeKCB[hang][i].color = tdcolors[(res.data[hang][i].index - 1)%tdcolors.length];
               changeKCB[hang][i].time1 = time1;
               changeKCB[hang][i].time2 = time2;
             }
@@ -441,29 +487,192 @@ Page({
   showdetail:function(e){
      console.log(e);
     var that = this;
-    var noshow = false;
     var gname = e.currentTarget.dataset.name;
     var groom = e.currentTarget.dataset.room;
     var gleader = e.currentTarget.dataset.leader;
     var gtime1 = e.currentTarget.dataset.time1;
     var gtime2 = e.currentTarget.dataset.time2;
-    if (gname == "" || groom == "" || gleader == "" || gtime1 == "" || gtime2 == "")noshow = true;
-    that.setData({
-      hiddenmodalput: noshow,
-      name:gname,
-      room:groom,
-      leader:gleader,
-      time1: gtime1,
-      time2: gtime2,
-    })
+    if (gname == ""){
+      
+    }else{
+      that.setData({
+        hiddenmodalput: false,
+        name:gname,
+        room:groom,
+        leader:gleader,
+        time1: gtime1,
+        time2: gtime2,
+      })
+    }
   },
   //是否隐藏课程详细
   confirm: function () {
     this.setData({
-      hiddenmodalput: true
+      hiddenmodalput: true,
+      hiddenaddkcb: true,
+      hiddeneditkcb: true
     })
   },
-
+  //显示自定义课程弹窗
+  showAddOrEditKCB:function(e){
+    var that = this;
+    let hang = e.currentTarget.dataset.hang;
+    let week = e.currentTarget.dataset.week;
+    let kid = e.currentTarget.dataset.kid;
+    let zc = that.data.indexzc;
+    if (e.currentTarget.dataset.name == ""){ //无课程数据，显示添加课程
+      that.setData({ hiddenaddkcb: false});
+      that.setData({
+        indexzcAdd1: zc,
+        indexzcAdd2: zc,
+        indexjcAdd1: hang,
+        indexjcAdd2: hang,
+        indexweekAdd: week
+      });
+    }else{                                   //有课程，显示编辑课程
+      let name = e.currentTarget.dataset.name;
+      let room = e.currentTarget.dataset.room;
+      let leader = e.currentTarget.dataset.leader;
+      that.setData({ 
+        editkcbkid: kid,
+        editkcbname: name,
+        editkcbroom: room,
+        editkcbleader: leader,
+        hiddeneditkcb: false 
+      });
+    }
+  },
+  //添加课程
+  addconfirm:function(e){
+    var that = this;
+    // console.log("添加课程啦");
+    // console.log(e);
+    let sno = wx.getStorageSync("userid");
+    let name = e.detail.value.name;
+    let room = e.detail.value.room;
+    let teacher = e.detail.value.teacher;
+    let week = that.data.indexweekAdd;
+    let zc1 = parseInt(that.data.indexzcAdd1)+1;
+    let zc2 = parseInt(that.data.indexzcAdd2)+1;
+    let jc1 = parseInt(that.data.indexjcAdd1);
+    let jc2 = parseInt(that.data.indexjcAdd2);
+    // console.log("week:" + week + ",zc1:" +zc1+ ",zc2:" +zc2+ ",jc1:" +jc1+ ",jc2:"+jc2);
+    //显示等待提示
+    wx.showToast({
+      title: '给我10秒钟...',
+      icon: 'loading',
+      duration: 10000
+    }); 
+    that.setData({hiddenaddkcb: true});//关闭窗口
+    wx.request({
+      url: 'https://test.1zdz.cn/api/addkcb.php',
+      method: 'POST',
+      data: {
+        userid: sno,
+        name: name,
+        room:room,
+        teacher:teacher,
+        week:week,
+        zc1:zc1,
+        zc2:zc2,
+        jc1:jc1,
+        jc2:jc2
+      },
+      header: { "Content-Type": "application/x-www-form-urlencoded" },
+      success: function (res) {
+        console.log("添加课程返回结果：");
+        console.log(res);
+        if(res.data.code == 100){
+          console.log("完美！")
+        }
+      },
+      fail: function (res) {},
+      complete: function (res) {
+        that.reFreshKCB();
+      }
+    });
+    
+  },
+  //修改课程
+  editconfirm: function(e){
+    var that = this;
+    // console.log("修改课程啦");
+    // console.log(e);
+    let sno = wx.getStorageSync("userid");
+    let kid = e.detail.value.kid;
+    let name = e.detail.value.name;
+    let room = e.detail.value.room;
+    let teacher = e.detail.value.teacher;
+    //显示等待提示
+    wx.showToast({
+      title: '修改中...',
+      icon: 'loading',
+      duration: 2000
+    });
+    that.setData({ hiddeneditkcb: true });//关闭窗口
+    wx.request({
+      url: 'https://test.1zdz.cn/api/editkcb.php',
+      method: 'POST',
+      data: {
+        userid: sno,
+        kid: kid,
+        name: name,
+        room: room,
+        teacher: teacher
+      },
+      header: { "Content-Type": "application/x-www-form-urlencoded" },
+      success: function (res) {
+        if (res.data.code == 100) {
+          wx.showToast({
+            title: '修改成功',
+            icon: 'success',
+            duration: 2000
+          });
+        }
+      },
+      fail: function (res) { },
+      complete: function (res) {
+        that.reFreshKCB();
+      }
+    });
+  },
+  //删除课程
+  delconfirm: function () {
+    var that = this;
+    // console.log("删除课程啦");
+    // console.log(e);
+    let sno = wx.getStorageSync("userid");
+    let kid = that.data.editkcbkid;
+    //显示等待提示
+    wx.showToast({
+      title: '删除中...',
+      icon: 'loading',
+      duration: 2000
+    });
+    that.setData({ hiddeneditkcb: true });//关闭窗口
+    wx.request({
+      url: 'https://test.1zdz.cn/api/delkcb.php',
+      method: 'POST',
+      data: {
+        userid: sno,
+        kid: kid
+      },
+      header: { "Content-Type": "application/x-www-form-urlencoded" },
+      success: function (res) {
+        if (res.data.code == 100) {
+          wx.showToast({
+            title: '删除成功',
+            icon: 'success',
+            duration: 2000
+          });
+        }
+      },
+      fail: function (res) { },
+      complete: function (res) {
+        that.reFreshKCB();
+      }
+    });
+  },
   /**
    * 用户点击右上角分享
    */

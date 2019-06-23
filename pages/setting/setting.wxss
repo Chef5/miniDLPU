@@ -32,3 +32,21 @@
 .weui-cell__bd text{
   font-size: 22rpx;color: gray;
 }
+
+/*swtich整体大小及背景色*/
+.wx-switch-input{
+    width:79rpx !important;
+    height:36rpx !important;
+    background: #1298CF !important;
+    border: #1298CF !important; 
+}
+/*白色样式（false的样式）*/
+.wx-switch-input::before{
+    width:80rpx !important;
+    height: 36rpx !important;
+}
+/*绿色样式（true的样式）*/
+.wx-switch-input::after{
+    width: 42rpx !important;
+    height: 36rpx !important;
+}

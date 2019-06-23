@@ -44,7 +44,7 @@ Page({
       wx.setStorageSync('kcbaction', 'dym');
       wx.showModal({
         title: '提示',
-        content: '实时课表：每次打开或者下拉刷新课程表，都是实时从教务处网站拉取数据。可能在用户使用高峰期，无法获取到数据，请悉知！',
+        content: '实时课表：实时从教务处网站拉取数据，可能在用户使用高峰期，无法获取到数据。另外此模式下自定义课程无效。请悉知！',
         confirmText: "我知道了",
         confirmColor: "#1298CF",
         showCancel: false
