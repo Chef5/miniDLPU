@@ -19,21 +19,22 @@
         <i-collapse name="{{name}}" accordion>
             <i-collapse-item title="为什么我查看不了课程表、成绩？" name="q1">
                 <view slot="content">
-                    <view>1、首先检查手机网络是否畅通；再确认你在“<text class='blue' bindtap='toUserinfo'>设置->学号和密码</text>”里保存了个人信息；</view>
-                    <view>2、检查学号或密码是否输入错误，可手机浏览器打开<text class='blue' bindtap='copyUrl'>http://210.30.62.37:8080/jsxsd</text>尝试登陆；</view>
-                    <view>3、进入“<text class='blue' bindtap='toServer'>设置->服务器切换</text>”，换一个教务处服务器试试；</view>
-                    <view>4、查看“综合信息”页的通知，了解小程序是否出现故障；</view>
-                    <view>5、观察课程表页面的天气是否正常显示，若无通知说明请<text class='blue' bindtap='toFeed'>告知开发者</text>；</view>
-                </view>
-            </i-collapse-item>
-            <i-collapse-item title="考试日程里为什么还显示已完成的考试课程？" name="q2">
-                <view slot="content">
-                   <view>考试日程的数据是和教务处网站显示的是一致的，至于为什么已考试的课还会显示，我想应该是教务处的老师打盹去了吧；</view>
+                    <view>1、首先检查手机网络是否畅通；再确认你在“<text class='blue' bindtap='toUserinfo'>设置->学号和密码</text>”里绑定了个人信息；</view>
+                    <view>2、在设置里将实时课表打开或关闭再试试；</view>
+                    <view>3、检查学号或密码是否输入错误，可手机浏览器打开<text class='blue' bindtap='copyUrl'>http://210.30.62.37:8080/jsxsd</text>尝试登陆；</view>
+                    <view>4、进入“<text class='blue' bindtap='toServer'>设置->服务器切换</text>”，换一个教务处服务器试试；</view>
+                    <view>5、查看“综合信息”页的通知，了解小程序是否出现故障；</view>
+                    <view>6、观察课程表页面的天气是否正常显示，若无通知说明请<text class='blue' bindtap='toFeed'>告知开发者</text>；</view>
                 </view>
             </i-collapse-item>
             <i-collapse-item title="这个小程序是属于学校教务处吗？" name="q4">
                 <view slot="content">
                    <view>不是的。这个小程序是由本校信院网络专业一个学长因个人方便开发的，不属于校任何部门。小程序和校教务处的关系就如抢票软件和12306的关系一样；</view>
+                </view>
+            </i-collapse-item>
+            <i-collapse-item title="考试日程里为什么还显示已完成的考试课程？" name="q2">
+                <view slot="content">
+                   <view>考试日程的数据是和教务处网站显示的是一致的，至于为什么已考试的课还会显示，我想应该是教务处的老师打盹去了吧；</view>
                 </view>
             </i-collapse-item>
             <i-collapse-item title="通知消息误点关闭了，没来得及看怎么办？" name="q5">

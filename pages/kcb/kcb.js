@@ -285,7 +285,7 @@ Page({
       action = kcbaction;
       //显示等待提示
       wx.showToast({
-        title: 'M1:玩命加载中...',
+        title: '玩命加载中...',
         icon: 'loading',
         duration: 1200
       });
@@ -293,7 +293,7 @@ Page({
       action = 'dym';
       //显示等待提示
       wx.showToast({
-        title: 'M2:玩命加载中',
+        title: '正在从教务处抓取',
         icon: 'loading',
         duration: 1200
       });

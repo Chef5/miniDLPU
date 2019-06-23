@@ -37,6 +37,30 @@ Page({
       }
     })
   },
+  modelSwitch: function (e) {
+    var that = this;
+    // console.log('携带值为', e.detail.value);
+    if (e.detail.value == true){
+      wx.setStorageSync('kcbaction', 'dym');
+      wx.showModal({
+        title: '提示',
+        content: '实时课表：每次打开或者下拉刷新课程表，都是实时从教务处网站拉取数据。可能在用户使用高峰期，无法获取到数据，请悉知！',
+        confirmText: "我知道了",
+        confirmColor: "#1298CF",
+        showCancel: false
+      });
+    }else{
+      wx.setStorageSync('kcbaction', 'static'); 
+      wx.showModal({
+        title: '提示',
+        content: '若有课程信息变动或者不准，请在学号和密码设置里重新更新课程表数据，请悉知！',
+        confirmText: "我知道了",
+        confirmColor: "#1298CF",
+        showCancel: false
+      });
+    }
+  }, 
+  
   /**
    * 生命周期函数--监听页面加载
    */

@@ -29,3 +29,6 @@
   color: red;
   font-size: 40rpx;
 }
+.weui-cell__bd text{
+  font-size: 22rpx;color: gray;
+}
