@@ -249,6 +249,7 @@
   display:flex;
   flex-direction:row;
   height: 75rpx;
+  font-size: 30rpx;
 }
 .cell-hang input{
   border: 1px solid gainsboro;
@@ -267,7 +268,8 @@
 }
 .comfirm-submit{
   margin-top: 100rpx;
-  width: 40%;
+  width: 260rpx;
+  font-size: 36rpx;
 }
 .cell-exp{
   font-size: 24rpx;
