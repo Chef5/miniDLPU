@@ -37,6 +37,32 @@ Page({
       hiddenmodalput: true
     })
   },
+  //跳转小程序：评教小助手
+  toPingJiaoProgram: function(){
+    var userid = wx.getStorageSync('userid');
+    var passwd = wx.getStorageSync('userpwd'); 
+    wx.showModal({
+      title: '提示',
+      content: '即将免登录使用子程序“评教小助手”，是否立即打开？',
+      showCancel: true,
+      confirmColor: '#1298CF',
+      success(res) {
+        if (res.confirm) {
+          wx.navigateToMiniProgram({
+            appId: 'wx3f924baa54174a84',
+            path: 'pages/index/index?user=' + userid + '&pass=' + passwd,
+            envVersion: 'develop',
+            success(res) {
+              // 打开成功
+            }
+          })
+        } else if (res.cancel) {
+
+        }
+      }
+    })
+    
+  },
   //显示敬请期待
   showWaitingTips: function () {
     var that = this;

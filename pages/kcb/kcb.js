@@ -96,29 +96,26 @@ Page({
   },
   onLoad: function () {
     var that = this;
-    // var isshownotice99 = wx.getStorageSync('isshownotice99');
-    // if(isshownotice99 != 1){
-    //   wx.showModal({
-    //     content: '课程表数据方案更新完成，强烈建议立即前往“学号和密码”更换模式M1：[课程表抓取]',
-    //     showCancel: true,
-    //     confirmText: "知道了",
-    //     cancelText: "下次通知",
-    //     success: function (res) {
-    //       if (res.confirm) {
-    //         console.log('用户点击确定');
-    //         wx.setStorageSync('isshownotice99', 1);
-    //         //停止刷新
-    //         wx.stopPullDownRefresh();
-    //         // 隐藏顶部刷新图标
-    //         wx.hideNavigationBarLoading();
-    //         wx.navigateTo({
-    //           url: '../setting-detail/set-userinfo',
-    //         })
-    //       }
-    //     }
-    //   });
-    //   wx.setStorageSync('isshownotice99', 0);
-    // }
+    var isshownotice123 = wx.getStorageSync('isshownotice123');
+    if (isshownotice123 != 1){
+      wx.showModal({
+        content: '更新说明：1.新增评教功能子程序：评教小助手；2.课程表采用滑动视图布局，可左右滑动查看；3.课程表支持长按自定义课表数据；',
+        showCancel: true,
+        confirmText: "知道了",
+        cancelText: "下次通知",
+        success: function (res) {
+          if (res.confirm) {
+            console.log('用户点击确定');
+            wx.setStorageSync('isshownotice123', 1);
+            //停止刷新
+            wx.stopPullDownRefresh();
+            // 隐藏顶部刷新图标
+            wx.hideNavigationBarLoading();
+          }
+        }
+      });
+      wx.setStorageSync('isshownotice123', 0);
+    }
 
     wx.getStorage({key: 'userid',success: function(res) {
         that.setData({userid: res.data});},
