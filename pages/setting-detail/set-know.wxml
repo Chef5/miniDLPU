@@ -32,6 +32,11 @@
                    <view>不是的。这个小程序是由本校信院网络专业一个学长因个人方便开发的，不属于校任何部门。小程序和校教务处的关系就如抢票软件和12306的关系一样；</view>
                 </view>
             </i-collapse-item>
+            <i-collapse-item title="自定义课表刷新后怎么没了？" name="q3">
+                <view slot="content">
+                   <view>实时课表不支持自定义，请关闭实时课表，并确定在“<text class='blue' bindtap='toUserinfo'>设置->学号和密码</text>”里抓取过课程表数据；</view>
+                </view>
+            </i-collapse-item>
             <i-collapse-item title="考试日程里为什么还显示已完成的考试课程？" name="q2">
                 <view slot="content">
                    <view>考试日程的数据是和教务处网站显示的是一致的，至于为什么已考试的课还会显示，我想应该是教务处的老师打盹去了吧；</view>
@@ -64,18 +69,14 @@
                    <view>如果大家有什么功能建议，可以在<text class='blue' bindtap='toFeed'>意见反馈</text>添加一下学长说一哈，只要学长技术过关，一般能满足大家的；</view>
                 </view>
             </i-collapse-item>
-            <i-collapse-item title="为什么有广告呢？" name="q10">
+            <i-collapse-item title="可以在这个小程序里打广告或者公益宣传吗？" name="q11">
                 <view slot="content">
-                   <view>因为小程序运行需要开销呀，如租用的阿里云服务器、域名、SSL安全证书等，每年都需要一大大大大笔钱钱，所以接入了微信提供的<text class='blue' bindtap='toAd'>广告</text>。有足够的曝光量和点击率，收益还是很可观的；</view>
-                </view>
-            </i-collapse-item>
-            <!-- <i-collapse-item title="我可以在这个小程序里打广告吗" name="q11">
-                <view slot="content">
-                   <view>可以的，可以在综合信息页面上半部分图片轮播宣传，点击图片可进入详细宣传页面；</view>
+                   <view>可以的，可以在综合信息页面上半部分图片轮播宣传，小程序目前用户数已达6.5千人，日活跃用户约2千人，是一个很好的宣传平台；</view>
                    <view>>收费：公益项目、活动免费帮宣传；其他的需要联系开发者协商；</view>
                    <view>>原则：只接受综合信息页图片宣传，不接受虚假、营销、反动非法宣传；</view>
+                   <view>>联系：<text class='blue' bindtap='toFeed'>点击查看微信或QQ</text>；</view>
                 </view>
-            </i-collapse-item> -->
+            </i-collapse-item>
         </i-collapse>
     </view>
 
@@ -83,4 +84,4 @@
   </view>
 </view>
 <view class='full-some'></view>
-<ad unit-id="adunit-fe7cd674a38b35ae"></ad>
+<ad unit-id="adunit-196d408cfe684161"></ad>
