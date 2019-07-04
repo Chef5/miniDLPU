@@ -12,7 +12,7 @@
               <view class="weui-label">学号</view>
           </view>
           <view class="weui-cell__bd">
-              <input class="weui-input" name='userid' maxlength='10' placeholder="在此输入学号" value='{{userid}}' bindinput='getuserid'/>
+              <input class="weui-input" type='number' name='userid' maxlength='10' placeholder="在此输入学号" value='{{userid}}' bindinput='getuserid'/>
           </view>
         </view>
         <view class="weui-cell weui-cell_input">
