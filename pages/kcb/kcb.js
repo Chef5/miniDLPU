@@ -52,6 +52,7 @@ Page({
     m_today_temp: 'π_π',
     m_nextday_disc: 'loading',
     m_nextday_temp: 'π_π',
+
     
   },
   zcChange: function (e) {
@@ -96,26 +97,27 @@ Page({
   },
   onLoad: function () {
     var that = this;
-    var isshownotice123 = wx.getStorageSync('isshownotice123');
-    if (isshownotice123 != 1){
-      wx.showModal({
-        content: '更新说明：1.新增评教功能子程序：评教小助手；2.课程表采用滑动视图布局，可左右滑动查看；3.课程表支持长按自定义课表数据；',
-        showCancel: true,
-        confirmText: "知道了",
-        cancelText: "下次通知",
-        success: function (res) {
-          if (res.confirm) {
-            console.log('用户点击确定');
-            wx.setStorageSync('isshownotice123', 1);
-            //停止刷新
-            wx.stopPullDownRefresh();
-            // 隐藏顶部刷新图标
-            wx.hideNavigationBarLoading();
-          }
-        }
-      });
-      wx.setStorageSync('isshownotice123', 0);
-    }
+    // var isshownotice123 = wx.getStorageSync('isshownotice123');
+    // if (isshownotice123 != 1){
+    //   wx.showModal({
+    //     content: '更新说明：1.新增评教功能子程序：评教小助手；2.课程表采用滑动视图布局，可左右滑动查看；3.课程表支持长按自定义课表数据；',
+    //     showCancel: true,
+    //     confirmText: "知道了",
+    //     confirmColor: "#1298CF",
+    //     cancelText: "下次通知",
+    //     success: function (res) {
+    //       if (res.confirm) {
+    //         console.log('用户点击确定');
+    //         wx.setStorageSync('isshownotice123', 1);
+    //         //停止刷新
+    //         wx.stopPullDownRefresh();
+    //         // 隐藏顶部刷新图标
+    //         wx.hideNavigationBarLoading();
+    //       }
+    //     }
+    //   });
+    //   wx.setStorageSync('isshownotice123', 0);
+    // }
 
     wx.getStorage({key: 'userid',success: function(res) {
         that.setData({userid: res.data});},
@@ -346,8 +348,12 @@ Page({
     var weeks = that.data.arrayzc[that.data.indexzc];
     console.log("WabbaKey:" + WannaKey);
     console.log("item:" + items + "weeks" + weeks);
+    // if(action == "dym") var reurl = wx.getStorageSync('myserver');
+    // else var reurl = 'https://test.1zdz.cn';
+    var reurl = wx.getStorageSync('myserver');
+    console.log("当前请求服务器："+reurl);
     wx.request({
-      url: 'https://test.1zdz.cn/api/kcb.php',
+      url: reurl+'/api/kcb.php',
       //url: 'http://leave.test/getkcb',
       method: 'POST',
       data: {
@@ -670,6 +676,8 @@ Page({
       }
     });
   },
+
+  
   /**
    * 用户点击右上角分享
    */

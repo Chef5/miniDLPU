@@ -6,10 +6,7 @@ Page({
    */
   data: {
     swiimgs: [
-      // '../../image/swi/swi01.jpg',
-      //'../../image/swi/swi02.jpg',
-      // '../../image/swi/swi03.jpg',
-      '../../image/swi/morebg.png'
+      
     ],
     hiddenmodalput: true,
 
@@ -61,7 +58,31 @@ Page({
         }
       }
     })
-    
+  },
+  //跳转小程序：校园采集平台
+  toCaiJiProgram: function(){
+    var userid = wx.getStorageSync('userid');
+    var passwd = wx.getStorageSync('userpwd');
+    wx.showModal({
+      title: '提示',
+      content: '即将免登录使用小程序“校园采集平台”，是否立即打开？',
+      showCancel: true,
+      confirmColor: '#1298CF',
+      success(res) {
+        if (res.confirm) {
+          wx.navigateToMiniProgram({
+            appId: 'wxf885179f908a33d6',
+            path: '/pages/index/index?s=1&u=' + userid + '&p=' + passwd,
+            envVersion: 'release',
+            success(res) {
+              // 打开成功
+            }
+          })
+        } else if (res.cancel) {
+
+        }
+      }
+    })
   },
   //显示敬请期待
   showWaitingTips: function () {
@@ -113,6 +134,26 @@ Page({
   onLoad: function (options) {
     var that = this;
     that.getnews();
+    that.getTopbarImg();
+    var isshowmore83 = wx.getStorageSync('isshowmore83');
+    if (isshowmore83 != 1) {
+      wx.showModal({
+        content: '新增功能：“校园采集平台”，一款面向学生班委的信息采集工具，一键登陆免注册，便捷采集无烦恼，自动整理导出excel，告别传统纸质问卷！',
+        showCancel: false,
+        confirmText: "知道了",
+        confirmColor: "#1298CF",
+        success: function (res) {
+          if (res.confirm) {
+            console.log('用户点击确定');
+            wx.setStorageSync('isshowmore83', 1);
+            //停止刷新
+            wx.stopPullDownRefresh();
+            // 隐藏顶部刷新图标
+            wx.hideNavigationBarLoading();
+          }
+        }
+      });
+    }
   },
 
   /**
@@ -174,6 +215,7 @@ Page({
       that.setData({ marquee_margin: "100" });//只显示一条不滚动右边间距加大，防止重复显示
     }
   },
+  //获取通知
   getnews: function(){
     var that = this;
     wx.request({
@@ -209,11 +251,19 @@ Page({
       }
     });
   },
-  //用户点击关闭通知
-  // closeNews: function(){
-  //   var that = this;
-  //   var getindex = that.data.getindex;
-  //   wx.setStorageSync("newsindex", getindex);
-  //   that.getnews();
-  // }
+  //获取推广轮播图片
+  getTopbarImg: function(){
+    var that = this;
+    wx.request({
+      url: 'https://test.1zdz.cn/api/gettopbar.php',
+      success: function (res) {
+        console.log(res);
+        let swis = that.data.swiimgs;
+        for(let i=0;i<res.data.url.length;i++){
+          swis.push(res.data.url[i]);
+        }
+        that.setData({swiimgs: swis});
+      }
+    });
+  }
 })

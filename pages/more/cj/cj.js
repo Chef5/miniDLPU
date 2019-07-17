@@ -168,9 +168,12 @@ Page({
     Pwd = encodeURIComponent(Pwd); //转义，防止有特殊字符如：&
     var WannaKey = app.encryptUserKey(Id, Pwd);
     console.log("item:" + items);
-    console.log("Server:" + Server);
+    //console.log("Server:" + Server);
+    var reurl = wx.getStorageSync('myserver');
+    //var reurl = "https://server-2.isdz.cn";
+    console.log("当前请求服务器：" + reurl);
     wx.request({
-      url: 'https://test.1zdz.cn/api/cj.php',
+      url: reurl+'/api/cj.php',
       method: 'POST',
       data: {
         XiangGanMa: WannaKey,

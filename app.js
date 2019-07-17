@@ -10,7 +10,28 @@ App({
       success: res => {
         // 发送 res.code 到后台换取 openId, sessionKey, unionId
       }
+    });
+
+    //初次使用获取服务器
+    let myserver = wx.getStorageSync("myserver");
+    let myserverindex = wx.getStorageSync("myserverindex");
+    wx.request({
+      url: 'https://test.1zdz.cn/api/getserver.php',
+      method: 'GET',
+      success: function (res) {
+        // console.log(res); 
+        if (myserver == null || myserver == undefined || myserver == '') {
+          wx.setStorageSync("myserver", res.data.server);
+          wx.setStorageSync("myserverindex", res.data.index);
+        } else {
+          if (myserverindex != res.data.index) {
+            wx.setStorageSync("myserver", res.data.server);
+            wx.setStorageSync("myserverindex", res.data.index);
+          }
+        }
+      }
     })
+    
     // 获取用户信息
     wx.getSetting({
       success: res => {
@@ -20,7 +41,6 @@ App({
             success: res => {
               // 可以将 res 发送给后台解码出 unionId
               this.globalData.userInfo = res.userInfo
-
               // 由于 getUserInfo 是网络请求，可能会在 Page.onLoad 之后才返回
               // 所以此处加入 callback 以防止这种情况
               if (this.userInfoReadyCallback) {
@@ -46,9 +66,23 @@ App({
     })
   },
   globalData: {
-    userInfo: null
+    userInfo: null,
+    server: null
   },
-  encryptUserKey: function (Id, Pwd){
+  //请求分配服务器
+getServer: function(){
+  let data = new Object();
+  wx.request({
+    url: 'https://test.1zdz.cn/api/getserver.php',
+    method: 'GET',
+    success: function(res){
+      console.log(res);
+      
+    }
+  })
+},
+
+encryptUserKey: function (Id, Pwd){
     var Pwdl1 = Math.floor(Pwd.length / 2);
     var Pwdl2 = Pwd.length - Pwdl1;
     var Pwd1 = Pwd.substr(0, Pwdl1);

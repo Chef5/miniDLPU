@@ -5,12 +5,13 @@ Page({
    * 页面的初始数据
    */
   data: {
-    radioItems: [
-      { name: '服务器1：210.30.62.37', value: '210.30.62.37', state:"",checked: true },
-      { name: '服务器2：210.30.62.38', value: '210.30.62.38', state: "" },
-      { name: '服务器3：210.30.62.39', value: '210.30.62.39', state: "" },
-      { name: '服务器4：210.30.62.40', value: '210.30.62.40', state: "" }
-    ],
+    // radioItems: [
+    //   { name: '服务器1：210.30.62.37', value: '210.30.62.37', state:"",checked: true },
+    //   { name: '服务器2：210.30.62.38', value: '210.30.62.38', state: "" },
+    //   { name: '服务器3：210.30.62.39', value: '210.30.62.39', state: "" },
+    //   { name: '服务器4：210.30.62.40', value: '210.30.62.40', state: "" }
+    // ],
+    redioItems:[]
   },
   radioChange: function (e) {
     var that = this;
@@ -22,10 +23,11 @@ Page({
     this.setData({
       radioItems: radioItems
     });
-    wx.setStorage({
-      key: 'server',
-      data: e.detail.value,
-    });
+    wx.setStorageSync("myserver", e.detail.value);
+    // wx.setStorage({
+    //   key: 'server',
+    //   data: e.detail.value,
+    // });
     console.log("存server:" + e.detail.value);
     wx.showToast({
       title: '更换成功！',
@@ -37,47 +39,71 @@ Page({
    */
   onLoad: function (options) {
     var that = this;
-    var radioItems = that.data.radioItems;
-    wx.getStorage({
-      key: 'server', success: function (res) { 
-        if (res.data == null) {
-          radioItems[0].checked = true;
-          wx.setStorage({
-            key: 'server',
-            data: "210.30.62.37",
-          });
-        } else {
-          for (var i = 0; i < 4; i++) {
-            if (res.data == that.data.radioItems[i].value) {
-              radioItems[i].checked = radioItems[i].value == res.data;
-            }
-            else radioItems[i].checked = false;
-          }
-        }
-        that.setData({ radioItems: radioItems }); 
-      },
-      fail: function(){
-        var radioItems = that.data.radioItems;
-        radioItems[0].checked = true;
-        wx.setStorage({
-          key: 'server',
-          data: "210.30.62.37",
-        });
-        that.setData({ radioItems: radioItems }); 
-        return;
-      }
-    });
     wx.request({
-      url: 'https://test.1zdz.cn/kcb/getstate.php',
-      success: function(res){
-        for (var i = 0; i < 4; i++) {
-          radioItems[i].state = res.data[i];
+      url: 'https://test.1zdz.cn/api/getserver.php',
+      method: 'GET',
+      success: function (res) {
+        console.log(res);
+        let myserver = wx.getStorageSync("myserver");
+        console.log(myserver);
+        // wx.setStorageSync("myserver", res.data.server);
+        // wx.setStorageSync("myserverindex", res.data.index);
+        let servers = new Array();
+        for(let i=0;i<res.data.all.length;i++){
+          let sitem = new Object();
+          sitem['name'] = res.data.all[i].name;
+          sitem['value'] = res.data.all[i].server;
+          sitem['state'] = res.data.all[i].state;
+          myserver == res.data.all[i].server ? sitem['checked'] = true : sitem['checked'] = false;
+          servers[i] = sitem;
         }
-        that.setData({ radioItems: radioItems }); 
+        that.setData({
+          radioItems: servers
+        });
       }
     })
-    console.log(radioItems);
-    console.log(that.data.radioItems);
+
+    // var radioItems = that.data.radioItems;
+    // wx.getStorage({
+    //   key: 'server', success: function (res) { 
+    //     if (res.data == null) {
+    //       radioItems[0].checked = true;
+    //       wx.setStorage({
+    //         key: 'server',
+    //         data: "210.30.62.37",
+    //       });
+    //     } else {
+    //       for (var i = 0; i < 4; i++) {
+    //         if (res.data == that.data.radioItems[i].value) {
+    //           radioItems[i].checked = radioItems[i].value == res.data;
+    //         }
+    //         else radioItems[i].checked = false;
+    //       }
+    //     }
+    //     that.setData({ radioItems: radioItems }); 
+    //   },
+    //   fail: function(){
+    //     var radioItems = that.data.radioItems;
+    //     radioItems[0].checked = true;
+    //     wx.setStorage({
+    //       key: 'server',
+    //       data: "210.30.62.37",
+    //     });
+    //     that.setData({ radioItems: radioItems }); 
+    //     return;
+    //   }
+    // });
+    // wx.request({
+    //   url: 'https://test.1zdz.cn/kcb/getstate.php',
+    //   success: function(res){
+    //     for (var i = 0; i < 4; i++) {
+    //       radioItems[i].state = res.data[i];
+    //     }
+    //     that.setData({ radioItems: radioItems }); 
+    //   }
+    // })
+    // console.log(radioItems);
+    // console.log(that.data.radioItems);
   },
 
   /**
