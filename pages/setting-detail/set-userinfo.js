@@ -41,8 +41,11 @@ Page({
         duration: 15000
       });
       that.saveUserinfo(that.data.userid, that.data.userpwd);
+      var reurl = wx.getStorageSync('myserver');
+      // var reurl = "https://test.1zdz.cn";
+      console.log(reurl);
       wx.request({
-        url: 'https://test.1zdz.cn/api/storekcb.php',
+        url: reurl+'/api/storekcb.php',
         method: 'POST',
         data: {
           userid: userid,
@@ -82,7 +85,7 @@ Page({
             wx.showModal({
               title: '抓取出错',
               showCancel: false,
-              content: '学号或者密码出错，请检查！',
+              content: '服务器崩溃或者学号密码出错，请检查或更换服务器！',
             })
           }
         },
