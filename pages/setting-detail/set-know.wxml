@@ -22,7 +22,7 @@
                     <view>1、首先检查手机网络是否畅通；再确认你在“<text class='blue' bindtap='toUserinfo'>设置->学号和密码</text>”里绑定了个人信息；</view>
                     <view>2、在设置里将实时课表打开或关闭再试试；</view>
                     <view>3、检查学号或密码是否输入错误，可手机浏览器打开<text class='blue' bindtap='copyUrl'>http://210.30.62.37:8080/jsxsd</text>尝试登陆；</view>
-                    <view>4、进入“<text class='blue' bindtap='toServer'>设置->服务器切换</text>”，换一个教务处服务器试试；</view>
+                    <view>4、进入“<text class='blue' bindtap='toServer'>设置->服务器切换</text>”，换一个台服务器试试；</view>
                     <view>5、查看“综合信息”页的通知，了解小程序是否出现故障；</view>
                     <view>6、观察课程表页面的天气是否正常显示，若无通知说明请<text class='blue' bindtap='toFeed'>告知开发者</text>；</view>
                 </view>
@@ -71,10 +71,15 @@
             </i-collapse-item>
             <i-collapse-item title="可以在这个小程序里打广告或者公益宣传吗？" name="q11">
                 <view slot="content">
-                   <view>可以的，可以在综合信息页面上半部分图片轮播宣传，小程序目前用户数已达6.5千人，日活跃用户约2千人，是一个很好的宣传平台；</view>
+                   <view>可以的，可以在综合信息页面上半部分图片轮播宣传，小程序目前用户数已达7.3千人，日活跃用户约3千人，日访问量3w+，是一个很好的宣传平台；</view>
                    <view>>收费：公益项目、活动免费帮宣传；其他的需要联系开发者协商；</view>
                    <view>>原则：只接受综合信息页图片宣传，不接受虚假、营销、反动非法宣传；</view>
                    <view>>联系：<text class='blue' bindtap='toFeed'>点击查看微信或QQ</text>；</view>
+                </view>
+            </i-collapse-item>
+            <i-collapse-item title="在线客服是真人吗？" name="q12">
+                <view slot="content">
+                   <view>目前在线客服是两位小姐姐呀，她们是无偿自愿为大家解答服务的，是工大最靓的仙女！目前人手不是很充足，若没能及时回复请耐心等待。</view>
                 </view>
             </i-collapse-item>
         </i-collapse>

@@ -5,7 +5,8 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+    nowserver: "",
+    isSwitch: false
   },
   setwx: function () {
     wx.setClipboardData({
@@ -60,12 +61,33 @@ Page({
       });
     }
   }, 
+  switchServer: function(){
+    let that = this;
+    wx.request({
+      url: 'https://test.1zdz.cn/api/getserver.php',
+      method: 'GET',
+      success: function (res) {
+        console.log(res);
+        wx.setStorageSync("myserver", res.data.server);
+        wx.setStorageSync("myserverindex", res.data.index);
+        that.setData({
+          nowserver: res.data.server.substring(8, 16)
+        });
+      }
+    })
+  },
   
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    let that = this;
+    let kcbaction = wx.getStorageSync("kcbaction");
+    let myserver = wx.getStorageSync("myserver");
+    that.setData({
+      nowserver :　myserver.substring(8,16),
+      isSwitch: kcbaction=="dym"? true : false,
+    });
   },
 
   /**

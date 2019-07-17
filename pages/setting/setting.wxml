@@ -15,21 +15,25 @@
       <view class="weui-cell weui-cell_access" >
               <view class="weui-cell__bd">实时课表<text>(不稳定)</text></view>
               <view class="weui-cell__ft ">
-                <switch bindchange="modelSwitch"/>
+                <switch bindchange="modelSwitch" checked='{{isSwitch}}'/>
               </view>
       </view>
       <navigator url="../setting-detail/set-server" class="weui-cell weui-cell_access" >
               <view class="weui-cell__bd">服务器切换</view>
               <view class="weui-cell__ft weui-cell__ft_in-access"></view>
       </navigator>
+      <!-- <view class="weui-cell weui-cell_access" >
+              <view class="weui-cell__bd">服务器：<text class='text-server'>{{nowserver}}</text></view>
+              <view class="weui-cell__ft"><view class='btn-switch' bindtap='switchServer'>随机更换 </view></view>
+      </view> -->
       <navigator url="../setting-detail/set-know" class="weui-cell weui-cell_access" >
               <view class="weui-cell__bd">常见问题</view>
               <view class="weui-cell__ft weui-cell__ft_in-access"></view>
       </navigator>
-      <navigator url="../setting-detail/set-feed" class="weui-cell weui-cell_access" >
+      <!-- <navigator url="../setting-detail/set-feed" class="weui-cell weui-cell_access" >
               <view class="weui-cell__bd">意见反馈</view>
               <view class="weui-cell__ft weui-cell__ft_in-access"></view>
-      </navigator>
+      </navigator> -->
       <navigator url="../setting-detail/thanks" class="weui-cell weui-cell_access" >
               <view class="weui-cell__bd">特别感谢</view>
               <view class="weui-cell__ft weui-cell__ft_in-access"></view>
@@ -39,6 +43,7 @@
               <view class="weui-cell__ft weui-cell__ft_in-access"></view>
       </navigator> -->
     </view>
+    <button open-type="contact" class='btn-contact'>联系客服</button>
     <view class='showmsg'>
       <!-- <text class='jinji'>紧急通知！！请互相转告！！\n</text> -->
       <text>157-6020-8020\n工大MOS团队提供技术支持\n</text>

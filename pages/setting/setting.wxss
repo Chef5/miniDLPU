@@ -50,3 +50,26 @@
     width: 42rpx !important;
     height: 36rpx !important;
 }
+
+.text-server{
+  font-size: 28rpx !important;
+  color: rgb(233, 53, 53) !important;
+  font-weight: 700 !important;
+}
+.btn-switch{
+  font-size: 32rpx;
+  line-height: 48rpx;
+  font-weight: 600;
+  color: #1298CF;
+  padding-left: 5px;
+  padding-right: 5px;
+  padding-top: 0px;
+  padding-bottom: 0px;
+}
+.btn-contact{
+  font-size: 38rpx;
+  margin-top: 50rpx;
+  color: white;
+  background-color: #1298CF;
+  width: 60%;
+}
