@@ -6,6 +6,9 @@
     </i-notice-bar>
       <view>
         <swiper autoplay="true" interval="5000" duration="1000">
+          <swiper-item>
+            <image src="../../image/swi/morebg.png" class="pic" />
+          </swiper-item>
           <block wx:for="{{swiimgs}}" wx:for-item="swiitem" wx:key="swiitem">
             <swiper-item>
               <image src="{{swiitem}}" class="pic" />
