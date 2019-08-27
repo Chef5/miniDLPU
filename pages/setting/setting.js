@@ -1,4 +1,6 @@
 // pages/setting/setting.js
+const app = getApp();
+let rewardedVideoAd = null;
 Page({
 
   /**
@@ -86,8 +88,27 @@ Page({
     let myserver = wx.getStorageSync("myserver");
     that.setData({
       nowserver :　myserver.substring(8,16),
-      isSwitch: kcbaction=="dym"? true : false,
+      isSwitch: kcbaction=="dym"? true : false
     });
+    //视频广告
+    if (wx.createRewardedVideoAd) {
+      rewardedVideoAd = wx.createRewardedVideoAd({ adUnitId: 'adunit-cfdf2f4bd499a89d' })
+      rewardedVideoAd.onLoad(() => {
+        console.log('激励视频 广告加载成功')
+      })
+      rewardedVideoAd.onError((err) => {
+        console.log('onError event emit', err)
+      })
+      rewardedVideoAd.onClose((res) => {
+        // 用户点击了【关闭广告】按钮
+        if (res && res.isEnded) {
+          wx.setStorageSync("theEverydayCount", parseInt(wx.getStorageSync("theEverydayCount")) + 20);
+          that.handleCountRefresh();
+        } else {
+          // 播放中途退出，不下发游戏奖励
+        }
+      })
+    }
   },
 
   /**
@@ -101,7 +122,10 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    this.setData({
+      theEverydayCount: wx.getStorageSync("theEverydayCount"),
+      theEverydayUsed: wx.getStorageSync("theEverydayUsed")
+    });
   },
 
   /**
@@ -110,28 +134,31 @@ Page({
   onHide: function () {
 
   },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
+  handleCountRefresh: function () {
+    let that = this;
+    app.refreshCount();
+    setTimeout(()=>{
+      that.setData({
+        theEverydayCount: wx.getStorageSync("theEverydayCount"),
+        theEverydayUsed: wx.getStorageSync("theEverydayUsed")
+      });
+    },600)
   },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
+  handleWatchAd: function() {
+    console.log('打开激励视频');
+    // 在合适的位置打开广告
+    if (rewardedVideoAd) {
+      rewardedVideoAd.show()
+        .then(() => console.log('激励视频 广告显示'))
+        .catch(() => {
+          rewardedVideoAd.load()
+            .then(() => rewardedVideoAd.show())
+            .catch(err => {
+              console.log('激励视频 广告显示失败')
+            })
+        })
+    }
   },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
   /**
    * 用户点击右上角分享
    */

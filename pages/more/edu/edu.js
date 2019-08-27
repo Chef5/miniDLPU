@@ -88,6 +88,9 @@ Page({
   //培养方案刷新
   refreshEDU: function () {
     var that = this;
+    if (!app.delCount()) {
+      return ;
+    }
     // 显示顶部刷新图标
     wx.showNavigationBarLoading();
     //显示等待提示

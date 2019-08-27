@@ -95,6 +95,9 @@ Page({
   //考试日程刷新
   refreshKSRC: function () {
     var that = this;
+    if (!app.delCount()) {
+      return;
+    }
     // 显示顶部刷新图标
     wx.showNavigationBarLoading();
     //显示等待提示

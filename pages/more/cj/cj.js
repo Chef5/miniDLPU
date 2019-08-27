@@ -42,6 +42,27 @@ Page({
   onLoad: function (options) {
     var that = this;
     that.refreshCJ();
+
+    //视频广告
+    if (wx.createRewardedVideoAd) {
+      rewardedVideoAd = wx.createRewardedVideoAd({ adUnitId: 'adunit-cfdf2f4bd499a89d' })
+      rewardedVideoAd.onLoad(() => {
+        console.log('激励视频 广告加载成功')
+      })
+      rewardedVideoAd.onError((err) => {
+        console.log('onError event emit', err)
+      })
+      rewardedVideoAd.onClose((res) => {
+        // 用户点击了【关闭广告】按钮
+        if (res && res.isEnded) {
+          wx.setStorageSync("theEverydayCount", parseInt(wx.getStorageSync("theEverydayCount")) + 20);
+          that.refreshCJ();
+        } else {
+          // 播放中途退出，不下发游戏奖励
+        }
+      })
+    }
+
   },
 
   /**
@@ -112,6 +133,32 @@ Page({
   //成绩刷新
   refreshCJ:function(){
     var that = this;
+    if (!app.delCount()) {
+      wx.showModal({
+        content: '您当前查询次数剩余量为0，请等待1小时后再试！服务器资源有限，请理解。您可在设置中查询今日总额度以及剩余额度，还可以赚取额外次数！完整观看广告，可立即+20次！',
+        showCancel: true,
+        title: "查询次数已耗尽",
+        confirmText: "观看广告",
+        success: function (res) {
+          if (res.confirm) {
+            console.log('打开激励视频');
+            // 在合适的位置打开广告
+            if (rewardedVideoAd) {
+              rewardedVideoAd.show()
+                .then(() => console.log('激励视频 广告显示'))
+                .catch(() => {
+                  rewardedVideoAd.load()
+                    .then(() => rewardedVideoAd.show())
+                    .catch(err => {
+                      console.log('激励视频 广告显示失败')
+                    })
+                })
+            }
+          }
+        }
+      });
+      return;
+    }
     // 显示顶部刷新图标
     wx.showNavigationBarLoading();
     //显示等待提示

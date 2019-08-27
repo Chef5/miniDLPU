@@ -48,7 +48,7 @@ Page({
           wx.navigateToMiniProgram({
             appId: 'wx3f924baa54174a84',
             path: 'pages/index/index?user=' + userid + '&pass=' + passwd,
-            envVersion: 'develop',
+            envVersion: 'release',
             success(res) {
               // 打开成功
             }
@@ -135,25 +135,25 @@ Page({
     var that = this;
     that.getnews();
     that.getTopbarImg();
-    var isshowmore83 = wx.getStorageSync('isshowmore83');
-    if (isshowmore83 != 1) {
-      wx.showModal({
-        content: '新增功能：“校园采集平台”，一款面向学生班委的信息采集工具，一键登陆免注册，便捷采集无烦恼，自动整理导出excel，告别传统纸质问卷！',
-        showCancel: false,
-        confirmText: "知道了",
-        confirmColor: "#1298CF",
-        success: function (res) {
-          if (res.confirm) {
-            console.log('用户点击确定');
-            wx.setStorageSync('isshowmore83', 1);
-            //停止刷新
-            wx.stopPullDownRefresh();
-            // 隐藏顶部刷新图标
-            wx.hideNavigationBarLoading();
-          }
-        }
-      });
-    }
+    // var isshowmore183 = wx.getStorageSync('isshowmore183');
+    // if (isshowmore183 != 1) {
+    //   wx.showModal({
+    //     content: '新增功能：“校园采集平台”，一款面向学生班委的信息采集工具，一键登陆免注册，便捷采集无烦恼，自动整理导出excel，告别传统纸质问卷！',
+    //     showCancel: false,
+    //     confirmText: "知道了",
+    //     confirmColor: "#1298CF",
+    //     success: function (res) {
+    //       if (res.confirm) {
+    //         console.log('用户点击确定');
+    //         wx.setStorageSync('isshowmore183', 1);
+    //         //停止刷新
+    //         wx.stopPullDownRefresh();
+    //         // 隐藏顶部刷新图标
+    //         wx.hideNavigationBarLoading();
+    //       }
+    //     }
+    //   });
+    // }
   },
 
   /**
@@ -221,7 +221,7 @@ Page({
     wx.request({
       url: 'https://test.1zdz.cn/api/getnews.php',
       success: function (res) {
-        //console.log(res);
+        // console.log(res);
         var newsindex = wx.getStorageSync("newsindex");
         if (newsindex != undefined && newsindex != "" && newsindex != null){
           if(newsindex < res.data.index){
@@ -230,14 +230,6 @@ Page({
               getindex: res.data.index,
               shownews: true
             });
-            // var length = that.data.text.length * that.data.size;//文字长度
-            // var windowWidth = wx.getSystemInfoSync().windowWidth;// 屏幕宽度
-            // that.setData({
-            //   length: length,
-            //   windowWidth: windowWidth
-            // });
-            //that.scrolltxt();// 第一个字消失后立即从右边出现
-
           }else{
             that.setData({
               shownews: false

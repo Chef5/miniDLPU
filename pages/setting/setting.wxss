@@ -1,21 +1,60 @@
 /* pages/setting/setting.wxss */
 .page__hd{
   text-align: center;
-}
-.logo-dis{
-  margin-top: 50rpx;
   display: flex;
-  flex-direction: column;
-  text-align: center;
-  font-size: 28rpx;
+  flex-direction: row;
+  background: rgb(87, 88, 88);
+  height: 320rpx;
+  padding-bottom: 30rpx;
 }
-.logo-dis image{
+.user-info{
+  flex: 4;
+  text-align: center;
+}
+.user-info-image{
+  margin: 60rpx auto;
   width:150rpx;
   height:150rpx;
   border-radius: 50%;
+  overflow: hidden;
+  background: rgb(231, 227, 227);
+  border: 1px solid #1298cf;
+}
+.user-info-name{
+  color: white;
+  font-size: 28rpx;
+}
+.user-info-sex{
+  display: none;
+}
+.user-data{
+  flex: 6;
+  position: relative;
+  font-size: 32rpx;
+  color: white;
+  text-align: left;
+  padding-top: 90rpx;
+}
+.user-data .user-data-refresh{
+  font-size: 30rpx;
+  line-height: 30rpx;
+  color: white;
+  background: #1298cf;
+  display: inline-block;
+  border-radius: 10%;
+  padding: 7rpx 10rpx;
+}
+.user-data-tips{
+  position:absolute;
+  bottom: 10rpx;
+  font-size: 20rpx;
+}
+.tips-ad{
+  color: #1298CF;
+  display: inline-block;
 }
 .set-items{
-  margin-top: 50rpx;
+  /* margin-top: 50rpx; */
 }
 .showmsg{
   position: absolute;

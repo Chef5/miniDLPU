@@ -98,6 +98,13 @@ swiper{
   height: 50rpx;
   margin-top: -5rpx;
 }
+.tips-box{
+  position: relative;
+  width: 100%;
+  font-size: 28rpx;
+  color: gray;
+  text-align: center;
+}
 .share-box{
   position: absolute;
   bottom: 10rpx;
