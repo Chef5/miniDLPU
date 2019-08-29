@@ -2,24 +2,24 @@
 <view class="page">
   <view class='page__hd'>
     <view class='xiaoli-title'>
-      <view class='xiaoli-title-txt'>大连工业大学2018～2019学年校历</view>
+      <view class='xiaoli-title-txt'>大连工业大学2018～2020学年校历</view>
       <view class='solid-line'></view>
     </view>
   </view>
   <view class='page__bd'>
     <view class='xiaoli-body'>
-      <!-- <view class='xiaoli-item'>
-        <view class='xiaoli-item-title'>第一学期（本学期）</view>
-        <view class='xiaoli-item-desc'>注：其中橙色字、浅蓝色背景的日期为节假日或周末！</view>
-        <view class='xiaoli-item-img'>
-          <image src='../../../image/xiaoli/2018-2019-1.png'></image>
-        </view>
-      </view> -->
       <view class='xiaoli-item'>
-        <view class='xiaoli-item-title'>第二学期（本学期）</view>
+        <view class='xiaoli-item-title'>第一学期（本学期）</view>
+        <view class='xiaoli-item-desc'>注：其中橙色字、深色背景的日期为节假日或周末！</view>
+        <view class='xiaoli-item-img'>
+          <image src='https://server-1.isdz.cn/1.png'></image>
+        </view>
+      </view>
+      <view class='xiaoli-item'>
+        <view class='xiaoli-item-title'>第二学期（下学期）</view>
         <view class='xiaoli-item-desc'>注：其中橙色字、浅蓝色背景的日期为节假日或周末！</view>
         <view class='xiaoli-item-img'>
-          <image src='../../../image/xiaoli/2018-2019-2.png'></image>
+          <image src='https://server-1.isdz.cn/2.png'></image>
         </view>
       </view>
     </view>
