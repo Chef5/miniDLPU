@@ -14,8 +14,8 @@
       <view>查询次数总额：{{theEverydayCount}}</view>
       <view class='user-data-tips'>
         <view>额外获取：</view>
-        <view>1) 每隔1小时，额度自动+10；</view>
-        <view>2) 完整 <text class='tips-ad' bindtap='handleWatchAd'>观看视频广告</text> +20(每日限1次)；</view>
+        <view>1) 每隔{{incFre}}秒，额度自动+{{incTime}}；</view>
+        <view>2) 完整 <text class='tips-ad' bindtap='handleWatchAd'>观看视频广告</text> +{{incAd}}(每日限1次)；</view>
       </view>
     </view>
   </view>

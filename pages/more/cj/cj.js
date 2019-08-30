@@ -1,6 +1,7 @@
 // pages/cj/cj.js
 //获取应用实例
 const app = getApp();
+let rewardedVideoAd = null;
 Page({
 
   /**
@@ -55,7 +56,7 @@ Page({
       rewardedVideoAd.onClose((res) => {
         // 用户点击了【关闭广告】按钮
         if (res && res.isEnded) {
-          wx.setStorageSync("theEverydayCount", parseInt(wx.getStorageSync("theEverydayCount")) + 20);
+          wx.setStorageSync("theEverydayCount", parseInt(wx.getStorageSync("theEverydayCount")) + app.globalData.countIncreseByAD);
           that.refreshCJ();
         } else {
           // 播放中途退出，不下发游戏奖励
@@ -135,7 +136,7 @@ Page({
     var that = this;
     if (!app.delCount()) {
       wx.showModal({
-        content: '您当前查询次数剩余量为0，请等待1小时后再试！服务器资源有限，请理解。您可在设置中查询今日总额度以及剩余额度，还可以赚取额外次数！完整观看广告，可立即+20次！',
+        content: '您当前查询次数剩余量为0，请等待' + app.globalData.countIncreseFre + '秒 后再试！服务器资源有限，请理解。您可在设置中查询今日总额度以及剩余额度，还可以赚取额外次数！完整观看广告，可立即+' + app.globalData.countIncreseByAD + '次！',
         showCancel: true,
         title: "查询次数已耗尽",
         confirmText: "观看广告",

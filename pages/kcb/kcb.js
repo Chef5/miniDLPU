@@ -98,28 +98,28 @@ Page({
   },
   onLoad: function () {
     var that = this;
-    var isshownotice1361 = wx.getStorageSync('isshownotice1361');
-    if (isshownotice1361 != 1){
-      wx.showModal({
-        content: '（1）现在已将本学期课程表数据清空，请在“设置->学号和密码”里重新抓取课表，或打开实时课表，即可查询下学期课程表数据；（2）部分同学课程表数据在服务器维护过程中丢失，请重新抓取；（3）部分功能限制查询次数（设置中可查看）：服务器资源有限，为了让更多人体验到服务，每人每日初始30次，请合理分配查询次数。若觉得次数不够，可联系反馈，我们会根据整体情况进行调整，请理解！',
-        showCancel: true,
-        title: "更新通知",
-        confirmText: "知道了",
-        confirmColor: "#1298CF",
-        cancelText: "下次通知",
-        success: function (res) {
-          if (res.confirm) {
-            console.log('用户点击确定');
-            wx.setStorageSync('isshownotice1361', 1);
-            //停止刷新
-            wx.stopPullDownRefresh();
-            // 隐藏顶部刷新图标
-            wx.hideNavigationBarLoading();
-          }
-        }
-      });
-      wx.setStorageSync('isshownotice1361', 0);
-    }
+    // var isshownotice1361 = wx.getStorageSync('isshownotice1361');
+    // if (isshownotice1361 != 1){
+    //   wx.showModal({
+    //     content: '（1）现在已将本学期课程表数据清空，请在“设置->学号和密码”里重新抓取课表，或打开实时课表，即可查询下学期课程表数据；（2）部分同学课程表数据在服务器维护过程中丢失，请重新抓取；（3）部分功能限制查询次数（设置中可查看）：服务器资源有限，为了让更多人体验到服务，每人每日初始30次，请合理分配查询次数。若觉得次数不够，可联系反馈，我们会根据整体情况进行调整，请理解！',
+    //     showCancel: true,
+    //     title: "更新通知",
+    //     confirmText: "知道了",
+    //     confirmColor: "#1298CF",
+    //     cancelText: "下次通知",
+    //     success: function (res) {
+    //       if (res.confirm) {
+    //         console.log('用户点击确定');
+    //         wx.setStorageSync('isshownotice1361', 1);
+    //         //停止刷新
+    //         wx.stopPullDownRefresh();
+    //         // 隐藏顶部刷新图标
+    //         wx.hideNavigationBarLoading();
+    //       }
+    //     }
+    //   });
+    //   wx.setStorageSync('isshownotice1361', 0);
+    // }
 
     wx.getStorage({key: 'userid',success: function(res) {
         that.setData({userid: res.data});},
@@ -246,7 +246,7 @@ Page({
       rewardedVideoAd.onClose((res) => {
         // 用户点击了【关闭广告】按钮
         if (res && res.isEnded) {
-          wx.setStorageSync("theEverydayCount", parseInt(wx.getStorageSync("theEverydayCount")) + 20);
+          wx.setStorageSync("theEverydayCount", parseInt(wx.getStorageSync("theEverydayCount")) + app.globalData.countIncreseByAD);
           that.reFreshKCB();
         } else {
           // 播放中途退出，不下发游戏奖励
@@ -301,11 +301,12 @@ Page({
   //课程表刷新
   reFreshKCB:function(){
     var that = this;
+    // wx.setStorageSync("theEverydayCount", 0);
     //次数消费判断
     if ('dym' == wx.getStorageSync('kcbaction')) {
       if (!app.delCount()){
         wx.showModal({
-          content: '您当前查询次数剩余量为0，请等待1小时后再试！服务器资源有限，请理解。您可在设置中查询今日总额度以及剩余额度，还可以赚取额外次数！完整观看广告，可立即+20次！',
+          content: '您当前查询次数剩余量为0，请等待' + app.globalData.countIncreseFre+'秒 后再试！服务器资源有限，请理解。您可在设置中查询今日总额度以及剩余额度，还可以赚取额外次数！完整观看广告，可立即+' + app.globalData.countIncreseByAD +'次！',
           showCancel: true,
           title: "查询次数已耗尽",
           confirmText: "观看广告",

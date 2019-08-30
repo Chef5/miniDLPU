@@ -1,17 +1,6 @@
 //app.js
 App({
   onLaunch: function () {
-    // 展示本地存储能力
-    // var logs = wx.getStorageSync('logs') || []
-    // logs.unshift(Date.now())
-    // wx.setStorageSync('logs', logs)
-    // // 登录
-    // wx.login({
-    //   success: res => {
-    //     // 发送 res.code 到后台换取 openId, sessionKey, unionId
-    //   }
-    // });
-
     //自动分配获取服务器
     let myserver = wx.getStorageSync("myserver");
     let myserverindex = wx.getStorageSync("myserverindex");
@@ -34,27 +23,6 @@ App({
 
     //每日初始化使用次数
     this.refreshCount();
-    
-    // 获取用户信息
-    // wx.getSetting({
-    //   success: res => {
-    //     if (res.authSetting['scope.userInfo']) {
-    //       // 已经授权，可以直接调用 getUserInfo 获取头像昵称，不会弹框
-    //       wx.getUserInfo({
-    //         success: res => {
-    //           // 可以将 res 发送给后台解码出 unionId
-    //           this.globalData.userInfo = res.userInfo
-    //           console.log("userinfo:");
-    //           // 由于 getUserInfo 是网络请求，可能会在 Page.onLoad 之后才返回
-    //           // 所以此处加入 callback 以防止这种情况
-    //           if (this.userInfoReadyCallback) {
-    //             this.userInfoReadyCallback(res)
-    //           }
-    //         }
-    //       })
-    //     }
-    //   }
-    // })
 
     //强制更新
     const updateManager = wx.getUpdateManager();
@@ -71,11 +39,16 @@ App({
   },
   globalData: {
     userInfo: null,
-    server: null
+    server: null,
+    countInit: 30,   //每日初始次数
+    countIncreseFre: 3600,    //每隔3600s 调整
+    countIncreseByTime: 10,   //根据时间 +10
+    countIncreseByAD: 20,     //看广告 +20
   },
 
   //刷新次数
   refreshCount: function () {
+    let that = this;
     let date = new Date();
     let endtime = new Date(date.getFullYear(), date.getMonth(), date.getDate(), 23, 59, 59, 999);
     wx.getStorage({
@@ -87,10 +60,10 @@ App({
           res.data.getMonth() == endtime.getMonth() &&
           res.data.getDate() == endtime.getDate()
         ) {
-          console.log("现在时间：" + date.getFullYear() + "-" + date.getMonth() + "-" + date.getDate() + " " + date.getHours() + ":" + date.getMinutes() + ":" + date.getSeconds());
-          console.log("存储时间：" + res.data.getFullYear() + "-" + res.data.getMonth() + "-" + res.data.getDate() + " " + res.data.getHours() + ":" + res.data.getMinutes() + ":" + res.data.getSeconds());
-          let c = Math.floor((date.getTime() - res.data.getTime()) / 1000 / 3600);
-          console.log("c " + c);
+          // console.log("现在时间：" + date.getFullYear() + "-" + date.getMonth() + "-" + date.getDate() + " " + date.getHours() + ":" + date.getMinutes() + ":" + date.getSeconds());
+          // console.log("存储时间：" + res.data.getFullYear() + "-" + res.data.getMonth() + "-" + res.data.getDate() + " " + res.data.getHours() + ":" + res.data.getMinutes() + ":" + res.data.getSeconds());
+          let c = Math.floor((date.getTime() - res.data.getTime()) / 1000 / that.globalData.countIncreseFre);
+          // console.log("c " + c);
           wx.getStorage({
             key: 'theEverydayCount',
             success: function (res) {
@@ -98,35 +71,27 @@ App({
               if (/^\d+$/.test(res.data)) {
                 if (c > 0) {
                   console.log("次数更新，c="+c);
-                  wx.setStorageSync("theEverydayCount", res.data + c*10);
+                  wx.setStorageSync("theEverydayCount", res.data + c*that.globalData.countIncreseByTime);
                   wx.setStorageSync("theEverydayUpdateTime", date);
                 }
               } else {
                 console.log("次数异常，已重置");
-                wx.setStorageSync("theEverydayCount", 30);
-                wx.setStorageSync("theEverydayUsed", 0);
-                wx.setStorageSync("theEverydayUpdateTime", date);
+                that.resetCount();
               }
             },
             fail: function (res) {
               console.log("参数出错，已重置");
-              wx.setStorageSync("theEverydayCount", 30);
-              wx.setStorageSync("theEverydayUsed", 0);
-              wx.setStorageSync("theEverydayUpdateTime", date);
+              that.resetCount();
             }
           });
         } else {
           console.log("次数过期，已重置");
-          wx.setStorageSync("theEverydayCount", 30);
-          wx.setStorageSync("theEverydayUsed", 0);
-          wx.setStorageSync("theEverydayUpdateTime", date);
+          that.resetCount();
         }
       },
       fail: function (res) {
         console.log("第一次加载使用次数");
-        wx.setStorageSync("theEverydayCount", 30);
-        wx.setStorageSync("theEverydayUsed", 0);
-        wx.setStorageSync("theEverydayUpdateTime", date);
+        that.resetCount();
       }
     })
   },
@@ -138,6 +103,13 @@ App({
     }else{
       return false;
     }
+  },
+  //次数重置
+  resetCount: function () {
+    let date = new Date();
+    wx.setStorageSync("theEverydayCount", this.globalData.countInit);
+    wx.setStorageSync("theEverydayUsed", 0);
+    wx.setStorageSync("theEverydayUpdateTime", date);
   },
 
 

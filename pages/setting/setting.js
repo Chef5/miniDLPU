@@ -8,7 +8,10 @@ Page({
    */
   data: {
     nowserver: "",
-    isSwitch: false
+    isSwitch: false,
+    incFre: app.globalData.countIncreseFre,
+    incTime: app.globalData.countIncreseByTime,
+    incAd: app.globalData.countIncreseByAD
   },
   setwx: function () {
     wx.setClipboardData({
@@ -102,7 +105,7 @@ Page({
       rewardedVideoAd.onClose((res) => {
         // 用户点击了【关闭广告】按钮
         if (res && res.isEnded) {
-          wx.setStorageSync("theEverydayCount", parseInt(wx.getStorageSync("theEverydayCount")) + 20);
+          wx.setStorageSync("theEverydayCount", parseInt(wx.getStorageSync("theEverydayCount")) + app.globalData.countIncreseByAD);
           that.handleCountRefresh();
         } else {
           // 播放中途退出，不下发游戏奖励
