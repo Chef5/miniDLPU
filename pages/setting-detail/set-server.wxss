@@ -3,3 +3,27 @@
   color: gray;
   font-size: 28rpx;
 }
+.page__hd view{
+  font-size: 28rpx;
+  text-align: center;
+  color: rgba(85, 85, 85, 0.781)
+}
+.thanks{
+  margin-top: 10rpx;
+  text-align: center;
+  font-size: 32rpx;
+  color: rgb(172, 68, 68);
+}
+.notice-wrap{
+  display: flex;
+  justify-content: center;
+}
+.notice{
+  width: fit-content;
+  padding: 5rpx 15rpx;
+  margin-top: 60rpx;
+  text-align: center;
+  font-size: 28rpx;
+  color: white;
+  background: rgba(230, 89, 89, 0.877);
+}

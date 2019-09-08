@@ -1,6 +1,8 @@
 <!--pages/setting-detail/set-serer.wxml-->
 <view class="page">
   <view class='page__hd'>
+    <view>一台服务器访问量过大，会被教务处ban一定时间</view>
+    <view>以下几台服务器均由个人提供</view>
   </view>
   <view class='page__bd'>
     <radio-group bindchange="radioChange">
@@ -13,6 +15,8 @@
       </label>
     </radio-group>
   </view>
+  <view class="thanks">感谢：秦浩轩（3号服务器捐供者）</view>
+  <view class="notice-wrap"><view class="notice">此小程序由个人制作，不属于学校任何部门</view></view>
   <view class='full-some'></view>
 <ad unit-id="adunit-f3e425d15b63b72a"></ad>
 </view>
