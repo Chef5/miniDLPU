@@ -421,14 +421,14 @@ Page({
         console.log(res);
         if (res.data.state == "error") {
           wx.showModal({
-            content: '学号或者密码错误，登陆教务处失败！或更换教务处服务器试试。',
+            content: '登陆教务处失败！可能当前服务器暂时被ban了，更换一台试试？也可能是学号或者密码错了喔',
             showCancel: true,
-            confirmText: "前往修改",
+            confirmText: "前往切换",
             success: function (res) {
               if (res.confirm) {
                 console.log('用户点击确定');
                 wx.navigateTo({
-                  url: '../setting-detail/set-userinfo',
+                  url: '../setting-detail/set-server',
                 })
               }
             }
