@@ -1,4 +1,5 @@
 // pages/setting-detail/set-know.js
+const app = getApp();
 Page({
 
   /**
@@ -67,5 +68,13 @@ Page({
         that.setData({ newsbox: res.data.news});
       }
     })
+  },
+  //重置查询次数
+  resetCount: function(){
+    app.resetCount();
+    wx.showToast({
+      title: '重置成功！',
+      duration: 1000
+    });
   }
 })

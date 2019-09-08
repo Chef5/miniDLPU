@@ -7,7 +7,7 @@
           <text>工大教务处-常见问题</text>
         </view>
       </view>
-      <view class='hd-con-showtips'>看一看，也许只是一个很小的问题呢。</view>
+      <!-- <view class='hd-con-showtips'>看一看，也许只是一个很小的问题呢。</view> -->
     </view>
   </view>
 
@@ -85,6 +85,11 @@
             <i-collapse-item title="为何限制查询次数？" name="q13">
                 <view slot="content">
                    <view>小程序使用的服务器是学长自费购买的，费用不低，但是免费提供给大家日常查询使用。服务器资源有限，为了让更多人享受到服务，才增加了次数限制，请大家理解！每日初始次数30次，如果大家有觉得次数不够，可联系反馈，我会根据大家整体情况进行调整，另外请大家合理分配查询次数。</view>
+                </view>
+            </i-collapse-item>
+            <i-collapse-item title="查询次数异常问题" name="q14">
+                <view slot="content">
+                   <view><text class='blue' bindtap='resetCount'>点此重置</text>查询次数</view>
                 </view>
             </i-collapse-item>
         </i-collapse>
