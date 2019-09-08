@@ -11,7 +11,7 @@
       <view class='body-box-head'>
         <view>2018.08.18  “mini教务处”安卓APP发布</view>
         <view style="margin-top: 0rpx;">2018.09.16  “工大教务处”小程序发布</view>
-        <view style="margin-top: 0rpx;"><text decode="{{true}}" space="{{true}}">2018.12.06&emsp;荣获移动互联省级二等奖</text></view>
+        <view style="margin-top: 0rpx;"><text decode="{{true}}" space="{{true}}">2018.12.06&emsp;荣获移动应用省级二等奖</text></view>
         <view>程序从最开始简陋页面，只能简单查询课程表到现在BUG逐渐修复，页面逐渐美化，功能逐渐完善，少不了大家对我的支持和督促，感谢每一位同学！</view>
         <view>最后还需要特别感谢以下帮助我的小伙伴们！</view>
       </view>
@@ -23,20 +23,27 @@
         </view>
         <view class='tr'>
           <view class='td td1'>网络16 何玉梅</view>
-          <view class='td td2'>LOGO设计</view>
+          <view class='td td2'>安卓LOGO设计</view>
         </view>
         <view class='tr'>
           <view class='td td1'>计算机16 邓雪梅</view>
-          <view class='td td2'>课表色彩设计</view>
+          <view class='td td2'>课程小块颜色设计</view>
         </view>
         <view class='tr'>
           <view class='td td1'>视传18 秦浩轩</view>
-          <view class='td td2'>小程序综合信息页面布局，以及整体色彩设计</view>
+          <view class='td td2'>综合信息页UI设计，3号笔芯服务器</view>
         </view>
       </view>
-      <view class='download' bindtap='seturl'>安卓下载：http://download.1zdz.cn</view>
     </view>
   </view>
   <view class='full-some'></view>
-<ad unit-id="adunit-8f9d2709ed24be98"></ad>
+  <view class="me">
+    <view>鉴于很多人误解小程序属于学校官方，作者是**杰，因此我决定自爆照片以澄清。</view>
+    <view>
+      <image src="https://1zdz.cn/patrick/20190908094338.jpg"></image>
+      <view>网络16级某学长科一到科四均一次过拿证当天傻笑.jpg</view>
+    </view>
+  </view>
+  
+  <view class='download' bindtap='seturl'>安卓下载：https://download.1zdz.cn</view>
 </view>

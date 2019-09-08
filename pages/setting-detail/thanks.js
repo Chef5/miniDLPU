@@ -9,7 +9,7 @@ Page({
   },
   seturl: function () {
     wx.setClipboardData({
-      data: 'http://download.1zdz.cn',
+      data: 'https://download.1zdz.cn',
       success: function (res) {
         wx.getClipboardData({
           success: function (res) {

@@ -86,6 +86,26 @@ page{
   width: 102rpx;
   height: 95rpx;
 }
+.me{
+  padding: 0rpx 20rpx;
+  height: auto
+}
+.me>view:first-child{
+  text-indent: 2em;
+  font-size: 30rpx;
+  color: #666;
+}
+.me>view:last-child{
+  text-align: center;
+}
+.me>view:last-child image{
+  width: 300px;
+  height: 533px;
+}
+.me>view:last-child view{
+  font-size: 24rpx;
+  color: rgb(165, 165, 165);
+}
 
 .download{
   font-size: 32rpx;
