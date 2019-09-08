@@ -14,14 +14,18 @@
 .mini-btn label{
   font-size: 34rpx;
 }
-.show-stro{
+.show-stro,.show-advice{
   padding: 10rpx;
   margin-left: 10rpx;
   margin-right: 10rpx;
   margin-top: 10rpx;
   /* border: 1px gray double; */
 }
-.show-stro label{
+.show-stro label,.show-advice label{
   font-size: 34rpx;
   color: #f72323;
+}
+.show-advice view{
+  font-size: 32rpx;
+  color: rgb(66, 65, 65);
 }

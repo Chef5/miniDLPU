@@ -26,10 +26,17 @@
       </view>
       <view style='font-size:28rpx'>当前密码提示：{{hidpwd}}</view>
       <view class='btn-content'>
-        <button class="weui-btn mini-btn btn-left" type="primary" size="mini" bindtap='storeKcb'><label>账号绑定（更新课表）</label></button>   
+        <button class="weui-btn mini-btn btn-left" type="warning" size="mini" bindtap='storeUser'><label>更改账号</label></button>  
+        <button class="weui-btn mini-btn btn-left" type="primary" size="mini" bindtap='storeKcb'><label>抓取课表</label></button>   
       </view>
     </form>
     <view style='font-size:28rpx'>课程表上次抓取时间：{{updatetime}}</view>
+    
+    <view class='show-advice'>
+      <label>首次使用建议：</label>
+      <view>点击抓取课表，将课程表数据保存至我们的服务器上，再关闭实时课表，之后使用课程表不会消耗次数，并且响应更快速；</view>
+    </view>
+
     <view class='show-stro'>
       <label>说明：</label>
       <i-collapse name="{{name}}" accordion>
@@ -38,9 +45,28 @@
                     你的学号和密码仅仅保存在你手机本地微信缓存中，本程序不会以任何形式收集存储你的学号和密码，请大家放心使用。
                 </view>
             </i-collapse-item>
+            
+            <i-collapse-item title="上次抓取时间" name="q2">
+                <view slot="content">
+                  点击抓取课表，会将你本学期所有课程信息存储下来，上次抓取时间则表示最近一次抓取时间。
+                </view>
+            </i-collapse-item>
+
+            <i-collapse-item title="更换账号" name="q3">
+                <view slot="content">
+                  仅仅更改学号和密码，不会重新去教务处抓取课程表信息。此操作不会导致自定义课表流失。
+                </view>
+            </i-collapse-item>
+
+            <i-collapse-item title="抓取课表" name="q4">
+                <view slot="content">
+                  此操作包含更换账号，会更改学号和密码，并从教务处重新抓取你的课程表数据。此操作建议错开高峰期。之后关闭实时课表，查询课表不消耗次数。注意：此操作会重新覆盖你原来所有的课程表数据，包括自定义课程！
+                </view>
+            </i-collapse-item>
         </i-collapse>
       
     </view>
+    
   </view>
 </view>
 

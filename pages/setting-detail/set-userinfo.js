@@ -104,15 +104,15 @@ Page({
     }
   },
   //模式2 仅储存
-  juststore: function(){
+  storeUser: function(){
     var that = this;
     that.saveUserinfo(that.data.userid, that.data.userpwd);
     wx.setStorageSync('kcbaction', 'dym');
     wx.showModal({
       title: '保存成功！',
-      content: '学号和密码已保存至微信缓存，现在可以返回课程表页面下拉刷新课表了。',
-      confirmText: "立即前往",
-      cancelText: "再看看",
+      content: '学号和密码已保存至微信缓存，立即返回首页？',
+      confirmText: "到首页",
+      cancelText: "留下来",
       success: function (res) {
         if (res.confirm) {
           wx.reLaunch({
