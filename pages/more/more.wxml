@@ -5,7 +5,7 @@
       {{text}}
     </i-notice-bar>
       <view>
-        <swiper autoplay="true" interval="5000" duration="1000">
+        <swiper autoplay="true" interval="3500" duration="1000" circular="true">
           <swiper-item>
             <image src="../../image/swi/morebg.png" class="pic" />
           </swiper-item>

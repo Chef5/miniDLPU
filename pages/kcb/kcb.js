@@ -434,7 +434,7 @@ Page({
             }
           });
         }
-        else if(res.data.length != 0){
+        else if(res.data.length == 6){
           var tdcolors = [
             'rgba(72,61,139,0.6)', 'rgba(100,149,237,0.8)', 'rgba(0,139,139,0.6)',
             'rgba(216,191,216,0.9)', 'rgba(106,96,205,0.5)', 'rgba(240,128,128,0.6)',
