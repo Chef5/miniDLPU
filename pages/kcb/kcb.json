@@ -2,6 +2,7 @@
   "navigationBarTitleText": "工大教务处-课程表",
   "enablePullDownRefresh": true,
   "usingComponents": {
-    "wxc-popup": "../../dist/wxc-popup/dist/index"
+    "wxc-popup": "../../dist/wxc-popup/dist/index",
+    "jun-modal": "../../components/jun-modal/jun-modal"
   }
 }

@@ -18,12 +18,20 @@
     </view>
   
   </view>
-  <modal hidden="{{hiddenmodalput}}" title="考试详细安排" confirm-text="确定" bindconfirm="confirm" no-cancel='true'>
+  <jun-modal 
+    show="{{!hiddenmodalput}}" 
+    title="考试详细安排" 
+    content-color="#363636" 
+    confirm-text="确定" 
+    confirm-color="{{theme.color[theme.themeColorId].value}}" 
+    bindconfirm="confirm" 
+    no-cancel='true'
+    >
       <view>课程名称：{{name}}</view>
       <view>场次：{{cc}}</view>
       <view>地点：{{room}}</view>
       <view>时间：{{time}}</view>
-  </modal>
+  </jun-modal>
 </view>
 <view class='full-some'></view>
 <ad unit-id="adunit-3540204e43212681"></ad>

@@ -107,6 +107,7 @@ Page({
         content: '缓存里没有你的学号和密码，请点击:“设置”>“学号和密码”',
         showCancel: true,
         confirmText: "立即前往",
+        confirmColor: that.data.theme.color[that.data.theme.themeColorId].value,
         success: function (res) {
           if (res.confirm) {
             console.log('用户点击确定');

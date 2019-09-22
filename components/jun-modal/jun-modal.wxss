@@ -1,0 +1,60 @@
+/* components/jun-modal/jun-modal.wxss */
+/* 遮罩层 */
+.jun-mask{
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.53);
+  z-index: 9999;
+}
+/* 容器 */
+.jun-modal-content{
+  display: flex;
+  flex-direction: column;
+  width: 90%;
+  background-color: #fff;
+  border-radius: 10rpx;
+}
+/* 标题 */
+.jun-modal-title{
+  font-size: 38rpx;
+  font-weight: 700;
+  text-align: center;
+  padding: 20rpx;
+  border-bottom: 2rpx solid rgba(7,17,27,0.1);
+}
+/* 内容 */
+.jun-main-content{
+  padding: 8rpx 20rpx;
+  flex: 1;
+  height: 100%;
+  overflow-y: hidden; 
+}
+scroll-view{
+  display: block;
+  width: auto;
+}
+/* 按钮 */
+.jun-modal-btn-wrapper{
+  display: flex;
+  flex-direction: row;
+  height: 100rpx;
+  line-height: 100rpx;
+  border-top: 2rpx solid rgba(7,17,27,0.1);
+}
+.jun-cancel-btn, .jun-confirm-btn{
+  flex: 1;
+  height: 100rpx;
+  line-height: 100rpx;
+  text-align: center;
+  font-size: 34rpx;
+  font-weight: 700;
+}
+.jun-cancel-btn{
+  border-right: 2rpx solid rgba(7,17,27,0.1);
+}

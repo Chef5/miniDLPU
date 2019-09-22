@@ -25,7 +25,7 @@
     </view>
   
   </view>
-  <modal hidden="{{hiddenmodalput}}" title="{{name}}" confirm-text="确定" bindconfirm="confirm" no-cancel='true'>
+  <jun-modal show="{{!hiddenmodalput}}" title="{{name}}" content-color="#363636" confirm-text="确定" confirm-color="{{theme.color[theme.themeColorId].value}}"  bindconfirm="confirm" no-cancel='true'>
       <view class='modal-hang'><view class='modal-hang-left'>课程编码：</view><view class='modal-hang-right'>{{id}}</view></view>
       <view class='modal-hang'><view class='modal-hang-left'>开设学期：</view><view class='modal-hang-right'>{{item}}</view></view>
       <view class='modal-hang'><view class='modal-hang-left'>学分：</view><view class='modal-hang-right'>{{credit}}</view></view>
@@ -33,7 +33,7 @@
       <view class='modal-hang'><view class='modal-hang-left'>周参考学时：</view><view class='modal-hang-right'>{{ehour}}</view></view>
       <view class='modal-hang'><view class='modal-hang-left'>考核方式：</view><view class='modal-hang-right'>{{method}}</view></view>
       <view class='modal-hang'><view class='modal-hang-left'>开课单位：</view><view class='modal-hang-right'>{{org}}</view></view>
-  </modal>
+  </jun-modal>
 </view>
 <view class='full-some'></view>
 <ad unit-id="adunit-5cc790741bf27579"></ad>

@@ -598,18 +598,29 @@ Page({
   //显示自定义课程弹窗
   showAddOrEditKCB:function(e){
     var that = this;
+    // 实时课表不允许编辑
+    let isStatic = wx.getStorageSync('kcbaction');
+    if(isStatic == 'dym'){
+      wx.showModal({
+        title: '提示',
+        content: '使用实时课表时，无法编辑课表',
+        showCancel: false,
+        confirmColor: that.data.theme.color[that.data.theme.themeColorId].value
+      })
+      return;
+    }
     let hang = e.currentTarget.dataset.hang;
     let week = e.currentTarget.dataset.week;
     let kid = e.currentTarget.dataset.kid;
     let zc = that.data.indexzc;
     if (e.currentTarget.dataset.name == ""){ //无课程数据，显示添加课程
-      that.setData({ hiddenaddkcb: false});
       that.setData({
         indexzcAdd1: zc,
         indexzcAdd2: zc,
         indexjcAdd1: hang,
         indexjcAdd2: hang,
-        indexweekAdd: week
+        indexweekAdd: week,
+        hiddenaddkcb: false
       });
     }else{                                   //有课程，显示编辑课程
       let name = e.currentTarget.dataset.name;

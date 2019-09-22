@@ -1,4 +1,7 @@
 {
   "navigationBarTitleText": "工大教务处-空教室查询",
-  "backgroundColor": "#efeff4"
+  "backgroundColor": "#efeff4",
+  "usingComponents": {
+    "jun-modal": "../../../components/jun-modal/jun-modal"
+  }
 }

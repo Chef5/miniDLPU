@@ -3,6 +3,7 @@
   "enablePullDownRefresh": true,
   "usingComponents": {
     "wux-accordion-group": "../../../dist/accordion-group/index",
-    "wux-accordion": "../../../dist/accordion/index"
+    "wux-accordion": "../../../dist/accordion/index",
+    "jun-modal": "../../../components/jun-modal/jun-modal"
   }
 }

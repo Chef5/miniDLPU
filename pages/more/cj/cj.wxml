@@ -24,7 +24,15 @@
     </view>
   
   </view>
-  <modal hidden="{{hiddenmodalput}}" title="成绩明细" confirm-text="确定" bindconfirm="confirm" no-cancel='true'>
+  <jun-modal 
+    show="{{!hiddenmodalput}}" 
+    title="成绩明细" 
+    content-color="#363636" 
+    confirm-text="确定" 
+    confirm-color="{{theme.color[theme.themeColorId].value}}" 
+    bindconfirm="confirm" 
+    no-cancel='true'
+    >
       <view>课程名称：{{name}}</view>
       <view>总成绩：{{grade}}</view>
       <view wx:if="{{pscjb!=''}}">平时成绩({{pscjb}})：{{pscj}}</view>
@@ -40,7 +48,7 @@
       <view>考核方式：{{method}}</view>
       <view>课程属性：{{kcsx}}</view>
       <view>课程性质：{{kcxz}}</view>
-  </modal>
+  </jun-modal>
         <!-- <wux-accordion-group>
             <wux-accordion title="科目1" content="内容"></wux-accordion>
             <wux-accordion title="科目2" content="内容"></wux-accordion>

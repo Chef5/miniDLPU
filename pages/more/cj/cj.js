@@ -118,7 +118,7 @@ Page({
         showCancel: true,
         title: "查询次数已耗尽",
         confirmText: "观看广告",
-        confirmColor: this.data.theme.color[this.data.theme.themeColorId].value,
+        confirmColor: that.data.theme.color[that.data.theme.themeColorId].value,
         success: function (res) {
           if (res.confirm) {
             console.log('打开激励视频');
@@ -173,6 +173,7 @@ Page({
         content: '缓存里没有你的学号和密码，请点击:“设置”>“学号和密码”',
         showCancel: true,
         confirmText: "立即前往",
+        confirmColor: that.data.theme.color[that.data.theme.themeColorId].value,
         success: function (res) {
           if (res.confirm) {
             console.log('用户点击确定');
@@ -217,6 +218,7 @@ Page({
             content: '登陆教务处失败！可能当前服务器暂时被ban了，更换一台试试？也可能是学号或者密码错了喔',
             showCancel: true,
             confirmText: "前往切换",
+            confirmColor: that.data.theme.color[that.data.theme.themeColorId].value,
             success: function (res) {
               if (res.confirm) {
                 console.log('用户点击确定');

@@ -1,0 +1,13 @@
+<!--components/jun-modal/jun-modal.wxml-->
+<view class='jun-mask' wx:if='{{show}}'>
+  <view class='jun-modal-content' style='height:{{height}}'>
+    <view class='jun-modal-title' style="color:{{titleColor}}">{{title}}</view>
+    <scroll-view scroll-y class='jun-main-content' style="color:{{contentColor}}">
+      <slot></slot>
+    </scroll-view>
+    <view class='jun-modal-btn-wrapper'>
+      <view class='jun-cancel-btn' wx:if="{{!noCancel}}" style='color:{{cancelColor}}' bindtap='cancel'>{{cancelText}}</view>
+      <view class='jun-confirm-btn' wx:if="{{!noConfirm}}" style='color:{{confirmColor}}' bindtap='confirm'>{{confirmText}}</view>
+    </view>
+  </view>
+</view>

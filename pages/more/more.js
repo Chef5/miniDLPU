@@ -97,7 +97,7 @@ Page({
       title: '提示',
       content: '四六级查询即将推出，敬请期待！',
       showCancel: false,
-      confirmColor: '#1298CF',
+      confirmColor: that.data.theme.color[that.data.theme.themeColorId].value,
       success(res) {
         if (res.confirm) {
           
@@ -117,7 +117,7 @@ Page({
       title: '真幸运',
       content: '恭喜你获得一次向开发者提需求的机会，下一个新功能，你来提！',
       showCancel: true,
-      confirmColor: '#1298CF',
+      confirmColor: that.data.theme.color[that.data.theme.themeColorId].value,
       confirmText: '我有想法',
       cancelText: '放弃机会',
       success(res) {

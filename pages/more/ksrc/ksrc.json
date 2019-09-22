@@ -1,4 +1,7 @@
 {
   "navigationBarTitleText": "工大教务处-考试日程",
-  "enablePullDownRefresh": true
+  "enablePullDownRefresh": true,
+  "usingComponents": {
+    "jun-modal": "../../../components/jun-modal/jun-modal"
+  }
 }

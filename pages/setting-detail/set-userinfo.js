@@ -35,6 +35,7 @@ Page({
         title: '学号错误',
         showCancel: false,
         content: '学号位数不对！当前位数：'+userid.length,
+        confirmColor: that.data.theme.color[that.data.theme.themeColorId].value
       })
     }else{
       wx.showToast({
@@ -68,6 +69,7 @@ Page({
                   content: '课程表数据获取完成，现在可以返回课程表页面下拉刷新课表了。',
                   confirmText: "立即前往",
                   cancelText: "留下",
+                  confirmColor: that.data.theme.color[that.data.theme.themeColorId].value,
                   success: function (res) {
                     if (res.confirm) {
                       wx.reLaunch({
@@ -88,6 +90,7 @@ Page({
               title: '抓取出错',
               showCancel: false,
               content: '服务器崩溃或者学号密码出错，请检查或更换服务器！',
+              confirmColor: that.data.theme.color[that.data.theme.themeColorId].value
             })
           }
         },
@@ -97,6 +100,7 @@ Page({
             title: 'Error',
             showCancel: false,
             content: '网络错误',
+            confirmColor: that.data.theme.color[that.data.theme.themeColorId].value
           })
         },
         complete: function (res) {
@@ -114,7 +118,8 @@ Page({
       title: '保存成功！',
       content: '学号和密码已保存至微信缓存，立即返回首页？',
       confirmText: "到首页",
-      cancelText: "留下来",
+      cancelText: "留下来", 
+      confirmColor: that.data.theme.color[that.data.theme.themeColorId].value,
       success: function (res) {
         if (res.confirm) {
           wx.reLaunch({

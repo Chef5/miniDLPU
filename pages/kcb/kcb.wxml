@@ -60,19 +60,25 @@
     </view>
 
 
-    <modal hidden="{{hiddenmodalput}}" title="课程详细" confirm-text="确定" bindconfirm="confirm" no-cancel='true'>
-        <view>课程名称：{{name}}</view>
-        <view>任课教师：{{leader}}</view>
-        <view>课程地点：{{room}}</view>
+    <jun-modal show="{{!hiddenmodalput}}" title="课程详细" content-color="#363636" confirm-text="确定" confirm-color="{{theme.color[theme.themeColorId].value}}" bindconfirm="confirm" no-cancel='true'>
         <view style='display:flex;flex-direction:row'>
-          <view>上课时间：</view>
-          <view style='display:flex;flex-direction:column'>
+          <view style="width:200rpx;">课程名称：</view><view style="flex:1">{{name}} </view>
+        </view>
+        <view style='display:flex;flex-direction:row;'>
+          <view style="width:200rpx;">任课教师：</view><view style="flex:1;padding-right:12rpx;">{{leader}} </view>
+        </view>
+        <view style='display:flex;flex-direction:row'>
+          <view style="width:200rpx;">课程地点：</view><view style="flex:1">{{room}} </view>
+        </view>
+        <view style='display:flex;flex-direction:row'>
+          <view style="width:200rpx;">上课时间：</view>
+          <view style='flex:1;display:flex;flex-direction:column;'>
             <view>{{time1}}</view>
             <view>{{time2}}</view>
           </view>
         </view>
-    </modal>
-    <modal hidden="{{hiddenaddkcb}}" title="添加课程" confirm-text="关闭" bindconfirm="confirm" no-cancel='true'>
+    </jun-modal>
+    <jun-modal show="{{!hiddenaddkcb}}" title="添加课程" height="auto" confirm-text="关闭" confirm-color="{{theme.color[theme.themeColorId].value}}" bindconfirm="confirm" no-cancel='true'>
       <form bindsubmit="addconfirm" >
         <view class='cell-hang'>
           <view class='cell-label'>课程名称：</view>
@@ -130,10 +136,9 @@
         </view>
         <button form-type='submit' type='primary' class='comfirm-submit' style='background-color:{{theme.color[theme.themeColorId].value}};'>确认添加</button>
       </form>
-    </modal>
+    </jun-modal>
 
-
-    <modal hidden="{{hiddeneditkcb}}" title="修改课程" confirm-text="关闭" bindconfirm="confirm" no-cancel='true'>
+    <jun-modal show="{{!hiddeneditkcb}}" title="修改课程" confirm-text="关闭" confirm-color="{{theme.color[theme.themeColorId].value}}" bindconfirm="confirm" no-cancel='true'>
       <form bindsubmit="editconfirm" >
         <input hidden='true' name="kid" value='{{editkcbkid}}'></input>
         <view class='cell-hang'>
@@ -166,7 +171,7 @@
           <button form-type='submit' type='primary' class='comfirm-submit' style='background-color:{{theme.color[theme.themeColorId].value}};'>保存修改</button>
         </view>
       </form>
-    </modal>
+    </jun-modal>
 
 
 

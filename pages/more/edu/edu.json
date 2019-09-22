@@ -1,3 +1,6 @@
 {
-  "navigationBarTitleText": "工大教务处-培养方案"
+  "navigationBarTitleText": "工大教务处-培养方案",
+  "usingComponents": {
+    "jun-modal": "../../../components/jun-modal/jun-modal"
+  }
 }

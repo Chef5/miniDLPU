@@ -55,13 +55,21 @@
       </view>
     </view>
   </view>
-  <modal hidden="{{hidmodal}}" title="当日 {{detail_room}} 详细" confirm-text="确定" bindconfirm="confirm" no-cancel='true'>
+  <jun-modal 
+    show="{{!hidmodal}}" 
+    title="当日 {{detail_room}} 详细" 
+    confirm-text="确定" 
+    bindconfirm="confirm" 
+    content-color="#363636" 
+    confirm-color="{{theme.color[theme.themeColorId].value}}" 
+    no-cancel='true'
+  >
       <view class='modal-hang' style='margin-top:30rpx;'>一、二节：<text class='{{detail_12c}}'>{{detail_12}}课</text></view>
       <view class='modal-hang'>三、四节：<text class='{{detail_34c}}'>{{detail_34}}课</text></view>
       <view class='modal-hang'>五、六节：<text class='{{detail_56c}}'>{{detail_56}}课</text></view>
       <view class='modal-hang'>七、八节：<text class='{{detail_78c}}'>{{detail_78}}课</text></view>
       <view class='modal-hang'>九、十节：<text class='{{detail_910c}}'>{{detail_910}}课</text></view>
-  </modal>
+  </jun-modal>
 </view>
 <view class='full-some'></view>
 <ad unit-id="adunit-107373eaf85bc919"></ad>
