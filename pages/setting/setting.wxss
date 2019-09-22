@@ -18,7 +18,7 @@
   border-radius: 50%;
   overflow: hidden;
   background: rgb(231, 227, 227);
-  border: 1px solid #1298cf;
+  /* border: 1px solid #1298cf; */
 }
 .user-info-name{
   color: white;
@@ -39,7 +39,7 @@
   font-size: 30rpx;
   line-height: 30rpx;
   color: white;
-  background: #1298cf;
+  /* background: #1298cf; */
   display: inline-block;
   border-radius: 10%;
   padding: 7rpx 10rpx;
@@ -50,7 +50,7 @@
   font-size: 20rpx;
 }
 .tips-ad{
-  color: #1298CF;
+  /* color: #1298CF; */
   display: inline-block;
 }
 .set-items{
@@ -76,7 +76,7 @@
 .wx-switch-input{
     width:79rpx !important;
     height:36rpx !important;
-    background: #1298CF !important;
+    /* background: #1298CF !important; */
     border: #1298CF !important; 
 }
 /*白色样式（false的样式）*/
@@ -109,6 +109,6 @@
   font-size: 38rpx;
   margin-top: 50rpx;
   color: white;
-  background-color: #1298CF;
+  /* background-color: #1298CF; */
   width: 60%;
 }

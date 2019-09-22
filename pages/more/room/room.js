@@ -1,4 +1,5 @@
 // pages/more/room/room.js
+const app = getApp();
 Page({
 
   /**
@@ -47,6 +48,11 @@ Page({
    */
   onLoad: function (options) {
     var that = this;
+    //主题更新
+    that.setData({
+      theme: app.getTheme()
+    });
+
     var nowzc = wx.getStorageSync('nowzc');
     var nowtime = new Date();  //当前时间
     //var day = nowtime.getFullYear() + "年" + (parseInt(nowtime.getMonth())+1) + "月" + nowtime.getDate() + "日";
@@ -69,11 +75,12 @@ Page({
     }
   },
 
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-
+  onShow: function () {
+    let that = this;
+    //主题更新
+    that.setData({
+      theme: app.getTheme()
+    });
   },
 
   /**

@@ -42,6 +42,11 @@ Page({
    */
   onLoad: function (options) {
     var that = this;
+    //主题更新
+    that.setData({
+      theme: app.getTheme()
+    });
+
     that.refreshCJ();
 
     //视频广告
@@ -65,35 +70,16 @@ Page({
     }
 
   },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-
-  },
-
   /**
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    let that = this;
+    //主题更新
+    that.setData({
+      theme: app.getTheme()
+    });
   },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
-  },
-
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
@@ -106,14 +92,6 @@ Page({
     });
     that.refreshCJ();
   },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
   /**
    * 用户点击右上角分享
    */
@@ -140,6 +118,7 @@ Page({
         showCancel: true,
         title: "查询次数已耗尽",
         confirmText: "观看广告",
+        confirmColor: this.data.theme.color[this.data.theme.themeColorId].value,
         success: function (res) {
           if (res.confirm) {
             console.log('打开激励视频');

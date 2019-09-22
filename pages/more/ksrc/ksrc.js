@@ -26,39 +26,22 @@ Page({
    */
   onLoad: function (options) {
     var that = this;
+    //主题更新
+    that.setData({
+      theme: app.getTheme()
+    });
     //刷新本地账号
     var Id = wx.getStorageSync("userid");
     var Pwd = wx.getStorageSync("userpwd");
     var Server = wx.getStorageSync("server");
     that.refreshKSRC();
   },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
   onShow: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
+    let that = this;
+    //主题更新
+    that.setData({
+      theme: app.getTheme()
+    });
   },
 
   /**

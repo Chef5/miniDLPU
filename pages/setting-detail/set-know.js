@@ -8,13 +8,20 @@ Page({
   data: {
 
   },
-  //生命周期函数--监听页面加载
-  onLoad: function (options) {},
-  //生命周期函数--监听页面初次渲染完成
-  onReady: function () {},
-  //用户点击右上角分享
-  onShareAppMessage: function () {},
-
+  onShow: function(){
+    let that = this;
+    //主题更新
+    that.setData({
+      theme: app.getTheme()
+    });
+  },
+  onLoad: function(){
+    let that = this;
+    //主题更新
+    that.setData({
+      theme: app.getTheme()
+    });
+  },
   //跳转到userinfo
   toUserinfo: function(){
     wx.navigateTo({

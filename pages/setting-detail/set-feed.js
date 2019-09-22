@@ -1,4 +1,5 @@
 // pages/setting-detail/set-feed.js
+const app = getApp();
 Page({
 
   /**
@@ -6,6 +7,20 @@ Page({
    */
   data: {
 
+  },
+  onShow: function(){
+    let that = this;
+    //主题更新
+    that.setData({
+      theme: app.getTheme()
+    });
+  },
+  onLoad: function(){
+    let that = this;
+    //主题更新
+    that.setData({
+      theme: app.getTheme()
+    });
   },
   setemail: function () {
     wx.setClipboardData({

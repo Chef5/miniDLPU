@@ -1,7 +1,11 @@
 /**app.wxss**/
 @import 'weui.wxss';
 @import "colorui.wxss";
-
+/*全局背景*/
+page {
+  background-color: #efeff4;
+}
+/*部分全局控件*/
 .container {
   display: flex;
   flex-direction: column;
@@ -18,3 +22,104 @@
   height: 200rpx;
 }
 
+/*主题颜色配置*/
+/* 默认蓝 */
+.theme-color-default{
+  background-color: #1298CF !important;
+}
+.theme-color-default-font{
+  color: #1298CF !important;
+}
+.theme-color-default-border{
+  border-color: #1298CF !important;
+}
+/* 可爱粉 */
+.theme-color-pink{
+  background-color: #FFC0CB !important;
+}
+.theme-color-pink-font{
+  color: #FFC0CB !important;
+}
+.theme-color-pink-border{
+  border-color: #FFC0CB !important;
+}
+/* 灰绿 */
+.theme-color-green{
+  background-color: #83B582 !important;
+}
+.theme-color-green-font{
+  color: #83B582 !important;
+}
+.theme-color-green-border{
+  border-color: #83B582 !important;
+}
+/* c1 */
+.theme-color-c1{
+  background-color: #76DBD1 !important;
+}
+.theme-color-c1-font{
+  color: #76DBD1 !important;
+}
+.theme-color-c1-border{
+  border-color: #76DBD1 !important;
+}
+/* c2 */
+.theme-color-c2{
+  background-color: #CAADDE !important;
+}
+.theme-color-c2-font{
+  color: #CAADDE !important;
+}
+.theme-color-c2-border{
+  border-color: #CAADDE !important;
+}
+/* c3 */
+.theme-color-c3{
+  background-color: #FF847C !important;
+}
+.theme-color-c3-font{
+  color: #FF847C !important;
+}
+.theme-color-c3-border{
+  border-color: #FF847C !important;
+}
+/* c4 */
+.theme-color-c4{
+  background-color: #769FCD !important;
+}
+.theme-color-c4-font{
+  color: #769FCD !important;
+}
+.theme-color-c4-border{
+  border-color: #769FCD !important;
+}
+/* c5 */
+.theme-color-c5{
+  background-color: #DD6892 !important;
+}
+.theme-color-c5-font{
+  color: #DD6892 !important;
+}
+.theme-color-c5-border{
+  border-color: #DD6892 !important;
+}
+/* c6 */
+.theme-color-c6{
+  background-color: #fa5477 !important;
+}
+.theme-color-c6-font{
+  color: #fa5477 !important;
+}
+.theme-color-c6-border{
+  border-color: #fa5477 !important;
+}
+/* c7 */
+.theme-color-c7{
+  background-color: #48466D !important;
+}
+.theme-color-c7-font{
+  color: #48466D !important;
+}
+.theme-color-c7-border{
+  border-color: #48466D !important;
+}

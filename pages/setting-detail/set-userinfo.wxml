@@ -27,18 +27,18 @@
       <view style='font-size:28rpx'>当前密码提示：{{hidpwd}}</view>
       <view class='btn-content'>
         <button class="weui-btn mini-btn btn-left" type="warning" size="mini" bindtap='storeUser'><label>更改账号</label></button>  
-        <button class="weui-btn mini-btn btn-left" type="primary" size="mini" bindtap='storeKcb'><label>抓取课表</label></button>   
+        <button class="weui-btn mini-btn btn-left" type="primary" style="background:{{theme.color[theme.themeColorId].value}};" size="mini" bindtap='storeKcb'><label>抓取课表</label></button>   
       </view>
     </form>
     <view style='font-size:28rpx'>课程表上次抓取时间：{{updatetime}}</view>
     
     <view class='show-advice'>
-      <label>首次使用建议：</label>
+      <label style="color:{{theme.color[theme.themeColorId].value}}">首次使用建议：</label>
       <view>点击抓取课表，将课程表数据保存至我们的服务器上，再关闭实时课表，之后使用课程表不会消耗次数，并且响应更快速；</view>
     </view>
 
     <view class='show-stro'>
-      <label>说明：</label>
+      <label style="color:{{theme.color[theme.themeColorId].value}}">说明：</label>
       <i-collapse name="{{name}}" accordion>
             <i-collapse-item title="学号和密码使用说明" name="q1">
                 <view slot="content">

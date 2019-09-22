@@ -1,4 +1,5 @@
 // pages/setting-detail/set-serer.js
+const app = getApp();
 Page({
 
   /**
@@ -39,6 +40,11 @@ Page({
    */
   onLoad: function (options) {
     var that = this;
+    //主题更新
+    that.setData({
+      theme: app.getTheme()
+    });
+    
     wx.request({
       url: 'https://test.1zdz.cn/api/getserver.php',
       method: 'GET',
@@ -117,7 +123,11 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    var that = this;
+    //主题更新
+    that.setData({
+      theme: app.getTheme()
+    });
   },
 
   /**

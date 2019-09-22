@@ -41,8 +41,7 @@
 .kcb-body-fill{
   width: 20rpx;
   padding-top: 70rpx;
-  /* background-color:white; */
-  background-color: #efeff4;
+  /* background-color: #efeff4; */
   font-size: 18rpx;
   color: black;
   line-height: 110rpx;
@@ -55,7 +54,7 @@
   color: white;
   display: flex;
   flex-direction: row;
-  background-color:#ACACB4;
+  /* background-color:rgba(172, 172, 180, 0.75); */
 }
 .table-th{
   width: 142rpx;
@@ -100,8 +99,9 @@
   font-size: 28rpx;
   line-height: 40rpx;
   text-align: center;
-  border: 5rpx #efeff4 solid;
-  background-color: #efeff4;
+  margin: 5rpx;
+  /* border: 5rpx red solid; */
+  /* background-color: #efeff4; */
   /* border: 1px solid red; */
 }
 /* .kcb-detail{

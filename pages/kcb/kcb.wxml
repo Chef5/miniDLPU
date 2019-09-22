@@ -1,5 +1,5 @@
 <!--index.wxml-->
-<view class="page">
+<view class="page" style="background: url('data:image/jpeg;base64,{{theme.image}}') no-repeat;background-size:100% 100%;background-attachment:fixed;">
   <view class='page__hd'>
     <view class='kcb-top'>
        <view class='kcb-xq'>
@@ -30,7 +30,7 @@
         <view class='kcb-body-table-box'>
           <scroll-view scroll-x="true" style="width: 710rpx;" >
 
-            <view class='kcb-body-head-header'>
+            <view class='kcb-body-head-header' style="background-color:rgba(172, 172, 180,{{trans}})" >
                 <view class='table-th' wx:for="{{arrayth}}" wx:for-index="idxth" wx:for-item="thitem" wx:key="week">
                   <view class='table-th-z'>{{thitem.week}}</view>
                   <view class='table-th-t'>{{thitem.date}}</view>
@@ -98,11 +98,11 @@
           <view class='cell-picker'>
             第
             <picker bindchange="zcAddChange1" value="{{indexzcAdd1}}" range="{{arrayzc}}">
-              <view style='margin-left:5px;margin-right:5px;'>{{arrayzc[indexzcAdd1]}} </view>
+              <view style='margin-left:5px;margin-right:5px;color:{{theme.color[theme.themeColorId].value}};'>{{arrayzc[indexzcAdd1]}} </view>
             </picker>
             周 ~ 第
             <picker bindchange="zcAddChange2" value="{{indexzcAdd2}}" range="{{arrayzc}}">
-              <view style='margin-left:5px;margin-right:5px;'>{{arrayzc[indexzcAdd2]}} </view>
+              <view style='margin-left:5px;margin-right:5px;color:{{theme.color[theme.themeColorId].value}};'>{{arrayzc[indexzcAdd2]}} </view>
             </picker>
             周   {{arrayth[indexweekAdd].week}}
           </view>
@@ -112,11 +112,11 @@
           <view class='cell-picker'>
             第
             <picker bindchange="jcAddChange1" value="{{indexjcAdd1}}" range="{{arrayjc}}">
-              <view style='margin-left:5px;margin-right:5px;'> {{arrayjc[indexjcAdd1]}} </view>
+              <view style='margin-left:5px;margin-right:5px;color:{{theme.color[theme.themeColorId].value}};'> {{arrayjc[indexjcAdd1]}} </view>
             </picker>
             节 ~ 第
             <picker bindchange="jcAddChange2" value="{{indexjcAdd2}}" range="{{arrayjc}}">
-              <view style='margin-left:5px;margin-right:5px;'>{{arrayjc[indexjcAdd2]}} </view>
+              <view style='margin-left:5px;margin-right:5px;color:{{theme.color[theme.themeColorId].value}};'>{{arrayjc[indexjcAdd2]}} </view>
             </picker>
             节
           </view>
@@ -128,7 +128,7 @@
             当添加的课程和已有课程冲突时，保留已有课程。需要变动已有课程，请在已有课程上长按进行修改。
           </view>
         </view>
-        <button form-type='submit' type='primary' class='comfirm-submit' style='background-color:#1298CF;'>确认添加</button>
+        <button form-type='submit' type='primary' class='comfirm-submit' style='background-color:{{theme.color[theme.themeColorId].value}};'>确认添加</button>
       </form>
     </modal>
 
@@ -163,7 +163,7 @@
         </view>
         <view style='display: flex;flex-direction:row;'>
           <button type='primary' class='comfirm-submit' style='background-color:darkorange;' bindtap='delconfirm'>删除此节</button>
-          <button form-type='submit' type='primary' class='comfirm-submit' style='background-color:#1298CF;'>保存修改</button>
+          <button form-type='submit' type='primary' class='comfirm-submit' style='background-color:{{theme.color[theme.themeColorId].value}};'>保存修改</button>
         </view>
       </form>
     </modal>
@@ -208,5 +208,5 @@
     </view>
   </wxc-popup>
   
-<view class='full-some'></view>
+<!-- <view class='full-some'></view> -->
 <ad unit-id="adunit-0e78ad1a8b81a2d8"></ad>

@@ -2,20 +2,20 @@
 <view class="page">
   <view class='page__hd'>
     <view class='user-info'>
-      <view class="user-info-image"><open-data type="userAvatarUrl"></open-data></view>
+      <view class="user-info-image" style="border: 1px solid {{theme.color[theme.themeColorId].value || '#1298cf'}};"><open-data type="userAvatarUrl"></open-data></view>
       <view class='user-info-name'><open-data type="userNickName"></open-data></view>
       <open-data type="userGender" lang="zh_CN" class="user-info-sex"></open-data>
     </view>
     <view class='user-data'>
       <view>
         剩余：{{theEverydayCount-theEverydayUsed}}
-        <text class='user-data-refresh' bindtap="handleCountRefresh">刷新</text>
+        <text class='user-data-refresh {{theme.color[theme.themeColorId].name}}' bindtap="handleCountRefresh">刷新</text>
       </view>
       <view>查询次数总额：{{theEverydayCount}}</view>
       <view class='user-data-tips'>
         <view>额外获取：</view>
         <view>1) 每隔{{incFre}}秒，额度自动+{{incTime}}；</view>
-        <view>2) 完整 <text class='tips-ad' bindtap='handleWatchAd'>观看视频广告</text> +{{incAd}}(每日限1次)；</view>
+        <view>2) 完整 <text class='tips-ad {{theme.color[theme.themeColorId].font}}' bindtap='handleWatchAd'>观看视频广告</text> +{{incAd}}(每日限1次)；</view>
       </view>
     </view>
   </view>
@@ -28,35 +28,23 @@
       <view class="weui-cell weui-cell_access" >
               <view class="weui-cell__bd">实时课表<text>(不稳定)</text></view>
               <view class="weui-cell__ft ">
-                <switch bindchange="modelSwitch" checked='{{isSwitch}}'/>
+              <switch bindchange="modelSwitch" color="{{theme.color[theme.themeColorId].value}}" checked='{{isSwitch}}'/>
               </view>
       </view>
       <navigator url="../setting-detail/set-server" class="weui-cell weui-cell_access" >
               <view class="weui-cell__bd">服务器切换</view>
               <view class="weui-cell__ft weui-cell__ft_in-access"></view>
       </navigator>
-      <!-- <view class="weui-cell weui-cell_access" >
-              <view class="weui-cell__bd">服务器：<text class='text-server'>{{nowserver}}</text></view>
-              <view class="weui-cell__ft"><view class='btn-switch' bindtap='switchServer'>随机更换 </view></view>
-      </view> -->
-      <navigator url="../setting-detail/set-know" class="weui-cell weui-cell_access" >
-              <view class="weui-cell__bd">常见问题</view>
+      <navigator url="../setting-detail/set-theme" class="weui-cell weui-cell_access" >
+              <view class="weui-cell__bd">主题</view>
               <view class="weui-cell__ft weui-cell__ft_in-access"></view>
       </navigator>
-      <!-- <navigator url="../setting-detail/set-feed" class="weui-cell weui-cell_access" >
-              <view class="weui-cell__bd">意见反馈</view>
-              <view class="weui-cell__ft weui-cell__ft_in-access"></view>
-      </navigator> -->
-      <navigator url="../setting-detail/thanks" class="weui-cell weui-cell_access" >
-              <view class="weui-cell__bd">特别感谢</view>
+      <navigator url="../setting-detail/set-other" class="weui-cell weui-cell_access" >
+              <view class="weui-cell__bd">其他</view>
               <view class="weui-cell__ft weui-cell__ft_in-access"></view>
       </navigator>
-      <!-- <navigator url="../setting-detail/set-ad" class="weui-cell weui-cell_access" >
-              <view class="weui-cell__bd">广告</view>
-              <view class="weui-cell__ft weui-cell__ft_in-access"></view>
-      </navigator> -->
     </view>
-    <button open-type="contact" class='btn-contact'>联系客服</button>
+    <button open-type="contact" class='btn-contact {{theme.color[theme.themeColorId].name}}'>联系客服</button>
     <view class='showmsg'>
       <!-- <text class='jinji'>紧急通知！！请互相转告！！\n</text> -->
       <text>157-6020-8020\n工大MOS团队提供技术支持\n</text>

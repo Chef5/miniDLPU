@@ -1,0 +1,48 @@
+/* pages/setting-detail/set-theme.wxss */
+
+/* 单选控制 */
+.weui-cell{
+  height: 40rpx;
+  font-size: 32rpx;
+}
+.weui-cell__bd{
+  color:white;
+  padding:3rpx 20rpx;
+  border-radius: 10rpx;
+}
+
+.theme-item{
+  padding: 10rpx 20rpx;
+}
+.theme-item>view:first-child{
+  font-size: 36rpx;
+  color: white;
+  padding: 8rpx 20rpx;
+  background-color: rgb(202, 201, 201);
+}
+.theme-item:last-child>view:nth-child(2){
+  display: flex;
+  flex-direction: row;
+  text-align: center;
+  justify-content: center;
+  margin-top: 10rpx;
+}
+.theme-item:last-child>view:nth-child(2) view{
+  padding: 10rpx 20rpx;
+  border-radius: 16rpx;
+  margin: 10rpx 30rpx;
+}
+.theme-item:last-child>view:nth-child(2) view:last-child{
+  border-radius: 16rpx;
+  border: 1px solid rgba(243, 53, 53, 0.849);
+  color:  rgba(243, 53, 53, 0.849);
+}
+.theme-item:last-child>view:nth-child(3){
+  color: grey;
+  font-size: 24rpx;
+  text-align: center;
+}
+.theme-item:last-child>view:last-child{
+  margin-top: 30rpx;
+  text-align: center;
+}

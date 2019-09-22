@@ -18,13 +18,13 @@
       </view>
   </view>
   <view class='page__bd'>
-      <swiper indicator-dots="ture" indicator-color="rgba(12, 21, 10, .3)" indicator-active-color="rgba(18, 152, 207, 1)" duration="500">
+      <swiper indicator-dots="ture" indicator-color="rgba(12, 21, 10, .3)" indicator-active-color="{{theme.color[theme.themeColorId].value}}" duration="500">
           <swiper-item>
             <view class='menu-body'>
               <view class='menu-items'>
                 <view class='menu-item-box'>
                   <navigator url="./cj/cj" class='nav-item' hover-class="none">
-                    <view class='menu-item-content'>
+                    <view class='menu-item-content {{theme.color[theme.themeColorId].name}}'>
                         <view class='menu-items-img'><image src='../../image/serch.png'></image></view>
                     </view>
                     <view class='menu-items-txt'><text>成绩查询</text></view>
@@ -32,7 +32,7 @@
                 </view>
                 <view class='menu-item-box'>
                   <navigator url="./ksrc/ksrc" class='nav-item' hover-class="none" >
-                    <view class='menu-item-content'>
+                    <view class='menu-item-content {{theme.color[theme.themeColorId].name}}'>
                         <view class='menu-items-img'><image src='../../image/ksrc2.png'></image></view>
                     </view>
                     <view class='menu-items-txt'><text>考试日程</text></view>
@@ -40,7 +40,7 @@
                 </view>
                 <view class='menu-item-box'>
                   <navigator url="./xiaoli/xiaoli" class='nav-item' hover-class="none" >
-                    <view class='menu-item-content'>
+                    <view class='menu-item-content {{theme.color[theme.themeColorId].name}}'>
                         <view class='menu-items-img'><image src='../../image/date.png'></image></view>
                     </view>
                     <view class='menu-items-txt'><text>校 历</text></view>
@@ -48,7 +48,7 @@
                 </view>
                 <view class='menu-item-box'>
                   <navigator url="./edu/edu" class='nav-item' hover-class="none" >
-                    <view class='menu-item-content'>
+                    <view class='menu-item-content {{theme.color[theme.themeColorId].name}}'>
                         <view class='menu-items-img'><image src='../../image/edu.png'></image></view>
                     </view>
                     <view class='menu-items-txt'><text>培养方案</text></view>
@@ -67,7 +67,7 @@
                 </view> -->
                 <view class='menu-item-box'>
                   <navigator url="./room/room" class='nav-item' hover-class="none" >
-                    <view class='menu-item-content'>
+                    <view class='menu-item-content {{theme.color[theme.themeColorId].name}}'>
                         <view class='menu-items-img'><image src='../../image/room2.png'></image></view>
                     </view>
                     <view class='menu-items-txt'><text>空教室</text></view>
@@ -75,7 +75,7 @@
                 </view>
                 <view class='menu-item-box'>
                   <view class='nav-item' bindtap='toPingJiaoProgram'>
-                    <view class='menu-item-content'>
+                    <view class='menu-item-content {{theme.color[theme.themeColorId].name}}'>
                       <view class='menu-items-img'><image src='../../image/pingjiao.png'></image></view>
                     </view>
                     <view class='menu-items-txt'><text>评教</text></view>
@@ -83,7 +83,7 @@
                 </view>
                 <view class='menu-item-box'>
                   <view class='nav-item' bindtap='toCaiJiProgram'>
-                    <view class='menu-item-content'>
+                    <view class='menu-item-content {{theme.color[theme.themeColorId].name}}'>
                       <view class='menu-items-img'><image src='../../image/caij.png'></image></view>
                     </view>
                     <view class='menu-items-txt'><text>采集平台</text></view>

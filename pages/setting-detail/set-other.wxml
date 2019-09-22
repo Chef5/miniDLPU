@@ -1,0 +1,17 @@
+<view class="set-items weui-cells weui-cells_after-title">
+
+      <navigator url="../setting-detail/set-know" class="weui-cell weui-cell_access" >
+              <view class="weui-cell__bd">常见问题</view>
+              <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+      </navigator>
+      
+      <navigator url="../setting-detail/set-feed" class="weui-cell weui-cell_access" >
+              <view class="weui-cell__bd">意见反馈</view>
+              <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+      </navigator>
+      
+      <navigator url="../setting-detail/thanks" class="weui-cell weui-cell_access" >
+              <view class="weui-cell__bd">特别感谢</view>
+              <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+      </navigator>
+</view>

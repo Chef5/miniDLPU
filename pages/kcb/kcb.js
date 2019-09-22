@@ -54,6 +54,9 @@ Page({
     m_nextday_disc: 'loading',
     m_nextday_temp: 'π_π',
 
+    //主题设置
+    theme: {},
+    trans: 0.75
     
   },
   zcChange: function (e) {
@@ -98,6 +101,13 @@ Page({
   },
   onLoad: function () {
     var that = this;
+    //透明度获取
+    let themeTransparency = wx.getStorageSync("ThemeTransparency") || 26;
+    //主题更新
+    that.setData({
+      theme: app.getTheme(),
+      trans: ((101 - themeTransparency) / 100).toFixed(2)
+    });
     // var isshownotice1361 = wx.getStorageSync('isshownotice1361');
     // if (isshownotice1361 != 1){
     //   wx.showModal({
@@ -310,6 +320,7 @@ Page({
           showCancel: true,
           title: "查询次数已耗尽",
           confirmText: "观看广告",
+          confirmColor: this.data.theme.color[this.data.theme.themeColorId].value,
           success: function (res) {
             if (res.confirm) {
               console.log('打开激励视频');
@@ -354,6 +365,7 @@ Page({
         content: '缓存里没有你的学号和密码，请点击:“设置”>“学号和密码”',
         showCancel: true, 
         confirmText: "立即前往",
+        confirmColor: that.data.theme.color[that.data.theme.themeColorId].value,
         success: function (res) {
           if (res.confirm) {
             console.log('用户点击确定');
@@ -424,6 +436,7 @@ Page({
             content: '登陆教务处失败！可能当前服务器暂时被ban了，更换一台试试？也可能是学号或者密码错了喔',
             showCancel: true,
             confirmText: "前往切换",
+            confirmColor: that.data.theme.color[that.data.theme.themeColorId].value,
             success: function (res) {
               if (res.confirm) {
                 console.log('用户点击确定');
@@ -435,13 +448,18 @@ Page({
           });
         }
         else if(res.data.length == 6){
+          let trans = that.data.trans;  //透明度设置获取
+          // 'rgba(72,61,139,0.6)', 'rgba(100,149,237,0.8)', 'rgba(0,139,139,0.6)',
+          //   'rgba(216,191,216,0.9)', 'rgba(106,96,205,0.5)', 'rgba(240,128,128,0.6)',
+          //   'rgba(210,180,140,0.7)', 'rgba(144,238,144,0.9)', 'rgba(255,165,0,0.4)',
+          //   'rgba(0,206,209,0.5)', 
           var tdcolors = [
-            'rgba(72,61,139,0.6)', 'rgba(100,149,237,0.8)', 'rgba(0,139,139,0.6)',
-            'rgba(216,191,216,0.9)', 'rgba(106,96,205,0.5)', 'rgba(240,128,128,0.6)',
-            'rgba(210,180,140,0.7)', 'rgba(144,238,144,0.9)', 'rgba(255,165,0,0.4)',
-            'rgba(0,206,209,0.5)', 
-            'rgb(204,154,168)', 'rgb(231,202,202)', 'rgb(126,171,117)','rgb(127,156,172)',
-            'rgb(0,107,86)', 'rgb(125,147,186)', 'rgb(64,75,115)'
+            'rgba(72,61,139,'+trans+')', 'rgba(100,149,237,'+trans+')', 'rgba(0,139,139,'+trans+')',
+            'rgba(216,191,216,'+trans+')', 'rgba(106,96,205,'+trans+')', 'rgba(240,128,128,'+trans+')',
+            'rgba(210,180,140,'+trans+')', 'rgba(144,238,144,'+trans+')', 'rgba(255,165,0,'+trans+')',
+            'rgba(0,206,209,'+trans+')', 
+            'rgba(204,154,168,'+trans+')', 'rgba(231,202,202,'+trans+')', 'rgba(126,171,117,'+trans+')','rgba(127,156,172,'+trans+')',
+            'rgba(0,107,86,'+trans+')', 'rgba(125,147,186,'+trans+')', 'rgba(64,75,115,'+trans+')'
           ];
           //对同一科目进行标号
           var index = 1;
@@ -489,7 +507,8 @@ Page({
         wx.showModal({
           title: '课程表获取失败了！',
           content: '请检查：当前学号(' + Id + ')' + '、服务器(' + Server + ')，可先检查学号或者密码是否有误，然后再试着切换服务器试试。',
-          confirmText: "切换服务器",
+          confirmText: "换服务器",
+          confirmColor: that.data.theme.color[that.data.theme.themeColorId].value,
           success: function (res) {
             if (res.confirm) {
               wx.navigateTo({
@@ -521,6 +540,13 @@ Page({
   },
   onShow:function(){
     var that = this;
+    //透明度获取
+    let themeTransparency = wx.getStorageSync("ThemeTransparency") || 26;
+    //主题更新
+    that.setData({
+      theme: app.getTheme(),
+      trans: ((101 - themeTransparency) / 100).toFixed(2)
+    });
     //刷新本地账号
     wx.getStorage({
       key: 'userid', success: function (res) {
@@ -757,6 +783,7 @@ Page({
               title: '提示',
               content: '推荐成功，恭喜获得App store 5元红包，马上打开支付宝即可领取！更有机会赢得Apple美国总部免费游。',
               confirmText: "知道啦",
+              confirmColor: that.data.theme.color[that.data.theme.themeColorId].value,
               showCancel: false,
               success: function (res) {
                 console.log(res);

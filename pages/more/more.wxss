@@ -64,7 +64,7 @@ swiper{
   width: 90%;
   margin-left: 2%;
   height: 100%;
-  background-color: #1298CF;
+  /* background-color: #1298CF; */
   /* border: 1px solid white; */
   border-radius: 50%;
 }

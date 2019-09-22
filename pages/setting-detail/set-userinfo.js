@@ -1,4 +1,5 @@
-// pages/setting-userinfo/set-userinfo.js
+// pages/setting-userinfo/set-userinfo.js//获取应用实例
+const app = getApp();
 Page({
 
   /**
@@ -9,6 +10,7 @@ Page({
     userpwd:'',
     hidpwd:'',
     updatetime: '0000-00-00 00:00:00',
+    theme: app.globalData.theme, //主题
   },
   getuserid: function(e){
     var userid = e.detail.value;
@@ -161,7 +163,12 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    var that= this;
+    var that = this; 
+    //主题更新
+    that.setData({
+      theme: app.getTheme()
+    });
+
     wx.getStorage({
       key: 'userid',success: function(res){that.setData({userid: res.data, });},
     });
@@ -193,48 +200,17 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-
+    
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    let that = this;
+    //主题更新
+    that.setData({
+      theme: app.getTheme()
+    });
   },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
-  }
 })

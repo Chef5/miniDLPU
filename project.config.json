@@ -46,7 +46,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 10,
+			"current": 12,
 			"list": [
 				{
 					"id": -1,
@@ -120,6 +120,12 @@
 					"name": "常见问题",
 					"pathName": "pages/setting-detail/set-know",
 					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "theme",
+					"pathName": "pages/setting-detail/set-theme",
+					"scene": null
 				}
 			]
 		}

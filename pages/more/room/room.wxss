@@ -83,7 +83,7 @@
 }
 .room{
   /* border: 1px dashed white; */
-  background-color: rgb(42, 169, 219);
+  /* background-color: rgb(42, 169, 219); */
   border-radius: 30rpx;
   margin-left: 5rpx;
   margin-right: 3rpx;

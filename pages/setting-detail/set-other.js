@@ -1,4 +1,4 @@
-// pages/more/xiaoli/xiaoli.js
+// pages/setting-detail/set-other.js
 const app = getApp();
 Page({
 
@@ -8,7 +8,6 @@ Page({
   data: {
 
   },
-
   onShow: function () {
     let that = this;
     //主题更新

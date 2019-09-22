@@ -33,7 +33,7 @@
           </view>
         </view>
         <view class='hd-con-do-option'>
-          <view><button class='weui-btn weui-btn_mini weui-btn_primary' bindtap='serchRoom'>开始查询</button></view>
+          <view><button class='weui-btn weui-btn_mini weui-btn_primary' bindtap='serchRoom' style="background:{{theme.color[theme.themeColorId].value}}">开始查询</button></view>
         </view>
       </view>
       
@@ -49,7 +49,7 @@
       <view class='bd-show-room'>
         <view class='bd-show-room-con'>
           <block wx:for="{{rooms}}" wx:for-item="roomid" wx:key='roomid'>
-            <view class='room' data-roomid='{{roomid}}' bindtap='showDetail'>{{roomid}}</view>
+            <view class='room' style="background:{{theme.color[theme.themeColorId].value}}" data-roomid='{{roomid}}' bindtap='showDetail'>{{roomid}}</view>
           </block>
         </view>
       </view>

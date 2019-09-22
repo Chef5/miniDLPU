@@ -1,10 +1,13 @@
 // pages/more/more.js
+//获取应用实例
+const app = getApp();
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
+    theme: app.globalData.theme,
     swiimgs: [
       
     ],
@@ -42,7 +45,7 @@ Page({
       title: '提示',
       content: '即将免登录使用子程序“评教小助手”，是否立即打开？',
       showCancel: true,
-      confirmColor: '#1298CF',
+      confirmColor: this.data.theme.color[this.data.theme.themeColorId].value,
       success(res) {
         if (res.confirm) {
           wx.navigateToMiniProgram({
@@ -65,9 +68,9 @@ Page({
     var passwd = wx.getStorageSync('userpwd');
     wx.showModal({
       title: '提示',
-      content: '即将免登录使用小程序“校园采集平台”，是否立即打开？',
+      content: '一款面向学生班委的信息采集工具，支持自动整理导出Excel表格！点击确认即可免登录使用小程序“校园采集平台”，是否立即打开？',
       showCancel: true,
-      confirmColor: '#1298CF',
+      confirmColor: this.data.theme.color[this.data.theme.themeColorId].value,
       success(res) {
         if (res.confirm) {
           wx.navigateToMiniProgram({
@@ -133,6 +136,10 @@ Page({
    */
   onLoad: function (options) {
     var that = this;
+    //主题更新
+    that.setData({
+      theme: app.getTheme()
+    });
     that.getnews();
     that.getTopbarImg();
     // var isshowmore183 = wx.getStorageSync('isshowmore183');
@@ -160,6 +167,7 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
+    var that = this;
     // wx.createSelectorQuery().select('.notice-bar').boundingClientRect((rect) => {
     //     console.log(rect);
     //   }).exec();
@@ -170,6 +178,10 @@ Page({
    */
   onShow: function () {
     var that = this;
+    //主题更新
+    that.setData({
+      theme: app.getTheme()
+    });
     console.log(wx.getStorageSync('newsindex'));
     that.getnews();//当重新回到此页面时，再次请求
   },

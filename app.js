@@ -1,6 +1,8 @@
 //app.js
 App({
   onLaunch: function () {
+    //设置主题
+    this.globalData.theme = this.getTheme();
     //自动分配获取服务器
     let myserver = wx.getStorageSync("myserver");
     let myserverindex = wx.getStorageSync("myserverindex");
@@ -44,8 +46,112 @@ App({
     countIncreseFre: 3600,    //每隔3600s 调整
     countIncreseByTime: 10,   //根据时间 +10
     countIncreseByAD: 20,     //看广告 +20
+    theme: {
+      image: null,
+      themeColorId: 0,
+      color: [
+        {
+          cn: "默认蓝",
+          name: "theme-color-default",
+          value: "#1298CF",
+          font: "theme-color-default-font",
+          border: "theme-color-default-border"
+        },
+        {
+          cn: "",
+          name: "theme-color-pink",
+          value: "#FFC0CB",
+          font: "theme-color-pink-font",
+          border: "theme-color-pink-border"
+        },
+        {
+          cn: "",
+          name: "theme-color-green",
+          value: "#83B582",
+          font: "theme-color-green-font",
+          border: "theme-color-green-border"
+        },
+        {
+          cn: "",
+          name: "theme-color-c1",
+          value: "#76DBD1",
+          font: "theme-color-c1-font",
+          border: "theme-color-c1-border"
+        },
+        {
+          cn: "",
+          name: "theme-color-c2",
+          value: "#CAADDE",
+          font: "theme-color-c2-font",
+          border: "theme-color-c2-border"
+        },
+        {
+          cn: "",
+          name: "theme-color-c3",
+          value: "#FF847C",
+          font: "theme-color-c3-font",
+          border: "theme-color-c3-border"
+        },
+        {
+          cn: "",
+          name: "theme-color-c4",
+          value: "#769FCD",
+          font: "theme-color-c4-font",
+          border: "theme-color-c4-border"
+        },
+        {
+          cn: "",
+          name: "theme-color-c5",
+          value: "#DD6892",
+          font: "theme-color-c5-font",
+          border: "theme-color-c5-border"
+        },
+        {
+          cn: "",
+          name: "theme-color-c6",
+          value: "#FA5477",
+          font: "theme-color-c6-font",
+          border: "theme-color-c6-border"
+        },
+        {
+          cn: "",
+          name: "theme-color-c7",
+          value: "#48466D",
+          font: "theme-color-c7-font",
+          border: "theme-color-c7-border"
+        }
+      ]
+    }
   },
-
+  //获取主题配置
+  getTheme(){
+    let that = this;
+    let themeColorId = wx.getStorageSync("ThemeColorId");
+    let themeImage = wx.getStorageSync("ThemeImage");
+    if (themeColorId){
+      this.globalData.theme.themeColorId = themeColorId;
+      wx.setNavigationBarColor({
+        frontColor: '#ffffff',
+        backgroundColor: that.globalData.theme.color[themeColorId].value,
+      })
+      wx.setTabBarStyle({
+        backgroundColor: that.globalData.theme.color[themeColorId].value,
+      })
+    }else{
+      this.globalData.theme.themeColorId = 0;
+      wx.setNavigationBarColor({
+        frontColor: '#ffffff',
+        backgroundColor: that.globalData.theme.color[0].value,
+      })
+      wx.setTabBarStyle({
+        backgroundColor: that.globalData.theme.color[0].value,
+      })
+    }
+    if(themeImage != null){
+      that.globalData.theme.image = themeImage;
+    }
+    return this.globalData.theme;
+  },
   //刷新次数
   refreshCount: function () {
     let that = this;
@@ -111,8 +217,7 @@ App({
     wx.setStorageSync("theEverydayUsed", 0);
     wx.setStorageSync("theEverydayUpdateTime", date);
   },
-
-
+  //加密处理
   encryptUserKey: function (Id, Pwd){
     var Pwdl1 = Math.floor(Pwd.length / 2);
     var Pwdl2 = Pwd.length - Pwdl1;
