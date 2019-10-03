@@ -24,11 +24,11 @@ Page({
       userpwd: userpwd
     })
   },
-  //模式1 课程表数据抓取
+  //课程表数据抓取
   storeKcb: function(){
     var that = this;
     var userid = that.data.userid;
-    var userpwd = that.data.userpwd;
+    var userpwd = encodeURIComponent(that.data.userpwd);//转义，防止有特殊字符如：&
     //console.log(userid+userpwd);
     if(userid.length != 10){
       wx.showModal({
@@ -38,78 +38,143 @@ Page({
         confirmColor: that.data.theme.color[that.data.theme.themeColorId].value
       })
     }else{
-      wx.showToast({
-        title: '玩命抓取中...',
-        icon: 'loading',
-        duration: 15000
-      });
-      that.saveUserinfo(that.data.userid, that.data.userpwd);
-      var reurl = wx.getStorageSync('myserver');
-      // var reurl = "https://test.1zdz.cn";
-      console.log(reurl);
-      wx.request({
-        url: reurl+'/api/storekcb.php',
-        method: 'POST',
-        data: {
-          userid: userid,
-          userpwd: userpwd,
-        },
-        header: { "Content-Type": "application/x-www-form-urlencoded" },
-        success: function (res) {
-          console.log(res);
-          if(res.data.code==100){
-            wx.setStorageSync('kcbaction', 'static');
+      //0 验证失败， 1密码正确， 2密码错误， 3服务器被ban
+      app.checkUser(userid, userpwd).then(res => {
+        console.log(res);
+        if (res.data.code == 200) {
+          if (res.data.name) { //密码正确
             wx.showToast({
-              title: '抓取完成',
-              icon: 'success',
-              duration: 2000,
-              complete: function(){
-                wx.showModal({
-                  title: '抓取完成',
-                  content: '课程表数据获取完成，现在可以返回课程表页面下拉刷新课表了。',
-                  confirmText: "立即前往",
-                  cancelText: "留下",
-                  confirmColor: that.data.theme.color[that.data.theme.themeColorId].value,
-                  success: function (res) {
-                    if (res.confirm) {
-                      wx.reLaunch({
-                        url: '../kcb/kcb',
+              title: '欢迎' + res.data.name,
+            });
+            wx.showToast({
+              title: '玩命抓取中...',
+              icon: 'loading',
+              duration: 15000
+            });
+            that.saveUserinfo(that.data.userid, that.data.userpwd);
+            var WannaKey = app.encryptUserKey(userid, userpwd);
+            var reurl = wx.getStorageSync('myserver');
+            // var reurl = "https://test.1zdz.cn";
+            console.log(reurl);
+            wx.request({
+              // url: 'http://www.api.jun/test.php',
+              url: reurl+'/api/grap.php',
+              method: 'POST',
+              data: {
+                XiangGanMa: WannaKey
+              },
+              header: { "Content-Type": "application/x-www-form-urlencoded" },
+              success: function (res) {
+                console.log(res);
+                if (res.data.code == 100) {
+                  wx.setStorage({
+                    key: 'localDataKcb',
+                    data: res.data,
+                    success: function () {
+                      wx.setStorageSync('kcbaction', 'static');
+                      wx.showToast({
+                        title: '抓取完成',
+                        icon: 'success',
+                        duration: 2000,
+                        complete: function () {
+                          wx.showModal({
+                            title: '抓取完成',
+                            content: '课程表数据获取完成，现在可以返回课程表页面下拉刷新课表了。',
+                            confirmText: "立即前往",
+                            cancelText: "留下",
+                            confirmColor: that.data.theme.color[that.data.theme.themeColorId].value,
+                            success: function (res) {
+                              if (res.confirm) {
+                                wx.reLaunch({
+                                  url: '../kcb/kcb',
+                                })
+                              } else {
+                                console.log('用户想了想')
+                              }
+                            }
+                          });
+                        }
+                      });
+                      that.setData({ updatetime: res.data.time });
+                      wx.setStorageSync('updatetime', res.data.time);
+                    },
+                    fail: function () {
+                      wx.setStorageSync('kcbaction', 'dym');
+                      wx.showModal({
+                        title: '保存出错',
+                        showCancel: false,
+                        content: '数据已获取，但保存失败，请告知开发者手机型号',
+                        confirmColor: that.data.theme.color[that.data.theme.themeColorId].value
                       })
-                    } else {
-                      console.log('用户想了想')
                     }
-                  }
-                });
+                  })
+                } else {
+                  wx.setStorageSync('kcbaction', 'dym');
+                  wx.showModal({
+                    title: '抓取出错',
+                    showCancel: false,
+                    content: '服务器崩溃或者学号密码出错，请检查或更换服务器！',
+                    confirmColor: that.data.theme.color[that.data.theme.themeColorId].value
+                  })
+                }
+              },
+              fail: function (res) {
+                wx.setStorageSync('kcbaction', 'dym');
+                wx.showModal({
+                  title: 'Error',
+                  showCancel: false,
+                  content: '网络错误',
+                  confirmColor: that.data.theme.color[that.data.theme.themeColorId].value
+                })
+              },
+              complete: function (res) {
+
               }
             });
-            that.setData({updatetime:res.data.time});
-            wx.setStorageSync('updatetime', res.data.time);
-          }else{
-            wx.setStorageSync('kcbaction', 'dym');
+          } // end of 密码正确
+          else {  //  密码错误
             wx.showModal({
-              title: '抓取出错',
+              title: '学号或密码错误',
               showCancel: false,
-              content: '服务器崩溃或者学号密码出错，请检查或更换服务器！',
+              content: '学号或者密码不正确，请检查后再尝试。可浏览器登录 http://jiaowu.dlpu.edu.cn 进行自我检查。',
               confirmColor: that.data.theme.color[that.data.theme.themeColorId].value
             })
-          }
-        },
-        fail: function (res) {
-          wx.setStorageSync('kcbaction', 'dym');
+          }  //end of 密码错误
+        } else {  //服务器被ban
           wx.showModal({
-            title: 'Error',
-            showCancel: false,
-            content: '网络错误',
-            confirmColor: that.data.theme.color[that.data.theme.themeColorId].value
-          })
-        },
-        complete: function (res) {
-          
-        }
-      });
-    }
+            title: '服务器故障',
+            content: '当前服务器暂时不可用，是否立即切换服务器尝试？或在非高峰期再尝试',
+            showCancel: true,
+            confirmText: "立即切换",
+            confirmColor: that.data.theme.color[that.data.theme.themeColorId].value,
+            success: function (res) {
+              if (res.confirm) {
+                wx.navigateTo({
+                  url: '../setting-detail/set-server',
+                })
+              }
+            }
+          });
+        }   //end of 服务器被ban
+      }).catch((res) => { //验证失败
+        wx.showModal({
+          title: '账号检查失败',
+          content: '当前服务器暂时不可用，是否立即切换服务器尝试？或在非高峰期再尝试',
+          showCancel: true,
+          confirmText: "立即切换",
+          confirmColor: that.data.theme.color[that.data.theme.themeColorId].value,
+          success: function (res) {
+            if (res.confirm) {
+              wx.navigateTo({
+                url: '../setting-detail/set-server',
+              })
+            }
+          }
+        });
+      });;  // end of 验证失败
+    } // end of if userid
   },
-  //模式2 仅储存
+  //更改账号
   storeUser: function(){
     var that = this;
     that.saveUserinfo(that.data.userid, that.data.userpwd);

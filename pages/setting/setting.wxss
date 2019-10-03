@@ -62,7 +62,7 @@
   width: 100%;
   text-align: center;
   font-size: 24rpx;
-  color: gainsboro;
+  color: rgb(206, 206, 206);
 }
 .jinji{
   color: red;

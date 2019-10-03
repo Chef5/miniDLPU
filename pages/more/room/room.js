@@ -6,7 +6,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    house: ["综合楼A", "综合楼B", "国教", "艺术学院", "服装学院", "综合楼C", "机电楼"],
+    house: ["综合楼A", "综合楼B", "南安普顿", "艺术学院", "服装学院", "综合楼C", "机电楼"],
     zc:[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20],
     week: [{ index: 1, show: "一" }, { index: 2, show: "二" }, { index: 3, show: "三" }, { index: 4, show: "四" }, { index: 5, show: "五" }, { index: 6, show: "六" }, { index: 7, show: "日" }],
     time: [{ index: 1, show: "1,2" }, { index: 1, show: "3,4" }, { index: 1, show: "5,6" }, { index: 1, show: "7,8" }, { index: 1, show: "9,10" }],

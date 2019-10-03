@@ -130,13 +130,15 @@ Page({
    */
   onShow: function () {
     let that = this;
+    let kcbaction = wx.getStorageSync("kcbaction");
     //主题更新
     that.setData({
       theme: app.getTheme()
     });
     that.setData({
       theEverydayCount: wx.getStorageSync("theEverydayCount"),
-      theEverydayUsed: wx.getStorageSync("theEverydayUsed")
+      theEverydayUsed: wx.getStorageSync("theEverydayUsed"),
+      isSwitch: kcbaction == "dym" ? true : false
     });
   },
 

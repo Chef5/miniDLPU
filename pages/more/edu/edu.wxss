@@ -1,6 +1,6 @@
 /* pages/more/edu/edu.wxss */
 .page{
-  background-color: #f3f3fa;
+  background-color: #efeff4;
 }
 .edu-top{
   display: flex;

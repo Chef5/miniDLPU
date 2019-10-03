@@ -47,6 +47,9 @@
       }
     ]
   },
+  "networkTimeout":{
+    "request": 15000
+  },
   "sitemapLocation": "sitemap.json",
   "navigateToMiniProgramAppIdList": [
     "wx3f924baa54174a84",

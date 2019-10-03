@@ -152,6 +152,30 @@ App({
     }
     return this.globalData.theme;
   },
+  //验证学号密码是否正确
+  checkUser(userid, userpwd) {
+    var reurl = wx.getStorageSync('myserver');
+    let WannaKey = this.encryptUserKey(userid, userpwd);
+    let flag = 0;  //0 验证失败， 1密码正确， 2密码错误， 3服务器错误
+    return new Promise(function (resolve, reject) {
+      wx.request({
+        url: reurl + '/api/checkUser.php',
+        // url: 'http://www.api.jun/checkUser.php',
+        method: 'POST',
+        data: {
+          XiangGanMa: WannaKey
+        },
+        header: { "Content-Type": "application/x-www-form-urlencoded" },
+        success: function (res) {
+          resolve(res);
+        },
+        fail: function () {
+          console.log("验证失败");
+          reject({flag : 0});
+        }
+      });
+    })
+  },
   //刷新次数
   refreshCount: function () {
     let that = this;

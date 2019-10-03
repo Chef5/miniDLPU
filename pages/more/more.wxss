@@ -102,7 +102,7 @@ swiper{
   position: relative;
   width: 100%;
   font-size: 28rpx;
-  color: gray;
+  color: rgb(206, 206, 206);
   text-align: center;
 }
 .share-box{
@@ -110,7 +110,7 @@ swiper{
   bottom: 10rpx;
   width: 100%;
   font-size: 28rpx;
-  color: gray;
+  color: rgb(206, 206, 206);
   text-align: center;
 }
 

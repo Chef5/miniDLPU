@@ -47,7 +47,7 @@
     <button open-type="contact" class='btn-contact {{theme.color[theme.themeColorId].name}}'>联系客服</button>
     <view class='showmsg'>
       <!-- <text class='jinji'>紧急通知！！请互相转告！！\n</text> -->
-      <text>157-6020-8020\n工大MOS团队提供技术支持\n</text>
+      <text>157-6020-8020\n工大小程序联盟\n</text>
       <!-- <text bindtap='seturl'>安卓下载：http://download.1zdz.cn</text> -->
     </view>
   </view>

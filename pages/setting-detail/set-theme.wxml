@@ -30,9 +30,9 @@
         <view bindtap="chooseImage" style="background:{{colorSel}};color:white;">选择图片</view>
         <view bindtap="clearImage">清除背景图</view>
       </view>
-      <view>图片需要自己裁剪以适应屏幕显示</view>
+      <view>图片需要自己裁剪以适应屏幕显示（ 375:634 约 1:1.69）</view>
       <view>
-        <image wx-if="{{theme.image}}" src="data:image/jpeg;base64,{{theme.image}}" style="width:250rpx;height:400rpx;"></image>
+        <image wx-if="{{theme.image}}" src="data:image/jpeg;base64,{{theme.image}}" style="width:256rpx;height:450rpx;"></image>
       </view>
     </view>
   </view>

@@ -1,5 +1,5 @@
 <!--index.wxml-->
-<view class="page" style="background: url('data:image/jpeg;base64,{{theme.image}}') no-repeat;background-size:100% 100%;background-attachment:fixed;">
+<view class="page" style="background: url('data:image/jpeg;base64,{{theme.image}}') no-repeat;background-size:100% 100%;background-attachment:fixed !important;">
   <view class='page__hd'>
     <view class='kcb-top'>
        <view class='kcb-xq'>
@@ -26,7 +26,7 @@
     <view class='kcb-body'>
 
       <view class='kcb-body-table'>
-        <view class='kcb-body-fill'>1\n2\n3\n4\n5\n6\n7\n8\n9\n10</view>
+        <view class='kcb-body-fill'>1\n2\n3\n4\n5\n6\n7\n8\n9\n10\n11\n12</view>
         <view class='kcb-body-table-box'>
           <scroll-view scroll-x="true" style="width: 710rpx;" >
 
@@ -61,16 +61,16 @@
 
 
     <jun-modal show="{{!hiddenmodalput}}" title="课程详细" content-color="#363636" confirm-text="确定" confirm-color="{{theme.color[theme.themeColorId].value}}" bindconfirm="confirm" no-cancel='true'>
-        <view style='display:flex;flex-direction:row'>
+        <view style='display:flex;flex-direction:row;font-size:32rpx;'>
           <view style="width:200rpx;">课程名称：</view><view style="flex:1">{{name}} </view>
         </view>
-        <view style='display:flex;flex-direction:row;'>
+        <view style='display:flex;flex-direction:row;font-size:32rpx;'>
           <view style="width:200rpx;">任课教师：</view><view style="flex:1;padding-right:12rpx;">{{leader}} </view>
         </view>
-        <view style='display:flex;flex-direction:row'>
+        <view style='display:flex;flex-direction:row;font-size:32rpx;'>
           <view style="width:200rpx;">课程地点：</view><view style="flex:1">{{room}} </view>
         </view>
-        <view style='display:flex;flex-direction:row'>
+        <view style='display:flex;flex-direction:row;font-size:32rpx;'>
           <view style="width:200rpx;">上课时间：</view>
           <view style='flex:1;display:flex;flex-direction:column;'>
             <view>{{time1}}</view>
@@ -213,5 +213,4 @@
     </view>
   </wxc-popup>
   
-<!-- <view class='full-some'></view> -->
 <ad unit-id="adunit-0e78ad1a8b81a2d8"></ad>

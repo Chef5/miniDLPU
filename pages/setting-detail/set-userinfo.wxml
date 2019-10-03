@@ -34,7 +34,7 @@
     
     <view class='show-advice'>
       <label style="color:{{theme.color[theme.themeColorId].value}}">首次使用建议：</label>
-      <view>点击抓取课表，将课程表数据保存至我们的服务器上，再关闭实时课表，之后使用课程表不会消耗次数，并且响应更快速；</view>
+      <view>点击抓取课表，将课程表数据保存至您本人手机内，再关闭实时课表，之后使用课程表不会消耗次数，并且响应更快速；</view>
     </view>
 
     <view class='show-stro'>
