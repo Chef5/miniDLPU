@@ -176,7 +176,28 @@ Page({
   },
   //更改账号
   storeUser: function(){
-    var that = this;
+    var that = this; 
+    var userid = that.data.userid;
+    var userpwd = encodeURIComponent(that.data.userpwd);//转义，防止有特殊字符如：&
+    //console.log(userid+userpwd);
+    if (userid.length != 10) {
+      wx.showModal({
+        title: '学号错误',
+        showCancel: false,
+        content: '学号位数不对！当前位数：' + userid.length,
+        confirmColor: that.data.theme.color[that.data.theme.themeColorId].value
+      })
+      return;
+    }
+    if (!userpwd) {
+      wx.showModal({
+        title: '密码未设置',
+        showCancel: false,
+        content: '密码不能为空，请检查',
+        confirmColor: that.data.theme.color[that.data.theme.themeColorId].value
+      })
+      return;
+    }
     that.saveUserinfo(that.data.userid, that.data.userpwd);
     wx.setStorageSync('kcbaction', 'dym');
     wx.showModal({

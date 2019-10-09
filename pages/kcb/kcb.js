@@ -101,41 +101,17 @@ Page({
   },
   onLoad: function () {
     var that = this;
+    // 用户账号初始化
+    let userid = wx.getStorageSync("userid");
+    let userpwd = wx.getStorageSync("userpwd");
     //透明度获取
     let themeTransparency = wx.getStorageSync("ThemeTransparency") || 26;
     //主题更新
     that.setData({
       theme: app.getTheme(),
-      trans: ((101 - themeTransparency) / 100).toFixed(2)
-    });
-    // var isshownotice1361 = wx.getStorageSync('isshownotice1361');
-    // if (isshownotice1361 != 1){
-    //   wx.showModal({
-    //     content: '（1）现在已将本学期课程表数据清空，请在“设置->学号和密码”里重新抓取课表，或打开实时课表，即可查询下学期课程表数据；（2）部分同学课程表数据在服务器维护过程中丢失，请重新抓取；（3）部分功能限制查询次数（设置中可查看）：服务器资源有限，为了让更多人体验到服务，每人每日初始30次，请合理分配查询次数。若觉得次数不够，可联系反馈，我们会根据整体情况进行调整，请理解！',
-    //     showCancel: true,
-    //     title: "更新通知",
-    //     confirmText: "知道了",
-    //     confirmColor: "#1298CF",
-    //     cancelText: "下次通知",
-    //     success: function (res) {
-    //       if (res.confirm) {
-    //         console.log('用户点击确定');
-    //         wx.setStorageSync('isshownotice1361', 1);
-    //         //停止刷新
-    //         wx.stopPullDownRefresh();
-    //         // 隐藏顶部刷新图标
-    //         wx.hideNavigationBarLoading();
-    //       }
-    //     }
-    //   });
-    //   wx.setStorageSync('isshownotice1361', 0);
-    // }
-
-    wx.getStorage({key: 'userid',success: function(res) {
-        that.setData({userid: res.data});},
-    });
-    wx.getStorage({key: 'userpwd',success: function (res) {
-        that.setData({userpwd: res.data});},
+      trans: ((101 - themeTransparency) / 100).toFixed(2),
+      userid: userid,
+      userpwd: userpwd
     });
     //获取天气
     wx.request({
@@ -366,6 +342,7 @@ Page({
     console.log('pwd:'+Pwd);
     if (Id == '' && Pwd == '') {
       wx.showModal({
+        title: "首次使用提示",
         content: '您还未绑定你的学号和密码，请点击:“设置”>“学号和密码”',
         showCancel: true, 
         confirmText: "立即前往",
@@ -541,24 +518,29 @@ Page({
   },
   onShow:function(){
     var that = this;
+    //刷新本地账号
+    let userid = wx.getStorageSync("userid");
+    let userpwd = wx.getStorageSync("userpwd");
     //透明度获取
     let themeTransparency = wx.getStorageSync("ThemeTransparency") || 26;
     //主题更新
     that.setData({
       theme: app.getTheme(),
-      trans: ((101 - themeTransparency) / 100).toFixed(2)
+      trans: ((101 - themeTransparency) / 100).toFixed(2),
+      userid: userid,
+      userpwd: userpwd
     });
-    //刷新本地账号
-    wx.getStorage({
-      key: 'userid', success: function (res) {
-        that.setData({ userid: res.data });
-      },
-    });
-    wx.getStorage({
-      key: 'userpwd', success: function (res) {
-        that.setData({ userpwd: res.data });
-      },
-    });
+    //新用户引导
+    if(userid){
+      that.forNewUserNotice();
+    }
+    //检查本地是否有课程表数据localDataKcb
+    let localDataKcb = wx.getStorageSync("localDataKcb");
+    // v1.5.0 本地无课程表显示通知
+    if (userid && !localDataKcb){
+      // 更新通知
+      that.updateNews();
+    }
   },
   //判断课程字数是否超出小方块
   isOver15:function(str) {
@@ -960,6 +942,38 @@ Page({
       }
       //console.log(changeKCB);
       that.setData({ arraykcb: changeKCB, });
+    }
+  },
+  //新用户引导
+  forNewUserNotice: function () {
+
+  },
+  // 更新通知
+  updateNews: function () {
+    var isshownotice1362 = wx.getStorageSync('isshownotice1362');
+    if (isshownotice1362 != 1) {
+      wx.showModal({
+        content: '重要！！！（1）由于服务器压力过大，本次更新将用户课程表数据存储于个人手机上，服务器不再存储用户课程表数据。此次需要同学们重新抓取一下课程表到本地，之后可不再依赖服务器即可查询课表。（2）修复已知bug。',
+        showCancel: true,
+        title: "重要通知",
+        confirmText: "前往抓取",
+        confirmColor: "#1298CF",
+        cancelText: "下次通知",
+        success: function (res) {
+          if (res.confirm) {
+            console.log('用户点击确定');
+            wx.setStorageSync('isshownotice1362', 1);
+            wx.navigateTo({
+              url: '../setting-detail/set-userinfo',
+            })
+            //停止刷新
+            wx.stopPullDownRefresh();
+            // 隐藏顶部刷新图标
+            wx.hideNavigationBarLoading();
+          }
+        }
+      });
+      wx.setStorageSync('isshownotice1362', 0);
     }
   },
   //colorUI
