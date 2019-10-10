@@ -56,7 +56,10 @@ Page({
 
     //主题设置
     theme: {},
-    trans: 0.75
+    trans: 0.75,
+
+    // 新用户引导是否显示
+    newuserguideisshow: false
     
   },
   zcChange: function (e) {
@@ -531,7 +534,9 @@ Page({
       userpwd: userpwd
     });
     //新用户引导
-    if(userid){
+    let guideindex = wx.getStorageSync("newuserguideindex");
+    console.log("guideindex:" + guideindex);
+    if (userid && !guideindex){
       that.forNewUserNotice();
     }
     //检查本地是否有课程表数据localDataKcb
@@ -946,7 +951,26 @@ Page({
   },
   //新用户引导
   forNewUserNotice: function () {
-
+    let that = this;
+    that.setData({
+      newuserguideisshow: true,
+      newuserguideindex: 0
+    });
+  },
+  // 新用户引导 之下一步
+  guideNext: function () {
+    let that = this;
+    let nowindex = that.data.newuserguideindex;
+    if (nowindex < 5){
+      that.setData({
+        newuserguideindex: nowindex + 1
+      });
+    }else{
+      that.setData({
+        newuserguideisshow: false
+      });
+      wx.setStorageSync("newuserguideindex", nowindex);
+    }
   },
   // 更新通知
   updateNews: function () {

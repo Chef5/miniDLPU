@@ -284,3 +284,55 @@
 /* 修改课程-----------开始 */
 
 /* 修改课程-----------结束 */
+
+/* 新人引导 */
+.guide-item{
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+.guide-item-text{
+  width: 100%;
+  font-size: 36rpx;
+  letter-spacing: 2px;
+  text-align: center;
+}
+/* 1.周次 */
+.guide-item-img-zc{
+  margin-left: 290rpx;  
+  width: 260rpx; 
+  height: 260rpx;
+}
+/* 2.天气 */
+.guide-item-img-tq{
+  margin-left: 440rpx;
+  width: 300rpx;
+  height: 300rpx;
+}
+/* 3.课表滑动 */
+.guide-item-img-area{
+  margin: 90rpx auto;
+  width: 95%;
+  height: 1200rpx;
+  border: 8rpx dashed white;
+  border-bottom: none;
+}
+.guide-item-img-mv{
+  display: flex;
+  height: 580rpx;
+  margin: 200rpx auto;
+
+}
+/* 4.轻触课程 5.长按课程 */
+.guide-item-img-tap{
+  margin-top: 180rpx;
+  margin-left: 300rpx;
+  width: 220rpx;
+  height: 220rpx;
+}
+/* 6.分享 */
+.guide-item-img-share{
+  margin-left: 300rpx;
+  width: 300rpx;
+  height: 300rpx;
+}

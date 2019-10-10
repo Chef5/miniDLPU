@@ -177,40 +177,83 @@
 
   </view>
 </view>
-  <wxc-popup class="J_Popup" animation-mode="top" align="top">
-    <view class="popup__content">
-      <view class='m-tq-top'>
-        <view>城市：大连</view>
-      </view>
-      <view class='m-tq-con'>
-        <view class='m-tq-con-item'>
-          <view class='m-tq-con-item-day'>今天：{{m_today}}</view>
-          <view class='m-tq-con-item-main'>
-            <view class='m-tq-con-item-main-img'>
-                <view wx:if='{{m_today_img1}}'><image src='../../image/weather/{{m_today_img1}}.png'></image></view>
-                <view wx:if='{{m_today_img2}}'><image src='../../image/weather/{{m_today_img2}}.png'></image></view>
-            </view>
-            <view class='m-tq-con-item-main-text'>
-              <view class='m-tq-con-item-main-text-disc'>{{m_today_disc}}</view>
-              <view class='m-tq-con-item-main-text-temp'>{{m_today_temp}}℃</view>
-            </view>
+<wxc-popup class="J_Popup" animation-mode="top" align="top">
+  <view class="popup__content">
+    <view class='m-tq-top'>
+      <view>城市：大连</view>
+    </view>
+    <view class='m-tq-con'>
+      <view class='m-tq-con-item'>
+        <view class='m-tq-con-item-day'>今天：{{m_today}}</view>
+        <view class='m-tq-con-item-main'>
+          <view class='m-tq-con-item-main-img'>
+              <view wx:if='{{m_today_img1}}'><image src='../../image/weather/{{m_today_img1}}.png'></image></view>
+              <view wx:if='{{m_today_img2}}'><image src='../../image/weather/{{m_today_img2}}.png'></image></view>
+          </view>
+          <view class='m-tq-con-item-main-text'>
+            <view class='m-tq-con-item-main-text-disc'>{{m_today_disc}}</view>
+            <view class='m-tq-con-item-main-text-temp'>{{m_today_temp}}℃</view>
           </view>
         </view>
-        <view class='m-tq-con-item'>
-          <view class='m-tq-con-item-day'>明天：{{m_nextday}}</view>
-          <view class='m-tq-con-item-main'>
-            <view class='m-tq-con-item-main-img'>
-                <view wx:if='{{m_nextday_img1}}'><image src='../../image/weather/{{m_nextday_img1}}.png'></image></view>
-                <view wx:if='{{m_nextday_img2}}'><image src='../../image/weather/{{m_nextday_img2}}.png'></image></view>
-            </view>
-            <view class='m-tq-con-item-main-text'>
-              <view class='m-tq-con-item-main-text-disc'>{{m_nextday_disc}}</view>
-              <view class='m-tq-con-item-main-text-temp'>{{m_nextday_temp}}℃</view>
-            </view>
+      </view>
+      <view class='m-tq-con-item'>
+        <view class='m-tq-con-item-day'>明天：{{m_nextday}}</view>
+        <view class='m-tq-con-item-main'>
+          <view class='m-tq-con-item-main-img'>
+              <view wx:if='{{m_nextday_img1}}'><image src='../../image/weather/{{m_nextday_img1}}.png'></image></view>
+              <view wx:if='{{m_nextday_img2}}'><image src='../../image/weather/{{m_nextday_img2}}.png'></image></view>
+          </view>
+          <view class='m-tq-con-item-main-text'>
+            <view class='m-tq-con-item-main-text-disc'>{{m_nextday_disc}}</view>
+            <view class='m-tq-con-item-main-text-temp'>{{m_nextday_temp}}℃</view>
           </view>
         </view>
       </view>
     </view>
-  </wxc-popup>
-  
+  </view>
+</wxc-popup>
+
+<jun-mask show="{{newuserguideisshow}}">
+  <view bindtap="guideNext" style="width:100%;height:100%;">
+
+    <view class="guide-item" wx:if="{{newuserguideindex == 0}}">
+      <image src="/image/guide/zc.png" class="guide-item-img-zc"></image>
+      <view class="guide-item-text">点击这里可以查看其它周</view>
+      <view class="guide-item-text">周次默认是自动当前周喔</view>
+      <view class="guide-item-text">在服务器奔溃或者无网络情况下，需要自己点击选择周次才可以查看课表</view>
+    </view>
+    
+    <view class="guide-item" wx:if="{{newuserguideindex == 1}}">
+      <image src="/image/guide/tq.png" class="guide-item-img-tq"></image>
+      <view class="guide-item-text">点击这里可以查看近两日天气情况</view>
+    </view>
+
+    <view class="guide-item" wx:if="{{newuserguideindex == 2}}">
+      <view class="guide-item-img-area">
+        <image src="/image/guide/mv.png" class="guide-item-img-mv"></image>
+      </view>
+      <view class="guide-item-text" style="margin-top:-650rpx;">左右滑动可查看周末课程信息</view>
+    </view>
+
+    <view class="guide-item" wx:if="{{newuserguideindex == 3}}">
+      <image src="/image/guide/tap.png" class="guide-item-img-tap"></image>
+      <view class="guide-item-text">轻触课程可查看详细内容喔</view>
+    </view>
+
+    <view class="guide-item" wx:if="{{newuserguideindex == 4}}">
+      <image src="/image/guide/tap.png" class="guide-item-img-tap"></image>
+      <view class="guide-item-text">长按还可以添加或修改</view>
+    </view>
+
+    <view class="guide-item" wx:if="{{newuserguideindex == 5}}">
+      <image src="/image/guide/share.png" class="guide-item-img-share"></image>
+      <view class="guide-item-text">点击这里添加小程序，或分享给朋友</view>
+      <view class="guide-item-text" style="margin-top:150rpx;font-size:60rpx;font-weigt:700;">引导结束</view>
+      <view class="guide-item-text">其他页面，请尽情探索吧</view>
+    </view>
+
+
+  </view>
+</jun-mask>
+
 <ad unit-id="adunit-0e78ad1a8b81a2d8"></ad>

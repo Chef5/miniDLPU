@@ -3,6 +3,7 @@
   "enablePullDownRefresh": true,
   "usingComponents": {
     "wxc-popup": "../../dist/wxc-popup/dist/index",
-    "jun-modal": "../../components/jun-modal/jun-modal"
+    "jun-modal": "../../components/jun-modal/jun-modal",
+    "jun-mask": "../../components/jun-mask/jun-mask"
   }
 }
