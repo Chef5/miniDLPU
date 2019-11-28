@@ -116,6 +116,30 @@ Page({
       userid: userid,
       userpwd: userpwd
     });
+    var isshownotice1364 = wx.getStorageSync('isshownotice1364');
+    if (isshownotice1364 != 1) {
+      wx.showModal({
+        content: '（1）更新成绩可查询学期；（2）修复部分同学无法查看考试日程问题；',
+        showCancel: false,
+        title: "更新通知",
+        confirmText: "我知道了",
+        confirmColor: that.data.theme.color[that.data.theme.themeColorId].value,
+        // cancelText: "下次通知",
+        success: function (res) {
+          if (res.confirm) {
+            console.log('用户点击确定');
+            wx.setStorageSync('isshownotice1364', 1);
+            // wx.navigateTo({
+            //   url: '../setting-detail/set-userinfo',
+            // })
+            //停止刷新
+            wx.stopPullDownRefresh();
+            // 隐藏顶部刷新图标
+            wx.hideNavigationBarLoading();
+          }
+        }
+      });
+    }
     //获取天气
     wx.request({
       url: 'https://test.1zdz.cn/api/getweather.php',
@@ -544,7 +568,7 @@ Page({
     // v1.5.0 本地无课程表显示通知
     if (userid && !localDataKcb){
       // 更新通知
-      that.updateNews();
+      // that.updateNews();
     }
   },
   //判断课程字数是否超出小方块
@@ -974,10 +998,10 @@ Page({
   },
   // 更新通知
   updateNews: function () {
-    var isshownotice1362 = wx.getStorageSync('isshownotice1362');
-    if (isshownotice1362 != 1) {
+    var isshownotice1363 = wx.getStorageSync('isshownotice1363');
+    if (isshownotice1363 != 1) {
       wx.showModal({
-        content: '重要！！！（1）由于服务器压力过大，本次更新将用户课程表数据存储于个人手机上，服务器不再存储用户课程表数据。此次需要同学们重新抓取一下课程表到本地，之后可不再依赖服务器即可查询课表。（2）修复已知bug。',
+        content: '（1）更新成绩查询学期；（2）修复部分同学无法查看考试日程问题；',
         showCancel: true,
         title: "重要通知",
         confirmText: "前往抓取",
@@ -986,7 +1010,7 @@ Page({
         success: function (res) {
           if (res.confirm) {
             console.log('用户点击确定');
-            wx.setStorageSync('isshownotice1362', 1);
+            wx.setStorageSync('isshownotice1363', 1);
             wx.navigateTo({
               url: '../setting-detail/set-userinfo',
             })
@@ -997,7 +1021,7 @@ Page({
           }
         }
       });
-      wx.setStorageSync('isshownotice1362', 0);
+      wx.setStorageSync('isshownotice1363', 0);
     }
   },
   //colorUI

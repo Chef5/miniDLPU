@@ -220,7 +220,7 @@
       <image src="/image/guide/zc.png" class="guide-item-img-zc"></image>
       <view class="guide-item-text">点击这里可以查看其它周</view>
       <view class="guide-item-text">周次默认是自动当前周喔</view>
-      <view class="guide-item-text">在服务器奔溃或者无网络情况下，需要自己点击选择周次才可以查看课表</view>
+      <view class="guide-item-text">在服务器崩溃或者无网络情况下，需要自己点击选择周次就可以查看课表</view>
     </view>
     
     <view class="guide-item" wx:if="{{newuserguideindex == 1}}">
