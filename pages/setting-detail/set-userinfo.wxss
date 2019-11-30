@@ -19,6 +19,8 @@
   margin-left: 10rpx;
   margin-right: 10rpx;
   margin-top: 10rpx;
+  font-size: 28rpx;
+  color: rgba(66, 65, 65, 0.808);
   /* border: 1px gray double; */
 }
 .show-stro label,.show-advice label{
@@ -26,6 +28,5 @@
   color: #f72323;
 }
 .show-advice view{
-  font-size: 32rpx;
-  color: rgb(66, 65, 65);
+  text-indent: 2em;
 }

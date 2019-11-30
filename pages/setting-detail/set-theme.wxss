@@ -42,6 +42,11 @@
   font-size: 24rpx;
   text-align: center;
 }
+.theme-item:last-child>view:nth-child(4){
+  color: grey;
+  font-size: 24rpx;
+  text-align: center;
+}
 .theme-item:last-child>view:last-child{
   margin-top: 30rpx;
   text-align: center;

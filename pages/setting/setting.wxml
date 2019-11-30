@@ -7,14 +7,13 @@
       <open-data type="userGender" lang="zh_CN" class="user-info-sex"></open-data>
     </view>
     <view class='user-data'>
-      <view>
-        剩余：{{theEverydayCount-theEverydayUsed}}
+      <view>剩余：{{theEverydayCount-theEverydayUsed}}
         <text class='user-data-refresh {{theme.color[theme.themeColorId].name}}' bindtap="handleCountRefresh">刷新</text>
       </view>
-      <view>查询次数总额：{{theEverydayCount}}</view>
+      <view>查询次数总额：{{incCount}}<span wx:if="{{theEverydayCount-incCount > 0}}"> +{{theEverydayCount-incCount}}</span></view>
       <view class='user-data-tips'>
         <view>额外获取：</view>
-        <view>1) 每隔{{incFre}}秒，额度自动+{{incTime}}；</view>
+        <view>1) 每隔{{incFre}}小时，额度自动+{{incTime}}；</view>
         <view>2) 完整 <text class='tips-ad {{theme.color[theme.themeColorId].font}}' bindtap='handleWatchAd'>观看视频广告</text> +{{incAd}}(每日限1次)；</view>
       </view>
     </view>

@@ -75,7 +75,7 @@ Page({
                       wx.showToast({
                         title: '抓取完成',
                         icon: 'success',
-                        duration: 2000,
+                        duration: 1000,
                         complete: function () {
                           wx.showModal({
                             title: '抓取完成',
@@ -112,9 +112,16 @@ Page({
                   wx.setStorageSync('kcbaction', 'dym');
                   wx.showModal({
                     title: '抓取出错',
-                    showCancel: false,
-                    content: '服务器崩溃或者学号密码出错，请检查或更换服务器！',
-                    confirmColor: that.data.theme.color[that.data.theme.themeColorId].value
+                    showCancel: true,
+                    content: '非常抱歉地通知您，可能现在服务器有点忙哦，您可以在设置里切换服务器试试，也可以打开实时课表试试喔！',
+                    confirmText: '知道啦',
+                    cancelText: '打开实时',
+                    confirmColor: that.data.theme.color[that.data.theme.themeColorId].value,
+                    success: function(res){
+                      if(res.cancel){
+                        wx.setStorageSync('kcbaction', 'dym');
+                      }
+                    }
                   })
                 }
               },

@@ -24,17 +24,22 @@
           </view>
         </view>
       </view>
-      <view style='font-size:28rpx'>当前密码提示：{{hidpwd}}</view>
+      <view style='font-size:28rpx;color: rgba(66, 65, 65, 0.808);'>当前密码提示：{{hidpwd}}</view>
       <view class='btn-content'>
         <button class="weui-btn mini-btn btn-left" type="warning" size="mini" bindtap='storeUser'><label>更改账号</label></button>  
         <button class="weui-btn mini-btn btn-left" type="primary" style="background:{{theme.color[theme.themeColorId].value}};" size="mini" bindtap='storeKcb'><label>抓取课表</label></button>   
       </view>
     </form>
-    <view style='font-size:28rpx'>课程表上次抓取时间：{{updatetime}}</view>
+    <view style='font-size:28rpx;color: rgba(66, 65, 65, 0.808);'>课程表上次抓取时间：{{updatetime}}</view>
     
     <view class='show-advice'>
       <label style="color:{{theme.color[theme.themeColorId].value}}">首次使用建议：</label>
       <view>点击抓取课表，将课程表数据保存至您本人手机内，再关闭实时课表，之后使用课程表不会消耗次数，并且响应更快速；</view>
+    </view>
+    
+    <view class='show-advice'>
+      <label style="color:{{theme.color[theme.themeColorId].value}}">忘记密码？：</label>
+      <view>新生初始密码一般是身份证后6位；忘记密码可打开教务处网站(http://jiaowu.dlpu.edu.cn/)，找到左下角「管理系统入口」，点击「教务系统教师学生入口」，然后「找回学生密码」；</view>
     </view>
 
     <view class='show-stro'>

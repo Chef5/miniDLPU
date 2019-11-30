@@ -19,14 +19,14 @@
         </view>
         <view class='feed-box-body-con'>
           <view class='feed-box-body-con-item' bindtap='setwx'>
-            <view class='con-item-logo'><image src='../../image/wxlogo.png'></image></view>
+            <view class='con-item-logo'><image src='../../image/my2.jpg'></image></view>
             <view class='con-item-text'>
-              <text class='con-item-text-title'>微信</text>
+              <text class='con-item-text-title'>微信ID</text>
               <text class='con-item-text-detail'>Kmitle</text>
             </view>
           </view>
           <view class='feed-box-body-con-item' bindtap='setqq'>
-            <view class='con-item-logo'><image src='../../image/qqlogo.png'></image></view>
+            <view class='con-item-logo'><image src='../../image/qqimg.jpg'></image></view>
             <view class='con-item-text'>
               <text class='con-item-text-title'>QQ</text>
               <text class='con-item-text-detail'>583195863</text>
@@ -40,6 +40,11 @@
             </view>
           </view> -->
         </view>
+
+        <view class='feed-box-body-text'>
+          <text>能发现我藏得这么深的页面，佩服佩服。现在加我微信，邀请你进入我们的体验版测试群，新功能提前体验！</text>
+        </view>
+
       </view>
     </view>
     <view class='tips'>提示：可以点击复制哦^-^.</view>

@@ -10,9 +10,10 @@ Page({
     theme: app.globalData.theme,
     nowserver: "",
     isSwitch: false,
-    incFre: app.globalData.countIncreseFre,
+    incCount: app.globalData.countInit,
+    incFre: (app.globalData.countIncreseFre / 3600).toFixed(2),
     incTime: app.globalData.countIncreseByTime,
-    incAd: app.globalData.countIncreseByAD
+    incAd: app.globalData.countIncreseByAD,
   },
   setwx: function () {
     wx.setClipboardData({
@@ -138,7 +139,7 @@ Page({
     that.setData({
       theEverydayCount: wx.getStorageSync("theEverydayCount"),
       theEverydayUsed: wx.getStorageSync("theEverydayUsed"),
-      isSwitch: kcbaction == "dym" ? true : false
+      isSwitch: kcbaction == "dym" ? true : false,
     });
   },
 

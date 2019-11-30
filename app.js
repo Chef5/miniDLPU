@@ -42,10 +42,10 @@ App({
   globalData: {
     userInfo: null,
     server: null,
-    countInit: 30,   //每日初始次数
+    countInit: 35,   //每日初始次数
     countIncreseFre: 3600,    //每隔3600s 调整
-    countIncreseByTime: 10,   //根据时间 +10
-    countIncreseByAD: 20,     //看广告 +20
+    countIncreseByTime: 8,   //根据时间 +10
+    countIncreseByAD: 25,     //看广告 +20
     theme: {
       image: null,
       themeColorId: 0,

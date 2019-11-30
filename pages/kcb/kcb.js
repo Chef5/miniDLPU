@@ -116,30 +116,7 @@ Page({
       userid: userid,
       userpwd: userpwd
     });
-    var isshownotice1364 = wx.getStorageSync('isshownotice1364');
-    if (isshownotice1364 != 1) {
-      wx.showModal({
-        content: '（1）更新成绩可查询学期；（2）修复部分同学无法查看考试日程问题；',
-        showCancel: false,
-        title: "更新通知",
-        confirmText: "我知道了",
-        confirmColor: that.data.theme.color[that.data.theme.themeColorId].value,
-        // cancelText: "下次通知",
-        success: function (res) {
-          if (res.confirm) {
-            console.log('用户点击确定');
-            wx.setStorageSync('isshownotice1364', 1);
-            // wx.navigateTo({
-            //   url: '../setting-detail/set-userinfo',
-            // })
-            //停止刷新
-            wx.stopPullDownRefresh();
-            // 隐藏顶部刷新图标
-            wx.hideNavigationBarLoading();
-          }
-        }
-      });
-    }
+    
     //获取天气
     wx.request({
       url: 'https://test.1zdz.cn/api/getweather.php',
@@ -352,21 +329,13 @@ Page({
     // 显示顶部刷新图标
     wx.showNavigationBarLoading();
     //刷新本地账号
-    wx.getStorage({
-      key: 'userid', success: function (res) {
-        that.setData({ userid: res.data });
-      },
-    });
-    wx.getStorage({
-      key: 'userpwd', success: function (res) {
-        that.setData({ userpwd: res.data });
-      },
-    });
+    var Id = wx.getStorageSync('userid'); 
+    var Pwd = encodeURIComponent(wx.getStorageSync('userpwd')); //转义，防止有特殊字符如：&
+    that.setData({ userid: Id, userpwd: Pwd });
     //计算当前选择周1至周5日期
     that.caculateDate();
-    var Id = that.data.userid;
-    var Pwd = encodeURIComponent(that.data.userpwd); //转义，防止有特殊字符如：&
-    console.log('pwd:'+Pwd);
+    // console.log('pwd:'+Pwd);
+    //判断是否是首次使用
     if (Id == '' && Pwd == '') {
       wx.showModal({
         title: "首次使用提示",
@@ -388,7 +357,9 @@ Page({
         }
       });
       return;
-      }
+    }
+    
+      
     var Server = that.data.server;
     if (Id == null) {
       return;
@@ -562,14 +533,30 @@ Page({
     console.log("guideindex:" + guideindex);
     if (userid && !guideindex){
       that.forNewUserNotice();
+    }else{
+      //更新通知  1只显示确认按钮 2显示确认和取消
+      // that.updateNews(显示类型, 'isshownotice1364', '通知内容', '通知标题', '确认按钮', '取消按钮', callBack());
+      that.updateNews(
+        1,
+        'isshownotice1366',
+        '1.更新成绩可查询学期；2.修复部分同学无法查看考试日程问题；',
+        '更新通知',
+        '我知道了',
+        '下次通知',
+        function () {
+          // wx.navigateTo({
+          //   url: '../setting-detail/set-userinfo',
+          // })
+        }
+      )
     }
     //检查本地是否有课程表数据localDataKcb
-    let localDataKcb = wx.getStorageSync("localDataKcb");
+    // let localDataKcb = wx.getStorageSync("localDataKcb");
     // v1.5.0 本地无课程表显示通知
-    if (userid && !localDataKcb){
-      // 更新通知
-      // that.updateNews();
-    }
+    // if (userid && !localDataKcb){
+    //   // 更新通知
+    //   that.updateNews(updateType, updateIndex, updadeString, updateTitle, updateConfirm, updateCancel, callBack);
+    // }
   },
   //判断课程字数是否超出小方块
   isOver15:function(str) {
@@ -996,32 +983,49 @@ Page({
       wx.setStorageSync("newuserguideindex", nowindex);
     }
   },
-  // 更新通知
-  updateNews: function () {
-    var isshownotice1363 = wx.getStorageSync('isshownotice1363');
-    if (isshownotice1363 != 1) {
-      wx.showModal({
-        content: '（1）更新成绩查询学期；（2）修复部分同学无法查看考试日程问题；',
-        showCancel: true,
-        title: "重要通知",
-        confirmText: "前往抓取",
-        confirmColor: "#1298CF",
-        cancelText: "下次通知",
-        success: function (res) {
-          if (res.confirm) {
-            console.log('用户点击确定');
-            wx.setStorageSync('isshownotice1363', 1);
-            wx.navigateTo({
-              url: '../setting-detail/set-userinfo',
-            })
-            //停止刷新
-            wx.stopPullDownRefresh();
-            // 隐藏顶部刷新图标
-            wx.hideNavigationBarLoading();
+  // 更新通知 isshownotice1363
+  updateNews: function (updateType, updateIndex, updadeString, updateTitle, updateConfirm, updateCancel, callBack) {
+    var that = this;
+    var isshownoticeNum = wx.getStorageSync(updateIndex);
+    if (isshownoticeNum != 1) {
+      //类型1 仅仅显示确认按钮
+      if(updateType == 1){
+        wx.showModal({
+          content: updadeString,
+          showCancel: false,
+          title: updateTitle,
+          confirmText: updateConfirm,
+          confirmColor: that.data.theme.color[that.data.theme.themeColorId].value,
+          success: function (res) {
+            if (res.confirm) {
+              wx.setStorageSync(updateIndex, 1);
+              callBack();
+              // wx.navigateTo({
+              //   url: '../setting-detail/set-userinfo',
+              // })
+            }
           }
-        }
-      });
-      wx.setStorageSync('isshownotice1363', 0);
+        });
+      }else if(updateType == 2){
+        wx.showModal({
+          content: updadeString,
+          showCancel: true,
+          title: updateTitle,
+          confirmText: updateConfirm,
+          confirmColor: that.data.theme.color[that.data.theme.themeColorId].value,
+          cancelText: updateCancel,
+          success: function (res) {
+            if (res.confirm) {
+              wx.setStorageSync(updateIndex, 1);
+              callBack();
+            }
+          }
+        });
+      }
+      //停止刷新
+      wx.stopPullDownRefresh();
+      // 隐藏顶部刷新图标
+      wx.hideNavigationBarLoading();
     }
   },
   //colorUI
