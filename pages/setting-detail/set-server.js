@@ -44,11 +44,14 @@ Page({
     that.setData({
       theme: app.getTheme()
     });
-    
+    wx.showLoading({
+      title: '加载中...',
+    })
     wx.request({
       url: 'https://test.1zdz.cn/api/getserver.php',
       method: 'GET',
       success: function (res) {
+        wx.hideLoading();
         console.log(res);
         let myserver = wx.getStorageSync("myserver");
         console.log(myserver);
@@ -68,48 +71,7 @@ Page({
         });
       }
     })
-
-    // var radioItems = that.data.radioItems;
-    // wx.getStorage({
-    //   key: 'server', success: function (res) { 
-    //     if (res.data == null) {
-    //       radioItems[0].checked = true;
-    //       wx.setStorage({
-    //         key: 'server',
-    //         data: "210.30.62.37",
-    //       });
-    //     } else {
-    //       for (var i = 0; i < 4; i++) {
-    //         if (res.data == that.data.radioItems[i].value) {
-    //           radioItems[i].checked = radioItems[i].value == res.data;
-    //         }
-    //         else radioItems[i].checked = false;
-    //       }
-    //     }
-    //     that.setData({ radioItems: radioItems }); 
-    //   },
-    //   fail: function(){
-    //     var radioItems = that.data.radioItems;
-    //     radioItems[0].checked = true;
-    //     wx.setStorage({
-    //       key: 'server',
-    //       data: "210.30.62.37",
-    //     });
-    //     that.setData({ radioItems: radioItems }); 
-    //     return;
-    //   }
-    // });
-    // wx.request({
-    //   url: 'https://test.1zdz.cn/kcb/getstate.php',
-    //   success: function(res){
-    //     for (var i = 0; i < 4; i++) {
-    //       radioItems[i].state = res.data[i];
-    //     }
-    //     that.setData({ radioItems: radioItems }); 
-    //   }
-    // })
-    // console.log(radioItems);
-    // console.log(that.data.radioItems);
+    wx.hideLoading();
   },
 
   /**

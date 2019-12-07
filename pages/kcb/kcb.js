@@ -104,23 +104,28 @@ Page({
   },
   onLoad: function () {
     var that = this;
-    // 用户账号初始化
-    let userid = wx.getStorageSync("userid");
-    let userpwd = wx.getStorageSync("userpwd");
     //透明度获取
     let themeTransparency = wx.getStorageSync("ThemeTransparency") || 26;
     //主题更新
     that.setData({
       theme: app.getTheme(),
       trans: ((101 - themeTransparency) / 100).toFixed(2),
+    });
+  },//end onLoad
+
+  onReady:function(){
+    var that = this;
+    // 用户账号初始化
+    let userid = wx.getStorageSync("userid");
+    let userpwd = wx.getStorageSync("userpwd");
+    that.setData({
       userid: userid,
       userpwd: userpwd
     });
-    
     //获取天气
     wx.request({
       url: 'https://test.1zdz.cn/api/getweather.php',
-      success: function(res) {
+      success: function (res) {
         console.log(res);
         var tqimgurl1 = res.data.imgurl1;
         var tqimgurl2 = res.data.imgurl2;
@@ -130,11 +135,11 @@ Page({
         var tqtemp2 = res.data.templow2 + "~" + res.data.temphigh2;
         if (tqimgurl2 == null) {
           that.setData({
-            isshowimg1:true,
+            isshowimg1: true,
             tqimgurl1: tqimgurl1,
             tqtemp: tqtemp
           });
-        }else{
+        } else {
           that.setData({
             isshowimg1: true,
             isshowimg2: true,
@@ -145,7 +150,7 @@ Page({
         }
         //设置弹窗天气
         var today = new Date();
-        var nextday = new Date(today.getTime() + 1000*60*60*24);
+        var nextday = new Date(today.getTime() + 1000 * 60 * 60 * 24);
         that.setData({
           m_today: (today.getMonth() + 1) + '月' + today.getDate() + '日',
           m_nextday: (nextday.getMonth() + 1) + '月' + nextday.getDate() + '日',
@@ -159,10 +164,10 @@ Page({
           m_nextday_img2: res.data.imgurl22
         })
       },
-      fail: function(res) {
-        that.setData({ tqtemp: 'π_π'});
+      fail: function (res) {
+        that.setData({ tqtemp: 'π_π' });
       },
-      complete: function(res) {},
+      complete: function (res) { },
     });
     //获取开学和放假日期，计算当前周
     wx.request({
@@ -182,20 +187,26 @@ Page({
         var nowzc = Math.ceil(day / 7); //向上取整
         if (nowzc > 20) nowzc = 20;
         that.setData({
-          indexzc: nowzc-1,
+          indexzc: nowzc - 1,
         });
         //计算当前选择周1至周5日期
         that.caculateDate();
-        //fix first time not current week BUG
-        //NOWzc = nowzc - 1;
         //给其他页面共享当前周次
         wx.setStorage({
           key: 'nowzc',
           data: nowzc,
         })
+
+        //fix first time not current week BUG: delay 1s for data update
+        setTimeout(function () {
+          console.log("延迟调用============");
+          var weeks = that.data.arrayzc[nowzc - 1];
+          console.log("onReady weeks:" + weeks);
+          that.reFreshKCB();
+        }, 100)
       },
       fail: function (res) {
-        
+
       },
     });
     wx.getStorage({
@@ -243,17 +254,6 @@ Page({
         }
       })
     }
-
-  },//end onLoad
-  onReady:function(){
-    var that = this;
-    //fix first time not current week BUG: delay 1s for data update
-    setTimeout(function () {
-      console.log("延迟调用============");
-      var weeks = that.data.arrayzc[that.data.indexzc];
-      console.log("onReady weeks:" + weeks);
-      that.reFreshKCB();
-    }, 1000)
     
   },
   // 下拉刷新
@@ -300,7 +300,7 @@ Page({
     if ('dym' == wx.getStorageSync('kcbaction')) {
       if (!app.delCount()){
         wx.showModal({
-          content: '您当前查询次数剩余量为0，请等待' + app.globalData.countIncreseFre+'秒 后再试！服务器资源有限，请理解。您可在设置中查询今日总额度以及剩余额度，还可以赚取额外次数！完整观看广告，可立即+' + app.globalData.countIncreseByAD +'次！',
+          content: '您当前查询次数剩余量为0，请等待' + (app.globalData.countIncreseFre / 3600).toFixed(2) +'小时 后再试！服务器资源有限，请理解。您可在设置中查询今日总额度以及剩余额度，还可以赚取额外次数！完整观看广告，可立即+' + app.globalData.countIncreseByAD +'次！',
           showCancel: true,
           title: "查询次数已耗尽",
           confirmText: "观看广告",
@@ -371,15 +371,15 @@ Page({
       action = kcbaction;
       console.log('action：' + action);
       //显示等待提示
-      wx.showToast({
+      wx.showLoading({
         title: '玩命加载中...',
-        icon: 'loading',
-        duration: 500
-      });
+        mask: true
+      })
       // 从本地获取课程表数据
       wx.getStorage({
         key: 'localDataKcb',
         success: function(res) {
+          wx.hideLoading();
           console.log(res);
           if (res.data.code != 100) {
             wx.showModal({
@@ -403,6 +403,7 @@ Page({
           }
         },
         fail: function (res) {
+          wx.hideLoading();
           console.log("获取课程表失败！"); 
           wx.showModal({
             title: '提示',
@@ -424,17 +425,16 @@ Page({
           wx.hideNavigationBarLoading();
         }
       })
-
+      wx.hideLoading();
       
     } else {
       action = 'dym';
       console.log('action：' + action);
       //显示等待提示
-      wx.showToast({
-        title: '正在从教务处抓取',
-        icon: 'loading',
-        duration: 1200
-      });
+      wx.showLoading({
+        title: '实时课表获取中...',
+        mask: true
+      })
       //开始请求
       var WannaKey = app.encryptUserKey(Id, Pwd);
       var items = that.data.arrayxq[0];
@@ -458,6 +458,7 @@ Page({
         },
         header: { "Content-Type": "application/x-www-form-urlencoded" },
         success: function (res) {
+          wx.hideLoading();
           console.log(res);
           if (res.data.state == "error") {
             wx.showModal({
@@ -480,6 +481,7 @@ Page({
           }
         },
         fail: function (res) {
+          wx.hideLoading();
           console.log("获取课程表失败！");
           wx.showModal({
             title: '课程表获取失败了！',
@@ -502,6 +504,7 @@ Page({
           wx.hideNavigationBarLoading();
         },
         complete: function (res) {
+          wx.hideLoading();
           //停止刷新
           wx.stopPullDownRefresh();
           // 隐藏顶部刷新图标
@@ -661,11 +664,10 @@ Page({
     let jc2 = parseInt(that.data.indexjcAdd2);
     // console.log("week:" + week + ",zc1:" +zc1+ ",zc2:" +zc2+ ",jc1:" +jc1+ ",jc2:"+jc2);
     //显示等待提示
-    wx.showToast({
-      title: '给我几秒钟...',
-      icon: 'loading',
-      duration: 1500
-    }); 
+    wx.showLoading({
+      title: '执行中...',
+      mask: true
+    })
     that.setData({hiddenaddkcb: true});//关闭窗口
     //获取本地课程表数据进行编辑
     wx.getStorage({
@@ -684,6 +686,7 @@ Page({
         kcbdata.time = date.getFullYear() + "-" + (date.getMonth() < 9 ? "0" + date.getMonth() + 1 : date.getMonth() + 1) + "-" + date.getDate() + " " + date.getHours() + ":" + date.getMinutes() + ":" + date.getSeconds();
         // 更新本地数据
         wx.setStorageSync('localDataKcb', kcbdata);
+        wx.hideLoading();
         wx.showToast({
             title: '添加成功',
             icon: 'success',
@@ -693,6 +696,7 @@ Page({
         that.reFreshKCB();
       },
     })
+    wx.hideLoading();
     // wx.request({
     //   url: 'https://test.1zdz.cn/api/addkcb.php',
     //   method: 'POST',
@@ -736,11 +740,10 @@ Page({
     let edjc = that.data.editkcbjc;
     let edweek = that.data.editkcbweek;
     //显示等待提示
-    wx.showToast({
-      title: '修改中...',
-      icon: 'loading',
-      duration: 1500
-    });
+    wx.showLoading({
+      title: '执行中...',
+      mask: true
+    })
     that.setData({ hiddeneditkcb: true });//关闭窗口
     //获取本地课程表数据进行编辑
     wx.getStorage({
@@ -755,6 +758,7 @@ Page({
         kcbdata.time = date.getFullYear() + "-" + (date.getMonth() < 9 ? "0" + date.getMonth() + 1 : date.getMonth() + 1) + "-" + date.getDate() + " " + date.getHours() + ":" + date.getMinutes() + ":" + date.getSeconds();
         // 更新本地数据
         wx.setStorageSync('localDataKcb', kcbdata);
+        wx.hideLoading();
         wx.showToast({
           title: '修改成功',
           icon: 'success',
@@ -801,11 +805,10 @@ Page({
     let edjc = that.data.editkcbjc;
     let edweek = that.data.editkcbweek;
     //显示等待提示
-    wx.showToast({
-      title: '删除中...',
-      icon: 'loading',
-      duration: 1500
-    });
+    wx.showLoading({
+      title: '执行中...',
+      mask: true
+    })
     that.setData({ hiddeneditkcb: true });//关闭窗口
     //获取本地课程表数据进行编辑
     wx.getStorage({
@@ -820,6 +823,7 @@ Page({
         kcbdata.time = date.getFullYear() + "-" + (date.getMonth() < 9 ? "0" + date.getMonth() + 1 : date.getMonth() + 1) + "-" + date.getDate() + " " + date.getHours() + ":" + date.getMinutes() + ":" + date.getSeconds();
         // 更新本地数据
         wx.setStorageSync('localDataKcb', kcbdata);
+        wx.hideLoading();
         wx.showToast({
           title: '删除成功',
           icon: 'success',

@@ -46,11 +46,10 @@ Page({
             wx.showToast({
               title: '欢迎' + res.data.name,
             });
-            wx.showToast({
+            wx.showLoading({
               title: '玩命抓取中...',
-              icon: 'loading',
-              duration: 15000
-            });
+              mask: true
+            })
             that.saveUserinfo(that.data.userid, that.data.userpwd);
             var WannaKey = app.encryptUserKey(userid, userpwd);
             var reurl = wx.getStorageSync('myserver');
@@ -66,6 +65,7 @@ Page({
               header: { "Content-Type": "application/x-www-form-urlencoded" },
               success: function (res) {
                 console.log(res);
+                wx.hideLoading();
                 if (res.data.code == 100) {
                   wx.setStorage({
                     key: 'localDataKcb',
@@ -126,6 +126,7 @@ Page({
                 }
               },
               fail: function (res) {
+                wx.hideLoading();
                 wx.setStorageSync('kcbaction', 'dym');
                 wx.showModal({
                   title: 'Error',
@@ -135,7 +136,7 @@ Page({
                 })
               },
               complete: function (res) {
-
+                wx.hideLoading();
               }
             });
           } // end of 密码正确
@@ -164,6 +165,7 @@ Page({
           });
         }   //end of 服务器被ban
       }).catch((res) => { //验证失败
+        wx.hideLoading();
         wx.showModal({
           title: '账号检查失败',
           content: '当前服务器暂时不可用，是否立即切换服务器尝试？或在非高峰期再尝试',
@@ -178,7 +180,7 @@ Page({
             }
           }
         });
-      });;  // end of 验证失败
+      });  // end of 验证失败
     } // end of if userid
   },
   //更改账号

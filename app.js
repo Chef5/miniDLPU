@@ -42,7 +42,7 @@ App({
   globalData: {
     userInfo: null,
     server: null,
-    countInit: 35,   //每日初始次数
+    countInit: 30,   //每日初始次数
     countIncreseFre: 3600,    //每隔3600s 调整
     countIncreseByTime: 8,   //根据时间 +10
     countIncreseByAD: 25,     //看广告 +20
@@ -158,6 +158,10 @@ App({
     let WannaKey = this.encryptUserKey(userid, userpwd);
     let flag = 0;  //0 验证失败， 1密码正确， 2密码错误， 3服务器错误
     return new Promise(function (resolve, reject) {
+      wx.showLoading({
+        title: '检查账号中...',
+        mask: true
+      })
       wx.request({
         url: reurl + '/api/checkUser.php',
         // url: 'http://www.api.jun/checkUser.php',
@@ -167,9 +171,11 @@ App({
         },
         header: { "Content-Type": "application/x-www-form-urlencoded" },
         success: function (res) {
+          wx.hideLoading();
           resolve(res);
         },
         fail: function () {
+          wx.hideLoading();
           console.log("验证失败");
           reject({flag : 0});
         }

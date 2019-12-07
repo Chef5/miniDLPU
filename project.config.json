@@ -45,6 +45,10 @@
 			"currentL": -1,
 			"list": []
 		},
+		"gamePlugin": {
+			"current": -1,
+			"list": []
+		},
 		"miniprogram": {
 			"current": 12,
 			"list": [
@@ -125,6 +129,7 @@
 					"id": -1,
 					"name": "theme",
 					"pathName": "pages/setting-detail/set-theme",
+					"query": "",
 					"scene": null
 				}
 			]

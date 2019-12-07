@@ -44,6 +44,7 @@
       </navigator>
     </view>
     <button open-type="contact" class='btn-contact {{theme.color[theme.themeColorId].name}}'>联系客服</button>
+    <view class="notice-wrap"><view class="notice">联系客服前须知：小程序非官方程序</view></view>
     <view class='showmsg'>
       <!-- <text class='jinji'>紧急通知！！请互相转告！！\n</text> -->
       <text>157-6020-8020\n工大小程序联盟\n</text>

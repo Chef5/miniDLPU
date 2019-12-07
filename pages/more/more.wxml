@@ -7,7 +7,7 @@
       <view>
         <swiper autoplay="true" interval="3500" duration="1000" circular="true">
           <!-- <swiper-item>
-            <image src="../../image/swi/012939.jpg" class="pic" />
+            <image src="../../image/swi/qq.jpg" class="pic" />
           </swiper-item> -->
           <swiper-item>
             <image src="../../image/swi/morebg.png" class="pic" />

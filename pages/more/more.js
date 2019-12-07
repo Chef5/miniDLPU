@@ -1,6 +1,7 @@
 // pages/more/more.js
 //获取应用实例
-const app = getApp();
+const app = getApp();// 在页面中定义插屏广告
+let interstitialAd = null
 Page({
 
   /**
@@ -43,7 +44,7 @@ Page({
     var passwd = wx.getStorageSync('userpwd'); 
     wx.showModal({
       title: '提示',
-      content: '2019-2020-1学期评教时间已确定：12月4日~12月29日，子程序“评教小助手”在此时间段可用，请悉知！',
+      content: '2019-2020-1学期评教时间已确定：12月4日~12月29日，子程序“评教小助手”在此时间段可用！若评教课程无法正常显示，请稍后再试',
       showCancel: true,
       confirmColor: this.data.theme.color[this.data.theme.themeColorId].value,
       success(res) {
@@ -142,25 +143,20 @@ Page({
     });
     that.getnews();
     that.getTopbarImg();
-    // var isshowmore183 = wx.getStorageSync('isshowmore183');
-    // if (isshowmore183 != 1) {
-    //   wx.showModal({
-    //     content: '新增功能：“校园采集平台”，一款面向学生班委的信息采集工具，一键登陆免注册，便捷采集无烦恼，自动整理导出excel，告别传统纸质问卷！',
-    //     showCancel: false,
-    //     confirmText: "知道了",
-    //     confirmColor: "#1298CF",
-    //     success: function (res) {
-    //       if (res.confirm) {
-    //         console.log('用户点击确定');
-    //         wx.setStorageSync('isshowmore183', 1);
-    //         //停止刷新
-    //         wx.stopPullDownRefresh();
-    //         // 隐藏顶部刷新图标
-    //         wx.hideNavigationBarLoading();
-    //       }
-    //     }
-    //   });
-    // }
+    if (wx.createInterstitialAd) {
+      interstitialAd = wx.createInterstitialAd({
+        adUnitId: 'adunit-6496e967da9f4fb6'
+      })
+      interstitialAd.onLoad(() => { })
+      interstitialAd.onError((err) => { })
+      interstitialAd.onClose(() => { })
+    }
+    // 在适合的场景显示插屏广告
+    if (interstitialAd) {
+      interstitialAd.show().catch((err) => {
+        console.error(err)
+      })
+    }
   },
 
   /**

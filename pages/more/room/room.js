@@ -103,11 +103,10 @@ Page({
       show_res: false
     });
     //转圈圈
-    wx.showToast({
+    wx.showLoading({
       title: '光速查询中...',
-      icon: 'loading',
-      duration: 700
-    });
+      mask: true
+    })
     //获取查询参数
     var hid = that.data.house[that.data.index_h];
     var zid = parseInt(that.data.index_z)+1;
@@ -128,6 +127,7 @@ Page({
       },
       header: { "Content-Type": "application/x-www-form-urlencoded" },
       success: function (res) {
+        wx.hideLoading();
         console.log(res);
         that.setData({
           res_num: res.data.res_num,
@@ -136,10 +136,11 @@ Page({
         });
       },
       fail: function (res) {
+        wx.hideLoading();
         console.log("查询失败！");
       },
       complete: function (res) {
-
+        wx.hideLoading();
       }
     });
   },
