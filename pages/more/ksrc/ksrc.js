@@ -203,11 +203,37 @@ Page({
             array: change,
             num: res.data.data.length,
           });
+          wx.showToast({
+              title: '获取成功！',
+              duration: 1000
+          })
+        }else if(res.data.state == "nice"){
+            wx.showModal({
+                title: '恭喜',
+                content: '教务处暂无考试安排',
+                showCancel: false,
+                confirmText: "知道啦",
+                confirmColor: that.data.theme.color[that.data.theme.themeColorId].value
+            });
+        } else if (res.data.state == "error"){
+            wx.showModal({
+                content: '登陆教务处失败！可能当前服务器暂时被ban了，更换一台试试？也可能是学号或者密码错了喔',
+                showCancel: true,
+                confirmText: "前往切换",
+                confirmColor: that.data.theme.color[that.data.theme.themeColorId].value,
+                success: function (res) {
+                    if (res.confirm) {
+                        console.log('用户点击确定');
+                        wx.navigateTo({
+                            url: '../../setting-detail/set-server',
+                        })
+                    }
+                }
+            });
         }
       },
       fail: function (res) {
         wx.hideLoading();
-        console.log("获取失败！");
         wx.showToast({
           title: '获取失败！',
           duration: 1000
