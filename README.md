@@ -1,5 +1,6 @@
 ## miniDLPU-WechatProgram
 大连工业大学的工大教务处小程序，主要有学生课程表查询、学生成绩、考试日程、校历、培养方案、空教室、四六级查询等功能。
+> 代码稍微有点糟糕，毕竟是不断学习中的一个过程产物。
 
 ## 主要页面展示
 ![image](https://raw.githubusercontent.com/wiki/Patrick-Jun/miniDLPU-WechatProgram/img.png)
