@@ -21,7 +21,7 @@
 .notice{
   width: fit-content;
   padding: 5rpx 15rpx;
-  margin-top: 60rpx;
+  margin: 10rpx;
   text-align: center;
   font-size: 28rpx;
   color: white;

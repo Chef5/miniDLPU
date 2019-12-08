@@ -207,15 +207,7 @@ Page({
               title: '获取成功！',
               duration: 1000
           })
-        }else if(res.data.state == "nice"){
-            wx.showModal({
-                title: '恭喜',
-                content: '教务处暂无考试安排',
-                showCancel: false,
-                confirmText: "知道啦",
-                confirmColor: that.data.theme.color[that.data.theme.themeColorId].value
-            });
-        } else if (res.data.state == "error"){
+        } else if (res.data.state == "error" || res.data.state == "nice"){
             wx.showModal({
                 content: '登陆教务处失败！可能当前服务器暂时被ban了，更换一台试试？也可能是学号或者密码错了喔',
                 showCancel: true,
@@ -230,7 +222,7 @@ Page({
                     }
                 }
             });
-        }
+          }
       },
       fail: function (res) {
         wx.hideLoading();

@@ -1,22 +1,29 @@
 <!--pages/setting-detail/set-serer.wxml-->
 <view class="page">
-  <view class='page__hd'>
-    <view>一台服务器访问量过大，会被教务处ban一定时间</view>
-    <view>以下几台服务器均由个人提供</view>
-  </view>
-  <view class='page__bd'>
-    <radio-group bindchange="radioChange">
-      <label class="weui-cell weui-check__label" wx:for="{{radioItems}}" wx:key="value">
-          <radio class="weui-check" value="{{item.value}}" checked="{{item.checked}}"/>
-          <view class="weui-cell__bd">{{item.name}}<text class='server-state'>{{"（"+item.state+"）"}}</text></view>
-          <view class="weui-cell__ft weui-cell__ft_in-radio" wx:if="{{item.checked}}">
-              <icon class="weui-icon-radio" color="{{theme.color[theme.themeColorId].value}}" type="success_no_circle" size="24"></icon>
-          </view>
-      </label>
-    </radio-group>
-  </view>
-  <view class="thanks">感谢：秦浩轩（3号服务器捐供者）</view>
-  <view class="notice-wrap"><view class="notice">此小程序由个人制作，不属于学校任何部门</view></view>
-  <view class='full-some'></view>
-<ad unit-id="adunit-f3e425d15b63b72a"></ad>
+    <view class='page__hd'>
+        <view>一台服务器访问量过大，会被教务处ban一定时间</view>
+        <view>以下几台服务器均由个人提供</view>
+        <view class="notice-wrap">
+            <view class="notice">此小程序由个人制作，不属于学校任何部门</view>
+        </view>
+    </view>
+    <view class='page__bd'>
+        <radio-group bindchange="radioChange">
+            <label class="weui-cell weui-check__label" wx:for="{{radioItems}}" wx:key="value">
+                <radio class="weui-check" value="{{item.value}}" checked="{{item.checked}}" />
+                <view class="weui-cell__bd">{{item.name}}
+                    <text class='server-state'>{{"（"+item.state+"）"}}</text>
+                </view>
+                <view class="weui-cell__ft weui-cell__ft_in-radio" wx:if="{{item.checked}}">
+                    <icon class="weui-icon-radio" color="{{theme.color[theme.themeColorId].value}}" type="success_no_circle" size="24"></icon>
+                </view>
+            </label>
+        </radio-group>
+    </view>
+    <view class="thanks">感谢：秦浩轩（3号服务器捐供者）</view>
+    <button class="weui-btn" type="primary" bindtap="checkServer" style="background:{{theme.color[theme.themeColorId].value}};width:68%;margin-top:100rpx;">
+        <label>检测当前服务器</label>
+    </button>
+    <view class='full-some'></view>
+    <ad unit-id="adunit-f3e425d15b63b72a"></ad>
 </view>
