@@ -433,7 +433,7 @@ Page({
       //显示等待提示
       wx.showLoading({
         title: '实时课表获取中...',
-        mask: true
+        mask: false
       })
       //开始请求
       var WannaKey = app.encryptUserKey(Id, Pwd);

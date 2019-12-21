@@ -131,7 +131,7 @@
       </swiper>
 
       <view class='tips-box'>
-        <view>限次：实时课表、成绩查询、考试日程、培养方案</view>
+        <view>限次：实时课表、成绩更新、考试更新、培养方案</view>
       </view>
       <view class='share-box'>
         <view>您的分享就是对作者最大的支持！</view>

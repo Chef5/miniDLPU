@@ -12,9 +12,9 @@
   height: 90rpx;
 }
 .cj-xq{
-  flex: 5;
   line-height: 90rpx;
   color: gray;
+  padding-right: 20rpx;
 }
 .cj-disc{
   flex: 3;
@@ -25,4 +25,29 @@
 .credit{
   font-size: 32rpx;
   color: black;
+}
+.cj-syn{
+    width: 120rpx;
+    font-size: 30rpx;
+    line-height: 90rpx;
+    text-align: right;
+    padding-right: 20rpx;
+}
+.cj-syn text{
+    display: inline-block;
+    height: 36rpx;
+    text-align: center;
+    font-size: 30rpx;
+    line-height: 34rpx;
+    color: white;
+    border-radius: 10%;
+    padding: 8rpx 15rpx;
+}
+.cj-show-tips{
+    width: 100%;
+    font-size: 20rpx;
+    text-align: center;
+    background: #efeff4;
+    color: gray;
+    letter-spacing: 30rpx;
 }

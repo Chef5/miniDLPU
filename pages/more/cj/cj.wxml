@@ -9,7 +9,10 @@
       </view>
       <view class='cj-disc'>
         <text>平均学分绩点：</text>
-        <text class='credit'>{{Avgcredit}}</text>
+        <text class='credit'>{{avgCredit}}</text>
+      </view>
+      <view class='cj-syn' bindtap='getDataSyn'>
+        <text class="{{theme.color[theme.themeColorId].name}}">更新</text>
       </view>
     </view>
   </view>
@@ -23,6 +26,7 @@
       </block>
     </view>
   
+    <view class="cj-show-tips">数据仅供参考</view>
   </view>
   <jun-modal 
     show="{{!hiddenmodalput}}" 

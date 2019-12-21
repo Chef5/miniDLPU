@@ -1,6 +1,5 @@
 {
-  "navigationBarTitleText": "工大教务处-成绩查询",
-  "enablePullDownRefresh": true,
+  "navigationBarTitleText": "成绩查询",
   "usingComponents": {
     "wux-accordion-group": "../../../dist/accordion-group/index",
     "wux-accordion": "../../../dist/accordion/index",

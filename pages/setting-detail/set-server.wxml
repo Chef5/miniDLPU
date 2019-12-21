@@ -20,7 +20,7 @@
             </label>
         </radio-group>
     </view>
-    <view class="thanks">感谢：秦浩轩（3号服务器捐供者）</view>
+    <!-- <view class="thanks">感谢：秦浩轩（3号服务器捐供者）</view> -->
     <button class="weui-btn" type="primary" bindtap="checkServer" style="background:{{theme.color[theme.themeColorId].value}};width:68%;margin-top:100rpx;">
         <label>检测当前服务器</label>
     </button>

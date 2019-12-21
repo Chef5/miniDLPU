@@ -2,7 +2,10 @@
 <view class="page">
   <view class='page__hd'>
     <view class='ks-top'>
-      <view>共查询到你最近有<text>{{num}}</text>场考试</view>
+      <view class="ks-title">你最近共有<text>{{num}}</text>场考试</view>
+      <view class='ks-syn' bindtap='getDataSyn'>
+        <text class="{{theme.color[theme.themeColorId].name}}">更新</text>
+      </view>
     </view>
   </view>
   <view class='page__bd'>
@@ -17,6 +20,7 @@
       </view>
     </view>
   
+      <view class="ks-show-tips">数据仅供参考</view>
   </view>
   <jun-modal 
     show="{{!hiddenmodalput}}" 

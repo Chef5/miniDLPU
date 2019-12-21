@@ -4,22 +4,51 @@
 }
 .ks-top{
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   margin-left: 6px;
   margin-right: 6px;
+  position: relative;
   font-size: 32rpx;
   height: 90rpx;
   line-height: 90rpx;
   color: darkgray;
   align-items: center;
 }
-.ks-top view{
-  display: flex;
+.ks-title{
   flex: 1;
+  text-align: center;
 }
-.ks-top text{
+.ks-title text{
   color: darkorange;
   font-size: 40rpx;
   margin-left: 7rpx;
   margin-right: 7rpx;
+}
+
+.ks-syn{
+    position: absolute;
+    right: 20rpx;
+    width: 120rpx;
+    font-size: 30rpx;
+    line-height: 90rpx;
+    text-align: right;
+}
+.ks-syn text{
+    display: inline-block;
+    height: 36rpx;
+    text-align: center;
+    font-size: 30rpx;
+    line-height: 34rpx;
+    color: white;
+    border-radius: 10%;
+    padding: 8rpx 15rpx;
+}
+.ks-show-tips{
+    width: 100%;
+    font-size: 20rpx;
+    text-align: center;
+    background: #efeff4;
+    color: gray;
+    letter-spacing: 30rpx;
+    padding-left: 18rpx;
 }

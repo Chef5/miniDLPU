@@ -79,7 +79,7 @@
             </i-collapse-item>
             <i-collapse-item title="在线客服是真人吗？" name="q12">
                 <view slot="content">
-                   <view>目前在线客服是两位小姐姐呀，她们是无偿自愿为大家解答服务的，是工大最靓的仙女！目前人手不是很充足，若没能及时回复请耐心等待。</view>
+                   <view>目前在线客服是四位小姐姐呀，她们是无偿自愿为大家解答服务的，是工大最靓的仙女！目前人手不是很充足，若没能及时回复请耐心等待。</view>
                 </view>
             </i-collapse-item>
             <i-collapse-item title="为何限制查询次数？" name="q13">
