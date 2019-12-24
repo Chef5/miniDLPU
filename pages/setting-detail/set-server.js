@@ -113,24 +113,34 @@ Page({
                     wx.showModal({
                         title: '学号或密码错误',
                         showCancel: false,
-                        content: '学号或者密码不正确，请检查后再尝试。可浏览器登录 http://jiaowu.dlpu.edu.cn 进行自我检查。',
+                        content: '学号或者密码不正确，请检查后再尝试。可浏览器登录 http://jiaowu.dlpu.edu.cn 进行自我检查。[Error:' + res.data.code + ']', 
                         confirmColor: that.data.theme.color[that.data.theme.themeColorId].value
                     })
                 }  //end of 密码错误
             } else {  //服务器被ban
-                wx.showModal({
-                    title: '服务器故障',
-                    content: '很遗憾，当前服务器暂时不可用，请在非高峰期再尝试',
-                    showCancel: false,
-                    confirmText: "确定",
-                    confirmColor: that.data.theme.color[that.data.theme.themeColorId].value
-                });
+                if(res.data.code == 403){
+                    wx.showModal({
+                        title: '请切换服务器',
+                        content: '很遗憾，当前服务器暂时被ban，请切换服务器[Error:' + res.data.code + ']',
+                        showCancel: false,
+                        confirmText: "确定",
+                        confirmColor: that.data.theme.color[that.data.theme.themeColorId].value
+                    });
+                }else{
+                    wx.showModal({
+                        title: '服务器故障',
+                        content: '很遗憾，当前服务器暂时不可用，请在非高峰期再尝试[Error:' + res.data.code + ']',
+                        showCancel: false,
+                        confirmText: "确定",
+                        confirmColor: that.data.theme.color[that.data.theme.themeColorId].value
+                    });
+                }
             }   //end of 服务器被ban
         }).catch((res) => { //验证失败
             wx.hideLoading();
             wx.showModal({
                 title: '检测失败',
-                content: '请检查手机网络，或当前服务器暂时不可用，或在非高峰期再尝试',
+                content: '请检查手机网络，或当前服务器暂时不可用，或在非高峰期再尝试[Error:' + res.data.code + ']',
                 showCancel: false,
                 confirmText: "确定",
                 confirmColor: that.data.theme.color[that.data.theme.themeColorId].value
