@@ -152,7 +152,7 @@ Page({
             if (res.data.code == 403) {
                 wx.showModal({
                     title: '请切换服务器',
-                    content: '很遗憾，当前服务器暂时被ban，请切换服务器[Error:' + res.data.code + ']',
+                    content: '很遗憾，当前服务器暂时被ban，请切换服务器 [Error:' + res.data.code + ']',
                     showCancel: true,
                     confirmText: "立即切换",
                     confirmColor: that.data.theme.color[that.data.theme.themeColorId].value,
@@ -167,7 +167,7 @@ Page({
             } else {
                 wx.showModal({
                     title: '服务器故障',
-                    content: '很遗憾，当前服务器暂时不可用，请在非高峰期再尝试[Error:' + res.data.code + ']',
+                    content: '很遗憾，当前服务器暂时不可用，请通知管理员处理 [Error:' + res.statusCode + ']',
                     showCancel: true,
                     confirmText: "立即切换",
                     confirmColor: that.data.theme.color[that.data.theme.themeColorId].value,
@@ -185,7 +185,7 @@ Page({
         wx.hideLoading();
         wx.showModal({
           title: '账号检查失败',
-          content: '当前服务器暂时不可用，是否立即切换服务器尝试？或在非高峰期再尝试',
+          content: '请检查手机网络，或当前服务器暂时不可用，或在非高峰期再尝试 [Error:' + statusCode + ']',
           showCancel: true,
           confirmText: "立即切换",
           confirmColor: that.data.theme.color[that.data.theme.themeColorId].value,
