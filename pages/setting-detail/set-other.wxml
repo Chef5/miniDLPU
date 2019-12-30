@@ -11,7 +11,7 @@
       </navigator>
       
       <navigator url="../setting-detail/thanks" class="weui-cell weui-cell_access" >
-              <view class="weui-cell__bd">特别感谢</view>
+              <view class="weui-cell__bd">贡献名单</view>
               <view class="weui-cell__ft weui-cell__ft_in-access"></view>
       </navigator>
 </view>

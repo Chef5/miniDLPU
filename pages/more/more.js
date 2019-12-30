@@ -44,8 +44,9 @@ Page({
     var passwd = wx.getStorageSync('userpwd'); 
     wx.showModal({
       title: '提示',
-      content: '2019-2020-1学期评教时间已确定：12月4日~12月29日，子程序“评教小助手”在此时间段可用！若评教课程无法正常显示，请稍后再试',
+      content: '2019-2020-2学期评教时间待定，评教小助手暂时无法使用',
       showCancel: true,
+      confirmText: '仍然使用',
       confirmColor: this.data.theme.color[this.data.theme.themeColorId].value,
       success(res) {
         if (res.confirm) {

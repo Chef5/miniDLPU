@@ -36,9 +36,9 @@
                   <view class='table-th-t'>{{thitem.date}}</view>
                 </view>
             </view>
-            <view class='table-tr' wx:for="{{arraykcb}}" wx:for-index="trindex" wx:for-item="tritem" wx:key="{{trindex}}">
+            <view class='table-tr' wx:for="{{arraykcb}}" wx:for-index="trindex" wx:for-item="tritem" wx:key="trindex">
                 <view class='table-td'
-                      wx:for="{{tritem}}" wx:for-index="nowindex" wx:for-item="nowitem" wx:key="{{nowindex}}"
+                      wx:for="{{tritem}}" wx:for-index="nowindex" wx:for-item="nowitem" wx:key="nowindex"
                       style="background-color:{{nowitem.color}}; " 
                       bindtap='showdetail' 
                       bindlongpress='showAddOrEditKCB' 
