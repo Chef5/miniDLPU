@@ -11,8 +11,9 @@
         <text>平均学分绩点：</text>
         <text class='credit'>{{avgCredit}}</text>
       </view>
-      <view class='cj-syn' bindtap='getDataSyn'>
-        <text class="{{theme.color[theme.themeColorId].name}}">更新</text>
+      <view class='cj-syn'>
+        <text class="{{theme.color[theme.themeColorId].name}}" wx:if="{{!isLoading}}" bindtap='getDataSyn'>更新</text>
+        <text style="background: #aaa" wx:if="{{isLoading}}">更新</text>
       </view>
     </view>
   </view>

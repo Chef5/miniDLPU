@@ -3,8 +3,9 @@
   <view class='page__hd'>
     <view class='ks-top'>
       <view class="ks-title">你最近共有<text>{{num}}</text>场考试</view>
-      <view class='ks-syn' bindtap='getDataSyn'>
-        <text class="{{theme.color[theme.themeColorId].name}}">更新</text>
+      <view class='ks-syn'>
+        <text class="{{theme.color[theme.themeColorId].name}}" wx:if="{{!isLoading}}" bindtap='getDataSyn'>更新</text>
+        <text style="background: #aaa" wx:if="{{isLoading}}">更新</text>
       </view>
     </view>
   </view>

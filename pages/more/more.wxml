@@ -100,14 +100,14 @@
           <swiper-item>
             <view class='menu-body'>
               <view class='menu-items'>
-                <view class='menu-item-box'>
+                <!-- <view class='menu-item-box'>
                   <view class='nav-item' bindtap='showWaitingTips'>
                     <view class='menu-item-content waiting'>
                       <view class='menu-items-img'><image src='../../image/CET.png'></image></view>
                     </view>
                     <view class='menu-items-txt'><text>四六级</text></view>
                   </view>
-                </view>
+                </view> -->
                 <view class='menu-item-box'>
                   <view class='nav-item' bindtap='showMoreTips'>
                     <view class='menu-item-content waiting'>
@@ -115,6 +115,8 @@
                     </view>
                     <view class='menu-items-txt'><text>更多</text></view>
                   </view>
+                </view>
+                <view class='menu-item-box'>
                 </view>
                 <view class='menu-item-box'>
                 </view>

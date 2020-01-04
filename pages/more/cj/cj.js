@@ -23,6 +23,7 @@ Page({
             '2019-2020-2'
         ],
         hiddenmodalput: true,
+        isLoading: false,
         name: "",
         grade: "",
         pscjb: "",
@@ -49,11 +50,18 @@ Page({
         var that = this;
         //主题更新
         that.setData({
-            theme: app.getTheme()
+            theme: app.getTheme(),
+            theEverydayCount: wx.getStorageSync("theEverydayCount"),
+            theEverydayUsed: wx.getStorageSync("theEverydayUsed")
         });
         //获取成绩
         var item = that.data.arrayxq[that.data.cjnowxq];
         that.getDataLocal(item);
+
+        //标题显示剩余次数
+        wx.setNavigationBarTitle({
+          title: '成绩查询-余额'+(that.data.theEverydayCount-that.data.theEverydayUsed)+'次',
+        })
 
         //视频广告
         if (wx.createRewardedVideoAd) {
@@ -107,7 +115,16 @@ Page({
     },
     //更新数据
     getDataSyn: function() {
-        this.refreshCJ();
+        var that = this;
+        that.refreshCJ();
+        //标题更新剩余次数
+        that.setData({
+            theEverydayCount: wx.getStorageSync("theEverydayCount"),
+            theEverydayUsed: wx.getStorageSync("theEverydayUsed")
+        });
+        wx.setNavigationBarTitle({
+            title: '成绩查询-余额'+(that.data.theEverydayCount-that.data.theEverydayUsed)+'次',
+        })
     },
     getDataLocal: function(item) {
         var that = this;
@@ -174,6 +191,10 @@ Page({
             });
             return;
         }
+        //更新按钮禁用
+        that.setData({
+            isLoading: true
+        });
         // 显示顶部刷新图标
         wx.showNavigationBarLoading();
         //获取本地账号
@@ -250,7 +271,7 @@ Page({
                 console.log(res);
                 var changeCJ = [];
                 var creNum = '';
-                if (res.data.state == "error") {
+                if (res.statusCode == 200 && res.data.state == "error") {
                     wx.showModal({
                         content: '登陆教务处失败！可能当前服务器暂时被ban了，更换一台试试？也可能是学号或者密码错了喔',
                         showCancel: true,
@@ -265,7 +286,7 @@ Page({
                             }
                         }
                     });
-                } else {
+                } else if(res.statusCode == 200){
                     for (var i = 0; i < res.data.length; i++) {
                         changeCJ[i] = new Object();
                         changeCJ[i].name = that.isOver16(res.data[i].name);
@@ -283,25 +304,37 @@ Page({
                         changeCJ[i].kcsx = res.data[i].detail.kcsx;
                         changeCJ[i].kcxz = res.data[i].detail.kcxz;
                     }
-                }
-                //console.log(changeCJ);
-                if (changeCJ.length == 0) {
-                    wx.showToast({
-                        title: '暂无本学期成绩',
-                        duration: 2000
+                    //console.log(changeCJ);
+                    if (changeCJ.length == 0) {
+                        wx.showToast({
+                            title: '暂无本学期成绩',
+                            duration: 2000
+                        });
+                        that.setData({
+                            arraycj: [],
+                        });
+                    } else {
+                        creNum = res.data[0].creNum;
+                        that.setData({
+                            arraycj: changeCJ,
+                            avgCredit: creNum
+                        });
+                        //更新本地数据
+                        localDataCj[items+''] = {score:changeCJ, credit:creNum}
+                        wx.setStorageSync('localDataCj', localDataCj)
+                        wx.showToast({
+                            title: '更新成功！',
+                            duration: 1000
+                        });
+                    }
+                } else{
+                    wx.showModal({
+                        title: '服务器故障',
+                        content: '很遗憾，当前服务器暂时不可用，请通知管理员处理 [Error:' + res.statusCode + ']',
+                        showCancel: false,
+                        confirmText: "确定",
+                        confirmColor: that.data.theme.color[that.data.theme.themeColorId].value
                     });
-                     that.setData({
-                        arraycj: [],
-                    });
-                } else {
-                    creNum = res.data[0].creNum;
-                    that.setData({
-                        arraycj: changeCJ,
-                        avgCredit: creNum
-                    });
-                    //更新本地数据
-                    localDataCj[items+''] = {score:changeCJ, credit:creNum}
-                    wx.setStorageSync('localDataCj', localDataCj)
                 }
             },
             fail: function(res) {
@@ -317,6 +350,10 @@ Page({
             complete: function(res) {
                 // 隐藏顶部刷新图标
                 wx.hideNavigationBarLoading();
+                //更新按钮恢复
+                that.setData({
+                    isLoading: false
+                });
             }
         });
         // 隐藏顶部刷新图标

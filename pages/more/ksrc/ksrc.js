@@ -9,6 +9,7 @@ Page({
      */
     data: {
         hiddenmodalput: true,
+        isLoading: false,
         name: "",
         room: "",
         time: "",
@@ -36,7 +37,9 @@ Page({
         var that = this;
         //主题更新
         that.setData({
-            theme: app.getTheme()
+            theme: app.getTheme(),
+            theEverydayCount: wx.getStorageSync("theEverydayCount"),
+            theEverydayUsed: wx.getStorageSync("theEverydayUsed")
         });
         //刷新本地账号
         var Id = wx.getStorageSync("userid");
@@ -44,6 +47,11 @@ Page({
         var Server = wx.getStorageSync("server");
         //获取本地数据
         that.getDataLocal();
+
+        //标题显示剩余次数
+        wx.setNavigationBarTitle({
+            title: '考试日程-余额'+(that.data.theEverydayCount-that.data.theEverydayUsed)+'次',
+        })
 
         //视频广告
         if (wx.createRewardedVideoAd) {
@@ -87,7 +95,16 @@ Page({
     },
     //更新数据
     getDataSyn: function () {
-        this.refreshKSRC();
+        var that = this;
+        that.refreshKSRC();
+        //标题更新剩余次数
+        that.setData({
+            theEverydayCount: wx.getStorageSync("theEverydayCount"),
+            theEverydayUsed: wx.getStorageSync("theEverydayUsed")
+        });
+        wx.setNavigationBarTitle({
+            title: '考试日程-余额'+(that.data.theEverydayCount-that.data.theEverydayUsed)+'次',
+        })
     },
     getDataLocal: function (item) {
         var that = this;
@@ -154,6 +171,10 @@ Page({
             });
             return;
         }
+        //更新按钮禁用
+        that.setData({
+            isLoading: true
+        });
         // 显示顶部刷新图标
         wx.showNavigationBarLoading();
         //刷新本地账号
@@ -214,7 +235,7 @@ Page({
             success: function(res) {
                 wx.hideLoading();
                 console.log(res);
-                if (res.data.data != null) {
+                if (res.statusCode == 200 && res.data.data != null) {
                     wx.showToast({
                         title: '获取成功！',
                         duration: 1000
@@ -237,7 +258,7 @@ Page({
                     //更新本地数据
                     localDataKsrc = { ksarr: change, num: res.data.data.length }
                     wx.setStorageSync('localDataKsrc', localDataKsrc)
-                } else if (res.data.state == "error") {
+                } else if (res.statusCode == 200 && res.data.state == "error") {
                     wx.showModal({
                         content: '登陆教务处失败！可能当前服务器暂时被ban了，更换一台试试？也可能是学号或者密码错了喔',
                         showCancel: true,
@@ -251,6 +272,14 @@ Page({
                                 })
                             }
                         }
+                    });
+                } else if(res.statusCode != 200 ){
+                    wx.showModal({
+                        title: '服务器故障',
+                        content: '很遗憾，当前服务器暂时不可用，请通知管理员处理 [Error:' + res.statusCode + ']',
+                        showCancel: false,
+                        confirmText: "确定",
+                        confirmColor: that.data.theme.color[that.data.theme.themeColorId].value
                     });
                 }
             },
@@ -266,6 +295,10 @@ Page({
             complete: function(res) {
                 // 隐藏顶部刷新图标
                 wx.hideNavigationBarLoading();
+                //更新按钮恢复
+                that.setData({
+                    isLoading: false
+                });
             }
         });
         // 隐藏顶部刷新图标
