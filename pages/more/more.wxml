@@ -12,9 +12,9 @@
           <swiper-item>
             <image src="../../image/swi/morebg.png" class="pic" />
           </swiper-item>
-          <block wx:for="{{swiimgs}}" wx:for-item="swiitem" wx:key="swiitem">
-            <swiper-item>
-              <image src="{{swiitem}}" class="pic" />
+          <block wx:for="{{swiimgs}}" wx:for-item="swiitem" wx:for-index="index" wx:key="swiitem">
+            <swiper-item bindtap="showWebview" data-index="{{index}}">
+              <image src="{{swiitem}}" class="pic"/>
             </swiper-item>
           </block>
         </swiper>

@@ -129,7 +129,7 @@ Page({
                 }else{
                     wx.showModal({
                         title: '服务器故障',
-                        content: '很遗憾，当前服务器暂时不可用，请通知管理员处理 [Error:' + res.statusCode + ']',
+                        content: '很遗憾，当前服务器暂时不可用，请通知管理员处理 [Error:' + res.statusCode + '/'+ res.data.code +']',
                         showCancel: false,
                         confirmText: "确定",
                         confirmColor: that.data.theme.color[that.data.theme.themeColorId].value

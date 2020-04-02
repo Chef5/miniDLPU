@@ -1,4 +1,5 @@
 // pages/more/ad/ad.js
+const app = getApp();
 Page({
 
     /**
@@ -14,7 +15,8 @@ Page({
     onLoad: function (options) {
         this.setData({
             adlink: options.url,
-            adShow: true
+            adShow: true,
+            theme: app.getTheme(),   //获取当前主题
         })
     },
 

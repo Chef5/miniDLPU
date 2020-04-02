@@ -1,58 +1,59 @@
 {
-  "pages": [
-    "pages/kcb/kcb",
-    "pages/more/more",
-    "pages/more/cj/cj",
-    "pages/setting/setting",
-    "pages/setting-detail/set-userinfo",
-    "pages/setting-detail/set-server",
-    "pages/setting-detail/set-know",
-    "pages/setting-detail/set-feed",
-    "pages/more/xiaoli/xiaoli",
-    "pages/more/edu/edu",
-    "pages/more/ksrc/ksrc",
-    "pages/setting-detail/thanks",
-    "pages/more/room/room",
-    "pages/setting-detail/set-other",
-    "pages/setting-detail/set-theme"
-  ],
-  "window": {
-    "backgroundTextStyle": "dark",
-    "navigationBarBackgroundColor": "#1298CF",
-    "navigationBarTitleText": "工大教务处",
-    "navigationBarTextStyle": "white"
-  },
-  "tabBar": {
-    "backgroundColor": "#1298CF",
-    "color": "#515151",
-    "selectedColor": "#F6F6F6",
-    "list": [
-      {
-        "pagePath": "pages/kcb/kcb",
-        "iconPath": "image/kcb.png",
-        "selectedIconPath": "image/selkcb2.png",
-        "text": "课程表"
-      },
-      {
-        "pagePath": "pages/more/more",
-        "iconPath": "image/menu.png",
-        "selectedIconPath": "image/selmenu2.png",
-        "text": "综合信息"
-      },
-      {
-        "pagePath": "pages/setting/setting",
-        "iconPath": "image/set.png",
-        "selectedIconPath": "image/selset2.png",
-        "text": "设置"
-      }
+    "pages": [
+        "pages/kcb/kcb",
+        "pages/more/more",
+        "pages/more/cj/cj",
+        "pages/setting/setting",
+        "pages/setting-detail/set-userinfo",
+        "pages/setting-detail/set-server",
+        "pages/setting-detail/set-know",
+        "pages/setting-detail/set-feed",
+        "pages/more/xiaoli/xiaoli",
+        "pages/more/edu/edu",
+        "pages/more/ksrc/ksrc",
+        "pages/setting-detail/thanks",
+        "pages/more/room/room",
+        "pages/setting-detail/set-other",
+        "pages/setting-detail/set-theme",
+        "pages/more/ad/ad"
+    ],
+    "window": {
+        "backgroundTextStyle": "dark",
+        "navigationBarBackgroundColor": "#1298CF",
+        "navigationBarTitleText": "工大教务处",
+        "navigationBarTextStyle": "white"
+    },
+    "tabBar": {
+        "backgroundColor": "#1298CF",
+        "color": "#515151",
+        "selectedColor": "#F6F6F6",
+        "list": [
+            {
+                "pagePath": "pages/kcb/kcb",
+                "iconPath": "image/kcb.png",
+                "selectedIconPath": "image/selkcb2.png",
+                "text": "课程表"
+            },
+            {
+                "pagePath": "pages/more/more",
+                "iconPath": "image/menu.png",
+                "selectedIconPath": "image/selmenu2.png",
+                "text": "综合信息"
+            },
+            {
+                "pagePath": "pages/setting/setting",
+                "iconPath": "image/set.png",
+                "selectedIconPath": "image/selset2.png",
+                "text": "设置"
+            }
+        ]
+    },
+    "networkTimeout": {
+        "request": 120000
+    },
+    "sitemapLocation": "sitemap.json",
+    "navigateToMiniProgramAppIdList": [
+        "wx3f924baa54174a84",
+        "wxf885179f908a33d6"
     ]
-  },
-  "networkTimeout":{
-    "request": 120000
-  },
-  "sitemapLocation": "sitemap.json",
-  "navigateToMiniProgramAppIdList": [
-    "wx3f924baa54174a84",
-    "wxf885179f908a33d6"
-  ]
 }

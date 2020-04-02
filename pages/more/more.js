@@ -267,9 +267,19 @@ Page({
         for(let i=0;i<res.data.url.length;i++){
           swis.push(res.data.url[i]);
         }
-        that.setData({swiimgs: swis});
+        that.setData({swiimgs: swis, links: res.data.links, types: res.data.types });
       }
     });
+  },
+  //点击轮播图
+  showWebview: function(e){
+    var that = this;
+    // doc跳转公众号文章
+    if(that.data.types[e.currentTarget.dataset.index] == "doc"){
+      wx.navigateTo({
+        url: './ad/ad?url='+that.data.links[e.currentTarget.dataset.index]
+      })
+    }
   },
 
   // 余额弹窗
