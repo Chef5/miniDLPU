@@ -3,6 +3,7 @@
   "enablePullDownRefresh": false,
   "backgroundColor": "#f6f6f6",
   "usingComponents": {
-    "i-notice-bar": "../../dist/notice-bar/index"
+    "i-notice-bar": "../../dist/notice-bar/index",
+    "van-popup": "@vant/weapp/popup/index"
   }
 }

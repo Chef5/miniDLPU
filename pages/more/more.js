@@ -16,6 +16,10 @@ Page({
 
     getindex: 0,  //最新获取的消息序号，用户用户点击关闭通知
 
+    isShowYuE: false, //校园卡余额
+    isShowYuELoading: false,
+    yue: {},
+
     shownews: false,
     text: "",
     marqueePace: 1,//滚动速度
@@ -266,5 +270,50 @@ Page({
         that.setData({swiimgs: swis});
       }
     });
+  },
+
+  // 余额弹窗
+  showYuE: function(){
+    let that = this;
+    that.setData({ 
+      isShowYuE:true,
+      isShowYuELoading: true,
+    });
+    var userid = wx.getStorageSync('userid');
+    if(userid){
+      wx.request({
+        url: 'https://test.1zdz.cn/api/card.php',
+        method: 'POST',
+        data: {
+          userid: userid
+        },
+        header: { "Content-Type": "application/x-www-form-urlencoded" },
+        success: function (res) {
+          if(res.data.success == 0){
+            var yue = res.data;
+            var dt = new Date();
+            yue.time = dt.getFullYear() +'-'+ 
+                      addZero(dt.getMonth()) +'-'+ 
+                      addZero(dt.getDay()) +' '+ 
+                      addZero(dt.getHours()) +':'+ addZero(dt.getMinutes()) +':'+ addZero(dt.getSeconds());
+            
+            that.setData({ 
+              yue: yue,
+              isShowYuELoading: false,
+            });
+          }
+        },
+        fail: function (res) {}
+      });
+    }
+    function addZero(i){
+      if (i<10) {
+        i="0" + i;
+      }
+      return i;
+    }
+  },
+  onClose: function(){
+    this.setData({ isShowYuE:false })
   }
 })

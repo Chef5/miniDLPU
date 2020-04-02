@@ -1,0 +1,2 @@
+<!--pages/more/ad/ad.wxml-->
+<web-view wx:if="{{adShow}}" src="{{adlink}}"></web-view>

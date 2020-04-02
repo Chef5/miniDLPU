@@ -77,6 +77,14 @@
                   </navigator>
                 </view>
                 <view class='menu-item-box'>
+                  <view class='nav-item' bind:tap="showYuE">
+                      <view class='menu-item-content {{theme.color[theme.themeColorId].name}}'>
+                        <view class='menu-items-img'><image src='../../image/yue.png'></image></view>
+                      </view>
+                      <view class='menu-items-txt'><text>校园卡</text></view>
+                    </view>
+                </view>
+                <view class='menu-item-box'>
                   <view class='nav-item' bindtap='toPingJiaoProgram'>
                     <view class='menu-item-content {{theme.color[theme.themeColorId].name}}'>
                       <view class='menu-items-img'><image src='../../image/pingjiao.png'></image></view>
@@ -91,8 +99,6 @@
                     </view>
                     <view class='menu-items-txt'><text>采集平台</text></view>
                   </view>
-                </view>
-                <view class='menu-item-box'>
                 </view>
               </view>
           </view>
@@ -143,3 +149,20 @@
       <view>分享即可获得App store 5元红包(点击右上角更多按钮参与分享活动)</view>
   </modal> -->
 </view>
+<van-popup show="{{ isShowYuE }}" custom-class="popup_root" closeable round bind:close="onClose">
+  <view class="yue-main">
+    <view class="yue-loading" wx:if="{{ isShowYuELoading }}">
+      查询中...
+    </view>
+    <view class="yue-banlance" wx:if="{{ !isShowYuELoading }}">
+      <text class="yue-num">{{ yue.oddfare }}</text><text class="yue-c  {{theme.color[theme.themeColorId].name}}">元</text>
+    </view>
+    <view class="yue-info" wx:if="{{ !isShowYuELoading }}">
+      <view class="yue-name">姓名：{{yue.name}}</view>
+      <view class="yue-sno">卡号：{{yue.outid}}</view>
+    </view>
+    <view class="yue-time" wx:if="{{ !isShowYuELoading }}">
+      {{ yue.time }}
+    </view>
+  </view>
+</van-popup>
