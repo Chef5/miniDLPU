@@ -44,8 +44,8 @@ App({
     server: null,
     countInit: 30,   //每日初始次数
     countIncreseFre: 3600,    //每隔3600s 调整
-    countIncreseByTime: 12,   //根据时间 +10
-    countIncreseByAD: 28,     //看广告 +20
+    countIncreseByTime: 10,   //根据时间 +10
+    countIncreseByAD: 20,     //看广告 +20
     theme: {
       image: null,
       themeColorId: 0,

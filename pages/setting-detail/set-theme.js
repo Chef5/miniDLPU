@@ -37,14 +37,12 @@ Page({
     });
 
     // 在页面onLoad回调事件中创建插屏广告实例
-    if (wx.createInterstitialAd) {
-      interstitialAd = wx.createInterstitialAd({
-        adUnitId: 'adunit-59796b720956f5f6'
+      interstitialAd = qq.createInterstitialAd({
+        adUnitId: '5dd4fc80875d76c56a8c1db5bfb7f0c6'
       })
       interstitialAd.onLoad(() => { })
       interstitialAd.onError((err) => { })
       interstitialAd.onClose(() => { })
-    }
 
     
   },

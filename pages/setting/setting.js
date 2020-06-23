@@ -100,7 +100,7 @@ Page({
     });
     //视频广告
     if (wx.createRewardedVideoAd) {
-      rewardedVideoAd = wx.createRewardedVideoAd({ adUnitId: 'adunit-cfdf2f4bd499a89d' })
+      rewardedVideoAd = wx.createRewardedVideoAd({ adUnitId: 'c3228c9eb2e4f99dfbbbff388ca37b89' })
       rewardedVideoAd.onLoad(() => {
         console.log('激励视频 广告加载成功')
       })
