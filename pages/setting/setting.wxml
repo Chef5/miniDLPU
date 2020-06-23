@@ -14,7 +14,7 @@
       <view class='user-data-tips'>
         <view>额外获取：</view>
         <view>1) 每隔{{incFre}}小时，额度自动+{{incTime}}；</view>
-        <view>2) 完整 <text class='tips-ad {{theme.color[theme.themeColorId].font}}' bindtap='handleWatchAd'>观看视频广告</text> +{{incAd}}(每日限1次)；</view>
+        <!-- <view>2) 完整 <text class='tips-ad {{theme.color[theme.themeColorId].font}}' bindtap='handleWatchAd'>观看视频广告</text> +{{incAd}}(每日限1次)；</view> -->
       </view>
     </view>
   </view>
@@ -34,17 +34,17 @@
               <view class="weui-cell__bd">服务器切换</view>
               <view class="weui-cell__ft weui-cell__ft_in-access"></view>
       </navigator>
-      <navigator url="../setting-detail/set-theme" class="weui-cell weui-cell_access" >
+      <!-- <navigator url="../setting-detail/set-theme" class="weui-cell weui-cell_access" >
               <view class="weui-cell__bd">主题</view>
               <view class="weui-cell__ft weui-cell__ft_in-access"></view>
-      </navigator>
+      </navigator> -->
       <navigator url="../setting-detail/set-other" class="weui-cell weui-cell_access" >
               <view class="weui-cell__bd">其他</view>
               <view class="weui-cell__ft weui-cell__ft_in-access"></view>
       </navigator>
     </view>
-    <button open-type="contact" class='btn-contact {{theme.color[theme.themeColorId].name}}'>联系客服</button>
-    <view class="notice-wrap"><view class="notice">联系客服前须知：小程序非官方程序</view></view>
+    <!-- <button open-type="contact" class='btn-contact {{theme.color[theme.themeColorId].name}}'>联系客服</button> -->
+    <view class="notice-wrap"><view class="notice">如有问题：请移步微信小程序联系客服</view></view>
     <view class='showmsg'>
       <!-- <text class='jinji'>紧急通知！！请互相转告！！\n</text> -->
       <text>157-6020-8020\n工大小程序联盟\n</text>
