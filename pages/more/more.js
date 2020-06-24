@@ -42,6 +42,57 @@ Page({
       hiddenmodalput: true
     })
   },
+  //跳转小程序：评教小助手
+  toPingJiaoProgram: function(){
+    var userid = wx.getStorageSync('userid');
+    var passwd = wx.getStorageSync('userpwd'); 
+    wx.showModal({
+      title: '提示',
+      content: '2019-2020-2学期评教时间：2020-06-22~2020-07-01 16:00:00，请错峰使用评教小助手进行评教',
+      showCancel: true,
+      confirmText: '立即前往',
+      confirmColor: this.data.theme.color[this.data.theme.themeColorId].value,
+      success(res) {
+        if (res.confirm) {
+          wx.navigateToMiniProgram({
+            appId: 'wx3f924baa54174a84',
+            path: 'pages/index/index?user=' + userid + '&pass=' + passwd,
+            envVersion: 'release',
+            success(res) {
+              // 打开成功
+            }
+          })
+        } else if (res.cancel) {
+
+        }
+      }
+    })
+  },
+  //跳转小程序：校园采集平台
+  toCaiJiProgram: function(){
+    var userid = wx.getStorageSync('userid');
+    var passwd = wx.getStorageSync('userpwd');
+    wx.showModal({
+      title: '提示',
+      content: '一款面向学生班委的信息采集工具，支持自动整理导出Excel表格！点击确认即可免登录使用小程序“校园采集平台”，是否立即打开？',
+      showCancel: true,
+      confirmColor: this.data.theme.color[this.data.theme.themeColorId].value,
+      success(res) {
+        if (res.confirm) {
+          wx.navigateToMiniProgram({
+            appId: 'wxf885179f908a33d6',
+            path: '/pages/index/index?s=1&u=' + userid + '&p=' + passwd,
+            envVersion: 'release',
+            success(res) {
+              // 打开成功
+            }
+          })
+        } else if (res.cancel) {
+
+        }
+      }
+    })
+  },
   //显示敬请期待
   showWaitingTips: function () {
     var that = this;
