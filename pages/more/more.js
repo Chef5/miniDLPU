@@ -48,7 +48,7 @@ Page({
     var passwd = wx.getStorageSync('userpwd'); 
     wx.showModal({
       title: '提示',
-      content: '2019-2020-2学期评教时间：2020-06-22~2020-07-01 16:00:00，请错峰使用评教小助手进行评教',
+      content: '2020-2021-1学期评教时间待定，评教小助手暂时无法使用',
       showCancel: true,
       confirmText: '立即前往',
       confirmColor: this.data.theme.color[this.data.theme.themeColorId].value,

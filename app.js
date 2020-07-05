@@ -1,4 +1,5 @@
 //app.js
+const Water = require('./utils/water');
 App({
   onLaunch: function () {
     //设置主题
@@ -22,6 +23,29 @@ App({
         }
       }
     })
+
+    // Water.getToken({
+    //   realname: '',
+    //   studentID: '',
+    //   password: ''
+    // }).then(token=>{
+    //   console.log('token：' + token);
+    //   // 获取水卡信息
+    //   Water.getWater(token).then(res=>{
+    //     console.log('水卡信息', res);
+    //   }).catch(err=>{
+    //     console.log(err);
+    //   });
+
+    //   // 获取消费二维码
+    //   Water.getPrcode(token).then(res=>{
+    //     console.log('二维码地址', res);
+    //   }).catch(err=>{
+    //     console.log(err);
+    //   });
+    // }).catch(err=>{
+    //   console.log(err);
+    // });
 
     //每日初始化使用次数
     this.refreshCount();
