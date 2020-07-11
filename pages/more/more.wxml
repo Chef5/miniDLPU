@@ -84,6 +84,14 @@
                       <view class='menu-items-txt'><text>校园卡</text></view>
                     </view>
                 </view>
+                <!-- <view class='menu-item-box'>
+                  <view class='nav-item' bind:tap="checkWater">
+                      <view class='menu-item-content {{theme.color[theme.themeColorId].name}}'>
+                        <view class='menu-items-img'><image src='../../image/qr_code.png'></image></view>
+                      </view>
+                      <view class='menu-items-txt'><text>水卡</text></view>
+                    </view>
+                </view> -->
                 <view class='menu-item-box'>
                   <view class='nav-item' bindtap='toPingJiaoProgram'>
                     <view class='menu-item-content {{theme.color[theme.themeColorId].name}}'>
@@ -106,6 +114,14 @@
           <swiper-item>
             <view class='menu-body'>
               <view class='menu-items'>
+                <!-- <view class='menu-item-box'>
+                  <view class='nav-item' bindtap='toCaiJiProgram'>
+                    <view class='menu-item-content {{theme.color[theme.themeColorId].name}}'>
+                      <view class='menu-items-img'><image src='../../image/caij.png'></image></view>
+                    </view>
+                    <view class='menu-items-txt'><text>采集平台</text></view>
+                  </view>
+                </view> -->
                 <!-- <view class='menu-item-box'>
                   <view class='nav-item' bindtap='showWaitingTips'>
                     <view class='menu-item-content waiting'>
@@ -166,3 +182,27 @@
     </view>
   </view>
 </van-popup>
+
+<!-- 水卡查询授权弹窗 -->
+<!-- <van-popup custom-class="protocol" show="{{ isShowProtocol }}" closeable bind:close="onClose">
+    <view class="protocol-title">使用协议</view>
+    <view class="protocol-body">
+      <view>您必需阅读以下内容并同意后才可以使用水卡余额查询和消费二维码功能，当然您也有权拒绝：</view>
+      <scroll-view class="protocol-content" scroll-y="false" style="height: 460rpx;">
+        <view class="title">免责确认书</view>
+        <view>
+          1.隐私数据告知：尊敬的用户，新推出的“水卡余额”和“消费二维码”的功能，“工大教务处”小程序将会使用您本人提供的姓名、学号和“五维学子app”登录密码去查询您的水卡余额数据和消费二维码。
+          在此过程中，“工大教务处”小程序除了会在你本人手机上本地存储以上数据外，不会在任何地方保存或收集您的数据。
+        </view>
+        <view>
+          2.查询结果和消费二维码：查询的余额结果不能作为任何证明，仅供您本人参考，具体数据请以“五维学子app”为准；消费二维码涉及您的账户金额安全，
+          “工大教务处”小程序不会在任何地方、任意形式保存。
+        </view>
+      </scroll-view>
+      <view>
+        免责确认：本人已阅读以上信息，本人确认授权“工大教务处”小程序使用本人的姓名、学号和“五维学子app”登录密码数据去访问“五维学子app”获取本人的水卡余额数据和消费二维码数据，
+        也明确知道查询的余额结果不能用作任何证明，且消费二维码本人会妥善保管，不会泄露。如因个人原因造成账户金额被盗刷，本人不会追究“工大教务处”小程序任何责任。
+      </view>
+      <view>点击确认按钮则表示您本人同意以上免责，点击拒绝按钮将拒绝授权并返回</view>
+    </view>
+</van-popup> -->

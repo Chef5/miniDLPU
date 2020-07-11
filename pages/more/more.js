@@ -20,6 +20,10 @@ Page({
     isShowYuELoading: false,
     yue: {},
 
+    isShowWater: false, //水卡
+    isShowWaterLoading: false,
+    water: {},
+
     shownews: false,
     text: "",
     marqueePace: 1,//滚动速度
@@ -264,20 +268,31 @@ Page({
       success: function (res) {
         console.log(res);
         let swis = that.data.swiimgs;
-        for(let i=0;i<res.data.url.length;i++){
-          swis.push(res.data.url[i]);
+        if(res.data.url.length > 0) {
+          for(let i=0;i<res.data.url.length;i++){
+            swis.push(res.data.url[i]);
+          }
+          that.setData({swiimgs: swis, links: res.data.links, types: res.data.types, appid: res.data.appid });
         }
-        that.setData({swiimgs: swis, links: res.data.links, types: res.data.types });
       }
     });
   },
   //点击轮播图
   showWebview: function(e){
     var that = this;
+    console.log(that.data)
     // doc跳转公众号文章
     if(that.data.types[e.currentTarget.dataset.index] == "doc"){
       wx.navigateTo({
         url: './ad/ad?url='+that.data.links[e.currentTarget.dataset.index]
+      })
+    }else if(that.data.types[e.currentTarget.dataset.index] == "app"){
+      wx.navigateToMiniProgram({
+        appId: that.data.appid[e.currentTarget.dataset.index],
+        path: that.data.links[e.currentTarget.dataset.index],
+        success(res) {
+          // 打开成功
+        }
       })
     }
   },
@@ -323,6 +338,32 @@ Page({
       return i;
     }
   },
+
+  // 水卡弹窗
+  checkWater: function(){
+    let that = this;
+    var userid = wx.getStorageSync('userid');
+    let watername = wx.getStorageSync('watername');
+    let waterpwd = wx.getStorageSync('waterpwd');
+    if(userid && watername && waterpwd) {
+      this.showWater(watername, userid, waterpwd)
+      that.setData({ 
+        isShowYuE:true,
+        isShowYuELoading: true,
+      });
+    }else {
+      
+    }
+  },
+  showWater: function(watername, userid, waterpwd){
+    let that = this;
+    that.setData({ 
+      isShowYuE:true,
+      isShowYuELoading: true,
+    });
+  },
+
+
   onClose: function(){
     this.setData({ isShowYuE:false })
   }
