@@ -1,4 +1,5 @@
 // pages/more/more.js
+const Water = require('../../utils/water');
 //获取应用实例
 const app = getApp();// 在页面中定义插屏广告
 let interstitialAd = null
@@ -20,9 +21,16 @@ Page({
     isShowYuELoading: false,
     yue: {},
 
+    isShowWaterPopup: false,     // 显示水卡弹窗
+    isShowWaterProtocol: false,  // 协议、输入框
+    isShowWaterInfo: false,      // 显示数据
+    waterid: '',
+    watername: '',
+    waterpwd: '',
     isShowWater: false, //水卡
     isShowWaterLoading: false,
     water: {},
+    waterqr: '',
 
     shownews: false,
     text: "",
@@ -146,9 +154,17 @@ Page({
    */
   onLoad: function (options) {
     var that = this;
+    let waterid = wx.getStorageSync('waterid') || wx.getStorageSync('userid');
+    let watername = wx.getStorageSync('watername');
+    let waterpwd = wx.getStorageSync('waterpwd');
+    let isAgreeWaterProtocol = wx.getStorageSync('angreeWaterProtocl');
     //主题更新
     that.setData({
-      theme: app.getTheme()
+      theme: app.getTheme(),
+      waterid,
+      watername,
+      waterpwd,
+      isShowWaterProtocol: !!isAgreeWaterProtocol
     });
     that.getnews();
     that.getTopbarImg();
@@ -342,29 +358,121 @@ Page({
   // 水卡弹窗
   checkWater: function(){
     let that = this;
-    var userid = wx.getStorageSync('userid');
-    let watername = wx.getStorageSync('watername');
-    let waterpwd = wx.getStorageSync('waterpwd');
-    if(userid && watername && waterpwd) {
-      this.showWater(watername, userid, waterpwd)
+    let waterid = this.data.waterid;
+    let watername = this.data.watername;
+    let waterpwd = this.data.waterpwd;
+    let isAgreeWaterProtocol = wx.getStorageSync('angreeWaterProtocl');
+    // 显示弹窗
+    this.setData({
+      isShowWaterPopup: true,
+    });
+    if(isAgreeWaterProtocol && waterid && watername && waterpwd) {
+      this.checkWaterAcount();
       that.setData({ 
-        isShowYuE:true,
-        isShowYuELoading: true,
+        isShowWaterInfo: true,
       });
     }else {
-      
+      console.log("无水卡账号信息");
+      this.setData({ 
+        isShowWaterProtocol: true,
+      })
     }
   },
-  showWater: function(watername, userid, waterpwd){
+  // 水卡协议同意
+  waterProtocolAgree: function(){
+    wx.setStorageSync('angreeWaterProtocl', true);
+    this.setData({ 
+      isShowWaterProtocol: false
+    });
+  },
+  // 水卡输入信息
+  getwaterid: function(e){
+    this.setData({
+      waterid: e.detail.value
+    });
+    return e.detail.value;
+  }, 
+  getwatername: function (e) {
+    this.setData({
+      watername: e.detail.value
+    });
+    return e.detail.value;
+  },
+  getwaterpwd: function (e) {
+    this.setData({
+      waterpwd: e.detail.value
+    });
+    return e.detail.value;
+  },
+  // 检测用户水卡账号
+  checkWaterAcount: function() {
     let that = this;
-    that.setData({ 
-      isShowYuE:true,
-      isShowYuELoading: true,
+    let waterid = this.data.waterid;
+    let watername = this.data.watername;
+    let waterpwd = this.data.waterpwd;
+    Water.getToken({
+      realname: watername,
+      studentID: waterid,
+      password: waterpwd
+    }).then(token=>{
+      console.log('token：' + token);
+      wx.setStorageSync('waterid', waterid);
+      wx.setStorageSync('watername', watername);
+      wx.setStorageSync('waterpwd', waterpwd);
+      that.setData({
+        waterToken: token,
+        isShowWaterInfo: true,
+      });
+      that.getWaterInfo();
+    }).catch(err=>{
+      console.log(err);
+      wx.showModal({
+        title: '错误',
+        content: err,
+        showCancel: false,
+        confirmText: '确定',
+        confirmColor: that.data.theme.color[that.data.theme.themeColorId].value
+      });
+    });
+  },
+  // 水卡数据
+  getWaterInfo: function() {
+    let that = this;
+    // 获取水卡信息
+    Water.getWater(this.data.waterToken).then(res=>{
+      console.log('水卡信息', res);
+      that.setData({ water: res });
+    }).catch(err=>{
+      console.log(err);
+    });
+
+    // 获取消费二维码
+    Water.getPrcode(this.data.waterToken).then(res=>{
+      console.log('二维码地址', res);
+      that.setData({ waterqr: res });
+    }).catch(err=>{
+      console.log(err);
+    });
+  },
+  // 清除水卡账号
+  clearWaterInfo: function() {
+    wx.removeStorageSync('watername');
+    wx.removeStorageSync('waterpwd');
+    wx.setStorageSync('angreeWaterProtocl', false);
+    this.setData({
+      waterToken: '',
+      watername: '',
+      waterpwd: '',
+      isShowWaterInfo: false,
+      isShowWaterProtocol: true
     });
   },
 
 
   onClose: function(){
-    this.setData({ isShowYuE:false })
+    this.setData({ 
+      isShowYuE: false,
+      isShowWaterPopup: false,
+    })
   }
 })
