@@ -12,3 +12,6 @@ $RECYCLE.BIN/
 
 # Node.js
 node_modules/
+
+#水卡查询
+utils/water.js

@@ -34,7 +34,7 @@ Page({
       wx.showModal({
         title: '学号错误',
         showCancel: false,
-        content: '学号位数不对！当前位数：'+userid.length,
+        content: userid.length === 14 ? '暂不支持研究生账号' : `学号位数不对！当前位数：${userid.length}`,
         confirmColor: that.data.theme.color[that.data.theme.themeColorId].value
       })
     }else{
@@ -210,7 +210,7 @@ Page({
       wx.showModal({
         title: '学号错误',
         showCancel: false,
-        content: '学号位数不对！当前位数：' + userid.length,
+        content: userid.length === 14 ? '暂不支持研究生账号' : `学号位数不对！当前位数：${userid.length}`,
         confirmColor: that.data.theme.color[that.data.theme.themeColorId].value
       })
       return;

@@ -175,6 +175,128 @@ swiper{
   text-align: center;
 }
 
+/* 水卡弹窗 */
+.popup_water {
+  width: 88%;
+  /* height: 70%; */
+  border-radius: 10rpx;
+  background: #FFFFFF;
+}
+.waterinfo .waterinfo-loading {
+  width: 100%;
+  margin-top: 35%;
+  text-align: center;
+  font-size: 42rpx;
+  color: #929292;
+}
+.waterinfo .waterinfo-qrcode {
+  margin-top: 80rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.waterinfo .waterinfo-qrcode image {
+  height: 500rpx;
+  width: 500rpx;
+}
+.waterinfo .waterinfo-banlance {
+  text-align: center;
+}
+.waterinfo .waterinfo-banlance .yue-num{
+  font-size: 60rpx;
+  line-height: 100rpx;
+  color: #fa5477;
+}
+.waterinfo .waterinfo-banlance .yue-c{
+  display: inline-block;
+  height: 30rpx;
+  width: 30rpx;
+  border-radius: 50%;
+  text-align: center;
+  font-size: 20rpx;
+  color: white;
+  line-height: 30rpx;
+}
+.waterinfo .waterinfo-refresh {
+  position: absolute;
+  bottom: 16rpx;
+  left: 28rpx;
+  font-size: 36rpx;
+}
+.waterinfo .waterinfo-clear {
+  position: absolute;
+  bottom: 14rpx;
+  right: 20rpx;
+  font-size: 24rpx;
+  /* color: #1298cf; */
+}
+
+.waterform .waterform-title {
+  margin-top: 16rpx;
+  width: 100%;
+  height: 60rpx;
+  text-align: center;
+  font-size: 40rpx;
+  font-weight: bold;
+}
+.waterform .btn-content {
+  width: 100%;
+  margin: 40rpx 0;
+}
+.waterform .btn-content button {
+  width: 80%;
+}
+.protocol .protocol-title {
+  margin-top: 16rpx;
+  width: 100%;
+  height: 60rpx;
+  text-align: center;
+  font-size: 40rpx;
+  font-weight: bold;
+}
+.protocol .protocol-body {
+  width: 100%;
+}
+.protocol .protocol-body .protocol-body-info {
+  padding: 12rpx;
+  font-size: 30rpx;
+  font-weight: bold;
+}
+.protocol .protocol-body .protocol-content {
+  border: 1px solid rgb(219, 217, 217);
+}
+.protocol .protocol-body .protocol-content .title {
+  height: 60rpx;
+  line-height: 60rpx;
+  text-align: center;
+  font-size: 34rpx;
+}
+.protocol .protocol-body .protocol-content view {
+  padding: 12rpx;
+  font-size: 30rpx;
+  text-align: left;
+}
+.protocol .protocol-body .protocol-content view.know {
+  font-weight: bold;
+}
+.protocol .protocol-btns {
+  margin-top: 60rpx;
+  width: 100%;
+  height: 100rpx;
+  display: flex;
+}
+.protocol .protocol-btns view{
+  width: 50%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+}
+.protocol .protocol-btns .reject{
+  background-color: #fa5477;
+}
+
 
 .container {position:absolute;height: 60rpx;display:block;justify-content: space-between;box-sizing: border-box;z-index: 99;opacity: 0.7;}
 .scrolltxt{padding:0 20rpx;background:#f7bcbc;}
