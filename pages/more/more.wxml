@@ -93,12 +93,12 @@
                     </view>
                 </view>
                 <view class='menu-item-box'>
-                  <view class='nav-item' bindtap='toPingJiaoProgram'>
+                  <!-- <view class='nav-item' bindtap='toPingJiaoProgram'>
                     <view class='menu-item-content {{theme.color[theme.themeColorId].name}}'>
                       <view class='menu-items-img'><image src='../../image/pingjiao.png'></image></view>
                     </view>
                     <view class='menu-items-txt'><text>评教</text></view>
-                  </view>
+                  </view> -->
                 </view>
               </view>
           </view>
@@ -123,14 +123,14 @@
                   </view>
                 </view> -->
                 
-                <view class='menu-item-box'>
+                <!-- <view class='menu-item-box'>
                   <view class='nav-item' bindtap='toCaiJiProgram'>
                     <view class='menu-item-content {{theme.color[theme.themeColorId].name}}'>
                       <view class='menu-items-img'><image src='../../image/caij.png'></image></view>
                     </view>
                     <view class='menu-items-txt'><text>采集平台</text></view>
                   </view>
-                </view>
+                </view> -->
                 <view class='menu-item-box'>
                   <view class='nav-item' bindtap='showMoreTips'>
                     <view class='menu-item-content waiting'>
@@ -143,8 +143,8 @@
                 </view>
                 <view class='menu-item-box'>
                 </view>
-                <!-- <view class='menu-item-box'>
-                </view> -->
+                <view class='menu-item-box'>
+                </view>
               </view>
 
               <view class='solid-line-88'></view>
