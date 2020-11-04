@@ -1,154 +1,159 @@
 {
-	"description": "项目配置文件",
-	"packOptions": {
-		"ignore": []
-	},
-	"setting": {
-		"urlCheck": false,
-		"es6": true,
-		"postcss": false,
-		"preloadBackgroundData": false,
-		"minified": true,
-		"newFeature": true,
-		"coverView": true,
-		"nodeModules": true,
-		"autoAudits": true,
-		"showShadowRootInWxmlPanel": true,
-		"scopeDataCheck": false,
-		"checkInvalidKey": true,
-		"checkSiteMap": true,
-		"uploadWithSourceMap": true,
-		"babelSetting": {
-			"ignore": [],
-			"disablePlugins": [],
-			"outputPath": ""
-		},
-		"useCompilerModule": true,
-		"userConfirmedUseCompilerModuleSwitch": false,
-		"uglifyFileName": true,
-		"remoteDebugLogEnable": false
-	},
-	"compileType": "miniprogram",
-	"libVersion": "2.3.0",
-	"appid": "wx6f91a4ad4ed705ce",
-	"projectname": "%E5%B7%A5%E5%A4%A7%E6%95%99%E5%8A%A1%E5%A4%84",
-	"debugOptions": {
-		"hidedInDevtools": []
-	},
-	"isGameTourist": false,
-	"simulatorType": "wechat",
-	"simulatorPluginLibVersion": {},
-	"qqappid": "1109702608",
-	"scripts": {
-		"beforeCompile": "",
-		"beforePreview": "",
-		"beforeUpload": ""
-	},
-	"condition": {
-		"search": {
-			"current": -1,
-			"list": []
-		},
-		"conversation": {
-			"current": -1,
-			"list": []
-		},
-		"plugin": {
-			"current": -1,
-			"list": []
-		},
-		"game": {
-			"currentL": -1,
-			"list": []
-		},
-		"gamePlugin": {
-			"current": -1,
-			"list": []
-		},
-		"miniprogram": {
-			"current": -1,
-			"list": [
-				{
-					"id": -1,
-					"name": "setting",
-					"pathName": "pages/setting/setting",
-					"query": ""
-				},
-				{
-					"id": -1,
-					"name": "userinfo",
-					"pathName": "pages/setting-detail/set-userinfo",
-					"query": ""
-				},
-				{
-					"id": 2,
-					"name": "成绩",
-					"pathName": "pages/more/cj/cj",
-					"query": ""
-				},
-				{
-					"id": 3,
-					"name": "综合信息",
-					"pathName": "pages/more/more",
-					"query": ""
-				},
-				{
-					"id": -1,
-					"name": "校历",
-					"pathName": "pages/more/xiaoli/xiaoli",
-					"query": ""
-				},
-				{
-					"id": -1,
-					"name": "服务器设置",
-					"pathName": "pages/setting-detail/set-server",
-					"query": ""
-				},
-				{
-					"id": -1,
-					"name": "考试日程",
-					"pathName": "pages/more/ksrc/ksrc",
-					"query": ""
-				},
-				{
-					"id": -1,
-					"name": "反馈",
-					"pathName": "pages/setting-detail/set-feed",
-					"query": ""
-				},
-				{
-					"id": -1,
-					"name": "培养方案",
-					"pathName": "pages/more/edu/edu",
-					"query": ""
-				},
-				{
-					"id": -1,
-					"name": "致谢名单",
-					"pathName": "pages/setting-detail/thanks",
-					"query": ""
-				},
-				{
-					"id": 10,
-					"name": "空教室",
-					"pathName": "pages/more/room/room",
-					"query": "",
-					"scene": 1001
-				},
-				{
-					"id": -1,
-					"name": "常见问题",
-					"pathName": "pages/setting-detail/set-know",
-					"query": ""
-				},
-				{
-					"id": -1,
-					"name": "theme",
-					"pathName": "pages/setting-detail/set-theme",
-					"query": "",
-					"scene": null
-				}
-			]
-		}
-	}
+  "description": "项目配置文件",
+  "packOptions": {
+    "ignore": []
+  },
+  "setting": {
+    "urlCheck": true,
+    "es6": true,
+    "postcss": false,
+    "preloadBackgroundData": false,
+    "minified": true,
+    "newFeature": true,
+    "coverView": true,
+    "nodeModules": true,
+    "autoAudits": true,
+    "showShadowRootInWxmlPanel": true,
+    "scopeDataCheck": false,
+    "uglifyFileName": true,
+    "checkInvalidKey": true,
+    "checkSiteMap": true,
+    "uploadWithSourceMap": true,
+    "useMultiFrameRuntime": false,
+    "useApiHook": true,
+    "babelSetting": {
+      "ignore": [],
+      "disablePlugins": [],
+      "outputPath": ""
+    },
+    "useIsolateContext": true,
+    "useCompilerModule": true,
+    "userConfirmedUseCompilerModuleSwitch": false,
+    "packNpmManually": false,
+    "packNpmRelationList": [],
+    "remoteDebugLogEnable": false
+  },
+  "compileType": "miniprogram",
+  "libVersion": "2.3.0",
+  "appid": "wx6f91a4ad4ed705ce",
+  "projectname": "%E5%B7%A5%E5%A4%A7%E6%95%99%E5%8A%A1%E5%A4%84",
+  "debugOptions": {
+    "hidedInDevtools": []
+  },
+  "isGameTourist": false,
+  "simulatorType": "wechat",
+  "simulatorPluginLibVersion": {},
+  "qqappid": "1109702608",
+  "scripts": {
+    "beforeCompile": "",
+    "beforePreview": "",
+    "beforeUpload": ""
+  },
+  "condition": {
+    "search": {
+      "current": -1,
+      "list": []
+    },
+    "conversation": {
+      "current": -1,
+      "list": []
+    },
+    "plugin": {
+      "current": -1,
+      "list": []
+    },
+    "game": {
+      "currentL": -1,
+      "list": []
+    },
+    "gamePlugin": {
+      "current": -1,
+      "list": []
+    },
+    "miniprogram": {
+      "current": -1,
+      "list": [
+        {
+          "id": -1,
+          "name": "setting",
+          "pathName": "pages/setting/setting",
+          "query": ""
+        },
+        {
+          "id": -1,
+          "name": "userinfo",
+          "pathName": "pages/setting-detail/set-userinfo",
+          "query": ""
+        },
+        {
+          "id": 2,
+          "name": "成绩",
+          "pathName": "pages/more/cj/cj",
+          "query": ""
+        },
+        {
+          "id": 3,
+          "name": "综合信息",
+          "pathName": "pages/more/more",
+          "query": ""
+        },
+        {
+          "id": -1,
+          "name": "校历",
+          "pathName": "pages/more/xiaoli/xiaoli",
+          "query": ""
+        },
+        {
+          "id": -1,
+          "name": "服务器设置",
+          "pathName": "pages/setting-detail/set-server",
+          "query": ""
+        },
+        {
+          "id": -1,
+          "name": "考试日程",
+          "pathName": "pages/more/ksrc/ksrc",
+          "query": ""
+        },
+        {
+          "id": -1,
+          "name": "反馈",
+          "pathName": "pages/setting-detail/set-feed",
+          "query": ""
+        },
+        {
+          "id": -1,
+          "name": "培养方案",
+          "pathName": "pages/more/edu/edu",
+          "query": ""
+        },
+        {
+          "id": -1,
+          "name": "致谢名单",
+          "pathName": "pages/setting-detail/thanks",
+          "query": ""
+        },
+        {
+          "id": 10,
+          "name": "空教室",
+          "pathName": "pages/more/room/room",
+          "query": "",
+          "scene": 1001
+        },
+        {
+          "id": -1,
+          "name": "常见问题",
+          "pathName": "pages/setting-detail/set-know",
+          "query": ""
+        },
+        {
+          "id": -1,
+          "name": "theme",
+          "pathName": "pages/setting-detail/set-theme",
+          "query": "",
+          "scene": null
+        }
+      ]
+    }
+  }
 }
