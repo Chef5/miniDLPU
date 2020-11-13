@@ -6,7 +6,7 @@
       </navigator>
       
       <navigator url="../setting-detail/set-feed" class="weui-cell weui-cell_access" >
-              <view class="weui-cell__bd">意见反馈</view>
+              <view class="weui-cell__bd">关于小程序</view>
               <view class="weui-cell__ft weui-cell__ft_in-access"></view>
       </navigator>
       
@@ -14,4 +14,8 @@
               <view class="weui-cell__bd">贡献名单</view>
               <view class="weui-cell__ft weui-cell__ft_in-access"></view>
       </navigator>
+</view>
+<view class="bottom">
+  <button open-type="contact" class='btn-contact {{theme.color[theme.themeColorId].name}}'>在线客服(建议)</button>
+  <view class="notice-wrap"><view class="notice">联系客服前须知：小程序不属于学校</view></view>
 </view>

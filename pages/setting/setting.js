@@ -10,6 +10,7 @@ Page({
     theme: app.globalData.theme,
     nowserver: "",
     isSwitch: false,
+    isShowTimeleft: false, // 是否展示上课时间
     incCount: app.globalData.countInit,
     incFre: (app.globalData.countIncreseFre / 3600).toFixed(2),
     incTime: app.globalData.countIncreseByTime,
@@ -68,6 +69,15 @@ Page({
       });
     }
   }, 
+  /**
+   * 是否显示上课时间
+   */
+  switchTimeLeft: function (e) {
+    wx.setStorageSync("isShowTimeleft", e.detail.value);
+    this.setData({
+      isShowTimeleft: e.detail.value
+    });
+  },
   switchServer: function(){
     let that = this;
     wx.request({
@@ -93,10 +103,12 @@ Page({
       theme: app.getTheme()
     });
     let kcbaction = wx.getStorageSync("kcbaction");
+    let timeleft = wx.getStorageSync("isShowTimeleft");
     let myserver = wx.getStorageSync("myserver");
     that.setData({
       nowserver :　myserver.substring(8,16),
-      isSwitch: kcbaction=="dym"? true : false
+      isSwitch: kcbaction=="dym"? true : false,
+      isShowTimeleft: !!timeleft
     });
     //视频广告
     if (wx.createRewardedVideoAd) {
@@ -131,14 +143,13 @@ Page({
   onShow: function () {
     let that = this;
     let kcbaction = wx.getStorageSync("kcbaction");
-    //主题更新
+    let timeleft = wx.getStorageSync("isShowTimeleft");
     that.setData({
-      theme: app.getTheme()
-    });
-    that.setData({
+      theme: app.getTheme(), // 主题更新
       theEverydayCount: wx.getStorageSync("theEverydayCount"),
       theEverydayUsed: wx.getStorageSync("theEverydayUsed"),
       isSwitch: kcbaction == "dym" ? true : false,
+      isShowTimeleft: !!timeleft
     });
   },
 

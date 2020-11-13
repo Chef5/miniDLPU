@@ -22,6 +22,21 @@ Page({
       theme: app.getTheme()
     });
   },
+  setrepo: function () {
+    wx.setClipboardData({
+      data: 'https://github.com/Patrick-Jun/miniDLPU',
+      success: function (res) {
+        wx.getClipboardData({
+          success: function (res) {
+            wx.showToast({
+              title: '复制成功！',
+              duration: 1000
+            });
+          }
+        })
+      }
+    })
+  },
   setemail: function () {
     wx.setClipboardData({
       data: 'PatrickJun@xy.dlpu.edu.cn',

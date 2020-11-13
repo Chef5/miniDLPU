@@ -26,7 +26,41 @@
     <view class='kcb-body'>
 
       <view class='kcb-body-table'>
-        <view class='kcb-body-fill'>1\n2\n3\n4\n5\n6\n7\n8\n9\n10\n11\n12</view>
+        <view class='kcb-body-fill' wx:if="{{ !isShowTimeleft }}">1\n2\n3\n4\n5\n6\n7\n8\n9\n10\n11\n12</view>
+        <view class='kcb-body-fill2' wx:else >
+          <view class="timebox">
+            <view class="time-index">1-2</view>
+            <view class="time-line"><span>08</span>00</view>
+            <view class="time-line"><span>09</span>40</view>
+          </view>
+          <view class="timebox">
+            <view class="time-index">3-4</view>
+            <view class="time-line"><span>10</span>05</view>
+            <view class="time-line"><span>11</span>45</view>
+          </view>
+          <view class="timebox">
+            <view class="time-index">5-6</view>
+            <view class="time-line"><span>13</span>20</view>
+            <view class="time-line"><span>14</span>55</view>
+          </view>
+          <view class="timebox">
+            <view class="time-index">7-8</view>
+            <view class="time-line"><span>15</span>15</view>
+            <view class="time-line"><span>16</span>50</view>
+          </view>
+          <view class="timebox">
+            <view class="time-index">9-10</view>
+            <view class="time-line"><span>18</span>00</view>
+            <view class="time-line"><span>19</span>40</view>
+          </view>
+          <view class="timebox">
+            <view class="time-index">
+              <view>11</view><view>12</view>
+            </view>
+            <view class="time-line"><span>19</span>50</view>
+            <view class="time-line"><span>21</span>40</view>
+          </view>
+        </view>
         <view class='kcb-body-table-box'>
           <scroll-view scroll-x="true" style="width: 710rpx;" >
 
@@ -36,23 +70,25 @@
                   <view class='table-th-t'>{{thitem.date}}</view>
                 </view>
             </view>
-            <view class='table-tr' wx:for="{{arraykcb}}" wx:for-index="trindex" wx:for-item="tritem" wx:key="trindex">
-                <view class='table-td'
-                      wx:for="{{tritem}}" wx:for-index="nowindex" wx:for-item="nowitem" wx:key="nowindex"
-                      style="background-color:{{nowitem.color}}; " 
-                      bindtap='showdetail' 
-                      bindlongpress='showAddOrEditKCB' 
-                      data-hang='{{trindex}}' 
-                      data-week='{{nowindex}}'
-                      data-kid='{{nowitem.kid}}' 
-                      data-name='{{nowitem.name}}' 
-                      data-room='{{nowitem.room}}' 
-                      data-leader='{{nowitem.leader}}' 
-                      data-time1='{{nowitem.time1}}' 
-                      data-time2='{{nowitem.time2}}' >
-                  <text>{{nowitem.name}}\n{{nowitem.room}}</text>
-                </view>
-            </view>
+            <block class='table-tr' wx:for="{{arraykcb}}" wx:for-index="trindex" wx:for-item="tritem" wx:key="trindex">
+              <view class='table-tr'>
+                  <view class='table-td'
+                        wx:for="{{tritem}}" wx:for-index="nowindex" wx:for-item="nowitem" wx:key="nowindex"
+                        style="background-color:{{nowitem.color}}; " 
+                        bindtap='showdetail' 
+                        bindlongpress='showAddOrEditKCB' 
+                        data-hang='{{trindex}}' 
+                        data-week='{{nowindex}}'
+                        data-kid='{{nowitem.kid}}' 
+                        data-name='{{nowitem.name}}' 
+                        data-room='{{nowitem.room}}' 
+                        data-leader='{{nowitem.leader}}' 
+                        data-time1='{{nowitem.time1}}' 
+                        data-time2='{{nowitem.time2}}' >
+                    <text>{{nowitem.name}}\n{{nowitem.room}}</text>
+                  </view>
+              </view>
+            </block>
 
           </scroll-view>
         </view>

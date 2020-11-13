@@ -59,7 +59,10 @@ Page({
     trans: 0.75,
 
     // 新用户引导是否显示
-    newuserguideisshow: false
+    newuserguideisshow: false,
+
+    // 是否显示上课时间
+    isShowTimeleft: false,
     
   },
   zcChange: function (e) {
@@ -524,12 +527,15 @@ Page({
     let userpwd = wx.getStorageSync("userpwd");
     //透明度获取
     let themeTransparency = wx.getStorageSync("ThemeTransparency") || 26;
+    // 是否显示上课时间
+    let timeleft = wx.getStorageSync("isShowTimeleft");
     //主题更新
     that.setData({
       theme: app.getTheme(),
       trans: ((101 - themeTransparency) / 100).toFixed(2),
       userid: userid,
-      userpwd: userpwd
+      userpwd: userpwd,
+      isShowTimeleft: !!timeleft
     });
     //新用户引导
     let guideindex = wx.getStorageSync("newuserguideindex");
@@ -541,8 +547,8 @@ Page({
       // that.updateNews(显示类型, 'isshownotice1364', '通知内容', '通知标题', '确认按钮', '取消按钮', callBack());
       that.updateNews(
         1,
-        'isshownotice1366',
-        '1.更新成绩可查询学期；2.修复部分同学无法查看考试日程问题；',
+        'isshownotice1456',
+        '1.新增课表左侧可显示上课具体时间（默认不开启）；2.修正部分文字错误；3.调整设置布局；（如有功能建议，联系客服反馈）',
         '更新通知',
         '我知道了',
         '下次通知',

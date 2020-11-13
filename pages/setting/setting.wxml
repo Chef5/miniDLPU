@@ -30,21 +30,25 @@
               <switch bindchange="modelSwitch" color="{{theme.color[theme.themeColorId].value}}" checked='{{isSwitch}}'/>
               </view>
       </view>
+      <view class="weui-cell weui-cell_access" >
+              <view class="weui-cell__bd">显示上课时间</view>
+              <view class="weui-cell__ft ">
+              <switch bindchange="switchTimeLeft" color="{{theme.color[theme.themeColorId].value}}" checked='{{isShowTimeleft}}'/>
+              </view>
+      </view>
       <navigator url="../setting-detail/set-server" class="weui-cell weui-cell_access" >
               <view class="weui-cell__bd">服务器切换</view>
               <view class="weui-cell__ft weui-cell__ft_in-access"></view>
       </navigator>
       <navigator url="../setting-detail/set-theme" class="weui-cell weui-cell_access" >
-              <view class="weui-cell__bd">主题</view>
+              <view class="weui-cell__bd">主题<text>(颜色/背景)</text></view>
               <view class="weui-cell__ft weui-cell__ft_in-access"></view>
       </navigator>
       <navigator url="../setting-detail/set-other" class="weui-cell weui-cell_access" >
-              <view class="weui-cell__bd">其他</view>
+              <view class="weui-cell__bd">其他<text>(常见问题/在线客服)</text></view>
               <view class="weui-cell__ft weui-cell__ft_in-access"></view>
       </navigator>
     </view>
-    <button open-type="contact" class='btn-contact {{theme.color[theme.themeColorId].name}}'>联系客服</button>
-    <view class="notice-wrap"><view class="notice">联系客服前须知：小程序非官方程序</view></view>
     <view class='showmsg'>
       <!-- <text class='jinji'>紧急通知！！请互相转告！！\n</text> -->
       <text>157-6020-8020\n工大小程序联盟\n</text>

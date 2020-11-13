@@ -1,1 +1,29 @@
 /* pages/setting-detail/set-other.wxss */
+
+.btn-contact{
+  font-size: 38rpx;
+  margin-top: 50rpx;
+  color: white;
+  /* background-color: #1298CF; */
+  width: 60%;
+}
+
+.notice-wrap{
+  display: flex;
+  justify-content: center;
+}
+.notice{
+  width: fit-content;
+  padding: 3rpx 15rpx;
+  margin-top: 5rpx;
+  text-align: center;
+  font-size: 28rpx;
+  color: white;
+  background: rgba(230, 89, 89, 0.3);
+}
+
+.bottom {
+  position: absolute;
+  width: 100%;
+  bottom: 120rpx;
+}

@@ -1,4 +1,35 @@
 /* pages/setting-detail/set-feed.wxss */
+.page__bd {
+  padding: 0 20rpx;
+}
+.title {
+  margin-top: 30rpx;
+  font-size: 36rpx;
+  text-align: center;
+}
+.version {
+  text-align: center;
+  font-size: 26rpx;
+  color: gray;
+}
+.self-intro {
+  margin-top: 30rpx;
+  line-height: 38rpx;
+  font-size: 28rpx;
+  text-indent: 2em;
+  color: #676262;
+}
+.repo {
+  margin-top: 30rpx;
+  line-height: 38rpx;
+  font-size: 28rpx;
+}
+.repo span {
+  color: blue;
+}
+
+
+
 .feed-box{
   width: 90%;
   margin-left: 5%;

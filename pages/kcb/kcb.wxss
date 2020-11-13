@@ -45,8 +45,37 @@
   font-size: 18rpx;
   color: black;
   line-height: 110rpx;
-  text-align: center;
   /* border: 1px solid royalblue; */
+}
+.kcb-body-fill2{
+  width: auto;
+  padding-top: 70rpx;
+  font-size: 18rpx;
+  color: black;
+}
+.kcb-body-fill2 .timebox {
+  width: auto;
+  height: 220rpx;
+  line-height: 35rpx;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.kcb-body-fill2 .timebox .time-index {
+  font-size: 18rpx;
+  color: #656464;
+  font-weight: 700;
+}
+.kcb-body-fill2 .timebox .time-line {
+  font-size: 22rpx;
+  color: #9a9a9a;
+}
+.kcb-body-fill2 .timebox .time-line span {
+  padding-right: 1px;
+  font-size: 16rpx;
+  font-weight: 700;
+  color: #7b7979;
 }
 .kcb-body-head-header{
   width: 994rpx;

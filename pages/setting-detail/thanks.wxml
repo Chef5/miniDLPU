@@ -11,7 +11,8 @@
       <view class="item">
         <view class="item-title">开发者</view>
         <view class="item-content">
-          <view>吴俊：安卓开发、小程序开发、后端开发</view>
+          <view>吴俊：安卓开发、小程序开发</view>
+          <view>秦浩轩：“评教小助手”开发</view>
         </view>
       </view>
       <view class="item">
@@ -54,7 +55,7 @@
         </view>
       </view>
       <view class="item">
-        <view class="item-title">意见提供者</view>
+        <view class="item-title">建议提供者</view>
         <view class="item-content">
           <view>合计33名热心用户，姓名不详</view>
         </view>

@@ -3,7 +3,33 @@
   <view class='page__hd'>
   </view>
   <view class='page__bd'>
-    <view class='feed-box'>
+    <view class="title">工大教务处</view>
+    <view class="version">v1.6.1</view>
+    <view class="self-intro">
+      大家好，我是“工大教务处”小程序的开发者，
+      “工大教务处”是我在课外学习中开发的第一款上线的小程序。
+      “工大教务处”前身是一款安卓程序“mini教务处”，那是我为了方便我自己查询（课表、成绩、考试日程）而开发的。
+      后来经过室友、同学的分享，有些iOS的同学反馈也想要使用。
+      于是我2018年9月份用了一个月学习小程序，并完成了第一版小程序上线。
+      小程序上线后，随着大家的扩散，就有越来越多的用户，也收到了很多建议，于是我一次次地添加功能、修改bug，才有了你们现在看到的这个程序。
+      现在小程序有1.6万(2020.11)用户了，其前身“mini教务处”安卓端现在每天也还有将近100人(2020.11)正在使用。
+    </view>
+    <view class="self-intro">
+      “工大教务处”小程序原理就是爬虫技术，但是爬取教务处网站过于频繁后，教务处网站会将我们的IP封禁一段时间，
+      因此小程序会有查询到不到数据的情况。我们也去和学校教务处老师交谈了一下，希望开放一些数据给我们或者添加一个白名单，最终并没有得到支持。
+      于是我们只能通过一些离线缓存来缓解压力，后续还会发掘更多的方法来提升用户体验。
+    </view>
+
+    <view class="self-intro">
+      “工大小程序”已经开源一年多了，目前正在重构代码，准备2.0版本，如果有希望加入重构开发学习的同学，可以在下面仓库提交issue，经考核（需要git、js基础）后就可加入开发。
+      另外有几个学弟也正在开发另一款更加优美的小程序，不久后就能上线了。
+    </view>
+
+    <view class="repo" bindtap='setrepo'>
+      开源地址：<span>https://github.com/Patrick-Jun/miniDLPU</span>
+    </view>
+  </view>
+    <!-- <view class='feed-box'>
       <view class='feed-box-head'>
         <view class='feed-box-head-con' bindtap='setemail'>
           <view class='feed-box-head-con-logo'><image src='../../image/logo-1.png'></image></view>
@@ -31,7 +57,7 @@
               <text class='con-item-text-title'>QQ</text>
               <text class='con-item-text-detail'>583195863</text>
             </view>
-          </view>
+          </view> -->
           <!-- <view class='feed-box-body-con-item' bindtap='setgz'>
             <view class='con-item-logo'><image src='../../image/gzlogo.png'></image></view>
             <view class='con-item-text'>
@@ -39,7 +65,7 @@
               <text class='con-item-text-detail'>工大夜跑团</text>
             </view>
           </view> -->
-        </view>
+        <!-- </view>
 
         <view class='feed-box-body-text'>
           <text>能发现我藏得这么深的页面，佩服佩服。现在加我微信，邀请你进入我们的体验版测试群，新功能提前体验！</text>
@@ -49,7 +75,7 @@
     </view>
     <view class='tips'>提示：可以点击复制哦^-^.</view>
   </view>
-  <view class='full-some'></view>
-<ad unit-id="adunit-ae4d443e56bdab80"></ad>
+  <view class='full-some'></view> -->
+<!-- <ad unit-id="adunit-ae4d443e56bdab80"></ad> -->
 </view>
 
