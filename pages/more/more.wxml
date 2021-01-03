@@ -9,7 +9,7 @@
           <!-- <swiper-item>
             <image src="../../image/swi/qq.jpg" class="pic" />
           </swiper-item> -->
-          <swiper-item>
+          <swiper-item bindtap="toDLPU2">
             <image src="../../image/swi/morebg.png" class="pic" />
           </swiper-item>
           <block wx:for="{{swiimgs}}" wx:for-item="swiitem" wx:for-index="index" wx:key="swiitem">

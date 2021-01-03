@@ -3,7 +3,7 @@
   <view class='page__hd'>
     <view class='head-box'>
       贡献名单
-      <view class="head-box-tips">2019年12月30日统计</view>
+      <view class="head-box-tips">2020年12月31日统计</view>
     </view>
   </view>
   <view class='page__bd'>
@@ -11,8 +11,9 @@
       <view class="item">
         <view class="item-title">开发者</view>
         <view class="item-content">
-          <view>吴俊：安卓开发、小程序开发</view>
-          <view>秦浩轩：“评教小助手”开发</view>
+          <view>吴俊：工大教务处开发</view>
+          <view>秦浩轩：评教小助手/采集平台开发</view>
+          <view>梁研骏：工大教务处2开发</view>
         </view>
       </view>
       <view class="item">
@@ -34,16 +35,18 @@
         <view class="item-title">客服</view>
         <view class="item-content">
           <view>史雅静  金灵  王一伊  于琳</view>
+          <view>陈强  赵丹佳</view>
         </view>
       </view>
       <view class="item">
         <view class="item-title">服务器赞助</view>
         <view class="item-content">
-          <view>吴俊：MOS、猪蹄</view>
-          <view>秦浩轩：笔芯</view>
-          <view>王昊：毛驴的春天</view>
-          <view>张曦：玄队</view>
-          <view>温宇彤：xt、xt2</view>
+          <view>吴俊：MOS/猪蹄/嘻嘻哈哈/妲己/一只牛</view>
+          <view>秦浩轩：<span class="del"> 笔芯 </span></view>
+          <view>王昊：<span class="del"> 毛驴的春天 </span></view>
+          <view>张曦：<span class="del"> 玄队</span></view>
+          <view>温宇彤：<span class="del"> xt/xt2 </span></view>
+          <view>陈强：大熊与szr🐻</view>
         </view>
       </view>
       <view class="item">
@@ -51,13 +54,15 @@
         <view class="item-content">
           <view>姚晓鹏  杨越琪  秦浩轩  周婷</view>
           <view>金灵  白悦松  朱立子一  于琳</view>
-          <view>王文治  王瑜欣  匿名</view>
+          <view>王文治  王瑜欣  史雅静  陈强</view>
+          <view>赵丹佳  匿名</view>
         </view>
       </view>
       <view class="item">
         <view class="item-title">建议提供者</view>
         <view class="item-content">
-          <view>合计33名热心用户，姓名不详</view>
+          <view>于欣汝 刘美娜 彭彪</view>
+          <view>等合计36名热心用户</view>
         </view>
       </view>
       <!-- <view class='body-box-head'>

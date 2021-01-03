@@ -51,6 +51,9 @@ page, .page{
   font-family: SimSun;
   font-size: 30rpx;
 }
+.del {
+  text-decoration: line-through;
+}
 /* .body-box-head{
   margin: 15rpx;
   border: 5rpx solid lightgray;

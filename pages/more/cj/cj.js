@@ -20,7 +20,11 @@ Page({
             '2018-2019-1',
             '2018-2019-2',
             '2019-2020-1',
-            '2019-2020-2'
+            '2019-2020-2',
+            '2020-2021-1',
+            '2020-2021-2',
+            '2021-2022-1',
+            '2021-2022-2'
         ],
         hiddenmodalput: true,
         isLoading: false,
@@ -53,6 +57,18 @@ Page({
             theme: app.getTheme(),
             theEverydayCount: wx.getStorageSync("theEverydayCount"),
             theEverydayUsed: wx.getStorageSync("theEverydayUsed")
+        });
+        // 获取当前学期
+        const cjitem = wx.getStorageSync('nowcjitem');
+        let cjnowxq = 0;
+        that.data.arrayxq.some((item, index) => {
+          if (item === cjitem) {
+            cjnowxq = index;
+            return true;
+          } else return false;
+        });
+        that.setData({
+          cjnowxq
         });
         //获取成绩
         var item = that.data.arrayxq[that.data.cjnowxq];

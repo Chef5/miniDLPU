@@ -4,7 +4,7 @@
   </view>
   <view class='page__bd'>
     <view class="title">工大教务处</view>
-    <view class="version">v1.6.1</view>
+    <view class="version">v1.6.3</view>
     <view class="self-intro">
       大家好，我是“工大教务处”小程序的开发者，
       “工大教务处”是我在课外学习中开发的第一款上线的小程序。

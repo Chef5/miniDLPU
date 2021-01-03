@@ -60,7 +60,7 @@ Page({
     var passwd = wx.getStorageSync('userpwd'); 
     wx.showModal({
       title: '提示',
-      content: '2020-2021-1学期评教时间待定，评教小助手暂时无法使用',
+      content: '评教时间以学校教务处网站为准，评教小助手仅在评教期才可以使用。',
       showCancel: true,
       confirmText: '立即前往',
       confirmColor: this.data.theme.color[this.data.theme.themeColorId].value,
@@ -94,6 +94,29 @@ Page({
           wx.navigateToMiniProgram({
             appId: 'wxf885179f908a33d6',
             path: '/pages/index/index?s=1&u=' + userid + '&p=' + passwd,
+            envVersion: 'release',
+            success(res) {
+              // 打开成功
+            }
+          })
+        } else if (res.cancel) {
+
+        }
+      }
+    })
+  },
+  //跳转小程序：工大教务处2
+  toDLPU2: function(){
+    wx.showModal({
+      title: '工大教务处2.0-beta',
+      content: '恭喜你！你发现了工大教务处2.0版本入口，2.0版本优化了很多当前程序无法解决的问题，且界面更加优美。点击确认立即前往，是否立即打开？',
+      showCancel: true,
+      confirmColor: this.data.theme.color[this.data.theme.themeColorId].value,
+      success(res) {
+        if (res.confirm) {
+          wx.navigateToMiniProgram({
+            appId: 'wx96401daae94c037c',
+            path: '/pages/Timetable/Timetable',
             envVersion: 'release',
             success(res) {
               // 打开成功

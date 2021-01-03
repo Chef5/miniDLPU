@@ -199,6 +199,11 @@ Page({
           key: 'nowzc',
           data: nowzc,
         })
+        //给其他页面共享成绩可查学期
+        wx.setStorage({
+          key: 'nowcjitem',
+          data: dat.data.cjItem,
+        })
 
         //fix first time not current week BUG: delay 1s for data update
         setTimeout(function () {
@@ -545,19 +550,19 @@ Page({
     }else{
       //更新通知  1只显示确认按钮 2显示确认和取消
       // that.updateNews(显示类型, 'isshownotice1364', '通知内容', '通知标题', '确认按钮', '取消按钮', callBack());
-      that.updateNews(
-        1,
-        'isshownotice1456',
-        '1.新增课表左侧可显示上课具体时间（默认不开启）；2.修正部分文字错误；3.调整设置布局；（如有功能建议，联系客服反馈）',
-        '更新通知',
-        '我知道了',
-        '下次通知',
-        function () {
-          // wx.navigateTo({
-          //   url: '../setting-detail/set-userinfo',
-          // })
-        }
-      )
+      // that.updateNews(
+      //   1,
+      //   'isshownotice1456',
+      //   '1.新增课表左侧可显示上课具体时间（默认不开启）；2.修正部分文字错误；3.调整设置布局；（如有功能建议，联系客服反馈）',
+      //   '更新通知',
+      //   '我知道了',
+      //   '下次通知',
+      //   function () {
+      //     // wx.navigateTo({
+      //     //   url: '../setting-detail/set-userinfo',
+      //     // })
+      //   }
+      // )
     }
     //检查本地是否有课程表数据localDataKcb
     // let localDataKcb = wx.getStorageSync("localDataKcb");
