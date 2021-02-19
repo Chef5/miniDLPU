@@ -107,16 +107,18 @@ Page({
   },
   //跳转小程序：工大教务处2
   toDLPU2: function(){
+    var userid = wx.getStorageSync('userid');
+    var passwd = wx.getStorageSync('userpwd');
     wx.showModal({
-      title: '工大教务处2.0-beta',
-      content: '恭喜你！你发现了工大教务处2.0版本入口，2.0版本优化了很多当前程序无法解决的问题，且界面更加优美。点击确认立即前往，是否立即打开？',
+      title: '工大教务处2.0',
+      content: '恭喜你！你发现了工大教务处2.0版本，2.0版本优化了很多当前程序无法解决的问题，且界面更加优美。点击确认立即前往，是否立即打开？',
       showCancel: true,
       confirmColor: this.data.theme.color[this.data.theme.themeColorId].value,
       success(res) {
         if (res.confirm) {
           wx.navigateToMiniProgram({
-            appId: 'wx96401daae94c037c',
-            path: '/pages/Timetable/Timetable',
+            appId: 'wxc8d375bbcf2ac52f',
+            path: `/pages/Subpages/StudentId/StudentId?user=${userid}&pwd=${passwd}`,
             envVersion: 'release',
             success(res) {
               // 打开成功

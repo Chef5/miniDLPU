@@ -76,14 +76,14 @@
                     <view class='menu-items-txt'><text>空教室</text></view>
                   </navigator>
                 </view>
-                <view class='menu-item-box'>
+                <!-- <view class='menu-item-box'>
                   <view class='nav-item' bind:tap="showYuE">
                       <view class='menu-item-content {{theme.color[theme.themeColorId].name}}'>
                         <view class='menu-items-img'><image src='../../image/yue.png'></image></view>
                       </view>
                       <view class='menu-items-txt'><text>校园卡</text></view>
                     </view>
-                </view>
+                </view> -->
                 <view class='menu-item-box'>
                   <view class='nav-item' bind:tap="checkWater">
                       <view class='menu-item-content {{theme.color[theme.themeColorId].name}}'>
@@ -98,6 +98,14 @@
                       <view class='menu-items-img'><image src='../../image/pingjiao.png'></image></view>
                     </view>
                     <view class='menu-items-txt'><text>评教</text></view>
+                  </view>
+                </view>
+                <view class='menu-item-box'>
+                  <view class='nav-item' bindtap='toCaiJiProgram'>
+                    <view class='menu-item-content {{theme.color[theme.themeColorId].name}}'>
+                      <view class='menu-items-img'><image src='../../image/caij.png'></image></view>
+                    </view>
+                    <view class='menu-items-txt'><text>采集平台</text></view>
                   </view>
                 </view>
               </view>
@@ -124,20 +132,14 @@
                 </view> -->
                 
                 <view class='menu-item-box'>
-                  <view class='nav-item' bindtap='toCaiJiProgram'>
-                    <view class='menu-item-content {{theme.color[theme.themeColorId].name}}'>
-                      <view class='menu-items-img'><image src='../../image/caij.png'></image></view>
-                    </view>
-                    <view class='menu-items-txt'><text>采集平台</text></view>
-                  </view>
-                </view>
-                <view class='menu-item-box'>
                   <view class='nav-item' bindtap='showMoreTips'>
                     <view class='menu-item-content waiting'>
                       <view class='menu-items-img'><image src='../../image/more2.png'></image></view>
                     </view>
                     <view class='menu-items-txt'><text>更多</text></view>
                   </view>
+                </view>
+                <view class='menu-item-box'>
                 </view>
                 <view class='menu-item-box'>
                 </view>
