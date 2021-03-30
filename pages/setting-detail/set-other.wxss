@@ -27,3 +27,7 @@
   width: 100%;
   bottom: 120rpx;
 }
+
+.popup_root {
+  width: 80%;
+}

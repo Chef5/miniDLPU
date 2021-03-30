@@ -11,10 +11,6 @@ Page({
     nowserver: "",
     isSwitch: false,
     isShowTimeleft: false, // 是否展示上课时间
-    incCount: app.globalData.countInit,
-    incFre: (app.globalData.countIncreseFre / 3600).toFixed(2),
-    incTime: app.globalData.countIncreseByTime,
-    incAd: app.globalData.countIncreseByAD,
   },
   setwx: function () {
     wx.setClipboardData({
@@ -110,25 +106,6 @@ Page({
       isSwitch: kcbaction=="dym"? true : false,
       isShowTimeleft: !!timeleft
     });
-    //视频广告
-    if (wx.createRewardedVideoAd) {
-      rewardedVideoAd = wx.createRewardedVideoAd({ adUnitId: 'adunit-cfdf2f4bd499a89d' })
-      rewardedVideoAd.onLoad(() => {
-        console.log('激励视频 广告加载成功')
-      })
-      rewardedVideoAd.onError((err) => {
-        console.log('onError event emit', err)
-      })
-      rewardedVideoAd.onClose((res) => {
-        // 用户点击了【关闭广告】按钮
-        if (res && res.isEnded) {
-          wx.setStorageSync("theEverydayCount", parseInt(wx.getStorageSync("theEverydayCount")) + app.globalData.countIncreseByAD);
-          that.handleCountRefresh();
-        } else {
-          // 播放中途退出，不下发游戏奖励
-        }
-      })
-    }
   },
 
   /**
@@ -146,44 +123,11 @@ Page({
     let timeleft = wx.getStorageSync("isShowTimeleft");
     that.setData({
       theme: app.getTheme(), // 主题更新
-      theEverydayCount: wx.getStorageSync("theEverydayCount"),
-      theEverydayUsed: wx.getStorageSync("theEverydayUsed"),
       isSwitch: kcbaction == "dym" ? true : false,
       isShowTimeleft: !!timeleft
     });
   },
 
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
-  },
-  handleCountRefresh: function () {
-    let that = this;
-    app.refreshCount();
-    setTimeout(()=>{
-      that.setData({
-        theEverydayCount: wx.getStorageSync("theEverydayCount"),
-        theEverydayUsed: wx.getStorageSync("theEverydayUsed")
-      });
-    },600)
-  },
-  handleWatchAd: function() {
-    console.log('打开激励视频');
-    // 在合适的位置打开广告
-    if (rewardedVideoAd) {
-      rewardedVideoAd.show()
-        .then(() => console.log('激励视频 广告显示'))
-        .catch(() => {
-          rewardedVideoAd.load()
-            .then(() => rewardedVideoAd.show())
-            .catch(err => {
-              console.log('激励视频 广告显示失败')
-            })
-        })
-    }
-  },
   /**
    * 用户点击右上角分享
    */

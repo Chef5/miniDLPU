@@ -82,33 +82,33 @@ Page({
   //培养方案刷新
   refreshEDU: function () {
     var that = this;
-    if (!app.delCount()) {
-      wx.showModal({
-        content: '您当前查询次数剩余量为0，请等待' + (app.globalData.countIncreseFre / 3600).toFixed(2) + '小时 后再试！服务器资源有限，请理解。您可在设置中查询今日总额度以及剩余额度，还可以赚取额外次数！完整观看广告，可立即+' + app.globalData.countIncreseByAD + '次！',
-        showCancel: true,
-        title: "查询次数已耗尽",
-        confirmText: "观看广告",
-        confirmColor: that.data.theme.color[that.data.theme.themeColorId].value,
-        success: function (res) {
-          if (res.confirm) {
-            console.log('打开激励视频');
-            // 在合适的位置打开广告
-            if (rewardedVideoAd) {
-              rewardedVideoAd.show()
-                .then(() => console.log('激励视频 广告显示'))
-                .catch(() => {
-                  rewardedVideoAd.load()
-                    .then(() => rewardedVideoAd.show())
-                    .catch(err => {
-                      console.log('激励视频 广告显示失败')
-                    })
-                })
-            }
-          }
-        }
-      });
-      return;
-    }
+    // if (!app.delCount()) {
+    //   wx.showModal({
+    //     content: '您当前查询次数剩余量为0，请等待' + (app.globalData.countIncreseFre / 3600).toFixed(2) + '小时 后再试！服务器资源有限，请理解。您可在设置中查询今日总额度以及剩余额度，还可以赚取额外次数！完整观看广告，可立即+' + app.globalData.countIncreseByAD + '次！',
+    //     showCancel: true,
+    //     title: "查询次数已耗尽",
+    //     confirmText: "观看广告",
+    //     confirmColor: that.data.theme.color[that.data.theme.themeColorId].value,
+    //     success: function (res) {
+    //       if (res.confirm) {
+    //         console.log('打开激励视频');
+    //         // 在合适的位置打开广告
+    //         if (rewardedVideoAd) {
+    //           rewardedVideoAd.show()
+    //             .then(() => console.log('激励视频 广告显示'))
+    //             .catch(() => {
+    //               rewardedVideoAd.load()
+    //                 .then(() => rewardedVideoAd.show())
+    //                 .catch(err => {
+    //                   console.log('激励视频 广告显示失败')
+    //                 })
+    //             })
+    //         }
+    //       }
+    //     }
+    //   });
+    //   return;
+    // }
     // 显示顶部刷新图标
     wx.showNavigationBarLoading();
     //刷新本地账号

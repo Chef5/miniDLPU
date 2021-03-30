@@ -16,6 +16,17 @@
       </navigator>
 </view>
 <view class="bottom">
-  <button open-type="contact" class='btn-contact {{theme.color[theme.themeColorId].name}}'>在线客服(建议)</button>
+  <button open-type="contact" class='btn-contact {{theme.color[theme.themeColorId].name}}'>在线反馈(bug/建议)</button>
+  <!-- <button bind:tap="showFeedback" class='btn-contact {{theme.color[theme.themeColorId].name}}'>在线反馈(问题/建议)</button> -->
   <view class="notice-wrap"><view class="notice">联系客服前须知：小程序不属于学校</view></view>
 </view>
+
+
+<!-- 反馈弹窗 -->
+<!-- <van-popup show="{{ isShowFeedback }}" custom-class="popup_root" closeable round bind:close="onClose">
+  <view class="feed-main">
+    <view class="feed-tips">为了便于问题统计，避免过多重复问题，减少人工服务压力，因此人工服务通道关闭，采用群聊方式进行反馈。解决一个问题能及时反馈，响应速度更加快速！</view>
+    <view class="feed-group">群聊：添加微信</view>
+    <button open-type="feedback" class='btn-contact {{theme.color[theme.themeColorId].name}}'>功能建议</button>
+  </view>
+</van-popup> -->

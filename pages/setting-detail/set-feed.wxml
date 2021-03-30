@@ -4,7 +4,7 @@
   </view>
   <view class='page__bd'>
     <view class="title">工大教务处</view>
-    <view class="version">v1.6.3</view>
+    <view class="version">v1.6.5</view>
     <view class="self-intro">
       大家好，我是“工大教务处”小程序的开发者，
       “工大教务处”是我在课外学习中开发的第一款上线的小程序。
@@ -21,8 +21,8 @@
     </view>
 
     <view class="self-intro">
-      “工大小程序”已经开源一年多了，目前正在重构代码，准备2.0版本，如果有希望加入重构开发学习的同学，可以在下面仓库提交issue，经考核（需要git、js基础）后就可加入开发。
-      另外有几个学弟也正在开发另一款更加优美的小程序，不久后就能上线了。
+      “工大教务处”已经开源两年多了，目前正在重构代码，准备2.0版本，如果有希望加入重构开发学习的同学，可以在下面仓库提交issue，经考核（需要git、js基础）后就可加入开发。
+      另外有几个学弟开发另一款更加优美的小程序“掌上教务处”已经上线了。
     </view>
 
     <view class="repo" bindtap='setrepo'>

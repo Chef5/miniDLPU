@@ -75,9 +75,9 @@ Page({
         that.getDataLocal(item);
 
         //标题显示剩余次数
-        wx.setNavigationBarTitle({
-          title: '成绩查询-余额'+(that.data.theEverydayCount-that.data.theEverydayUsed)+'次',
-        })
+        // wx.setNavigationBarTitle({
+        //   title: '成绩查询-余额'+(that.data.theEverydayCount-that.data.theEverydayUsed)+'次',
+        // })
 
         //视频广告
         if (wx.createRewardedVideoAd) {
@@ -134,13 +134,13 @@ Page({
         var that = this;
         that.refreshCJ();
         //标题更新剩余次数
-        that.setData({
-            theEverydayCount: wx.getStorageSync("theEverydayCount"),
-            theEverydayUsed: wx.getStorageSync("theEverydayUsed")
-        });
-        wx.setNavigationBarTitle({
-            title: '成绩查询-余额'+(that.data.theEverydayCount-that.data.theEverydayUsed)+'次',
-        })
+        // that.setData({
+        //     theEverydayCount: wx.getStorageSync("theEverydayCount"),
+        //     theEverydayUsed: wx.getStorageSync("theEverydayUsed")
+        // });
+        // wx.setNavigationBarTitle({
+        //     title: '成绩查询-余额'+(that.data.theEverydayCount-that.data.theEverydayUsed)+'次',
+        // })
     },
     getDataLocal: function(item) {
         var that = this;
@@ -180,33 +180,33 @@ Page({
     //成绩刷新
     refreshCJ: function() {
         var that = this;
-        if (!app.delCount()) {
-            wx.showModal({
-                content: '您当前查询次数剩余量为0，请等待' + (app.globalData.countIncreseFre / 3600).toFixed(2) + '小时 后再试！服务器资源有限，请理解。您可在设置中查询今日总额度以及剩余额度，还可以赚取额外次数！完整观看广告，可立即+' + app.globalData.countIncreseByAD + '次！',
-                showCancel: true,
-                title: "查询次数已耗尽",
-                confirmText: "观看广告",
-                confirmColor: that.data.theme.color[that.data.theme.themeColorId].value,
-                success: function(res) {
-                    if (res.confirm) {
-                        console.log('打开激励视频');
-                        // 在合适的位置打开广告
-                        if (rewardedVideoAd) {
-                            rewardedVideoAd.show()
-                                .then(() => console.log('激励视频 广告显示'))
-                                .catch(() => {
-                                    rewardedVideoAd.load()
-                                        .then(() => rewardedVideoAd.show())
-                                        .catch(err => {
-                                            console.log('激励视频 广告显示失败')
-                                        })
-                                })
-                        }
-                    }
-                }
-            });
-            return;
-        }
+        // if (!app.delCount()) {
+        //     wx.showModal({
+        //         content: '您当前查询次数剩余量为0，请等待' + (app.globalData.countIncreseFre / 3600).toFixed(2) + '小时 后再试！服务器资源有限，请理解。您可在设置中查询今日总额度以及剩余额度，还可以赚取额外次数！完整观看广告，可立即+' + app.globalData.countIncreseByAD + '次！',
+        //         showCancel: true,
+        //         title: "查询次数已耗尽",
+        //         confirmText: "观看广告",
+        //         confirmColor: that.data.theme.color[that.data.theme.themeColorId].value,
+        //         success: function(res) {
+        //             if (res.confirm) {
+        //                 console.log('打开激励视频');
+        //                 // 在合适的位置打开广告
+        //                 if (rewardedVideoAd) {
+        //                     rewardedVideoAd.show()
+        //                         .then(() => console.log('激励视频 广告显示'))
+        //                         .catch(() => {
+        //                             rewardedVideoAd.load()
+        //                                 .then(() => rewardedVideoAd.show())
+        //                                 .catch(err => {
+        //                                     console.log('激励视频 广告显示失败')
+        //                                 })
+        //                         })
+        //                 }
+        //             }
+        //         }
+        //     });
+        //     return;
+        // }
         //更新按钮禁用
         that.setData({
             isLoading: true
